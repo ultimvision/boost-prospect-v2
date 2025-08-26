@@ -1,0 +1,30 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-08-25T14:09:24.505Z",
+  "id": "qWaubKXhx551eqDt",
+  "isArchived": true,
+  "meta": null,
+  "name": "My workflow",
+  "nodes": [],
+  "repo_name": "boost-prospect-v2",
+  "repo_owner": "ultimvision",
+  "repo_path": "workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-08-25T14:09:24.505Z",
+      "updatedAt": "2025-08-25T14:09:24.505Z",
+      "role": "workflow:owner",
+      "workflowId": "qWaubKXhx551eqDt",
+      "projectId": "zxVtQj8AiJx7hlkL"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-25T14:24:21.558Z",
+  "versionId": "579933e9-7059-4e58-9002-a8a1180831ab"
+}
