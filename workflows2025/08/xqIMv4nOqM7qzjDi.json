@@ -1,0 +1,220 @@
+{
+  "active": false,
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Insert Error Details - AT Errors Log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-25T14:29:11.801Z",
+  "id": "xqIMv4nOqM7qzjDi",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Handling Errors",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        -16
+      ],
+      "id": "f01dc773-9a30-4d4c-b7a5-478d8877c09a",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "app1cypH1v3pTZcFi",
+          "mode": "list",
+          "cachedResultName": "Boost Prospect v2",
+          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl0XgBNJDMWMbEfU",
+          "mode": "list",
+          "cachedResultName": "Errors Log",
+          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tbl0XgBNJDMWMbEfU"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "name": "={{ $json.execution.error.name }}",
+            "workflowId": "={{ $json.workflow.id }}",
+            "workflowName": "={{ $json.workflow.name }}",
+            "executionId": "={{ $json.execution.id }}",
+            "executionUrl": "={{ $json.execution.url }}",
+            "errorLevel": "={{ $json.execution.error.level }}",
+            "errorDescription": "={{ $json.execution.error.description }}",
+            "errorMessage": "={{ $json.execution.error.messages[0] }}",
+            "httpCode": "={{ $json.execution.error.httpCode }}",
+            "createdAt": "={{ new Date($json.execution.error.timestamp).toISOString() }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "createdAt",
+              "displayName": "createdAt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "workflowId",
+              "displayName": "workflowId",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "workflowName",
+              "displayName": "workflowName",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "executionId",
+              "displayName": "executionId",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "executionUrl",
+              "displayName": "executionUrl",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "errorLevel",
+              "displayName": "errorLevel",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "errorDescription",
+              "displayName": "errorDescription",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "errorMessage",
+              "displayName": "errorMessage",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "httpCode",
+              "displayName": "httpCode",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -96,
+        -16
+      ],
+      "id": "058b107f-2dc6-4f5a-8053-58a93e1b9ce7",
+      "name": "Insert Error Details - AT Errors Log",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "XzBWggFrPVokGo9L",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    }
+  ],
+  "repo_name": "boost-prospect-v2",
+  "repo_owner": "ultimvision",
+  "repo_path": "workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-08-25T14:29:11.801Z",
+      "updatedAt": "2025-08-25T14:29:11.801Z",
+      "role": "workflow:owner",
+      "workflowId": "xqIMv4nOqM7qzjDi",
+      "projectId": "zxVtQj8AiJx7hlkL"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-25T14:58:05.066Z",
+  "versionId": "7a0c42cc-417e-447b-b87e-cde5a56b5695"
+}
