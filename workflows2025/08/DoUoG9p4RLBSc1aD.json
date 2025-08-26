@@ -1,0 +1,3513 @@
+{
+  "active": false,
+  "connections": {
+    "Receive Callback - Webhook Apify Apollo": {
+      "main": [
+        [
+          {
+            "node": "Get Webhook Dispatch - HTTP Apify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Receive Dataset Inputs - Subflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "List Dataset Items - Apify Apollo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Webhook Dispatch - HTTP Apify": {
+      "main": [
+        [
+          {
+            "node": "Search Apollo URL - AT Apollo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Actor Run Details - Apify Apollo": {
+      "main": [
+        [
+          {
+            "node": "If Run SUCCEEDED - IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Dataset Items - Apify Apollo": {
+      "main": [
+        [
+          {
+            "node": "If Items Exist - IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Run SUCCEEDED - IF": {
+      "main": [
+        [
+          {
+            "node": "Recurse Dataset Pagination - Subflow",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Fail Run - Error Handler",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Iterate Dataset Items - Util 25": {
+      "main": [
+        [
+          {
+            "node": "Aggregate Items - Util",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Prepare Person Fields - Set Apollo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upsert Company - AT Companies": {
+      "main": [
+        [
+          {
+            "node": "Set Organization ID - Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upsert Person - AT People": {
+      "main": [
+        [
+          {
+            "node": "Normalize Person Fields - Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Person Fields - Set Apollo": {
+      "main": [
+        [
+          {
+            "node": "Upsert Company - AT Companies",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Organization ID - Set": {
+      "main": [
+        [
+          {
+            "node": "Upsert Person - AT People",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Items Exist - IF": {
+      "main": [
+        [
+          {
+            "node": "Iterate Dataset Items - Util 25",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Aggregate Items (Empty) - Util",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate Items - Util": {
+      "main": [
+        [
+          {
+            "node": "Set Next Page Flag - Subflow Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recurse Dataset Pagination - Subflow": {
+      "main": [
+        [
+          {
+            "node": "If Next Page - IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate Items (Empty) - Util": {
+      "main": [
+        [
+          {
+            "node": "Set Next Page Flag False - Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate Batch Loopback - Util": {
+      "main": [
+        [
+          {
+            "node": "Iterate Dataset Items - Util 25",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Person Fields - Set": {
+      "main": [
+        [
+          {
+            "node": "Aggregate Batch Loopback - Util",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Next Page - IF": {
+      "main": [
+        [
+          {
+            "node": "Recurse Dataset Pagination - Subflow",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update status - AT Apollo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search Apollo URL - AT Apollo": {
+      "main": [
+        [
+          {
+            "node": "Get Actor Run Details - Apify Apollo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-25T15:25:57.471Z",
+  "id": "DoUoG9p4RLBSc1aD",
+  "isArchived": false,
+  "meta": null,
+  "name": "Triggers > Apify > Apollo Webhook Callback",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "/apollo/leads",
+        "authentication": "headerAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1040,
+        608
+      ],
+      "id": "2b316928-5030-4897-9f01-7949387f1cd6",
+      "name": "Receive Callback - Webhook Apify Apollo",
+      "webhookId": "d8aa40d8-35ca-4197-934c-02464d68db81",
+      "notes": "PHASE: Input Purpose: Receive Apify webhook callback for Apollo actor completion events. Inputs: HTTP POST /apollo/leads with header auth and Apify headers including x-apify-webhook-dispatch-id. Outputs: Raw headers/body for dispatch lookup. Dependencies: Header Auth Webhook Apify credential; Apify. Special Cases: Body may be empty; header must be present or flow will fail downstream."
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "dataset"
+            },
+            {
+              "name": "offset",
+              "type": "number"
+            },
+            {
+              "name": "apolloId"
+            },
+            {
+              "name": "userId"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1040,
+        144
+      ],
+      "id": "cab49871-dc92-4320-a542-7d14eab2b0b0",
+      "name": "Receive Dataset Inputs - Subflow Trigger",
+      "notes": "PHASE: Input Purpose: Receive dataset id and offset for subflow execution. Inputs: workflowInputs dataset (string) and offset (number). Outputs: Exposes these values to downstream HTTP listing. Dependencies: Recurse Dataset Pagination - Subflow. Special Cases: Missing inputs will cause dataset fetch to fail."
+    },
+    {
+      "parameters": {
+        "content": "# Apify Apollo Actor Callback Processing – Workflow\n\n1. This workflow processes **Apify callbacks** for Apollo actor runs and syncs the resulting company and person data into Airtable.\n\n2. On an **authenticated webhook hit**, it looks up the **Apify webhook dispatch**, fetches the related **actor run**, and proceeds only if the run succeeded.\n\n3. The workflow paginates through the actor’s **output dataset** (100 items per page) and processes items in **25-item batches** to upsert **Companies** and **People** into the **Boost Prospects Airtable** base.\n\n4. The flow loops through dataset pages via a **self-invoked subflow** until an empty page is encountered, then stops.\n\n5. Failures (non-`SUCCEEDED` runs) **short-circuit with an error**.\n\n---\n\n### 🔗 Key Integrations\n- **Apify REST API** (webhook dispatch, actor run, dataset items)  \n- **Airtable API** (Companies and People tables)\n",
+        "height": 608,
+        "width": 992
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -2336,
+        192
+      ],
+      "id": "63e067b9-0529-46c9-bfd0-b35c2eaa360f",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.apify.com/v2/webhook-dispatches/{{ $json.headers['x-apify-webhook-dispatch-id'] }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -816,
+        608
+      ],
+      "id": "367ee02b-6ba5-4582-87a9-60a6c4853e37",
+      "name": "Get Webhook Dispatch - HTTP Apify",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "c5ccYKuRoY4O10nO",
+          "name": "Bearer Apify"
+        }
+      },
+      "notes": "PHASE: Execution Purpose: Retrieve the Apify webhook dispatch to extract actorRunId and metadata for this callback. Inputs: Header x-apify-webhook-dispatch-id from Webhook; Apify Bearer credential. Outputs: JSON dispatch including data.eventData.actorRunId and metadata. Dependencies: Webhook - Apify Callback - Apollo; Apify HTTP API; Bearer Apify credential. Special Cases: 401/403 for auth errors; 429 for rate limits; no retry configured."
+    },
+    {
+      "parameters": {
+        "url": "=https://api.apify.com/v2/actor-runs/{{ $('Get Webhook Dispatch - HTTP Apify').item.json.data.eventData.actorRunId }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -368,
+        608
+      ],
+      "id": "66e6d1d2-f97e-48f3-8e4e-01786c67be07",
+      "name": "Get Actor Run Details - Apify Apollo",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "c5ccYKuRoY4O10nO",
+          "name": "Bearer Apify"
+        }
+      },
+      "notes": "PHASE: Execution Purpose: Fetch Apify actor run details to determine completion status and get the dataset id. Inputs: actorRunId from Get Webhook Dispatch. Outputs: JSON with data.status and data.defaultDatasetId. Dependencies: Apify HTTP API; Bearer Apify credential. Special Cases: Status may be SUCCEEDED/FAILED/TIMED-OUT; gate downstream actions accordingly."
+    },
+    {
+      "parameters": {
+        "url": "=https://api.apify.com/v2/datasets/{{ $json.dataset }}/items",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "format",
+              "value": "json"
+            },
+            {
+              "name": "limit",
+              "value": "100"
+            },
+            {
+              "name": "offset",
+              "value": "={{ $json.offset }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -816,
+        144
+      ],
+      "id": "b47715c7-54ec-4c54-b3bf-f600b1418e79",
+      "name": "List Dataset Items - Apify Apollo",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "alwaysOutputData": true,
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "c5ccYKuRoY4O10nO",
+          "name": "Bearer Apify"
+        }
+      },
+      "notes": "PHASE: Execution Purpose: List items from the Apify dataset produced by the actor run using pagination. Inputs: dataset id and offset from subflow inputs; limit=100. Outputs: Array of dataset items. Dependencies: Apify HTTP API; Bearer Apify credential. Special Cases: Empty result indicates no more pages; handle 429 rate limits."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e09c97a6-ae38-43d5-a296-5a5f501d454c",
+              "leftValue": "={{ $json.data.status }}",
+              "rightValue": "SUCCEEDED",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -144,
+        608
+      ],
+      "id": "d6478073-1990-4d44-bbff-89723a825187",
+      "name": "If Run SUCCEEDED - IF",
+      "notes": "PHASE: Execution Purpose: Branch based on Apify actor run status being SUCCEEDED. Inputs: data.status from Get Actor Run Details. Outputs: True path triggers pagination; false path goes to Stop with Error. Dependencies: Get Actor Run Details. Special Cases: Non-SUCCEEDED statuses are treated as failures."
+    },
+    {
+      "parameters": {
+        "errorMessage": "Apollo Run Status Error"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        80,
+        704
+      ],
+      "id": "b7b25d13-0538-4771-92c9-ec33121b1023",
+      "name": "Fail Run - Error Handler",
+      "notes": "PHASE: Error Handling Purpose: Fail the workflow when the Apify actor run did not succeed. Inputs: False branch from If Run SUCCEEDED. Outputs: Error thrown with message 'Apollo Run Status Error'. Dependencies: If Run SUCCEEDED - IF. Special Cases: Stops all downstream processing."
+    },
+    {
+      "parameters": {
+        "batchSize": 25,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -368,
+        0
+      ],
+      "id": "0aa0f90a-c27a-4199-8a21-02592cc68350",
+      "name": "Iterate Dataset Items - Util 25",
+      "notes": "PHASE: Utility Purpose: Process Apify dataset items in batches to control memory and rate limits. Inputs: Array of items from List Dataset Items. Outputs: Batches of up to 25 items for downstream Set/Airtable nodes; iterates until empty. Dependencies: Split In Batches behavior and the Aggregate2 loopback. Special Cases: Ensure loopback is wired or iteration will stop after first batch."
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "base": {
+          "__rl": true,
+          "value": "app1cypH1v3pTZcFi",
+          "mode": "list",
+          "cachedResultName": "Boost Prospect v2",
+          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblAE9pCoPBXAWSSm",
+          "mode": "list",
+          "cachedResultName": "Companies",
+          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tblAE9pCoPBXAWSSm"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "apolloOrganizationId": "={{ $json.organization.id }}",
+            "companyName": "={{ $json.organization.name }}",
+            "website": "={{ $json.organization.website_url }}",
+            "linkedinLink": "={{ $json.organization.linkedin_url }}",
+            "facebookLink": "={{ $json.organization.facebook_url }}",
+            "primaryPhoneNumber": "={{ $json.organization.primary_phone.number }}",
+            "formattedPhoneNumber": "={{ $json.organization.primary_phone.sanitized_number }}",
+            "linkedinId": "={{ $json.organization.linkedin_uid }}",
+            "yearFounded": "={{ $json.organization.founded_year }}",
+            "logoUrl": "={{ $json.organization.logo_url }}",
+            "industrySector": "={{ $json.organization.industry }}",
+            "keywords": "={{ $json.organization.keywords?.toJsonString() }}",
+            "rawAddress": "={{ $json.organization.raw_address }}",
+            "address": "={{ $json.organization.street_address }}",
+            "city": "={{ $json.organization.city }}",
+            "stateOrProvince": "={{ $json.organization.state }}",
+            "country": "={{ $json.organization.country }}",
+            "postalCode": "={{ $json.organization.postal_code }}",
+            "estimatedEmployeeCount": "={{ $json.organization.estimated_num_employees }}",
+            "logo": "=[\n  {\n    \"url\": \"{{ $json.organization.logo_url }}\"\n  }\n]",
+            "user": "=['{{ $('Receive Dataset Inputs - Subflow Trigger').item.json.userId }}']",
+            "apolloId": "=['{{ $('Receive Dataset Inputs - Subflow Trigger').item.json.apolloId }}']"
+          },
+          "matchingColumns": [
+            "apolloOrganizationId"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "companyName",
+              "displayName": "companyName",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "recId",
+              "displayName": "recId",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "creationDate",
+              "displayName": "creationDate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "modificationDate",
+              "displayName": "modificationDate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "apolloOrganizationId",
+              "displayName": "apolloOrganizationId",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "website",
+              "displayName": "website",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "linkedinLink",
+              "displayName": "linkedinLink",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "facebookLink",
+              "displayName": "facebookLink",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "primaryPhoneNumber",
+              "displayName": "primaryPhoneNumber",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "formattedPhoneNumber",
+              "displayName": "formattedPhoneNumber",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "linkedinId",
+              "displayName": "linkedinId",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "yearFounded",
+              "displayName": "yearFounded",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "logoUrl",
+              "displayName": "logoUrl",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "logo",
+              "displayName": "logo",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "industrySector",
+              "displayName": "industrySector",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "keywords",
+              "displayName": "keywords",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "rawAddress",
+              "displayName": "rawAddress",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "address",
+              "displayName": "address",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "city",
+              "displayName": "city",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "stateOrProvince",
+              "displayName": "stateOrProvince",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "country",
+              "displayName": "country",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "postalCode",
+              "displayName": "postalCode",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "estimatedEmployeeCount",
+              "displayName": "estimatedEmployeeCount",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "user",
+              "displayName": "user",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "contacts",
+              "displayName": "contacts",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "websiteButton",
+              "displayName": "websiteButton",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "linkedinButton",
+              "displayName": "linkedinButton",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "logoButton",
+              "displayName": "logoButton",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "facebookButton",
+              "displayName": "facebookButton",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "apolloId",
+              "displayName": "apolloId",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        80,
+        0
+      ],
+      "id": "175b6f70-1193-4246-8887-3366a27f35e3",
+      "name": "Upsert Company - AT Companies",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "XzBWggFrPVokGo9L",
+          "name": "Airtable Personal Access Token account"
+        }
+      },
+      "notes": "PHASE: Execution Purpose: Upsert company records into Airtable Companies table from Apollo organization data. Inputs: Current item containing organization fields; credentials Token Boost Connect 2. Outputs: Created/updated Airtable company record including rec id. Dependencies: Airtable base Boost Prospects; Companies table; Set Apollo Data upstream. Special Cases: Match on apolloOrganizationId; attachments require array structure; missing fields should be handled null-safe."
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "base": {
+          "__rl": true,
+          "value": "app1cypH1v3pTZcFi",
+          "mode": "list",
+          "cachedResultName": "Boost Prospect v2",
+          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblpxuiyiGDvZXUzG",
+          "mode": "list",
+          "cachedResultName": "People",
+          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tblpxuiyiGDvZXUzG"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "apolloPeopleNumber": "={{ $('Iterate Dataset Items - Util 25').item.json.id }}",
+            "company": "=['{{ $json.organization_id }}']",
+            "firstName": "={{ $('Prepare Person Fields - Set Apollo').item.json.first_name }}",
+            "name": "={{ $('Prepare Person Fields - Set Apollo').item.json.last_name }}",
+            "linkedinLink": "={{ $('Prepare Person Fields - Set Apollo').item.json.linkedin_url }}",
+            "jobTitle": "={{ $('Prepare Person Fields - Set Apollo').item.json.title }}",
+            "emailStatus": "={{ $('Prepare Person Fields - Set Apollo').item.json.email_status }}",
+            "photoUrl": "={{ $('Prepare Person Fields - Set Apollo').item.json.photo_url }}",
+            "photo": "=[\n  {\n    \"url\": \"{{ $('Prepare Person Fields - Set Apollo').item.json.photo_url }}\"\n  }\n]",
+            "facebookLink": "={{ $('Prepare Person Fields - Set Apollo').item.json.facebook_url }}",
+            "currentPosition": "={{ $('Prepare Person Fields - Set Apollo').item.json.headline }}",
+            "professionalEmail": "={{ $('Prepare Person Fields - Set Apollo').item.json.email }}",
+            "province": "={{ $('Prepare Person Fields - Set Apollo').item.json.state }}",
+            "country": "={{ $('Prepare Person Fields - Set Apollo').item.json.country }}",
+            "city": "={{ $('Prepare Person Fields - Set Apollo').item.json.city }}",
+            "seniority": "={{ $('Prepare Person Fields - Set Apollo').item.json.seniority }}",
+            "previousJobs": "={{ $('Prepare Person Fields - Set Apollo').item.json.employment_history.toJsonString() }}",
+            "user": "=['{{ $('Receive Dataset Inputs - Subflow Trigger').item.json.userId }}']",
+            "apolloId": "=['{{ $('Receive Dataset Inputs - Subflow Trigger').item.json.apolloId }}']"
+          },
+          "matchingColumns": [
+            "apolloPeopleNumber"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "fullName",
+              "displayName": "fullName",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "recId",
+              "displayName": "recId",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "apolloPeopleNumber",
+              "displayName": "apolloPeopleNumber",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "creationDate",
+              "displayName": "creationDate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "modificationDate",
+              "displayName": "modificationDate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "company",
+              "displayName": "company",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "logo (from company)",
+              "displayName": "logo (from company)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "companyName",
+              "displayName": "companyName",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "companyWebsite",
+              "displayName": "companyWebsite",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "companyLinkedinId",
+              "displayName": "companyLinkedinId",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "companyFacebookLink",
+              "displayName": "companyFacebookLink",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "companyPrimaryPhoneNumber",
+              "displayName": "companyPrimaryPhoneNumber",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Identifiant LinkedIn (from Compagnie)",
+              "displayName": "Identifiant LinkedIn (from Compagnie)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "companyYearFoundedFromCompany",
+              "displayName": "companyYearFoundedFromCompany",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "companyLogoUrl",
+              "displayName": "companyLogoUrl",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "companyIndustrySector",
+              "displayName": "companyIndustrySector",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "companyAddress",
+              "displayName": "companyAddress",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "companyCity",
+              "displayName": "companyCity",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "companyProvince",
+              "displayName": "companyProvince",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "companyCountry",
+              "displayName": "companyCountry",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "postalCodeFromCompanie",
+              "displayName": "postalCodeFromCompanie",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "companyEstimatedEmployeeCount",
+              "displayName": "companyEstimatedEmployeeCount",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "user",
+              "displayName": "user",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "firstName",
+              "displayName": "firstName",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "linkedinLink",
+              "displayName": "linkedinLink",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "linkedinButtonPeople",
+              "displayName": "linkedinButtonPeople",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "jobTitle",
+              "displayName": "jobTitle",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "emailStatus",
+              "displayName": "emailStatus",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "photo",
+              "displayName": "photo",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "photoUrl",
+              "displayName": "photoUrl",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "twitterLink",
+              "displayName": "twitterLink",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "githubLink",
+              "displayName": "githubLink",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "facebookLink",
+              "displayName": "facebookLink",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "extrapolatedEmailConfidence",
+              "displayName": "extrapolatedEmailConfidence",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "currentPosition",
+              "displayName": "currentPosition",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "previousJobSummary",
+              "displayName": "previousJobSummary",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "previousJobs",
+              "displayName": "previousJobs",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "professionalEmail",
+              "displayName": "professionalEmail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "province",
+              "displayName": "province",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "city",
+              "displayName": "city",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "country",
+              "displayName": "country",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "departments",
+              "displayName": "departments",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "subDepartments",
+              "displayName": "subDepartments",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "seniority",
+              "displayName": "seniority",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "roles",
+              "displayName": "roles",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "intentStrength",
+              "displayName": "intentStrength",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "intentDisplayed",
+              "displayName": "intentDisplayed",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "catchallEmailDomain",
+              "displayName": "catchallEmailDomain",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "personalEmails",
+              "displayName": "personalEmails",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "action",
+              "displayName": "action",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Prêt à démarrer",
+                  "value": "Prêt à démarrer"
+                },
+                {
+                  "name": "Exécution en cours",
+                  "value": "Exécution en cours"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "websiteButton",
+              "displayName": "websiteButton",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "linkedinButton",
+              "displayName": "linkedinButton",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "facebookButton",
+              "displayName": "facebookButton",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "notes",
+              "displayName": "notes",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "lastLinkedinActivity",
+              "displayName": "lastLinkedinActivity",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "reactionBehavior",
+              "displayName": "reactionBehavior",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "postBehavior",
+              "displayName": "postBehavior",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "lastReactionStats",
+              "displayName": "lastReactionStats",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "connectionLinkedinMessage",
+              "displayName": "connectionLinkedinMessage",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "connectionEmailMessage",
+              "displayName": "connectionEmailMessage",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "connectionEmailSubject",
+              "displayName": "connectionEmailSubject",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "apolloId",
+              "displayName": "apolloId",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "evaluation",
+              "displayName": "evaluation",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        528,
+        0
+      ],
+      "id": "30c2e1f4-9aac-4d19-860a-6889859755cf",
+      "name": "Upsert Person - AT People",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "XzBWggFrPVokGo9L",
+          "name": "Airtable Personal Access Token account"
+        }
+      },
+      "notes": "PHASE: Execution Purpose: Upsert person records into Airtable People table using transformed Apollo data. Inputs: Fields from Set Apollo Data; linked company rec id from Set Organization ID; Airtable credential. Outputs: Created/updated person record keyed by apolloPeopleNumber. Dependencies: Airtable base Boost Prospects; People table. Special Cases: Photo as attachment array; employment_history stringified; ensure company link uses record id."
+    },
+    {
+      "parameters": {
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -144,
+        0
+      ],
+      "id": "2401f692-a72f-4b92-8da4-140aa067cb02",
+      "name": "Prepare Person Fields - Set Apollo",
+      "notes": "PHASE: Configuration Purpose: Map Apollo person fields into a normalized structure for Airtable People upsert. Inputs: Current dataset item. Outputs: name, firstName, linkedin_url, title, email_status, location fields, seniority, photo_url, employment_history as JSON string, etc. Dependencies: Upsert Person - AT People expects these keys. Special Cases: Optional fields may be null and must be guarded."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "697fa04d-e34a-4063-a65b-e13fb151320c",
+              "name": "organization_id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        304,
+        0
+      ],
+      "id": "27b4b04b-b18c-42f2-bf17-e78da1b169f4",
+      "name": "Set Organization ID - Set",
+      "notes": "PHASE: Configuration Purpose: Expose Airtable company record id for linking from People upsert. Inputs: Company upsert output id. Outputs: organization_id field set to the company rec id. Dependencies: Upsert Person - AT People expects organization_id. Special Cases: Must run after company upsert to avoid missing link."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "420bcfad-6f69-489f-8b19-e08ebb23d433",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "6c4b3878-16c9-4a81-a511-c15bca70a41f",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -592,
+        144
+      ],
+      "id": "70bf9cb1-9420-49b3-864d-307c3176ee7e",
+      "name": "If Items Exist - IF",
+      "notes": "PHASE: Execution Purpose: Gate processing based on whether the current page has items (id exists and not empty). Inputs: Items from List Dataset Items. Outputs: True branch to batching; false branch to set get_next_page=false. Dependencies: List Dataset Items; Aggregate/Clean Data - Set nodes. Special Cases: Prevents unnecessary recursion when page is empty."
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -144,
+        -192
+      ],
+      "id": "54101645-cf1f-40eb-adae-53bb729eba18",
+      "name": "Aggregate Items - Util",
+      "notes": "PHASE: Utility Purpose: Aggregate batch context before setting next-page control flag. Inputs: Current batch from Iterate Dataset Items. Outputs: Pass-through used by Set Next Page flag. Dependencies: Clean Data - Set true. Special Cases: No data transformation; control flow only."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "badaa633-4a97-46f4-9916-1286fbc9b015",
+              "name": "get_next_page",
+              "value": true,
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        80,
+        -192
+      ],
+      "id": "c0e78055-e6dc-49a1-b422-12052e5c74e1",
+      "name": "Set Next Page Flag - Subflow Set",
+      "notes": "PHASE: Utility Purpose: Mark that another page should be fetched. Inputs: Prior aggregate context. Outputs: get_next_page=true. Dependencies: If Next Page - IF; Execute Workflow recursion. Special Cases: Paired with the false variant when no items exist."
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ $workflow.id }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "dataset": "={{ $('Get Actor Run Details - Apify Apollo').first().json.data.defaultDatasetId }}",
+            "offset": "={{ $runIndex * 100 }}",
+            "apolloId": "={{ $('Search Apollo URL - AT Apollo').item.json.id }}",
+            "userId": "={{ $('Search Apollo URL - AT Apollo').item.json.user[0] }}"
+          },
+          "matchingColumns": [
+            "dataset"
+          ],
+          "schema": [
+            {
+              "id": "dataset",
+              "displayName": "dataset",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "offset",
+              "displayName": "offset",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "apolloId",
+              "displayName": "apolloId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        80,
+        512
+      ],
+      "id": "5e32b7b2-003e-4f10-83e6-36912d5079d6",
+      "name": "Recurse Dataset Pagination - Subflow",
+      "notes": "PHASE: Execution Purpose: Self-execute the workflow to fetch the next dataset page. Inputs: dataset id and offset (runIndex*100). Outputs: Invokes subflow run for next page processing. Dependencies: Execute Workflow Trigger; If Next Page - IF. Special Cases: Must stop when get_next_page=false to prevent infinite loop."
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -368,
+        288
+      ],
+      "id": "2330c13e-bea5-4ba1-9a6e-9499704a546c",
+      "name": "Aggregate Items (Empty) - Util",
+      "notes": "PHASE: Utility Purpose: Aggregate context for empty page to allow setting next-page flag false. Inputs: False branch from If Items Exist. Outputs: Pass-through to Set Next Page Flag False. Dependencies: Clean Data - Set1. Special Cases: No transformations."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "badaa633-4a97-46f4-9916-1286fbc9b015",
+              "name": "get_next_page",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -144,
+        288
+      ],
+      "id": "651b6337-2a5d-4316-8d94-0ce4d708f894",
+      "name": "Set Next Page Flag False - Set",
+      "notes": "PHASE: Utility Purpose: Indicate there is no next page to fetch. Inputs: Context from empty-page aggregate. Outputs: get_next_page=false. Dependencies: If Next Page - IF to halt recursion. Special Cases: Complements the true flag setter."
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        976,
+        48
+      ],
+      "id": "d624a1c4-3d5e-4f83-9cfd-6ba2802f1540",
+      "name": "Aggregate Batch Loopback - Util",
+      "notes": "PHASE: Utility Purpose: Support Split In Batches loopback to continue processing remaining items. Inputs: Post-upsert item. Outputs: Aggregated signal to resume next batch. Dependencies: Iterate Dataset Items node. Special Cases: No transformation; used purely for control flow."
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        752,
+        0
+      ],
+      "id": "d91992d8-3898-4c81-acc6-48274f912205",
+      "name": "Normalize Person Fields - Set",
+      "notes": "PHASE: Utility Purpose: Normalize person payload after upsert for aggregation and loop control. Inputs: Output of Upsert Person - AT People. Outputs: Cleaned item ready for Aggregate2. Dependencies: Aggregate2 loopback. Special Cases: No business logic changes; structural cleanup only."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a131219e-371c-47b6-858d-c86d3c0d5c70",
+              "leftValue": "={{ $json.get_next_page }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        304,
+        512
+      ],
+      "id": "e5bc0070-4842-4941-a48d-0e890060053f",
+      "name": "If Next Page - IF",
+      "notes": "PHASE: Execution Purpose: Branch based on get_next_page to control recursion. Inputs: Boolean get_next_page from Set nodes. Outputs: True path executes next page; false path stops. Dependencies: Set Next Page Flag True/False; Recurse Dataset Pagination - Subflow. Special Cases: Always set flag to avoid infinite loops."
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app1cypH1v3pTZcFi",
+          "mode": "list",
+          "cachedResultName": "Boost Prospect v2",
+          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl7Ch90T04b8yjiQ",
+          "mode": "list",
+          "cachedResultName": "Apollo",
+          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tbl7Ch90T04b8yjiQ"
+        },
+        "filterByFormula": "={actorRunId} = \"{{ $('Get Webhook Dispatch - HTTP Apify').item.json.data.eventData.actorRunId }}\"",
+        "returnAll": false,
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -592,
+        608
+      ],
+      "id": "83a8e652-fee1-474e-af87-2d3f1b5c608f",
+      "name": "Search Apollo URL - AT Apollo",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "XzBWggFrPVokGo9L",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "app1cypH1v3pTZcFi",
+          "mode": "list",
+          "cachedResultName": "Boost Prospect v2",
+          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl7Ch90T04b8yjiQ",
+          "mode": "list",
+          "cachedResultName": "Apollo",
+          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tbl7Ch90T04b8yjiQ"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "executed": true,
+            "id": "={{ $('Search Apollo URL - AT Apollo').first().json.id }}",
+            "status": "Successfully Completed",
+            "executionDate": "={{ $now }}",
+            "statusDetails": "🚀 All done! Your task was completed successfully."
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "description",
+              "displayName": "description",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "recId",
+              "displayName": "recId",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "user",
+              "displayName": "user",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "prospectingUrl",
+              "displayName": "prospectingUrl",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "prospectingRequest",
+              "displayName": "prospectingRequest",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "creationDate",
+              "displayName": "creationDate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "modificationDate",
+              "displayName": "modificationDate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "executionDate",
+              "displayName": "executionDate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "requestNumber",
+              "displayName": "requestNumber",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Pending Action",
+                  "value": "Pending Action"
+                },
+                {
+                  "name": "Ready to Start",
+                  "value": "Ready to Start"
+                },
+                {
+                  "name": "In progress",
+                  "value": "In progress"
+                },
+                {
+                  "name": "Already Processed",
+                  "value": "Already Processed"
+                },
+                {
+                  "name": "Successfully Completed",
+                  "value": "Successfully Completed"
+                },
+                {
+                  "name": "Error Detected",
+                  "value": "Error Detected"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "statusDetails",
+              "displayName": "statusDetails",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "industryKeywords",
+              "displayName": "industryKeywords",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "locationCityorState",
+              "displayName": "locationCityorState",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "jobTitles",
+              "displayName": "jobTitles",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "employeesNumber",
+              "displayName": "employeesNumber",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "options": [
+                {
+                  "name": "1-10",
+                  "value": "1-10"
+                },
+                {
+                  "name": "11-20",
+                  "value": "11-20"
+                },
+                {
+                  "name": "21-50",
+                  "value": "21-50"
+                },
+                {
+                  "name": "51-100",
+                  "value": "51-100"
+                },
+                {
+                  "name": "101-200",
+                  "value": "101-200"
+                },
+                {
+                  "name": "201-500",
+                  "value": "201-500"
+                },
+                {
+                  "name": "501-1000",
+                  "value": "501-1000"
+                },
+                {
+                  "name": "1001-2000",
+                  "value": "1001-2000"
+                },
+                {
+                  "name": "2001-5000",
+                  "value": "2001-5000"
+                },
+                {
+                  "name": "5001-10000",
+                  "value": "5001-10000"
+                },
+                {
+                  "name": "10001+",
+                  "value": "10001+"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "locationCountry",
+              "displayName": "locationCountry",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "options": [
+                {
+                  "name": "Aruba",
+                  "value": "Aruba"
+                },
+                {
+                  "name": "Afghanistan",
+                  "value": "Afghanistan"
+                },
+                {
+                  "name": "Angola",
+                  "value": "Angola"
+                },
+                {
+                  "name": "Anguilla",
+                  "value": "Anguilla"
+                },
+                {
+                  "name": "Åland Islands",
+                  "value": "Åland Islands"
+                },
+                {
+                  "name": "Albania",
+                  "value": "Albania"
+                },
+                {
+                  "name": "Andorra",
+                  "value": "Andorra"
+                },
+                {
+                  "name": "United Arab Emirates",
+                  "value": "United Arab Emirates"
+                },
+                {
+                  "name": "Argentina",
+                  "value": "Argentina"
+                },
+                {
+                  "name": "Armenia",
+                  "value": "Armenia"
+                },
+                {
+                  "name": "American Samoa",
+                  "value": "American Samoa"
+                },
+                {
+                  "name": "Antarctica",
+                  "value": "Antarctica"
+                },
+                {
+                  "name": "French Southern Territories",
+                  "value": "French Southern Territories"
+                },
+                {
+                  "name": "Antigua and Barbuda",
+                  "value": "Antigua and Barbuda"
+                },
+                {
+                  "name": "Australia",
+                  "value": "Australia"
+                },
+                {
+                  "name": "Austria",
+                  "value": "Austria"
+                },
+                {
+                  "name": "Azerbaijan",
+                  "value": "Azerbaijan"
+                },
+                {
+                  "name": "Burundi",
+                  "value": "Burundi"
+                },
+                {
+                  "name": "Belgium",
+                  "value": "Belgium"
+                },
+                {
+                  "name": "Benin",
+                  "value": "Benin"
+                },
+                {
+                  "name": "Bonaire",
+                  "value": "Bonaire"
+                },
+                {
+                  "name": "Sint Eustatius and Saba",
+                  "value": "Sint Eustatius and Saba"
+                },
+                {
+                  "name": "Burkina Faso",
+                  "value": "Burkina Faso"
+                },
+                {
+                  "name": "Bangladesh",
+                  "value": "Bangladesh"
+                },
+                {
+                  "name": "Bulgaria",
+                  "value": "Bulgaria"
+                },
+                {
+                  "name": "Bahrain",
+                  "value": "Bahrain"
+                },
+                {
+                  "name": "Bahamas",
+                  "value": "Bahamas"
+                },
+                {
+                  "name": "Bosnia and Herzegovina",
+                  "value": "Bosnia and Herzegovina"
+                },
+                {
+                  "name": "Saint Barthélemy",
+                  "value": "Saint Barthélemy"
+                },
+                {
+                  "name": "Belarus",
+                  "value": "Belarus"
+                },
+                {
+                  "name": "Belize",
+                  "value": "Belize"
+                },
+                {
+                  "name": "Bermuda",
+                  "value": "Bermuda"
+                },
+                {
+                  "name": "Bolivia",
+                  "value": "Bolivia"
+                },
+                {
+                  "name": "Plurinational State of",
+                  "value": "Plurinational State of"
+                },
+                {
+                  "name": "Brazil",
+                  "value": "Brazil"
+                },
+                {
+                  "name": "Barbados",
+                  "value": "Barbados"
+                },
+                {
+                  "name": "Brunei Darussalam",
+                  "value": "Brunei Darussalam"
+                },
+                {
+                  "name": "Bhutan",
+                  "value": "Bhutan"
+                },
+                {
+                  "name": "Bouvet Island",
+                  "value": "Bouvet Island"
+                },
+                {
+                  "name": "Botswana",
+                  "value": "Botswana"
+                },
+                {
+                  "name": "Central African Republic",
+                  "value": "Central African Republic"
+                },
+                {
+                  "name": "Canada",
+                  "value": "Canada"
+                },
+                {
+                  "name": "Cocos (Keeling) Islands",
+                  "value": "Cocos (Keeling) Islands"
+                },
+                {
+                  "name": "Switzerland",
+                  "value": "Switzerland"
+                },
+                {
+                  "name": "Chile",
+                  "value": "Chile"
+                },
+                {
+                  "name": "China",
+                  "value": "China"
+                },
+                {
+                  "name": "Côte d'Ivoire",
+                  "value": "Côte d'Ivoire"
+                },
+                {
+                  "name": "Cameroon",
+                  "value": "Cameroon"
+                },
+                {
+                  "name": "Congo",
+                  "value": "Congo"
+                },
+                {
+                  "name": "The Democratic Republic of the",
+                  "value": "The Democratic Republic of the"
+                },
+                {
+                  "name": "Cook Islands",
+                  "value": "Cook Islands"
+                },
+                {
+                  "name": "Colombia",
+                  "value": "Colombia"
+                },
+                {
+                  "name": "Comoros",
+                  "value": "Comoros"
+                },
+                {
+                  "name": "Cabo Verde",
+                  "value": "Cabo Verde"
+                },
+                {
+                  "name": "Costa Rica",
+                  "value": "Costa Rica"
+                },
+                {
+                  "name": "Cuba",
+                  "value": "Cuba"
+                },
+                {
+                  "name": "Curaçao",
+                  "value": "Curaçao"
+                },
+                {
+                  "name": "Christmas Island",
+                  "value": "Christmas Island"
+                },
+                {
+                  "name": "Cayman Islands",
+                  "value": "Cayman Islands"
+                },
+                {
+                  "name": "Cyprus",
+                  "value": "Cyprus"
+                },
+                {
+                  "name": "Czechia",
+                  "value": "Czechia"
+                },
+                {
+                  "name": "Germany",
+                  "value": "Germany"
+                },
+                {
+                  "name": "Djibouti",
+                  "value": "Djibouti"
+                },
+                {
+                  "name": "Dominica",
+                  "value": "Dominica"
+                },
+                {
+                  "name": "Denmark",
+                  "value": "Denmark"
+                },
+                {
+                  "name": "Dominican Republic",
+                  "value": "Dominican Republic"
+                },
+                {
+                  "name": "Algeria",
+                  "value": "Algeria"
+                },
+                {
+                  "name": "Ecuador",
+                  "value": "Ecuador"
+                },
+                {
+                  "name": "Egypt",
+                  "value": "Egypt"
+                },
+                {
+                  "name": "Eritrea",
+                  "value": "Eritrea"
+                },
+                {
+                  "name": "Western Sahara",
+                  "value": "Western Sahara"
+                },
+                {
+                  "name": "Spain",
+                  "value": "Spain"
+                },
+                {
+                  "name": "Estonia",
+                  "value": "Estonia"
+                },
+                {
+                  "name": "Ethiopia",
+                  "value": "Ethiopia"
+                },
+                {
+                  "name": "Finland",
+                  "value": "Finland"
+                },
+                {
+                  "name": "Fiji",
+                  "value": "Fiji"
+                },
+                {
+                  "name": "Falkland Islands (Malvinas)",
+                  "value": "Falkland Islands (Malvinas)"
+                },
+                {
+                  "name": "France",
+                  "value": "France"
+                },
+                {
+                  "name": "Faroe Islands",
+                  "value": "Faroe Islands"
+                },
+                {
+                  "name": "Micronesia",
+                  "value": "Micronesia"
+                },
+                {
+                  "name": "Federated States of",
+                  "value": "Federated States of"
+                },
+                {
+                  "name": "Gabon",
+                  "value": "Gabon"
+                },
+                {
+                  "name": "United Kingdom",
+                  "value": "United Kingdom"
+                },
+                {
+                  "name": "Georgia",
+                  "value": "Georgia"
+                },
+                {
+                  "name": "Guernsey",
+                  "value": "Guernsey"
+                },
+                {
+                  "name": "Ghana",
+                  "value": "Ghana"
+                },
+                {
+                  "name": "Gibraltar",
+                  "value": "Gibraltar"
+                },
+                {
+                  "name": "Guinea",
+                  "value": "Guinea"
+                },
+                {
+                  "name": "Guadeloupe",
+                  "value": "Guadeloupe"
+                },
+                {
+                  "name": "Gambia",
+                  "value": "Gambia"
+                },
+                {
+                  "name": "Guinea-Bissau",
+                  "value": "Guinea-Bissau"
+                },
+                {
+                  "name": "Equatorial Guinea",
+                  "value": "Equatorial Guinea"
+                },
+                {
+                  "name": "Greece",
+                  "value": "Greece"
+                },
+                {
+                  "name": "Grenada",
+                  "value": "Grenada"
+                },
+                {
+                  "name": "Greenland",
+                  "value": "Greenland"
+                },
+                {
+                  "name": "Guatemala",
+                  "value": "Guatemala"
+                },
+                {
+                  "name": "French Guiana",
+                  "value": "French Guiana"
+                },
+                {
+                  "name": "Guam",
+                  "value": "Guam"
+                },
+                {
+                  "name": "Guyana",
+                  "value": "Guyana"
+                },
+                {
+                  "name": "Hong Kong",
+                  "value": "Hong Kong"
+                },
+                {
+                  "name": "Heard Island and McDonald Islands",
+                  "value": "Heard Island and McDonald Islands"
+                },
+                {
+                  "name": "Honduras",
+                  "value": "Honduras"
+                },
+                {
+                  "name": "Croatia",
+                  "value": "Croatia"
+                },
+                {
+                  "name": "Haiti",
+                  "value": "Haiti"
+                },
+                {
+                  "name": "Hungary",
+                  "value": "Hungary"
+                },
+                {
+                  "name": "Indonesia",
+                  "value": "Indonesia"
+                },
+                {
+                  "name": "Isle of Man",
+                  "value": "Isle of Man"
+                },
+                {
+                  "name": "India",
+                  "value": "India"
+                },
+                {
+                  "name": "British Indian Ocean Territory",
+                  "value": "British Indian Ocean Territory"
+                },
+                {
+                  "name": "Ireland",
+                  "value": "Ireland"
+                },
+                {
+                  "name": "Iran",
+                  "value": "Iran"
+                },
+                {
+                  "name": "Islamic Republic of",
+                  "value": "Islamic Republic of"
+                },
+                {
+                  "name": "Iraq",
+                  "value": "Iraq"
+                },
+                {
+                  "name": "Iceland",
+                  "value": "Iceland"
+                },
+                {
+                  "name": "Israel",
+                  "value": "Israel"
+                },
+                {
+                  "name": "Italy",
+                  "value": "Italy"
+                },
+                {
+                  "name": "Jamaica",
+                  "value": "Jamaica"
+                },
+                {
+                  "name": "Jersey",
+                  "value": "Jersey"
+                },
+                {
+                  "name": "Jordan",
+                  "value": "Jordan"
+                },
+                {
+                  "name": "Japan",
+                  "value": "Japan"
+                },
+                {
+                  "name": "Kazakhstan",
+                  "value": "Kazakhstan"
+                },
+                {
+                  "name": "Kenya",
+                  "value": "Kenya"
+                },
+                {
+                  "name": "Kyrgyzstan",
+                  "value": "Kyrgyzstan"
+                },
+                {
+                  "name": "Cambodia",
+                  "value": "Cambodia"
+                },
+                {
+                  "name": "Kiribati",
+                  "value": "Kiribati"
+                },
+                {
+                  "name": "Saint Kitts and Nevis",
+                  "value": "Saint Kitts and Nevis"
+                },
+                {
+                  "name": "Korea",
+                  "value": "Korea"
+                },
+                {
+                  "name": "Republic of",
+                  "value": "Republic of"
+                },
+                {
+                  "name": "Kuwait",
+                  "value": "Kuwait"
+                },
+                {
+                  "name": "Lao People's Democratic Republic",
+                  "value": "Lao People's Democratic Republic"
+                },
+                {
+                  "name": "Lebanon",
+                  "value": "Lebanon"
+                },
+                {
+                  "name": "Liberia",
+                  "value": "Liberia"
+                },
+                {
+                  "name": "Libya",
+                  "value": "Libya"
+                },
+                {
+                  "name": "Saint Lucia",
+                  "value": "Saint Lucia"
+                },
+                {
+                  "name": "Liechtenstein",
+                  "value": "Liechtenstein"
+                },
+                {
+                  "name": "Sri Lanka",
+                  "value": "Sri Lanka"
+                },
+                {
+                  "name": "Lesotho",
+                  "value": "Lesotho"
+                },
+                {
+                  "name": "Lithuania",
+                  "value": "Lithuania"
+                },
+                {
+                  "name": "Luxembourg",
+                  "value": "Luxembourg"
+                },
+                {
+                  "name": "Latvia",
+                  "value": "Latvia"
+                },
+                {
+                  "name": "Macao",
+                  "value": "Macao"
+                },
+                {
+                  "name": "Saint Martin (French part)",
+                  "value": "Saint Martin (French part)"
+                },
+                {
+                  "name": "Morocco",
+                  "value": "Morocco"
+                },
+                {
+                  "name": "Monaco",
+                  "value": "Monaco"
+                },
+                {
+                  "name": "Moldova",
+                  "value": "Moldova"
+                },
+                {
+                  "name": "Madagascar",
+                  "value": "Madagascar"
+                },
+                {
+                  "name": "Maldives",
+                  "value": "Maldives"
+                },
+                {
+                  "name": "Mexico",
+                  "value": "Mexico"
+                },
+                {
+                  "name": "Marshall Islands",
+                  "value": "Marshall Islands"
+                },
+                {
+                  "name": "North Macedonia",
+                  "value": "North Macedonia"
+                },
+                {
+                  "name": "Mali",
+                  "value": "Mali"
+                },
+                {
+                  "name": "Malta",
+                  "value": "Malta"
+                },
+                {
+                  "name": "Myanmar",
+                  "value": "Myanmar"
+                },
+                {
+                  "name": "Montenegro",
+                  "value": "Montenegro"
+                },
+                {
+                  "name": "Mongolia",
+                  "value": "Mongolia"
+                },
+                {
+                  "name": "Northern Mariana Islands",
+                  "value": "Northern Mariana Islands"
+                },
+                {
+                  "name": "Mozambique",
+                  "value": "Mozambique"
+                },
+                {
+                  "name": "Mauritania",
+                  "value": "Mauritania"
+                },
+                {
+                  "name": "Montserrat",
+                  "value": "Montserrat"
+                },
+                {
+                  "name": "Martinique",
+                  "value": "Martinique"
+                },
+                {
+                  "name": "Mauritius",
+                  "value": "Mauritius"
+                },
+                {
+                  "name": "Malawi",
+                  "value": "Malawi"
+                },
+                {
+                  "name": "Malaysia",
+                  "value": "Malaysia"
+                },
+                {
+                  "name": "Mayotte",
+                  "value": "Mayotte"
+                },
+                {
+                  "name": "Namibia",
+                  "value": "Namibia"
+                },
+                {
+                  "name": "New Caledonia",
+                  "value": "New Caledonia"
+                },
+                {
+                  "name": "Niger",
+                  "value": "Niger"
+                },
+                {
+                  "name": "Norfolk Island",
+                  "value": "Norfolk Island"
+                },
+                {
+                  "name": "Nigeria",
+                  "value": "Nigeria"
+                },
+                {
+                  "name": "Nicaragua",
+                  "value": "Nicaragua"
+                },
+                {
+                  "name": "Niue",
+                  "value": "Niue"
+                },
+                {
+                  "name": "Netherlands",
+                  "value": "Netherlands"
+                },
+                {
+                  "name": "Norway",
+                  "value": "Norway"
+                },
+                {
+                  "name": "Nepal",
+                  "value": "Nepal"
+                },
+                {
+                  "name": "Nauru",
+                  "value": "Nauru"
+                },
+                {
+                  "name": "New Zealand",
+                  "value": "New Zealand"
+                },
+                {
+                  "name": "Oman",
+                  "value": "Oman"
+                },
+                {
+                  "name": "Pakistan",
+                  "value": "Pakistan"
+                },
+                {
+                  "name": "Panama",
+                  "value": "Panama"
+                },
+                {
+                  "name": "Pitcairn",
+                  "value": "Pitcairn"
+                },
+                {
+                  "name": "Peru",
+                  "value": "Peru"
+                },
+                {
+                  "name": "Philippines",
+                  "value": "Philippines"
+                },
+                {
+                  "name": "Palau",
+                  "value": "Palau"
+                },
+                {
+                  "name": "Papua New Guinea",
+                  "value": "Papua New Guinea"
+                },
+                {
+                  "name": "Poland",
+                  "value": "Poland"
+                },
+                {
+                  "name": "Puerto Rico",
+                  "value": "Puerto Rico"
+                },
+                {
+                  "name": "Democratic People's Republic of",
+                  "value": "Democratic People's Republic of"
+                },
+                {
+                  "name": "Portugal",
+                  "value": "Portugal"
+                },
+                {
+                  "name": "Paraguay",
+                  "value": "Paraguay"
+                },
+                {
+                  "name": "Palestine",
+                  "value": "Palestine"
+                },
+                {
+                  "name": "State of",
+                  "value": "State of"
+                },
+                {
+                  "name": "French Polynesia",
+                  "value": "French Polynesia"
+                },
+                {
+                  "name": "Qatar",
+                  "value": "Qatar"
+                },
+                {
+                  "name": "Réunion",
+                  "value": "Réunion"
+                },
+                {
+                  "name": "Romania",
+                  "value": "Romania"
+                },
+                {
+                  "name": "Russian Federation",
+                  "value": "Russian Federation"
+                },
+                {
+                  "name": "Rwanda",
+                  "value": "Rwanda"
+                },
+                {
+                  "name": "Saudi Arabia",
+                  "value": "Saudi Arabia"
+                },
+                {
+                  "name": "Sudan",
+                  "value": "Sudan"
+                },
+                {
+                  "name": "Senegal",
+                  "value": "Senegal"
+                },
+                {
+                  "name": "Singapore",
+                  "value": "Singapore"
+                },
+                {
+                  "name": "South Georgia and the South Sandwich Islands",
+                  "value": "South Georgia and the South Sandwich Islands"
+                },
+                {
+                  "name": "Saint Helena",
+                  "value": "Saint Helena"
+                },
+                {
+                  "name": "Ascension and Tristan da Cunha",
+                  "value": "Ascension and Tristan da Cunha"
+                },
+                {
+                  "name": "Svalbard and Jan Mayen",
+                  "value": "Svalbard and Jan Mayen"
+                },
+                {
+                  "name": "Solomon Islands",
+                  "value": "Solomon Islands"
+                },
+                {
+                  "name": "Sierra Leone",
+                  "value": "Sierra Leone"
+                },
+                {
+                  "name": "El Salvador",
+                  "value": "El Salvador"
+                },
+                {
+                  "name": "San Marino",
+                  "value": "San Marino"
+                },
+                {
+                  "name": "Somalia",
+                  "value": "Somalia"
+                },
+                {
+                  "name": "Saint Pierre and Miquelon",
+                  "value": "Saint Pierre and Miquelon"
+                },
+                {
+                  "name": "Serbia",
+                  "value": "Serbia"
+                },
+                {
+                  "name": "South Sudan",
+                  "value": "South Sudan"
+                },
+                {
+                  "name": "Sao Tome and Principe",
+                  "value": "Sao Tome and Principe"
+                },
+                {
+                  "name": "Suriname",
+                  "value": "Suriname"
+                },
+                {
+                  "name": "Slovakia",
+                  "value": "Slovakia"
+                },
+                {
+                  "name": "Slovenia",
+                  "value": "Slovenia"
+                },
+                {
+                  "name": "Sweden",
+                  "value": "Sweden"
+                },
+                {
+                  "name": "Eswatini",
+                  "value": "Eswatini"
+                },
+                {
+                  "name": "Sint Maarten (Dutch part)",
+                  "value": "Sint Maarten (Dutch part)"
+                },
+                {
+                  "name": "Seychelles",
+                  "value": "Seychelles"
+                },
+                {
+                  "name": "Syrian Arab Republic",
+                  "value": "Syrian Arab Republic"
+                },
+                {
+                  "name": "Turks and Caicos Islands",
+                  "value": "Turks and Caicos Islands"
+                },
+                {
+                  "name": "Chad",
+                  "value": "Chad"
+                },
+                {
+                  "name": "Togo",
+                  "value": "Togo"
+                },
+                {
+                  "name": "Thailand",
+                  "value": "Thailand"
+                },
+                {
+                  "name": "Tajikistan",
+                  "value": "Tajikistan"
+                },
+                {
+                  "name": "Tokelau",
+                  "value": "Tokelau"
+                },
+                {
+                  "name": "Turkmenistan",
+                  "value": "Turkmenistan"
+                },
+                {
+                  "name": "Timor-Leste",
+                  "value": "Timor-Leste"
+                },
+                {
+                  "name": "Tonga",
+                  "value": "Tonga"
+                },
+                {
+                  "name": "Trinidad and Tobago",
+                  "value": "Trinidad and Tobago"
+                },
+                {
+                  "name": "Tunisia",
+                  "value": "Tunisia"
+                },
+                {
+                  "name": "Turkey",
+                  "value": "Turkey"
+                },
+                {
+                  "name": "Tuvalu",
+                  "value": "Tuvalu"
+                },
+                {
+                  "name": "Taiwan",
+                  "value": "Taiwan"
+                },
+                {
+                  "name": "Province of China",
+                  "value": "Province of China"
+                },
+                {
+                  "name": "Tanzania",
+                  "value": "Tanzania"
+                },
+                {
+                  "name": "United Republic of",
+                  "value": "United Republic of"
+                },
+                {
+                  "name": "Uganda",
+                  "value": "Uganda"
+                },
+                {
+                  "name": "Ukraine",
+                  "value": "Ukraine"
+                },
+                {
+                  "name": "United States Minor Outlying Islands",
+                  "value": "United States Minor Outlying Islands"
+                },
+                {
+                  "name": "Uruguay",
+                  "value": "Uruguay"
+                },
+                {
+                  "name": "United States",
+                  "value": "United States"
+                },
+                {
+                  "name": "Uzbekistan",
+                  "value": "Uzbekistan"
+                },
+                {
+                  "name": "Holy See (Vatican City State)",
+                  "value": "Holy See (Vatican City State)"
+                },
+                {
+                  "name": "Saint Vincent and the Grenadines",
+                  "value": "Saint Vincent and the Grenadines"
+                },
+                {
+                  "name": "Venezuela",
+                  "value": "Venezuela"
+                },
+                {
+                  "name": "Bolivarian Republic of",
+                  "value": "Bolivarian Republic of"
+                },
+                {
+                  "name": "Virgin Islands",
+                  "value": "Virgin Islands"
+                },
+                {
+                  "name": "British",
+                  "value": "British"
+                },
+                {
+                  "name": "U.S.",
+                  "value": "U.S."
+                },
+                {
+                  "name": "Viet Nam",
+                  "value": "Viet Nam"
+                },
+                {
+                  "name": "Vanuatu",
+                  "value": "Vanuatu"
+                },
+                {
+                  "name": "Wallis and Futuna",
+                  "value": "Wallis and Futuna"
+                },
+                {
+                  "name": "Samoa",
+                  "value": "Samoa"
+                },
+                {
+                  "name": "Yemen",
+                  "value": "Yemen"
+                },
+                {
+                  "name": "South Africa",
+                  "value": "South Africa"
+                },
+                {
+                  "name": "Zambia",
+                  "value": "Zambia"
+                },
+                {
+                  "name": "Zimbabwe",
+                  "value": "Zimbabwe"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "totalRecords",
+              "displayName": "totalRecords",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "executed",
+              "displayName": "executed",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "People",
+              "displayName": "People",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Companies",
+              "displayName": "Companies",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "totalContactFounded",
+              "displayName": "totalContactFounded",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "totalCompaniesFounded",
+              "displayName": "totalCompaniesFounded",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "apolloButtonViewUrl",
+              "displayName": "apolloButtonViewUrl",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "actorRunId",
+              "displayName": "actorRunId",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        528,
+        512
+      ],
+      "id": "a8404705-8d30-4d6f-a19b-742707744943",
+      "name": "Update status - AT Apollo",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "XzBWggFrPVokGo9L",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    }
+  ],
+  "repo_name": "boost-prospect-v2",
+  "repo_owner": "ultimvision",
+  "repo_path": "workflows",
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "xqIMv4nOqM7qzjDi"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-08-25T15:25:57.471Z",
+      "updatedAt": "2025-08-25T15:25:57.471Z",
+      "role": "workflow:owner",
+      "workflowId": "DoUoG9p4RLBSc1aD",
+      "projectId": "zxVtQj8AiJx7hlkL"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-08-25T15:32:46.509Z",
+      "updatedAt": "2025-08-25T15:32:46.509Z",
+      "id": "4ptvvLb7NgD8g7Ar",
+      "name": "Apify"
+    },
+    {
+      "createdAt": "2025-08-26T10:33:17.006Z",
+      "updatedAt": "2025-08-26T10:33:17.006Z",
+      "id": "Emw8imBHM3k6zkUo",
+      "name": "Sub-Workflow"
+    },
+    {
+      "createdAt": "2025-08-25T15:32:43.780Z",
+      "updatedAt": "2025-08-25T15:32:43.780Z",
+      "id": "iG6zhvDmNAekSWMV",
+      "name": "Webhook"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-26T10:34:34.650Z",
+  "versionId": "7c56c81d-c99d-4a24-9d8c-85d0b472ec7e"
+}
