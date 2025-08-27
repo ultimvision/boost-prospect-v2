@@ -1,0 +1,116 @@
+{
+  "active": false,
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Variables - Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-26T12:30:40.257Z",
+  "id": "oSwgKHI5ETDqWKLL",
+  "isArchived": false,
+  "meta": null,
+  "name": "Variables",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "6eecd599-3845-4c1b-9307-517563d45853",
+      "name": "Start"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c987e011-7819-44b3-8a8f-4fc183e9ca36",
+              "name": "apify_apollo_webhook_callback\t",
+              "value": "=https://n8n-custom-dev-u50406.vm.elestio.app/webhook/apollo/leads",
+              "type": "string"
+            },
+            {
+              "id": "5517a7f6-d1ea-441f-a6d1-58b8dc805d30",
+              "name": "apify_webhook_bearer_token_callback",
+              "value": "=2c6SpCszRwX26gv5z34gJpKzlzVKxXpJQmTz0ehTH7eh4VY7UTm5ds31t7SRVVvy",
+              "type": "string"
+            },
+            {
+              "id": "6dc1aa9c-8d76-4a9b-9fb8-3e522b373171",
+              "name": "default_llm_output_language",
+              "value": "English",
+              "type": "string"
+            },
+            {
+              "id": "f66836e1-46b1-4e48-bf3d-0bf1da4ac386",
+              "name": "n8n_url",
+              "value": "https://n8n-custom-dev-u50406.vm.elestio.app",
+              "type": "string"
+            },
+            {
+              "id": "a0113ef5-8721-4d58-bfe5-565dd590bd3f",
+              "name": "apify_web_scraping_webhook_callback",
+              "value": "=https://n8n-custom-dev-u50406.vm.elestio.app/webhook/apollo/web-scraping",
+              "type": "string"
+            },
+            {
+              "id": "4ce5fd82-ea83-4262-ace3-5feab7b74210",
+              "name": "apify_fb_group_scraping_webhook_callback",
+              "value": "https://n8n-custom-dev-u50406.vm.elestio.app/webhook/facebook/group-scraping",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "1231a766-f474-4fad-8678-e1650638907d",
+      "name": "Variables - Set"
+    }
+  ],
+  "repo_name": "boost-prospect-v2",
+  "repo_owner": "ultimvision",
+  "repo_path": "workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-08-26T12:30:40.257Z",
+      "updatedAt": "2025-08-26T12:30:40.257Z",
+      "role": "workflow:owner",
+      "workflowId": "oSwgKHI5ETDqWKLL",
+      "projectId": "zxVtQj8AiJx7hlkL"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-08-26T12:34:51.052Z",
+      "updatedAt": "2025-08-26T12:34:51.052Z",
+      "id": "YV8OJGtPbM6vJ24E",
+      "name": "Config"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-26T18:46:31.194Z",
+  "versionId": "78d39b2e-c2d4-4770-b450-3d5e90ac380f"
+}
