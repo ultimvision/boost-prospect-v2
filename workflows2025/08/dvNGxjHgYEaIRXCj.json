@@ -1,0 +1,1102 @@
+{
+  "active": true,
+  "connections": {
+    "Get Webhook Dispatch - HTTP Apify": {
+      "main": [
+        [
+          {
+            "node": "Get Actor Run Details - Apify Apollo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Actor Run Details - Apify Apollo": {
+      "main": [
+        [
+          {
+            "node": "If Run SUCCEEDED - IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Receive Callback - Webhook Apify facebook": {
+      "main": [
+        [
+          {
+            "node": "Get Webhook Dispatch - HTTP Apify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Receive Dataset Inputs - Subflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "List Dataset Items - Apify Apollo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Iterate Dataset Items - Util 25": {
+      "main": [
+        [
+          {
+            "node": "Aggregate Items - Util",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Search records",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Items Exist - IF": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Aggregate Items (Empty) - Util",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate Items - Util": {
+      "main": [
+        [
+          {
+            "node": "Set Next Page Flag - Subflow Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate Items (Empty) - Util": {
+      "main": [
+        [
+          {
+            "node": "Set Next Page Flag False - Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Dataset Items - Apify Apollo1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Summarize",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Run SUCCEEDED - IF": {
+      "main": [
+        [
+          {
+            "node": "Recurse Dataset Pagination - Subflow",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Fail Run - Error Handler",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recurse Dataset Pagination - Subflow": {
+      "main": [
+        [
+          {
+            "node": "If Next Page - IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Next Page - IF": {
+      "main": [
+        [
+          {
+            "node": "Recurse Dataset Pagination - Subflow",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Summarize": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "If Items Exist - IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Iterate Dataset Items - Util 25",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        []
+      ]
+    },
+    "Search records": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Iterate Dataset Items - Util 25",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-26T18:43:59.303Z",
+  "id": "dvNGxjHgYEaIRXCj",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Triggers > Apify > Facebook Group Webhook Callback",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "/facebook/group-scraping",
+        "authentication": "headerAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1808,
+        -848
+      ],
+      "id": "9e92c6b6-25b4-482e-ad2d-957736240249",
+      "name": "Receive Callback - Webhook Apify facebook",
+      "webhookId": "d8aa40d8-35ca-4197-934c-02464d68db81",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ugPBtZYVCmTPd1VR",
+          "name": "Bearer Apify Callback"
+        }
+      },
+      "notes": "PHASE: Input Purpose: Receive Apify webhook callback for Apollo actor completion events. Inputs: HTTP POST /apollo/leads with header auth and Apify headers including x-apify-webhook-dispatch-id. Outputs: Raw headers/body for dispatch lookup. Dependencies: Header Auth Webhook Apify credential; Apify. Special Cases: Body may be empty; header must be present or flow will fail downstream."
+    },
+    {
+      "parameters": {
+        "url": "=https://api.apify.com/v2/webhook-dispatches/{{ $json.headers['x-apify-webhook-dispatch-id'] }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1584,
+        -848
+      ],
+      "id": "be4844e8-3645-4042-b141-45c0854166fb",
+      "name": "Get Webhook Dispatch - HTTP Apify",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "c5ccYKuRoY4O10nO",
+          "name": "Bearer Apify"
+        }
+      },
+      "notes": "PHASE: Execution Purpose: Retrieve the Apify webhook dispatch to extract actorRunId and metadata for this callback. Inputs: Header x-apify-webhook-dispatch-id from Webhook; Apify Bearer credential. Outputs: JSON dispatch including data.eventData.actorRunId and metadata. Dependencies: Webhook - Apify Callback - Apollo; Apify HTTP API; Bearer Apify credential. Special Cases: 401/403 for auth errors; 429 for rate limits; no retry configured."
+    },
+    {
+      "parameters": {
+        "url": "=https://api.apify.com/v2/actor-runs/{{ $('Get Webhook Dispatch - HTTP Apify').item.json.data.eventData.actorRunId }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1360,
+        -848
+      ],
+      "id": "dcad9e72-f11b-4f8c-8fba-b863e02471aa",
+      "name": "Get Actor Run Details - Apify Apollo",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "c5ccYKuRoY4O10nO",
+          "name": "Bearer Apify"
+        }
+      },
+      "notes": "PHASE: Execution Purpose: Fetch Apify actor run details to determine completion status and get the dataset id. Inputs: actorRunId from Get Webhook Dispatch. Outputs: JSON with data.status and data.defaultDatasetId. Dependencies: Apify HTTP API; Bearer Apify credential. Special Cases: Status may be SUCCEEDED/FAILED/TIMED-OUT; gate downstream actions accordingly."
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "dataset"
+            },
+            {
+              "name": "offset",
+              "type": "number"
+            },
+            {
+              "name": "apolloId"
+            },
+            {
+              "name": "userId"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1808,
+        -1264
+      ],
+      "id": "c015de87-a1b5-45d0-9525-fdb25fe29697",
+      "name": "Receive Dataset Inputs - Subflow Trigger",
+      "notes": "PHASE: Input Purpose: Receive dataset id and offset for subflow execution. Inputs: workflowInputs dataset (string) and offset (number). Outputs: Exposes these values to downstream HTTP listing. Dependencies: Recurse Dataset Pagination - Subflow. Special Cases: Missing inputs will cause dataset fetch to fail."
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -224,
+        -1360
+      ],
+      "id": "6ea08ea2-f072-4e8b-abde-2d6b55e87109",
+      "name": "Iterate Dataset Items - Util 25",
+      "notes": "PHASE: Utility Purpose: Process Apify dataset items in batches to control memory and rate limits. Inputs: Array of items from List Dataset Items. Outputs: Batches of up to 25 items for downstream Set/Airtable nodes; iterates until empty. Dependencies: Split In Batches behavior and the Aggregate2 loopback. Special Cases: Ensure loopback is wired or iteration will stop after first batch."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "420bcfad-6f69-489f-8b19-e08ebb23d433",
+              "leftValue": "={{ $json.count_facebookUrl }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -912,
+        -1264
+      ],
+      "id": "00e9f0af-c5f4-43ba-9e58-bc91a3697a3b",
+      "name": "If Items Exist - IF",
+      "notes": "PHASE: Execution Purpose: Gate processing based on whether the current page has items (id exists and not empty). Inputs: Items from List Dataset Items. Outputs: True branch to batching; false branch to set get_next_page=false. Dependencies: List Dataset Items; Aggregate/Clean Data - Set nodes. Special Cases: Prevents unnecessary recursion when page is empty."
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        0,
+        -1456
+      ],
+      "id": "21f5031e-8212-4f2a-afd8-19bf721a3d2d",
+      "name": "Aggregate Items - Util",
+      "notes": "PHASE: Utility Purpose: Aggregate batch context before setting next-page control flag. Inputs: Current batch from Iterate Dataset Items. Outputs: Pass-through used by Set Next Page flag. Dependencies: Clean Data - Set true. Special Cases: No data transformation; control flow only."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "badaa633-4a97-46f4-9916-1286fbc9b015",
+              "name": "get_next_page",
+              "value": true,
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        224,
+        -1456
+      ],
+      "id": "19bba080-c20b-4494-a97a-2532cb65a341",
+      "name": "Set Next Page Flag - Subflow Set",
+      "notes": "PHASE: Utility Purpose: Mark that another page should be fetched. Inputs: Prior aggregate context. Outputs: get_next_page=true. Dependencies: If Next Page - IF; Execute Workflow recursion. Special Cases: Paired with the false variant when no items exist."
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -688,
+        -1168
+      ],
+      "id": "bbe5c227-9607-49db-9870-95931f796ee1",
+      "name": "Aggregate Items (Empty) - Util",
+      "notes": "PHASE: Utility Purpose: Aggregate context for empty page to allow setting next-page flag false. Inputs: False branch from If Items Exist. Outputs: Pass-through to Set Next Page Flag False. Dependencies: Clean Data - Set1. Special Cases: No transformations."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "badaa633-4a97-46f4-9916-1286fbc9b015",
+              "name": "get_next_page",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -464,
+        -1168
+      ],
+      "id": "a60afd63-245f-4fe4-89b5-b9c82b712a90",
+      "name": "Set Next Page Flag False - Set",
+      "notes": "PHASE: Utility Purpose: Indicate there is no next page to fetch. Inputs: Context from empty-page aggregate. Outputs: get_next_page=false. Dependencies: If Next Page - IF to halt recursion. Special Cases: Complements the true flag setter."
+    },
+    {
+      "parameters": {
+        "url": "=https://api.apify.com/v2/datasets/{{ $json.dataset }}/items",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "format",
+              "value": "json"
+            },
+            {
+              "name": "limit",
+              "value": "100"
+            },
+            {
+              "name": "offset",
+              "value": "={{ $json.offset }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1584,
+        -1264
+      ],
+      "id": "5862875e-e37e-4e71-b2a7-37f1947ca385",
+      "name": "List Dataset Items - Apify Apollo1",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "alwaysOutputData": true,
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "c5ccYKuRoY4O10nO",
+          "name": "Bearer Apify"
+        }
+      },
+      "notes": "PHASE: Execution Purpose: List items from the Apify dataset produced by the actor run using pagination. Inputs: dataset id and offset from subflow inputs; limit=100. Outputs: Array of dataset items. Dependencies: Apify HTTP API; Bearer Apify credential. Special Cases: Empty result indicates no more pages; handle 429 rate limits."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e09c97a6-ae38-43d5-a296-5a5f501d454c",
+              "leftValue": "={{ $json.data.status }}",
+              "rightValue": "SUCCEEDED",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1136,
+        -848
+      ],
+      "id": "0376dd98-46d2-485f-b7f2-c3f46d98cef1",
+      "name": "If Run SUCCEEDED - IF",
+      "notes": "PHASE: Execution Purpose: Branch based on Apify actor run status being SUCCEEDED. Inputs: data.status from Get Actor Run Details. Outputs: True path triggers pagination; false path goes to Stop with Error. Dependencies: Get Actor Run Details. Special Cases: Non-SUCCEEDED statuses are treated as failures."
+    },
+    {
+      "parameters": {
+        "errorMessage": "Apollo Run Status Error"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        -912,
+        -752
+      ],
+      "id": "d7d1f00d-caff-4946-921f-2b9e1a807ebc",
+      "name": "Fail Run - Error Handler",
+      "notes": "PHASE: Error Handling Purpose: Fail the workflow when the Apify actor run did not succeed. Inputs: False branch from If Run SUCCEEDED. Outputs: Error thrown with message 'Apollo Run Status Error'. Dependencies: If Run SUCCEEDED - IF. Special Cases: Stops all downstream processing."
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ $workflow.id }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "dataset": "={{ $('Get Actor Run Details - Apify Apollo').first().json.data.defaultDatasetId }}",
+            "offset": "={{ $runIndex * 100 }}"
+          },
+          "matchingColumns": [
+            "dataset"
+          ],
+          "schema": [
+            {
+              "id": "dataset",
+              "displayName": "dataset",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "offset",
+              "displayName": "offset",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "apolloId",
+              "displayName": "apolloId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -912,
+        -944
+      ],
+      "id": "a70b1ae2-454d-4f19-9aa3-f681da62848e",
+      "name": "Recurse Dataset Pagination - Subflow",
+      "notes": "PHASE: Execution Purpose: Self-execute the workflow to fetch the next dataset page. Inputs: dataset id and offset (runIndex*100). Outputs: Invokes subflow run for next page processing. Dependencies: Execute Workflow Trigger; If Next Page - IF. Special Cases: Must stop when get_next_page=false to prevent infinite loop."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a131219e-371c-47b6-858d-c86d3c0d5c70",
+              "leftValue": "={{ $json.get_next_page }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -688,
+        -944
+      ],
+      "id": "84e89cf0-0323-45d0-b830-d390493cd19d",
+      "name": "If Next Page - IF",
+      "notes": "PHASE: Execution Purpose: Branch based on get_next_page to control recursion. Inputs: Boolean get_next_page from Set nodes. Outputs: True path executes next page; false path stops. Dependencies: Set Next Page Flag True/False; Recurse Dataset Pagination - Subflow. Special Cases: Always set flag to avoid infinite loops."
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "field": "facebookUrl"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1.1,
+      "position": [
+        -1360,
+        -1168
+      ],
+      "id": "525fe49a-ce17-447b-bb73-0c408e253441",
+      "name": "Summarize"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -1360,
+        -1360
+      ],
+      "id": "07775d71-c2e1-4788-b0d9-e4536de7c573",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -1136,
+        -1264
+      ],
+      "id": "5deec872-eb80-4122-8ba2-4e06688667b1",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -688,
+        -1360
+      ],
+      "id": "7d29f49f-8977-4f3a-808f-985bfe2f7dd8",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -192,
+        -672
+      ],
+      "id": "ac7b4802-b8bf-4b16-8409-097c2541f2a8",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2f397724-0ade-4e4c-a715-7be3756d7e08",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        64,
+        -640
+      ],
+      "id": "528b70a2-000b-434f-8f3c-0773db532b91",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "6cc1996b-41ad-4881-becf-09d02d7a150a",
+              "leftValue": "={{ $json.error }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -480,
+        -1360
+      ],
+      "id": "4e721c6c-a983-412c-b662-62f47e7df20b",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app3ZDXRoKYAaYwlt",
+          "mode": "list",
+          "cachedResultName": "Boost Prospect v2",
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl36JCi2WpvTIXar",
+          "mode": "list",
+          "cachedResultName": "Urls Scraping",
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tbl36JCi2WpvTIXar"
+        },
+        "filterByFormula": "=SEARCH('{{ $json.facebookUrl }}', {url}) > 0",
+        "returnAll": false,
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        32,
+        -1280
+      ],
+      "id": "ee8112b1-4135-41b6-b619-6dee37a2f19b",
+      "name": "Search records",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "XzBWggFrPVokGo9L",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Facebook Post Content to Analyse :\n{{ $('Iterate Dataset Items - Util 25').item.json.text }}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "={{ $json.promptInstructions[0] }}\n\nLead definition :\n{{ $json.leadDefinition[0] }}"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        240,
+        -1280
+      ],
+      "id": "96fba505-0dec-4fc1-8b23-b664da6d3fc8",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": "google/gemini-2.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        304,
+        -1056
+      ],
+      "id": "2b7da46c-4d5b-43c6-89e5-c2b221e8a4ae",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"lead\": \"yes or no\",\n\t\"explication\": \"reasonning\"\n}",
+        "autoFix": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        528,
+        -1072
+      ],
+      "id": "c5b0d031-483b-4887-9406-acec425dca1f",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        464,
+        -864
+      ],
+      "id": "88b2dce8-e83a-483d-94f6-ba4653edf8e4",
+      "name": "OpenRouter Chat Model1",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        672,
+        -1280
+      ],
+      "id": "4325e79f-f594-4875-a327-cae5638a7e69",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "9dd11dc9-1cb1-4f4b-9b52-ab4867a674af",
+              "leftValue": "={{ $runIndex }}",
+              "rightValue": 10,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        880,
+        -1280
+      ],
+      "id": "bd84190e-5bbf-431b-9d54-1c911fe293ea",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1088,
+        -1376
+      ],
+      "id": "81b078e9-0a50-422e-b9d3-178fc30d7a39",
+      "name": "Aggregate1"
+    }
+  ],
+  "repo_name": "boost-prospect-v2",
+  "repo_owner": "ultimvision",
+  "repo_path": "workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-08-26T18:43:59.303Z",
+      "updatedAt": "2025-08-26T18:43:59.303Z",
+      "role": "workflow:owner",
+      "workflowId": "dvNGxjHgYEaIRXCj",
+      "projectId": "zxVtQj8AiJx7hlkL"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-08-26T22:51:28.419Z",
+  "versionId": "094ca338-9d70-4c94-b3ef-b4bd9d3e4e5c"
+}
