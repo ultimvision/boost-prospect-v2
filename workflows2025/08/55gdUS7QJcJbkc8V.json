@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "Get Person Details - AT by RecID": {
       "main": [
@@ -307,17 +307,19 @@
   "createdAt": "2025-08-25T15:03:19.711Z",
   "id": "55gdUS7QJcJbkc8V",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Processing > LinkedIn > Analyze People and Companies with AI",
   "nodes": [
     {
       "parameters": {
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
@@ -409,6 +411,12 @@
       "id": "8ba9af06-2e6e-4fdf-a029-9e72496d0aee",
       "name": "Receive People Analyse Request - HTTP",
       "webhookId": "9bb56f32-44d8-4985-9a63-ef26a4b46a55",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "6gVvkFZGh8dqIc8X",
+          "name": "Auth_Post_Webhook_N8N"
+        }
+      },
       "notes": "PHASE: Input | Purpose: Receive the external webhook to start people analysis by recId and hand off the payload into the workflow. | Inputs: HTTP POST /ai/people-analyse with JSON body {recId} plus headers and query params. | Outputs: One item containing body, headers, params, and webhookUrl for downstream consumption. | Dependencies: n8n Webhook node and public endpoint /ai/people-analyse; caller must supply a valid Airtable record ID. | Special Cases: If recId is missing or invalid, downstream nodes should short-circuit; consider validating Authorization header outside or in a guard node; avoid logging PII."
     },
     {
@@ -744,8 +752,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -4112,
-        -80
+        -2544,
+        352
       ],
       "id": "08d0f5ec-90f6-4a96-a037-958181e5f81e",
       "name": "Sticky Note"
@@ -755,10 +763,10 @@
         "operation": "update",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
@@ -1656,17 +1664,17 @@
         "operation": "search",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
           "value": "tblTEyBjHmlbvmkYs",
           "mode": "list",
           "cachedResultName": "Scoring Rules",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tblTEyBjHmlbvmkYs"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tblTEyBjHmlbvmkYs"
         },
         "filterByFormula": "{internalRuleName} = 'scoring_rules'",
         "returnAll": false,
@@ -1865,10 +1873,10 @@
         "operation": "search",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
@@ -1938,10 +1946,10 @@
         "operation": "create",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
@@ -2118,10 +2126,10 @@
         "operation": "update",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
@@ -3225,10 +3233,10 @@
         "operation": "update",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
@@ -4308,10 +4316,10 @@
         "operation": "update",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
@@ -5407,16 +5415,16 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-08-25T15:32:46.509Z",
-      "updatedAt": "2025-08-25T15:32:46.509Z",
-      "id": "4ptvvLb7NgD8g7Ar",
-      "name": "Apify"
-    },
-    {
       "createdAt": "2025-08-26T10:33:17.006Z",
       "updatedAt": "2025-08-26T10:33:17.006Z",
       "id": "Emw8imBHM3k6zkUo",
       "name": "Sub-Workflow"
+    },
+    {
+      "createdAt": "2025-08-25T15:32:46.509Z",
+      "updatedAt": "2025-08-25T15:32:46.509Z",
+      "id": "4ptvvLb7NgD8g7Ar",
+      "name": "Apify"
     },
     {
       "createdAt": "2025-08-25T15:32:43.780Z",
@@ -5425,7 +5433,7 @@
       "name": "Webhook"
     }
   ],
-  "triggerCount": 0,
-  "updatedAt": "2025-08-26T10:47:21.787Z",
-  "versionId": "b413aff1-3203-489a-9cfb-de11bc98d3f0"
+  "triggerCount": 1,
+  "updatedAt": "2025-08-26T17:07:39.839Z",
+  "versionId": "1c33a984-ff96-470e-bdd2-9b15e77b5b32"
 }
