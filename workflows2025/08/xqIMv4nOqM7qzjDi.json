@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "Insert Error Details - AT Errors Log",
+            "node": "Insert Error Details - AT Errors Log1",
             "type": "main",
             "index": 0
           }
@@ -37,17 +37,17 @@
         "operation": "create",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
           "value": "tbl0XgBNJDMWMbEfU",
           "mode": "list",
           "cachedResultName": "Errors Log",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tbl0XgBNJDMWMbEfU"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tbl0XgBNJDMWMbEfU"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -187,8 +187,8 @@
         -96,
         -16
       ],
-      "id": "058b107f-2dc6-4f5a-8053-58a93e1b9ce7",
-      "name": "Insert Error Details - AT Errors Log",
+      "id": "4728caf5-8e0d-4143-956a-1462070f33df",
+      "name": "Insert Error Details - AT Errors Log1",
       "credentials": {
         "airtableTokenApi": {
           "id": "XzBWggFrPVokGo9L",
@@ -215,6 +215,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-08-25T14:58:05.066Z",
-  "versionId": "7a0c42cc-417e-447b-b87e-cde5a56b5695"
+  "updatedAt": "2025-08-26T17:08:53.373Z",
+  "versionId": "b2161352-76cd-4387-b35b-6fbdd622b6d4"
 }
