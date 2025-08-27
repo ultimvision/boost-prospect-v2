@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "Receive Callback - Webhook Apify Apollo": {
       "main": [
@@ -242,7 +242,9 @@
   "createdAt": "2025-08-25T15:25:57.471Z",
   "id": "DoUoG9p4RLBSc1aD",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Triggers > Apify > Apollo Webhook Callback",
   "nodes": [
     {
@@ -261,6 +263,12 @@
       "id": "2b316928-5030-4897-9f01-7949387f1cd6",
       "name": "Receive Callback - Webhook Apify Apollo",
       "webhookId": "d8aa40d8-35ca-4197-934c-02464d68db81",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ugPBtZYVCmTPd1VR",
+          "name": "Bearer Apify Callback"
+        }
+      },
       "notes": "PHASE: Input Purpose: Receive Apify webhook callback for Apollo actor completion events. Inputs: HTTP POST /apollo/leads with header auth and Apify headers including x-apify-webhook-dispatch-id. Outputs: Raw headers/body for dispatch lookup. Dependencies: Header Auth Webhook Apify credential; Apify. Special Cases: Body may be empty; header must be present or flow will fail downstream."
     },
     {
@@ -486,17 +494,17 @@
         "operation": "upsert",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
           "value": "tblAE9pCoPBXAWSSm",
           "mode": "list",
           "cachedResultName": "Companies",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tblAE9pCoPBXAWSSm"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tblAE9pCoPBXAWSSm"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -895,17 +903,17 @@
         "operation": "upsert",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
           "value": "tblpxuiyiGDvZXUzG",
           "mode": "list",
           "cachedResultName": "People",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tblpxuiyiGDvZXUzG"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tblpxuiyiGDvZXUzG"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -918,7 +926,6 @@
             "jobTitle": "={{ $('Prepare Person Fields - Set Apollo').item.json.title }}",
             "emailStatus": "={{ $('Prepare Person Fields - Set Apollo').item.json.email_status }}",
             "photoUrl": "={{ $('Prepare Person Fields - Set Apollo').item.json.photo_url }}",
-            "photo": "=[\n  {\n    \"url\": \"{{ $('Prepare Person Fields - Set Apollo').item.json.photo_url }}\"\n  }\n]",
             "facebookLink": "={{ $('Prepare Person Fields - Set Apollo').item.json.facebook_url }}",
             "currentPosition": "={{ $('Prepare Person Fields - Set Apollo').item.json.headline }}",
             "professionalEmail": "={{ $('Prepare Person Fields - Set Apollo').item.json.email }}",
@@ -1272,7 +1279,7 @@
               "display": true,
               "type": "array",
               "readOnly": false,
-              "removed": false
+              "removed": true
             },
             {
               "id": "photoUrl",
@@ -1667,7 +1674,7 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        528,
+        560,
         0
       ],
       "id": "30c2e1f4-9aac-4d19-860a-6889859755cf",
@@ -1925,8 +1932,8 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        976,
-        48
+        992,
+        80
       ],
       "id": "d624a1c4-3d5e-4f83-9cfd-6ba2802f1540",
       "name": "Aggregate Batch Loopback - Util",
@@ -1939,7 +1946,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        752,
+        784,
         0
       ],
       "id": "d91992d8-3898-4c81-acc6-48274f912205",
@@ -1986,17 +1993,17 @@
         "operation": "search",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
           "value": "tbl7Ch90T04b8yjiQ",
           "mode": "list",
           "cachedResultName": "Apollo",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tbl7Ch90T04b8yjiQ"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tbl7Ch90T04b8yjiQ"
         },
         "filterByFormula": "={actorRunId} = \"{{ $('Get Webhook Dispatch - HTTP Apify').item.json.data.eventData.actorRunId }}\"",
         "returnAll": false,
@@ -2023,17 +2030,17 @@
         "operation": "update",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
           "value": "tbl7Ch90T04b8yjiQ",
           "mode": "list",
           "cachedResultName": "Apollo",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tbl7Ch90T04b8yjiQ"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tbl7Ch90T04b8yjiQ"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -3489,16 +3496,16 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-08-25T15:32:46.509Z",
-      "updatedAt": "2025-08-25T15:32:46.509Z",
-      "id": "4ptvvLb7NgD8g7Ar",
-      "name": "Apify"
-    },
-    {
       "createdAt": "2025-08-26T10:33:17.006Z",
       "updatedAt": "2025-08-26T10:33:17.006Z",
       "id": "Emw8imBHM3k6zkUo",
       "name": "Sub-Workflow"
+    },
+    {
+      "createdAt": "2025-08-25T15:32:46.509Z",
+      "updatedAt": "2025-08-25T15:32:46.509Z",
+      "id": "4ptvvLb7NgD8g7Ar",
+      "name": "Apify"
     },
     {
       "createdAt": "2025-08-25T15:32:43.780Z",
@@ -3507,7 +3514,7 @@
       "name": "Webhook"
     }
   ],
-  "triggerCount": 0,
-  "updatedAt": "2025-08-26T10:34:34.650Z",
-  "versionId": "7c56c81d-c99d-4a24-9d8c-85d0b472ec7e"
+  "triggerCount": 1,
+  "updatedAt": "2025-08-26T16:19:43.651Z",
+  "versionId": "a74e15ee-1c4f-4c83-b086-cb0f846aa8cf"
 }
