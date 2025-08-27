@@ -218,7 +218,7 @@
       "typeVersion": 2,
       "position": [
         -2080,
-        400
+        388
       ],
       "id": "0f2ab68a-cb81-48fb-ab0b-90f01633b791",
       "name": "Receive Callback - Webhook Apify Apollo",
@@ -242,7 +242,7 @@
       "typeVersion": 4.2,
       "position": [
         -1856,
-        400
+        388
       ],
       "id": "eef272fe-6239-4dbc-83a4-59ec09821146",
       "name": "Get Webhook Dispatch - HTTP Apify",
@@ -274,7 +274,7 @@
       "typeVersion": 4.2,
       "position": [
         -1408,
-        400
+        388
       ],
       "id": "4b2cc3b2-cb2b-4fc4-a79d-a4938c67e21e",
       "name": "Get Actor Run Details - Apify Apollo",
@@ -325,7 +325,7 @@
       "typeVersion": 4.2,
       "position": [
         -960,
-        256
+        244
       ],
       "id": "2b856d18-b1e4-4342-85f8-d112f9832c3b",
       "name": "List Dataset Items - Apify Apollo",
@@ -369,7 +369,7 @@
       "typeVersion": 2.2,
       "position": [
         -1184,
-        400
+        388
       ],
       "id": "7691f931-18ee-405b-b394-b0ed6eedd72b",
       "name": "If Run SUCCEEDED - IF",
@@ -383,7 +383,7 @@
       "typeVersion": 1,
       "position": [
         -960,
-        448
+        436
       ],
       "id": "eefb5f9e-50fe-45e3-bc41-7887455f0a59",
       "name": "Fail Run - Error Handler",
@@ -413,7 +413,7 @@
       "typeVersion": 3.4,
       "position": [
         -512,
-        48
+        52
       ],
       "id": "7dd39e02-6689-4a64-9403-b6cdab69f207",
       "name": "Prepare Website Content - SET"
@@ -437,17 +437,17 @@
         "operation": "update",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
           "value": "tblpxuiyiGDvZXUzG",
           "mode": "list",
           "cachedResultName": "People",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tblpxuiyiGDvZXUzG"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tblpxuiyiGDvZXUzG"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -1359,8 +1359,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        -48,
-        528
+        -56,
+        520
       ],
       "id": "ae575c8d-1aed-47ef-91d5-2ab491bda6e9",
       "name": "Chat Model - OpenRouter",
@@ -1378,8 +1378,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        80,
-        528
+        72,
+        520
       ],
       "id": "e09cb649-7790-4c8f-a153-875821fd2632",
       "name": "Chat Model - OpenRouter - Fallback",
@@ -1398,7 +1398,7 @@
       "typeVersion": 3,
       "position": [
         -288,
-        48
+        52
       ],
       "id": "2358d3eb-66da-415f-a1e1-61cf3050edce",
       "name": "Loop Over Pages"
@@ -1411,7 +1411,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        304,
+        296,
         224
       ],
       "id": "e0a59ac5-fb3b-490e-ac1c-b01db305ca58",
@@ -1431,7 +1431,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        432,
+        424,
         224
       ],
       "id": "4cd87e64-dba5-4f1a-9729-b581c514e439",
@@ -1461,7 +1461,7 @@
       "typeVersion": 1.7,
       "position": [
         -64,
-        304
+        296
       ],
       "id": "2eed2f9c-1cef-4025-a698-17a12e9240f4",
       "name": "Analyse Page Content",
@@ -1498,17 +1498,17 @@
         "operation": "search",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
           "value": "tblpxuiyiGDvZXUzG",
           "mode": "list",
           "cachedResultName": "People",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tblpxuiyiGDvZXUzG"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tblpxuiyiGDvZXUzG"
         },
         "filterByFormula": "={actorRunIdWebsiteScrapping} = \"{{ $('Get Webhook Dispatch - HTTP Apify').item.json.data.eventData.actorRunId }}\"",
         "returnAll": false,
@@ -1523,7 +1523,7 @@
       "typeVersion": 2.1,
       "position": [
         -1632,
-        400
+        388
       ],
       "id": "f05087ad-4fcb-41b8-9fdf-fdaf40832eab",
       "name": "Search Actor Run ID - AT People",
@@ -1573,7 +1573,7 @@
       "typeVersion": 2.2,
       "position": [
         -736,
-        256
+        244
       ],
       "id": "d5a84a72-e48f-4524-a738-30c783a59347",
       "name": "Check Website Content Exists - IF"
@@ -1583,23 +1583,23 @@
         "operation": "update",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
           "value": "tblpxuiyiGDvZXUzG",
           "mode": "list",
           "cachedResultName": "People",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tblpxuiyiGDvZXUzG"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tblpxuiyiGDvZXUzG"
         },
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "id": "={{ $('Search Actor Run ID - AT People').first().json.id }}",
-            "companyWebsiteScrappingProcessed": "={{ true }}"
+            "companyWebsiteScrappingProcessed": "={{ true }}",
+            "id": "={{ $('Search Actor Run ID - AT People').first().json.id }}"
           },
           "matchingColumns": [
             "id"
@@ -1635,6 +1635,17 @@
               "display": true,
               "type": "string",
               "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "favorite",
+              "displayName": "favorite",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
               "removed": true
             },
             {
@@ -1866,6 +1877,17 @@
               "display": true,
               "type": "array",
               "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "userRecId",
+              "displayName": "userRecId",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
               "removed": true
             },
             {
@@ -2471,6 +2493,152 @@
               "type": "string",
               "readOnly": false,
               "removed": true
+            },
+            {
+              "id": "Analysis",
+              "displayName": "Analysis",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "scoringProfilePosts",
+              "displayName": "scoringProfilePosts",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "scoringCompanyPosts",
+              "displayName": "scoringCompanyPosts",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "scoringWebsite",
+              "displayName": "scoringWebsite",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "scoringOverall",
+              "displayName": "scoringOverall",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "scoringNote",
+              "displayName": "scoringNote",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "scoringTier",
+              "displayName": "scoringTier",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "scoringExplication",
+              "displayName": "scoringExplication",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "analyzedWithAI",
+              "displayName": "analyzedWithAI",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "analyzeWithAIRunning",
+              "displayName": "analyzeWithAIRunning",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Apify Runs",
+              "displayName": "Apify Runs",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "scoringStatus",
+              "displayName": "scoringStatus",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Waiting",
+                  "value": "Waiting"
+                },
+                {
+                  "name": "Calculating...",
+                  "value": "Calculating..."
+                },
+                {
+                  "name": "Completed",
+                  "value": "Completed"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
             }
           ],
           "attemptToConvertTypes": false,
@@ -2481,8 +2649,8 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        -480,
-        352
+        -512,
+        244
       ],
       "id": "c57b5748-64b7-4a91-a9ae-276ebc7e2b15",
       "name": "Update Website Content - AT People1",
@@ -2527,6 +2695,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-25T15:32:49.542Z",
-  "versionId": "d088b708-8e4e-484f-9d9b-3d6069320e69"
+  "updatedAt": "2025-08-26T18:01:56.103Z",
+  "versionId": "16bf38f1-2172-4176-bab2-455d736d1c18"
 }
