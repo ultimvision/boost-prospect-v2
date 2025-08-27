@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "Check Website URL Present - IF",
+            "node": "Get Config",
             "type": "main",
             "index": 0
           }
@@ -182,6 +182,28 @@
           }
         ]
       ]
+    },
+    "Get Config": {
+      "main": [
+        [
+          {
+            "node": "Set Variables",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Variables": {
+      "main": [
+        [
+          {
+            "node": "Check Website URL Present - IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-08-25T15:12:50.254Z",
@@ -227,7 +249,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2912,
+        -3552,
         96
       ],
       "id": "ef9fc796-b244-4c08-86a8-6d2cb8eaf280",
@@ -256,7 +278,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -2240,
+        -2432,
         0
       ],
       "id": "0972ea14-b119-4ceb-bf98-1a1b0bd0c15a",
@@ -280,7 +302,7 @@
       "type": "n8n-nodes-base.crypto",
       "typeVersion": 1,
       "position": [
-        -1792,
+        -1984,
         0
       ],
       "id": "89bd8721-3cf7-4a4f-9fe8-f81f5d21adbe",
@@ -304,7 +326,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"isAdHoc\": false,\n  \"eventTypes\": [\n    \"ACTOR.RUN.SUCCEEDED\",\n    \"ACTOR.RUN.FAILED\",\n    \"ACTOR.RUN.ABORTED\",\n    \"ACTOR.RUN.TIMED_OUT\"\n  ],\n  \"condition\": {\n    \"actorTaskId\": \"{{ $json.task_id }}\"\n  },\n  \"idempotencyKey\": \"{{ $json.idempotencyKey }}\",\n  \"ignoreSslErrors\": false,\n  \"doNotRetry\": false,\n  \"requestUrl\": \"{{ $vars.apify_web_scraping_webhook_callback }}\",\n  \"payloadTemplate\": \"{}\",\n  \"headersTemplate\": \"{{ $json.payload_header }}\",\n  \"description\": \"This is webhook callback for Apollo Website Scraper to N8N.\",\n  \"shouldInterpolateStrings\": false\n}",
+        "jsonBody": "={\n  \"isAdHoc\": false,\n  \"eventTypes\": [\n    \"ACTOR.RUN.SUCCEEDED\",\n    \"ACTOR.RUN.FAILED\",\n    \"ACTOR.RUN.ABORTED\",\n    \"ACTOR.RUN.TIMED_OUT\"\n  ],\n  \"condition\": {\n    \"actorTaskId\": \"{{ $json.task_id }}\"\n  },\n  \"idempotencyKey\": \"{{ $json.idempotencyKey }}\",\n  \"ignoreSslErrors\": false,\n  \"doNotRetry\": false,\n  \"requestUrl\": \"{{ $('Set Variables').first().json.data[0].apify_web_scraping_webhook_callback }}\",\n  \"payloadTemplate\": \"{}\",\n  \"headersTemplate\": \"{{ $json.payload_header }}\",\n  \"description\": \"This is webhook callback for Apollo Website Scraper to N8N.\",\n  \"shouldInterpolateStrings\": false\n}",
         "options": {
           "redirect": {
             "redirect": {}
@@ -314,7 +336,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -1568,
+        -1760,
         0
       ],
       "id": "0e019be4-a82a-4ac8-99ac-20e5886e3042",
@@ -348,7 +370,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -448,
+        -640,
         -96
       ],
       "id": "d7b3b781-f417-4be6-ad61-a5f18ad4c9f4",
@@ -370,7 +392,7 @@
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
       "position": [
-        -2464,
+        -2656,
         192
       ],
       "id": "5df4c964-2112-424c-ab4c-af9bbda789e9",
@@ -387,7 +409,7 @@
       "type": "n8n-nodes-base.crypto",
       "typeVersion": 1,
       "position": [
-        -2464,
+        -2656,
         0
       ],
       "id": "5091b33b-bbac-46d1-aa00-d08a650330dc",
@@ -401,7 +423,7 @@
             {
               "id": "a222e988-efad-4f98-b868-eedd998eb466",
               "name": "payload_header",
-              "value": "={\\n  \\\"Authorization\\\": \\\"Bearer {{  $vars.apify_webhook_bearer_token_callback }}\\\"\\n}",
+              "value": "={\\n  \\\"Authorization\\\": \\\"Bearer {{ $('Get Config').first().json.apify_webhook_bearer_token_callback }}\\\"\\n}",
               "type": "string"
             },
             {
@@ -417,7 +439,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2016,
+        -2208,
         0
       ],
       "id": "b9932500-3792-4c3c-a6f1-11755b37345c",
@@ -431,7 +453,7 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        -3136,
+        -3776,
         96
       ],
       "id": "8f1929bb-494c-47f8-a94a-225dd25ab9e4",
@@ -449,7 +471,7 @@
           "conditions": [
             {
               "id": "ac2d8168-9cfd-4e1a-a249-05040835c3fa",
-              "leftValue": "={{ $json.websiteUrl }}",
+              "leftValue": "={{ $('Variables - Set').first().json.websiteUrl }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -459,7 +481,7 @@
             },
             {
               "id": "9b9ce1fd-00fb-4919-bfec-cae41dcb24a0",
-              "leftValue": "={{ $json.websiteUrl }}",
+              "leftValue": "={{ $('Variables - Set').first().json.websiteUrl }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -475,7 +497,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -2688,
+        -2880,
         96
       ],
       "id": "41de9cad-db72-4532-b41f-6ccf32dd6d90",
@@ -487,17 +509,17 @@
         "operation": "update",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
           "value": "tblpxuiyiGDvZXUzG",
           "mode": "list",
           "cachedResultName": "People",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tblpxuiyiGDvZXUzG"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tblpxuiyiGDvZXUzG"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -1363,7 +1385,7 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        -224,
+        -416,
         -192
       ],
       "id": "e432615d-cd87-4a1f-aa6a-d5e16818cd19",
@@ -1394,7 +1416,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -896,
+        -1088,
         0
       ],
       "id": "ea308989-99e0-4f9c-83e7-a6373599ec02",
@@ -1427,7 +1449,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -1120,
+        -1312,
         0
       ],
       "id": "7773a54c-d662-4df9-ba1f-7fb0cc5b2d9c",
@@ -1446,7 +1468,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -1344,
+        -1536,
         0
       ],
       "id": "7966f203-82c7-45d1-af44-584430fb54f7",
@@ -1488,7 +1510,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -672,
+        -864,
         0
       ],
       "id": "2234bc1c-1ee8-48c0-90b7-88450947bc5f",
@@ -1499,17 +1521,17 @@
         "operation": "create",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
           "value": "tblLejx1Cygn9uAch",
           "mode": "list",
           "cachedResultName": "Apify Runs",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tblLejx1Cygn9uAch"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tblLejx1Cygn9uAch"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -1686,7 +1708,7 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        -448,
+        -640,
         96
       ],
       "id": "803a6af2-999c-4d09-af69-654a33e72478",
@@ -1705,7 +1727,7 @@
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
       "position": [
-        0,
+        -192,
         96
       ],
       "id": "2fac31d7-bafd-4554-bfbc-b7927816995d",
@@ -1738,7 +1760,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -224,
+        -416,
         0
       ],
       "id": "c6e464c1-ff7d-4c34-88c1-3c5effb24e04",
@@ -1749,10 +1771,10 @@
         "operation": "create",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
@@ -1936,7 +1958,7 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        0,
+        -192,
         -96
       ],
       "id": "7346df71-54fd-4239-93b6-a8f5c7634319",
@@ -1947,6 +1969,47 @@
           "name": "Airtable Personal Access Token account"
         }
       }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -3104,
+        96
+      ],
+      "id": "6a0bf058-bb6a-48aa-8bbe-a600dffe879f",
+      "name": "Set Variables"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "oSwgKHI5ETDqWKLL",
+          "mode": "list",
+          "cachedResultName": "Variables"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -3328,
+        96
+      ],
+      "id": "d39f00d0-011a-4467-9396-b38813ad98bc",
+      "name": "Get Config"
     }
   ],
   "repo_name": "boost-prospect-v2",
@@ -1967,19 +2030,19 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-08-25T15:32:46.509Z",
-      "updatedAt": "2025-08-25T15:32:46.509Z",
-      "id": "4ptvvLb7NgD8g7Ar",
-      "name": "Apify"
-    },
-    {
       "createdAt": "2025-08-26T10:33:17.006Z",
       "updatedAt": "2025-08-26T10:33:17.006Z",
       "id": "Emw8imBHM3k6zkUo",
       "name": "Sub-Workflow"
+    },
+    {
+      "createdAt": "2025-08-25T15:32:46.509Z",
+      "updatedAt": "2025-08-25T15:32:46.509Z",
+      "id": "4ptvvLb7NgD8g7Ar",
+      "name": "Apify"
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-08-26T10:40:38.437Z",
-  "versionId": "39c52f6e-d1fb-4b35-9d98-d41761fe9f35"
+  "updatedAt": "2025-08-26T17:13:34.708Z",
+  "versionId": "917f1372-b22e-46ad-b8df-6d76f205fefa"
 }
