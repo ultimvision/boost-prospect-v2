@@ -269,17 +269,17 @@
         "operation": "update",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
           "value": "tblpxuiyiGDvZXUzG",
           "mode": "list",
           "cachedResultName": "People",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tblpxuiyiGDvZXUzG"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tblpxuiyiGDvZXUzG"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -1163,6 +1163,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-08-26T10:41:32.367Z",
-  "versionId": "3cd34d8e-71ad-4570-811a-fc7b92318480"
+  "updatedAt": "2025-08-26T17:01:47.384Z",
+  "versionId": "8cf44722-5fe8-4954-a175-ba0873dd16fd"
 }
