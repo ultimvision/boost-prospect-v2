@@ -278,17 +278,6 @@
           }
         ]
       ]
-    },
-    "Update Person Reaction Fields - AT People1": {
-      "main": [
-        [
-          {
-            "node": "No Operation, do nothing",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
     }
   },
   "createdAt": "2025-08-25T15:10:24.122Z",
@@ -367,17 +356,6 @@
       "id": "c1ac8231-3089-4ac8-8c5f-e68dfa5b89bb",
       "name": "Aggregate Items for LLM - Util",
       "notes": "PHASE: Utility | Purpose: Aggregate normalized reaction items into one payload for the LLM chain. | Inputs: Items from Normalize Reaction Fields - Set. | Outputs: Single item with aggregated data (e.g., json.data) for prompting. | Dependencies: Feeds Analyse reactions (LLM Chain). | Special Cases: Large arrays may inflate token consumption; consider pre-filtering or sampling."
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
-      "position": [
-        3728,
-        1712
-      ],
-      "id": "a6e39cbb-db09-49a0-b908-24b8ccddf478",
-      "name": "No Operation, do nothing"
     },
     {
       "parameters": {
@@ -616,17 +594,17 @@
         "operation": "update",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
           "value": "tblpxuiyiGDvZXUzG",
           "mode": "list",
           "cachedResultName": "People",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tblpxuiyiGDvZXUzG"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tblpxuiyiGDvZXUzG"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -1829,17 +1807,17 @@
         "operation": "update",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
           "value": "tblpxuiyiGDvZXUzG",
           "mode": "list",
           "cachedResultName": "People",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tblpxuiyiGDvZXUzG"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tblpxuiyiGDvZXUzG"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -2694,10 +2672,10 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        3504,
-        1712
+        3520,
+        1680
       ],
-      "id": "9b5c515b-fff0-43d0-b95d-7496372f1dc8",
+      "id": "28649ba6-dbd3-4ec5-8bca-68d233ce09ae",
       "name": "Update Person Reaction Fields - AT People1",
       "credentials": {
         "airtableTokenApi": {
@@ -2712,7 +2690,9 @@
   "repo_owner": "ultimvision",
   "repo_path": "workflows",
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "xqIMv4nOqM7qzjDi"
   },
   "shared": [
     {
@@ -2732,19 +2712,19 @@
       "name": "LinkedIn"
     },
     {
-      "createdAt": "2025-08-25T15:32:46.509Z",
-      "updatedAt": "2025-08-25T15:32:46.509Z",
-      "id": "4ptvvLb7NgD8g7Ar",
-      "name": "Apify"
-    },
-    {
       "createdAt": "2025-08-26T10:33:17.006Z",
       "updatedAt": "2025-08-26T10:33:17.006Z",
       "id": "Emw8imBHM3k6zkUo",
       "name": "Sub-Workflow"
+    },
+    {
+      "createdAt": "2025-08-25T15:32:46.509Z",
+      "updatedAt": "2025-08-25T15:32:46.509Z",
+      "id": "4ptvvLb7NgD8g7Ar",
+      "name": "Apify"
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-08-26T10:41:15.679Z",
-  "versionId": "2baf6af2-28e9-4df0-b860-f08b43ec50a1"
+  "updatedAt": "2025-08-26T17:04:44.319Z",
+  "versionId": "a4cd29c8-b61c-4980-9fd7-66a47de052ac"
 }
