@@ -196,17 +196,6 @@
           }
         ]
       ]
-    },
-    "Update Company Post Behavior - AT People1": {
-      "main": [
-        [
-          {
-            "node": "No Operation - Util",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
     }
   },
   "createdAt": "2025-08-25T15:05:40.405Z",
@@ -226,7 +215,7 @@
       "typeVersion": 1,
       "position": [
         3552,
-        640
+        636
       ],
       "id": "27ce621e-90a1-4e05-b1f1-fd3ab7666853",
       "name": "Aggregate Items - Util",
@@ -241,7 +230,7 @@
       "typeVersion": 1,
       "position": [
         4800,
-        592
+        584
       ],
       "id": "dc2a392d-97bf-4f50-94e1-2d29a3466f4a",
       "name": "Fail Run - Error Handler",
@@ -279,7 +268,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        4144,
+        4136,
         608
       ],
       "id": "91b09fdb-c534-45d8-92dd-f0d6a92da3f9",
@@ -300,7 +289,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        4016,
+        4008,
         608
       ],
       "id": "69437f8e-b1b4-4c1f-bc81-212e2bbc2722",
@@ -386,7 +375,7 @@
       "typeVersion": 2.2,
       "position": [
         4576,
-        592
+        584
       ],
       "id": "d987cf0b-c122-4989-abb0-a7f9725e9ba8",
       "name": "If Retry Count LT 2 - IF",
@@ -400,7 +389,7 @@
       "typeVersion": 1.1,
       "position": [
         2432,
-        880
+        876
       ],
       "id": "bd7703b7-add7-4430-8465-efad272f3511",
       "name": "Receive Inputs - Subflow Trigger",
@@ -445,23 +434,11 @@
       "typeVersion": 2.2,
       "position": [
         3776,
-        640
+        636
       ],
       "id": "9bd6b741-1f0f-4da4-be2e-8ad969aa1813",
       "name": "If Data Exists - IF",
       "notes": "PHASE: Execution | Purpose: Check if aggregated data[] has items before invoking the analysis. | Inputs: $json.data from Aggregate. | Outputs: True path if data exists and is not empty; False path otherwise. | Dependencies: True -> analysis chain; False -> No Operation. | Special Cases: Prevents unnecessary LLM calls on empty datasets; ensure aggregation produced data[]."
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
-      "position": [
-        4352,
-        864
-      ],
-      "id": "2db3b0f1-ac1b-4299-9b23-d3eac97b2b9e",
-      "name": "No Operation - Util",
-      "notes": "PHASE: Utility | Purpose: Provide an explicit no-op sink for the false branch when no posts exist. | Inputs: Any item from the IF false branch. | Outputs: No side effects; item ends or passes through unchanged. | Dependencies: None. | Special Cases: Improves readability by making the non-action explicit."
     },
     {
       "parameters": {
@@ -483,17 +460,17 @@
         "operation": "update",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
           "value": "tblpxuiyiGDvZXUzG",
           "mode": "list",
           "cachedResultName": "People",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tblpxuiyiGDvZXUzG"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tblpxuiyiGDvZXUzG"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -1383,7 +1360,7 @@
       "typeVersion": 4.2,
       "position": [
         2880,
-        816
+        804
       ],
       "id": "bd3ceb0e-3f64-47f2-b1bb-e21c2ca8d127",
       "name": "Apify - Get limits",
@@ -1433,7 +1410,7 @@
       "typeVersion": 2.2,
       "position": [
         3104,
-        816
+        804
       ],
       "id": "3765a8d3-9fa9-4fbf-9e53-dea2c5b01f27",
       "name": "Check Apify Capacity - IF"
@@ -1456,7 +1433,7 @@
       "typeVersion": 3.4,
       "position": [
         2656,
-        880
+        876
       ],
       "id": "f490fdbd-2ef9-4f40-961d-ac7a7badb2b3",
       "name": "Apify Actors Config - Set"
@@ -1469,7 +1446,7 @@
       "typeVersion": 1.1,
       "position": [
         3776,
-        976
+        972
       ],
       "id": "5086aec8-f00e-459d-bb15-43670b6edeb2",
       "name": "Wait",
@@ -1503,7 +1480,7 @@
       "typeVersion": 2.2,
       "position": [
         3552,
-        880
+        876
       ],
       "id": "18fb529b-4086-4e54-baf1-90291593c79b",
       "name": "Apify Error 402 - IF"
@@ -1516,7 +1493,7 @@
       "typeVersion": 1,
       "position": [
         3776,
-        1168
+        1164
       ],
       "id": "691146ec-730f-41fb-8361-c5093d9ed84a",
       "name": "Stop and Error"
@@ -1536,7 +1513,7 @@
       "typeVersion": 4.2,
       "position": [
         3328,
-        736
+        732
       ],
       "id": "3b5d44a2-806d-410a-a77f-2c0da69804f5",
       "name": "Get linkedin company posts",
@@ -1556,17 +1533,17 @@
         "operation": "update",
         "base": {
           "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
+          "value": "app3ZDXRoKYAaYwlt",
           "mode": "list",
           "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
         "table": {
           "__rl": true,
           "value": "tblpxuiyiGDvZXUzG",
           "mode": "list",
           "cachedResultName": "People",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tblpxuiyiGDvZXUzG"
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tblpxuiyiGDvZXUzG"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -1608,6 +1585,17 @@
               "display": true,
               "type": "string",
               "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "favorite",
+              "displayName": "favorite",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
               "removed": true
             },
             {
@@ -1839,6 +1827,17 @@
               "display": true,
               "type": "array",
               "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "userRecId",
+              "displayName": "userRecId",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
               "removed": true
             },
             {
@@ -2411,6 +2410,185 @@
               "type": "boolean",
               "readOnly": false,
               "removed": true
+            },
+            {
+              "id": "actorRunIdWebsiteScrapping",
+              "displayName": "actorRunIdWebsiteScrapping",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "websiteContent",
+              "displayName": "websiteContent",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "websiteContentSummary",
+              "displayName": "websiteContentSummary",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Analysis",
+              "displayName": "Analysis",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "scoringProfilePosts",
+              "displayName": "scoringProfilePosts",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "scoringCompanyPosts",
+              "displayName": "scoringCompanyPosts",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "scoringWebsite",
+              "displayName": "scoringWebsite",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "scoringOverall",
+              "displayName": "scoringOverall",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "scoringNote",
+              "displayName": "scoringNote",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "scoringTier",
+              "displayName": "scoringTier",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "scoringExplication",
+              "displayName": "scoringExplication",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "analyzedWithAI",
+              "displayName": "analyzedWithAI",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "analyzeWithAIRunning",
+              "displayName": "analyzeWithAIRunning",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Apify Runs",
+              "displayName": "Apify Runs",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "scoringStatus",
+              "displayName": "scoringStatus",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Waiting",
+                  "value": "Waiting"
+                },
+                {
+                  "name": "Calculating...",
+                  "value": "Calculating..."
+                },
+                {
+                  "name": "Completed",
+                  "value": "Completed"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
             }
           ],
           "attemptToConvertTypes": false,
@@ -2422,9 +2600,9 @@
       "typeVersion": 2.1,
       "position": [
         4064,
-        864
+        784
       ],
-      "id": "a166f614-0268-428c-b147-f3219d7080b6",
+      "id": "f7ac081f-6276-49ae-86f5-f0b70ce82974",
       "name": "Update Company Post Behavior - AT People1",
       "credentials": {
         "airtableTokenApi": {
@@ -2461,19 +2639,19 @@
       "name": "LinkedIn"
     },
     {
-      "createdAt": "2025-08-25T15:32:46.509Z",
-      "updatedAt": "2025-08-25T15:32:46.509Z",
-      "id": "4ptvvLb7NgD8g7Ar",
-      "name": "Apify"
-    },
-    {
       "createdAt": "2025-08-26T10:33:17.006Z",
       "updatedAt": "2025-08-26T10:33:17.006Z",
       "id": "Emw8imBHM3k6zkUo",
       "name": "Sub-Workflow"
+    },
+    {
+      "createdAt": "2025-08-25T15:32:46.509Z",
+      "updatedAt": "2025-08-25T15:32:46.509Z",
+      "id": "4ptvvLb7NgD8g7Ar",
+      "name": "Apify"
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-08-26T10:42:44.572Z",
-  "versionId": "3eaae530-e0bc-462f-b7fc-f48329c783af"
+  "updatedAt": "2025-08-26T17:06:32.404Z",
+  "versionId": "b80121ca-1b8d-409d-a2c2-53d921281c6e"
 }
