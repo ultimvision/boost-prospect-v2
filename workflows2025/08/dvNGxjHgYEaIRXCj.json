@@ -56,7 +56,7 @@
         ],
         [
           {
-            "node": "Search records",
+            "node": "Search Params - AT by Url",
             "type": "main",
             "index": 0
           }
@@ -215,27 +215,11 @@
         ]
       ]
     },
-    "If": {
-      "main": [
-        []
-      ]
-    },
-    "Search records": {
-      "main": [
-        [
-          {
-            "node": "Basic LLM Chain",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "OpenRouter Chat Model": {
       "ai_languageModel": [
         [
           {
-            "node": "Basic LLM Chain",
+            "node": "Check if is a Lead - LLM",
             "type": "ai_languageModel",
             "index": 0
           }
@@ -246,7 +230,7 @@
       "ai_outputParser": [
         [
           {
-            "node": "Basic LLM Chain",
+            "node": "Check if is a Lead - LLM",
             "type": "ai_outputParser",
             "index": 0
           }
@@ -264,37 +248,41 @@
         ]
       ]
     },
-    "Basic LLM Chain": {
+    "Check if is a Lead - LLM": {
       "main": [
         [
           {
-            "node": "Edit Fields1",
+            "node": "Insert Post with Analyse - AT",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Edit Fields1": {
+    "OpenRouter Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Check if is a Lead - LLM",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Search Params - AT by Url": {
       "main": [
         [
           {
-            "node": "If1",
+            "node": "Check if is a Lead - LLM",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "If1": {
+    "Insert Post with Analyse - AT": {
       "main": [
-        [
-          {
-            "node": "Aggregate1",
-            "type": "main",
-            "index": 0
-          }
-        ],
         [
           {
             "node": "Iterate Dataset Items - Util 25",
@@ -324,7 +312,7 @@
       "typeVersion": 2,
       "position": [
         -1808,
-        -848
+        -1680
       ],
       "id": "9e92c6b6-25b4-482e-ad2d-957736240249",
       "name": "Receive Callback - Webhook Apify facebook",
@@ -348,7 +336,7 @@
       "typeVersion": 4.2,
       "position": [
         -1584,
-        -848
+        -1680
       ],
       "id": "be4844e8-3645-4042-b141-45c0854166fb",
       "name": "Get Webhook Dispatch - HTTP Apify",
@@ -380,7 +368,7 @@
       "typeVersion": 4.2,
       "position": [
         -1360,
-        -848
+        -1680
       ],
       "id": "dcad9e72-f11b-4f8c-8fba-b863e02471aa",
       "name": "Get Actor Run Details - Apify Apollo",
@@ -418,7 +406,7 @@
       "typeVersion": 1.1,
       "position": [
         -1808,
-        -1264
+        -784
       ],
       "id": "c015de87-a1b5-45d0-9525-fdb25fe29697",
       "name": "Receive Dataset Inputs - Subflow Trigger",
@@ -431,8 +419,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -224,
-        -1360
+        -240,
+        -960
       ],
       "id": "6ea08ea2-f072-4e8b-abde-2d6b55e87109",
       "name": "Iterate Dataset Items - Util 25",
@@ -466,7 +454,7 @@
       "typeVersion": 2.2,
       "position": [
         -912,
-        -1264
+        -784
       ],
       "id": "00e9f0af-c5f4-43ba-9e58-bc91a3697a3b",
       "name": "If Items Exist - IF",
@@ -480,8 +468,8 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        0,
-        -1456
+        -16,
+        -1360
       ],
       "id": "21f5031e-8212-4f2a-afd8-19bf721a3d2d",
       "name": "Aggregate Items - Util",
@@ -504,8 +492,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        224,
-        -1456
+        408,
+        -1360
       ],
       "id": "19bba080-c20b-4494-a97a-2532cb65a341",
       "name": "Set Next Page Flag - Subflow Set",
@@ -520,7 +508,7 @@
       "typeVersion": 1,
       "position": [
         -688,
-        -1168
+        -688
       ],
       "id": "bbe5c227-9607-49db-9870-95931f796ee1",
       "name": "Aggregate Items (Empty) - Util",
@@ -544,7 +532,7 @@
       "typeVersion": 3.4,
       "position": [
         -464,
-        -1168
+        -688
       ],
       "id": "a60afd63-245f-4fe4-89b5-b9c82b712a90",
       "name": "Set Next Page Flag False - Set",
@@ -587,7 +575,7 @@
       "typeVersion": 4.2,
       "position": [
         -1584,
-        -1264
+        -784
       ],
       "id": "5862875e-e37e-4e71-b2a7-37f1947ca385",
       "name": "List Dataset Items - Apify Apollo1",
@@ -631,7 +619,7 @@
       "typeVersion": 2.2,
       "position": [
         -1136,
-        -848
+        -1680
       ],
       "id": "0376dd98-46d2-485f-b7f2-c3f46d98cef1",
       "name": "If Run SUCCEEDED - IF",
@@ -645,7 +633,7 @@
       "typeVersion": 1,
       "position": [
         -912,
-        -752
+        -1584
       ],
       "id": "d7d1f00d-caff-4946-921f-2b9e1a807ebc",
       "name": "Fail Run - Error Handler",
@@ -718,7 +706,7 @@
       "typeVersion": 1.2,
       "position": [
         -912,
-        -944
+        -1776
       ],
       "id": "a70b1ae2-454d-4f19-9aa3-f681da62848e",
       "name": "Recurse Dataset Pagination - Subflow",
@@ -753,7 +741,7 @@
       "typeVersion": 2.2,
       "position": [
         -688,
-        -944
+        -1776
       ],
       "id": "84e89cf0-0323-45d0-b830-d390493cd19d",
       "name": "If Next Page - IF",
@@ -774,7 +762,7 @@
       "typeVersion": 1.1,
       "position": [
         -1360,
-        -1168
+        -688
       ],
       "id": "525fe49a-ce17-447b-bb73-0c408e253441",
       "name": "Summarize"
@@ -788,7 +776,7 @@
       "typeVersion": 1,
       "position": [
         -1360,
-        -1360
+        -880
       ],
       "id": "07775d71-c2e1-4788-b0d9-e4536de7c573",
       "name": "Aggregate"
@@ -803,7 +791,7 @@
       "typeVersion": 3.2,
       "position": [
         -1136,
-        -1264
+        -784
       ],
       "id": "5deec872-eb80-4122-8ba2-4e06688667b1",
       "name": "Merge"
@@ -817,58 +805,10 @@
       "typeVersion": 1,
       "position": [
         -688,
-        -1360
+        -960
       ],
       "id": "7d29f49f-8977-4f3a-808f-985bfe2f7dd8",
       "name": "Split Out"
-    },
-    {
-      "parameters": {
-        "includeOtherFields": true,
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -192,
-        -672
-      ],
-      "id": "ac7b4802-b8bf-4b16-8409-097c2541f2a8",
-      "name": "Edit Fields"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "2f397724-0ade-4e4c-a715-7be3756d7e08",
-              "leftValue": "",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        64,
-        -640
-      ],
-      "id": "528b70a2-000b-434f-8f3c-0773db532b91",
-      "name": "If"
     },
     {
       "parameters": {
@@ -898,11 +838,109 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
       "position": [
-        -480,
-        -1360
+        -464,
+        -960
       ],
       "id": "4e721c6c-a983-412c-b662-62f47e7df20b",
       "name": "Filter"
+    },
+    {
+      "parameters": {
+        "model": "google/gemini-2.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        208,
+        -736
+      ],
+      "id": "2b7da46c-4d5b-43c6-89e5-c2b221e8a4ae",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"title\": \"LeadValidation\",\n  \"type\": \"object\",\n  \"additionalProperties\": false,\n  \"required\": [\"lead\", \"explication\"],\n  \"properties\": {\n    \"lead\": {\n      \"type\": \"string\",\n      \"enum\": [\"Yes\", \"No\"],\n      \"description\": \"Yes or No only\"\n    },\n    \"explication\": {\n      \"type\": \"string\",\n      \"minLength\": 1,\n      \"description\": \"Reasoning\"\n    }\n  }\n}",
+        "autoFix": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        464,
+        -736
+      ],
+      "id": "c5b0d031-483b-4887-9406-acec425dca1f",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        544,
+        -528
+      ],
+      "id": "88b2dce8-e83a-483d-94f6-ba4653edf8e4",
+      "name": "OpenRouter Chat Model1",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Facebook Post Content to Analyse :\nGroup Title : {{ $('Iterate Dataset Items - Util 25').item.json.groupTitle }}\n\nUserName : {{ $('Iterate Dataset Items - Util 25').item.json.user.name }}\n\nTitle : {{ $('Iterate Dataset Items - Util 25').item.json.title }}\n\nPrice : {{ $('Iterate Dataset Items - Util 25').item.json.price }}\n\nLocation : {{ $('Iterate Dataset Items - Util 25').item.json.location }}\n\nContent : {{ $('Iterate Dataset Items - Util 25').item.json.text }}\n\nTop Comments : {{ JSON.stringify($('Iterate Dataset Items - Util 25').item.json.topComments) }}\n\n",
+        "hasOutputParser": true,
+        "needsFallback": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "={{ $json.promptInstructions[0] }}\n\nLead definition :\n{{ $json.leadDefinition[0] }}"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        264,
+        -960
+      ],
+      "id": "96fba505-0dec-4fc1-8b23-b664da6d3fc8",
+      "name": "Check if is a Lead - LLM",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        336,
+        -736
+      ],
+      "id": "ef9e1b51-19b7-4dbd-9825-c4fbea44b4df",
+      "name": "OpenRouter Chat Model2",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      }
     },
     {
       "parameters": {
@@ -929,11 +967,12 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        32,
-        -1280
+        -16,
+        -960
       ],
       "id": "ee8112b1-4135-41b6-b619-6dee37a2f19b",
-      "name": "Search records",
+      "name": "Search Params - AT by Url",
+      "retryOnFail": true,
       "credentials": {
         "airtableTokenApi": {
           "id": "XzBWggFrPVokGo9L",
@@ -943,147 +982,247 @@
     },
     {
       "parameters": {
-        "promptType": "define",
-        "text": "=Facebook Post Content to Analyse :\n{{ $('Iterate Dataset Items - Util 25').item.json.text }}",
-        "hasOutputParser": true,
-        "messages": {
-          "messageValues": [
-            {
-              "message": "={{ $json.promptInstructions[0] }}\n\nLead definition :\n{{ $json.leadDefinition[0] }}"
-            }
-          ]
+        "operation": "upsert",
+        "base": {
+          "__rl": true,
+          "value": "app3ZDXRoKYAaYwlt",
+          "mode": "list",
+          "cachedResultName": "Boost Prospect v2",
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
         },
-        "batching": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.7,
-      "position": [
-        240,
-        -1280
-      ],
-      "id": "96fba505-0dec-4fc1-8b23-b664da6d3fc8",
-      "name": "Basic LLM Chain"
-    },
-    {
-      "parameters": {
-        "model": "google/gemini-2.5-flash",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
-      "typeVersion": 1,
-      "position": [
-        304,
-        -1056
-      ],
-      "id": "2b7da46c-4d5b-43c6-89e5-c2b221e8a4ae",
-      "name": "OpenRouter Chat Model",
-      "credentials": {
-        "openRouterApi": {
-          "id": "0qavXgV1FZOxQIaU",
-          "name": "OpenRouter"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "jsonSchemaExample": "{\n\t\"lead\": \"yes or no\",\n\t\"explication\": \"reasonning\"\n}",
-        "autoFix": true
-      },
-      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
-      "typeVersion": 1.3,
-      "position": [
-        528,
-        -1072
-      ],
-      "id": "c5b0d031-483b-4887-9406-acec425dca1f",
-      "name": "Structured Output Parser"
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
-      "typeVersion": 1,
-      "position": [
-        464,
-        -864
-      ],
-      "id": "88b2dce8-e83a-483d-94f6-ba4653edf8e4",
-      "name": "OpenRouter Chat Model1",
-      "credentials": {
-        "openRouterApi": {
-          "id": "0qavXgV1FZOxQIaU",
-          "name": "OpenRouter"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "includeOtherFields": true,
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        672,
-        -1280
-      ],
-      "id": "4325e79f-f594-4875-a327-cae5638a7e69",
-      "name": "Edit Fields1"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
+        "table": {
+          "__rl": true,
+          "value": "tblxjAhCS99MWKSQs",
+          "mode": "list",
+          "cachedResultName": "Posts Analysis",
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tblxjAhCS99MWKSQs"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "title": "={{ $('Iterate Dataset Items - Util 25').item.json.title }}",
+            "postDate": "={{ $('Iterate Dataset Items - Util 25').item.json.time }}",
+            "leadStatus": "={{ $json.output.lead }}",
+            "leadReasoning": "={{ $json.output.explication }}",
+            "facebookUrl": "={{ $('Iterate Dataset Items - Util 25').item.json.facebookUrl }}",
+            "postUrl": "={{ $('Iterate Dataset Items - Util 25').item.json.url }}",
+            "message": "={{ $('Iterate Dataset Items - Util 25').item.json.text }}",
+            "price": "={{ $('Iterate Dataset Items - Util 25').item.json.price }}",
+            "location": "={{ $('Iterate Dataset Items - Util 25').item.json.location }}",
+            "groupTitle": "={{ $('Iterate Dataset Items - Util 25').item.json.groupTitle }}",
+            "urlScraping": "=['{{ $('Search Params - AT by Url').item.json.id }}']",
+            "leadDefinition": "={{ $('Search Params - AT by Url').item.json.leadDefinition[0] }}",
+            "promptInstruction": "={{ $('Search Params - AT by Url').item.json.promptInstructions[0] }}",
+            "messageId": "={{ $('Iterate Dataset Items - Util 25').item.json.legacyId }}"
           },
-          "conditions": [
+          "matchingColumns": [
+            "messageId"
+          ],
+          "schema": [
             {
-              "id": "9dd11dc9-1cb1-4f4b-9b52-ab4867a674af",
-              "leftValue": "={{ $runIndex }}",
-              "rightValue": 10,
-              "operator": {
-                "type": "number",
-                "operation": "gt"
-              }
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "messageId",
+              "displayName": "messageId",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "title",
+              "displayName": "title",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "message",
+              "displayName": "message",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "postDate",
+              "displayName": "postDate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "leadStatus",
+              "displayName": "leadStatus",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Yes",
+                  "value": "Yes"
+                },
+                {
+                  "name": "No",
+                  "value": "No"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "leadReasoning",
+              "displayName": "leadReasoning",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "facebookUrl",
+              "displayName": "facebookUrl",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "postUrl",
+              "displayName": "postUrl",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "price",
+              "displayName": "price",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "location",
+              "displayName": "location",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "groupTitle",
+              "displayName": "groupTitle",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "urlScraping",
+              "displayName": "urlScraping",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "leadDefinition",
+              "displayName": "leadDefinition",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "promptInstruction",
+              "displayName": "promptInstruction",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
             }
           ],
-          "combinator": "and"
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
         },
         "options": {}
       },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
       "position": [
-        880,
-        -1280
+        832,
+        -880
       ],
-      "id": "bd84190e-5bbf-431b-9d54-1c911fe293ea",
-      "name": "If1"
-    },
-    {
-      "parameters": {
-        "aggregate": "aggregateAllItemData",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
-      "position": [
-        1088,
-        -1376
-      ],
-      "id": "81b078e9-0a50-422e-b9d3-178fc30d7a39",
-      "name": "Aggregate1"
+      "id": "3b0f2cf3-4b6c-46f0-afeb-5fc126c1c8b4",
+      "name": "Insert Post with Analyse - AT",
+      "retryOnFail": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "XzBWggFrPVokGo9L",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
     }
   ],
   "repo_name": "boost-prospect-v2",
   "repo_owner": "ultimvision",
   "repo_path": "workflows",
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "xqIMv4nOqM7qzjDi"
   },
   "shared": [
     {
@@ -1097,6 +1236,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-08-26T22:51:28.419Z",
-  "versionId": "094ca338-9d70-4c94-b3ef-b4bd9d3e4e5c"
+  "updatedAt": "2025-08-27T12:47:56.810Z",
+  "versionId": "1e869265-a138-43eb-9fd8-630b09db36ec"
 }
