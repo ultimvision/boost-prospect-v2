@@ -277,7 +277,7 @@
       "typeVersion": 3.4,
       "position": [
         -8032,
-        64
+        160
       ],
       "id": "3db9e805-3ba9-456e-89fe-f08396e5d127",
       "name": "Variables - Set"
@@ -299,14 +299,14 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"actId\": \"{{ $('Variables - Set').first().json.actId }}\",\n  \"name\": \"{{ $json.unique_name }}-{{ DateTime.now().toFormat('yyyy-MM-dd-HH-mm') }}\",\n  \"options\": {\n    \"build\": \"latest\",\n    \"timeoutSecs\": 3600,\n    \"memoryMbytes\": 4096\n  },\n  \"input\": \n    {\n      \"onlyPostsNewerThan\": \"{{ $now.minus({ days: 1 }).format('yyyy-LL-dd') }}\",\n      \"resultsLimit\": 50,\n      \"startUrls\": {{ $json.startUrls.toJsonString() }},\n      \"viewOption\": \"RECENT_ACTIVITY\"\n    }\n}",
+        "jsonBody": "={\n  \"actId\": \"{{ $('Variables - Set').first().json.actId }}\",\n  \"name\": \"{{ $json.unique_name }}-{{ DateTime.now().toFormat('yyyy-MM-dd-HH-mm') }}\",\n  \"options\": {\n    \"build\": \"latest\",\n    \"timeoutSecs\": 3600,\n    \"memoryMbytes\": 4096\n  },\n  \"input\": \n    {\n      \"onlyPostsNewerThan\": \"{{ $now.format('yyyy-LL-dd') }}\",\n      \"resultsLimit\": 50,\n      \"startUrls\": {{ $json.startUrls.toJsonString() }},\n      \"viewOption\": \"RECENT_ACTIVITY\"\n    }\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -6176,
-        -32
+        -6240,
+        64
       ],
       "id": "10b4ff98-f2e1-425a-a42d-84fe93142d5f",
       "name": "Create Actor Task - Apify",
@@ -329,8 +329,8 @@
       "type": "n8n-nodes-base.crypto",
       "typeVersion": 1,
       "position": [
-        -5728,
-        -32
+        -5792,
+        64
       ],
       "id": "b7a06e17-3920-4624-8e53-686206a5041e",
       "name": "Generate Idempotency Key - Util",
@@ -363,8 +363,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -5504,
-        -32
+        -5568,
+        64
       ],
       "id": "7d093989-101e-4df3-882f-4b02d99fcde6",
       "name": "Register Task Webhook - Apify",
@@ -397,8 +397,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -4384,
-        -128
+        -4448,
+        -32
       ],
       "id": "0eb648ab-cf5e-48b6-9f4a-9e63d8fe4657",
       "name": "Start Task Run - Apify",
@@ -423,7 +423,7 @@
       "typeVersion": 1,
       "position": [
         -6464,
-        -32
+        64
       ],
       "id": "5f0f58fa-2501-4186-b059-a2576aff5c92",
       "name": "Generate Task Suffix - Util",
@@ -452,8 +452,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -5952,
-        -32
+        -6016,
+        64
       ],
       "id": "f34fa5aa-5f65-4536-8301-092f2d92c8c7",
       "name": "Prepare Task ID and Auth Header - Set",
@@ -478,8 +478,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -4832,
-        -32
+        -4896,
+        64
       ],
       "id": "c68b8341-884e-4998-a1ec-6a1548fc9594",
       "name": "Apify - Get limits",
@@ -511,8 +511,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -5056,
-        -32
+        -5120,
+        64
       ],
       "id": "14e233ab-f7ee-4434-978d-574aebcd086d",
       "name": "Apify - Get task",
@@ -530,8 +530,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -5280,
-        -32
+        -5344,
+        64
       ],
       "id": "a931bf9d-0831-4ce4-846e-22de5a2e42f0",
       "name": "Check Realtime Usage > Apify"
@@ -572,8 +572,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -4608,
-        -32
+        -4672,
+        64
       ],
       "id": "3bcbfb05-97c1-443f-8f7c-df50ba3fffb5",
       "name": "Check Apify Capacity - IF"
@@ -770,8 +770,8 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        -4384,
-        64
+        -4448,
+        160
       ],
       "id": "4794c1e9-61a2-425c-8937-5e17b42dcacf",
       "name": "Create Run Apify Task - AT Apify Run",
@@ -789,7 +789,7 @@
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
       "position": [
-        -3936,
+        -4000,
         64
       ],
       "id": "0cba9d9a-4a3f-412a-acca-4b3bd1f52c8a",
@@ -822,7 +822,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -4160,
+        -4224,
         -32
       ],
       "id": "f321d0da-f379-4091-973d-809babcda584",
@@ -1020,7 +1020,7 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        -3936,
+        -4000,
         -128
       ],
       "id": "78fe98c0-b6a8-40ff-939b-694e61f43bb0",
@@ -1041,7 +1041,7 @@
       "typeVersion": 1,
       "position": [
         -7584,
-        64
+        160
       ],
       "id": "a047d59c-3b98-402f-b1f4-fbbe6936c05c",
       "name": "Set Variables"
@@ -1068,7 +1068,7 @@
       "typeVersion": 1.2,
       "position": [
         -7808,
-        64
+        160
       ],
       "id": "07af3d73-69c8-48df-87d2-0e9f33f07364",
       "name": "Get Config"
@@ -1079,7 +1079,7 @@
       "typeVersion": 1,
       "position": [
         -8256,
-        64
+        160
       ],
       "id": "66558a7c-aabc-4d41-ac60-09ce93470317",
       "name": "When clicking ‘Execute workflow’"
@@ -1120,7 +1120,7 @@
       "typeVersion": 2.1,
       "position": [
         -7360,
-        64
+        160
       ],
       "id": "6acc3c5e-2d5f-4b3f-a38a-34fce5753f3e",
       "name": "Search records",
@@ -1148,7 +1148,7 @@
       "typeVersion": 1,
       "position": [
         -6912,
-        -32
+        64
       ],
       "id": "f4a56e62-c779-4606-9fe7-d0630e416eaa",
       "name": "Aggregate"
@@ -1161,7 +1161,7 @@
       "typeVersion": 2,
       "position": [
         -6688,
-        -32
+        64
       ],
       "id": "d45423d0-547d-46e4-ad8c-04dcf6ca600b",
       "name": "Code"
@@ -1195,7 +1195,7 @@
       "typeVersion": 2.2,
       "position": [
         -7136,
-        64
+        160
       ],
       "id": "8770c20a-160d-4041-9667-97f37a6b1499",
       "name": "Check Urls Exists - IF"
@@ -1206,7 +1206,7 @@
       "typeVersion": 1,
       "position": [
         -6912,
-        160
+        256
       ],
       "id": "e797326a-52c6-4ecb-be78-dd2a6d96924b",
       "name": "No Operation, do nothing"
@@ -1232,6 +1232,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-08-26T22:31:23.864Z",
-  "versionId": "c0010c25-5b5d-4da5-8252-27d3be28be5b"
+  "updatedAt": "2025-08-27T12:46:31.310Z",
+  "versionId": "ce46cf80-0982-47b2-8ee5-2ad84d9c0845"
 }
