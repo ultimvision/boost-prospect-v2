@@ -1,0 +1,1119 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        []
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Split Out2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Split Out3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "regions": {
+      "main": [
+        [
+          {
+            "node": "Split Out4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out4": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create or update a record": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Create or update a record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me": {
+      "main": [
+        []
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-27T13:03:21.777Z",
+  "id": "FY8daboaN3q8Yhsa",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Triggers > Sync with DuProprio",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -256,
+        -896
+      ],
+      "id": "9dd4bb6b-3b13-48ce-9ad1-7727b23b7b0a",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://duproprio.com/en/api-proxy/map-search",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "is_for_sale",
+              "value": "1"
+            },
+            {
+              "name": "with_builders",
+              "value": "1"
+            },
+            {
+              "name": "parent",
+              "value": "1"
+            },
+            {
+              "name": "sort",
+              "value": "-published_at"
+            },
+            {
+              "name": "page[number]",
+              "value": "1"
+            },
+            {
+              "name": "province",
+              "value": "1"
+            },
+            {
+              "name": "page[size]",
+              "value": "11"
+            },
+            {
+              "name": "include",
+              "value": "builders"
+            },
+            {
+              "name": "min_latitude",
+              "value": "46.72206465233777"
+            },
+            {
+              "name": "min_longitude",
+              "value": "-72.00978469848634"
+            },
+            {
+              "name": "max_latitude",
+              "value": "47.02716676678123"
+            },
+            {
+              "name": "max_longitude",
+              "value": "-70.61816024780275"
+            },
+            {
+              "name": "search_scope",
+              "value": "in"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -256,
+        296
+      ],
+      "id": "582c5931-3b26-412e-b6af-dbbfa16e4112",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        296
+      ],
+      "id": "e3b75737-5254-4739-81a4-4a7ffa5b7395",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "url": "https://duproprio.com/fr/api-proxy/map-search",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "position",
+              "value": "47.58810479342969,-71.42349243164064"
+            },
+            {
+              "name": "is_builder",
+              "value": "1"
+            },
+            {
+              "name": "parent",
+              "value": "1"
+            },
+            {
+              "name": "page[number]",
+              "value": "1"
+            },
+            {
+              "name": "province",
+              "value": "1"
+            },
+            {
+              "name": "page[size]",
+              "value": "11"
+            },
+            {
+              "name": "with_builders",
+              "value": "1"
+            },
+            {
+              "name": "include",
+              "value": "builders"
+            },
+            {
+              "name": "min_latitude",
+              "value": "44.674352304281435"
+            },
+            {
+              "name": "min_longitude",
+              "value": "-80.84783935546875"
+            },
+            {
+              "name": "max_latitude",
+              "value": "50.379922183373345"
+            },
+            {
+              "name": "max_longitude",
+              "value": "-62.00738525390626"
+            },
+            {
+              "name": "search_scope",
+              "value": "in"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -256,
+        72
+      ],
+      "id": "c9b4a6c5-114a-4131-8599-a505ac92a42e",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        72
+      ],
+      "id": "66d66bd0-7594-4850-8016-77799febe1d9",
+      "name": "Split Out1"
+    },
+    {
+      "parameters": {
+        "url": "https://duproprio.com/fr/api-proxy/map-search",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "regions[]",
+              "value": "={{ $json.regions }}"
+            },
+            {
+              "name": "online_since",
+              "value": "365"
+            },
+            {
+              "name": "parent",
+              "value": "1"
+            },
+            {
+              "name": "sort",
+              "value": "-published_at"
+            },
+            {
+              "name": "page[number]",
+              "value": "1"
+            },
+            {
+              "name": "province",
+              "value": "1"
+            },
+            {
+              "name": "page[size]",
+              "value": "11"
+            },
+            {
+              "name": "with_builders",
+              "value": "1"
+            },
+            {
+              "name": "include",
+              "value": "builders"
+            },
+            {
+              "name": "min_latitude",
+              "value": "42.77014"
+            },
+            {
+              "name": "min_longitude",
+              "value": "-80.48584"
+            },
+            {
+              "name": "max_latitude",
+              "value": "63.01511"
+            },
+            {
+              "name": "max_longitude",
+              "value": "-55.59082"
+            },
+            {
+              "name": "search_scope",
+              "value": "in"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -32,
+        -600
+      ],
+      "id": "290fba2b-2679-4a17-b78b-b47e5fb76e5a",
+      "name": "HTTP Request2"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        192,
+        -600
+      ],
+      "id": "762bcd54-030d-4703-a033-dbde723a4fb6",
+      "name": "Split Out2"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "base": {
+          "__rl": true,
+          "value": "app3ZDXRoKYAaYwlt",
+          "mode": "list",
+          "cachedResultName": "Boost Prospect v2",
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblWB5d4pMirX2h0K",
+          "mode": "list",
+          "cachedResultName": "DuProprio",
+          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tblWB5d4pMirX2h0K"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "group": "={{ $json.group }}",
+            "is_builder": "={{ $json.is_builder }}",
+            "is_rental": "={{ $json.is_rental }}",
+            "is_new_used": "={{ $json.is_new_used }}",
+            "is_new": "={{ $json.is_new }}",
+            "is_sold": "={{ $json.is_sold }}",
+            "latitude": "={{ $json.latitude }}",
+            "longitude": "={{ $json.longitude }}",
+            "in_search": "={{ $json.in_search }}",
+            "price": "={{ $json.price }}",
+            "is_featured_home": "={{ $json.is_featured_home }}",
+            "city_id": "={{ $json.address.city_id }}",
+            "region_id": "={{ $json.address.region_id }}",
+            "province_id": "={{ $json.address.province_id }}",
+            "id_ek": "={{ $json.id }}",
+            "source": "={{ $json.source }}",
+            "price_display": "={{ $json.price_display }}",
+            "type": "={{ $json.type }}",
+            "property_type": "={{ $json.property_type }}",
+            "street": "={{ $json.address.street }}",
+            "city": "={{ $json.address.city }}",
+            "region": "={{ $json.address.region }}",
+            "province": "={{ $json.address.province }}",
+            "province_abbr": "={{ $json.address.province_abbr }}",
+            "postal_code": "={{ $json.address.postal_code }}",
+            "photo_primary_uri": "={{ $json.photo_primary.uri }}",
+            "photo_primary_uri_1024": "={{ $json.photo_primary.uri_1024 }}",
+            "photo": "=[\n  {\n    \"url\": \"https://photos.duproprio.com/{{ $json.photo_primary.uri }}\"\n  }\n]",
+            "big_photo": "=[\n  {\n    \"url\": \"https://photos.duproprio.com/{{ $json.photo_primary.uri_1024 }}\"\n  }\n]"
+          },
+          "matchingColumns": [
+            "id_ek"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "id_ek",
+              "displayName": "id_ek",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "group",
+              "displayName": "group",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "is_builder",
+              "displayName": "is_builder",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "is_rental",
+              "displayName": "is_rental",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "is_new_used",
+              "displayName": "is_new_used",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "is_new",
+              "displayName": "is_new",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "is_sold",
+              "displayName": "is_sold",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "latitude",
+              "displayName": "latitude",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "longitude",
+              "displayName": "longitude",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "in_search",
+              "displayName": "in_search",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "source",
+              "displayName": "source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "price",
+              "displayName": "price",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "price_display",
+              "displayName": "price_display",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "type",
+              "displayName": "type",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "is_featured_home",
+              "displayName": "is_featured_home",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "property_type",
+              "displayName": "property_type",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "street",
+              "displayName": "street",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "city",
+              "displayName": "city",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "city_id",
+              "displayName": "city_id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "region",
+              "displayName": "region",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "region_id",
+              "displayName": "region_id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "province",
+              "displayName": "province",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "province_abbr",
+              "displayName": "province_abbr",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "province_id",
+              "displayName": "province_id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "postal_code",
+              "displayName": "postal_code",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "photo_primary_uri",
+              "displayName": "photo_primary_uri",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "photo_primary_uri_1024",
+              "displayName": "photo_primary_uri_1024",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "photo",
+              "displayName": "photo",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "big_photo",
+              "displayName": "big_photo",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        640,
+        -672
+      ],
+      "id": "23c8275e-ee8a-4954-8759-881515defa23",
+      "name": "Create or update a record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "XzBWggFrPVokGo9L",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://duproprio.com/fr/api-proxy/map-search",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "regions[]",
+              "value": "115"
+            },
+            {
+              "name": "online_since",
+              "value": "30"
+            },
+            {
+              "name": "parent",
+              "value": "1"
+            },
+            {
+              "name": "sort",
+              "value": "-published_at"
+            },
+            {
+              "name": "page[number]",
+              "value": "1"
+            },
+            {
+              "name": "province",
+              "value": "1"
+            },
+            {
+              "name": "page[size]",
+              "value": "11"
+            },
+            {
+              "name": "with_builders",
+              "value": "1"
+            },
+            {
+              "name": "include",
+              "value": "builders"
+            },
+            {
+              "name": "min_latitude",
+              "value": "42.77014"
+            },
+            {
+              "name": "min_longitude",
+              "value": "-80.48584"
+            },
+            {
+              "name": "max_latitude",
+              "value": "63.01511"
+            },
+            {
+              "name": "max_longitude",
+              "value": "-55.59082"
+            },
+            {
+              "name": "search_scope",
+              "value": "in"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -256,
+        -152
+      ],
+      "id": "a82c4bde-9aaf-41cc-9d3f-8dd0a864003d",
+      "name": "HTTP Request3"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        -152
+      ],
+      "id": "755d2aa3-c93f-4e1b-874c-2142aefc7c71",
+      "name": "Split Out3"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n  \"regions\": [\n    115,\n    257,\n    3,\n    8,\n    1,\n    17,\n    114,\n    12,\n    9,\n    5,\n    11,\n    14,\n    15,\n    13,\n    4,\n    6,\n    16,\n    31,\n    10,\n    7,\n    2\n  ]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -32,
+        -896
+      ],
+      "id": "4ba27913-eccc-4c0d-baea-20e88d30e8b3",
+      "name": "regions"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "regions",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        192,
+        -896
+      ],
+      "id": "bb72429f-f432-460e-9bde-72c88397d337",
+      "name": "Split Out4"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        416,
+        -896
+      ],
+      "id": "1ec5cf77-8edd-483c-8ebd-7ba5858b1c77",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        864,
+        -600
+      ],
+      "id": "0991df86-41f0-4063-8d56-e8725137552e",
+      "name": "Wait",
+      "webhookId": "94772fdd-6306-4297-bba0-d4b340d01d1b"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -256,
+        -600
+      ],
+      "id": "f1693374-d6bc-422c-ba4f-cc3ceb158c63",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ $workflow.id }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        640,
+        -896
+      ],
+      "id": "0d9104f1-fa40-4253-8d5e-46d43b95fc12",
+      "name": "Execute Workflow"
+    },
+    {
+      "parameters": {
+        "batchSize": 25,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        416,
+        -600
+      ],
+      "id": "f3e84815-37a7-447a-bf84-e65c079c2429",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "name": "Replace Me",
+      "typeVersion": 1,
+      "position": [
+        -256,
+        -376
+      ],
+      "id": "dcf3389b-afb5-4e66-86b0-70bac23562f4"
+    }
+  ],
+  "repo_name": "boost-prospect-v2",
+  "repo_owner": "ultimvision",
+  "repo_path": "workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-08-27T13:03:21.777Z",
+      "updatedAt": "2025-08-27T13:03:21.777Z",
+      "role": "workflow:owner",
+      "workflowId": "FY8daboaN3q8Yhsa",
+      "projectId": "zxVtQj8AiJx7hlkL"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-27T17:21:34.416Z",
+  "versionId": "5f904479-4c93-4b87-a60c-efdac146db90"
+}
