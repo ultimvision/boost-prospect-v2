@@ -1,0 +1,103 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-28T11:13:46.807Z",
+  "id": "adRc6pBw3yfVYOxh",
+  "isArchived": false,
+  "meta": null,
+  "name": "TEST > Webhook GET",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "/test",
+        "responseMode": "responseNode",
+        "options": {
+          "rawBody": false
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -432,
+        -48
+      ],
+      "id": "6cbe8631-8561-4b5e-b248-f24cca04f029",
+      "name": "Webhook",
+      "webhookId": "1e9fab17-408f-4c13-86e5-183b96a361d6"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>|<html lang=\"fr\"><head>  <meta charset=\"UTF-8\" />  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />  <title>Merci</title>  <style>    body {font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:#f8fafc; margin:0;}    .wrap {max-width:640px; margin:12vh auto; background:#fff; border-radius:16px; padding:40px; box-shadow:0 10px 30px rgba(0,0,0,0.06);}    h1 {margin:0 0 10px; font-size:28px}    p {margin:0 0 14px; color:#334155}    .small {font-size:12px; color:#64748b}    .btn {display:inline-block; margin-top:18px; padding:10px 16px; border-radius:10px; border:1px solid #e2e8f0; text-decoration:none; color:#0f172a}  </style></head><body>  <main class=\"wrap\">    <h1>Merci pour votre soumission 🎉</h1>    <p>Nous avons bien reçu vos informations.</p>    <p class=\"small\">Si vous êtes arrivé ici après un formulaire, vous pouvez fermer cet onglet.</p>    <a class=\"btn\" href=\"/\">Retour</a>  </main></body></html>",
+        "options": {
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/html; charset=utf-8"
+              }
+            ]
+          }
+        }
+      },
+      "id": "bbfc46cb-8c1b-4b49-9934-86f082c29fe9",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        -128,
+        -208
+      ]
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -144,
+        48
+      ],
+      "id": "c0768d7a-8a36-48a8-9973-48a91ab1471c",
+      "name": "Wait",
+      "webhookId": "ce765b26-a57d-457a-98c0-4f1c862aa1a4"
+    }
+  ],
+  "repo_name": "boost-prospect-v2",
+  "repo_owner": "ultimvision",
+  "repo_path": "workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-08-28T11:13:46.807Z",
+      "updatedAt": "2025-08-28T11:13:46.807Z",
+      "role": "workflow:owner",
+      "workflowId": "adRc6pBw3yfVYOxh",
+      "projectId": "zxVtQj8AiJx7hlkL"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-08-28T11:47:49.866Z",
+  "versionId": "88bd6f14-07bb-4e50-ba7e-5842ba838dd3"
+}
