@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "Get Config",
+            "node": "Vault",
             "type": "main",
             "index": 0
           }
@@ -78,7 +78,7 @@
       "main": [
         [
           {
-            "node": "Update Status",
+            "node": "Update status - AT Apollo",
             "type": "main",
             "index": 0
           }
@@ -169,7 +169,7 @@
       "main": [
         [
           {
-            "node": "Create Run Apify Task - AT Apify Run1",
+            "node": "Create Run Apify Task - AT Apify Run_2",
             "type": "main",
             "index": 0
           }
@@ -199,6 +199,17 @@
         [
           {
             "node": "Check Prospecting URL Present - IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vault": {
+      "main": [
+        [
+          {
+            "node": "Get Config",
             "type": "main",
             "index": 0
           }
@@ -243,8 +254,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -3040,
-        -352
+        -3264,
+        -368
       ],
       "id": "1b1d96f8-b54a-4ad7-b6e5-95f55e40d191",
       "name": "Variables - Set"
@@ -259,8 +270,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -3264,
-        -352
+        -3488,
+        -368
       ],
       "id": "cf480a9f-1d97-4df5-b3c8-9787f9710c47",
       "name": "Receive Apollo Lead Request - HTTP",
@@ -313,7 +324,7 @@
       "typeVersion": 2.2,
       "position": [
         -2368,
-        -352
+        -368
       ],
       "id": "65d163d5-6985-4add-b560-4d1f818d39fe",
       "name": "Check Prospecting URL Present - IF",
@@ -323,14 +334,16 @@
       "parameters": {
         "method": "POST",
         "url": "https://api.apify.com/v2/actor-tasks",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Accept",
               "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Vault').item.json.APIFY_TOKENS }}"
             }
           ]
         },
@@ -343,17 +356,11 @@
       "typeVersion": 4.2,
       "position": [
         -1920,
-        -448
+        -464
       ],
       "id": "3e152c57-5639-403d-923d-d568cdd887a4",
       "name": "Create Actor Task - Apify",
       "retryOnFail": true,
-      "credentials": {
-        "httpBearerAuth": {
-          "id": "c5ccYKuRoY4O10nO",
-          "name": "Bearer Apify"
-        }
-      },
       "notes": "PHASE: Utility | Purpose: Prepare task_id and Authorization header JSON template for Apify webhook registration. | Inputs: Apify response data.id and $vars.apify_webhook_bearer_token_callback. | Outputs: task_id field and payload_header string containing JSON headers. | Dependencies: Apify API response shape; n8n Variables. | Special Cases: Ensure bearer token exists and header JSON is valid; actorId and idempotencyKey are set elsewhere."
     },
     {
@@ -367,7 +374,7 @@
       "typeVersion": 1,
       "position": [
         -1472,
-        -448
+        -464
       ],
       "id": "1734ea98-4ddf-4c07-b390-30e03b23603a",
       "name": "Generate Idempotency Key - Util",
@@ -377,14 +384,16 @@
       "parameters": {
         "method": "POST",
         "url": "https://api.apify.com/v2/webhooks",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Accept",
               "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Vault').item.json.APIFY_TOKENS }}"
             }
           ]
         },
@@ -401,31 +410,27 @@
       "typeVersion": 4.2,
       "position": [
         -1248,
-        -448
+        -464
       ],
       "id": "fbbcbe4e-3fb4-413c-b053-e29c026166fa",
       "name": "Register Task Webhook - Apify",
       "retryOnFail": true,
-      "credentials": {
-        "httpBearerAuth": {
-          "id": "c5ccYKuRoY4O10nO",
-          "name": "Bearer Apify"
-        }
-      },
       "notes": "PHASE: Execution | Purpose: Register a lifecycle webhook for the Apify task. | Inputs: task_id to bind, idempotencyKey for dedup, requestUrl from $vars.apify_apollo_webhook_callback, and headersTemplate from payload_header. | Outputs: Webhook registration metadata from Apify. | Dependencies: Apify API v2 /webhooks. | Special Cases: Ensure headersTemplate is valid JSON and handle 409 conflicts/retries."
     },
     {
       "parameters": {
         "method": "POST",
         "url": "=https://api.apify.com/v2/actor-tasks/{{ $('Prepare Task ID and Auth Header - Set').item.json.task_id }}/runs",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Accept",
               "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Vault').item.json.APIFY_TOKENS }}"
             }
           ]
         },
@@ -435,17 +440,11 @@
       "typeVersion": 4.2,
       "position": [
         -128,
-        -544
+        -560
       ],
       "id": "0ac41ba2-810b-4280-830a-9a05453e7d67",
       "name": "Start Task Run - Apify",
       "retryOnFail": false,
-      "credentials": {
-        "httpBearerAuth": {
-          "id": "c5ccYKuRoY4O10nO",
-          "name": "Bearer Apify"
-        }
-      },
       "onError": "continueErrorOutput",
       "notes": "PHASE: Execution | Purpose: Start an Apify task run for the created task. | Inputs: task_id and Apify Bearer auth. | Outputs: Run metadata including run ID and status. | Dependencies: Apify API v2 /actor-tasks/{taskId}/runs. | Special Cases: Asynchronous start; handle pending states, retries, and timeouts."
     },
@@ -457,7 +456,7 @@
       "typeVersion": 1,
       "position": [
         -2144,
-        -256
+        -272
       ],
       "id": "4fe2f2f6-e69e-4a6d-a825-a164da91285b",
       "name": "Handle Missing Prospecting URL - Error",
@@ -474,7 +473,7 @@
       "typeVersion": 1,
       "position": [
         -2144,
-        -448
+        -464
       ],
       "id": "f1b4576a-8faa-4cc1-82e6-26048dac6f6e",
       "name": "Generate Task Suffix - Util",
@@ -504,7 +503,7 @@
       "typeVersion": 3.4,
       "position": [
         -1696,
-        -448
+        -464
       ],
       "id": "73812d02-0c3a-4f05-a6db-675cc2d88cf0",
       "name": "Prepare Task ID and Auth Header - Set",
@@ -513,14 +512,16 @@
     {
       "parameters": {
         "url": "=https://api.apify.com/v2/users/me/limits",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Accept",
               "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Vault').item.json.APIFY_TOKENS }}"
             }
           ]
         },
@@ -530,30 +531,26 @@
       "typeVersion": 4.2,
       "position": [
         -576,
-        -448
+        -464
       ],
       "id": "c1add31c-1dfd-47ca-9ab0-3a44e9fe54a1",
       "name": "Apify - Get limits",
       "retryOnFail": true,
-      "credentials": {
-        "httpBearerAuth": {
-          "id": "c5ccYKuRoY4O10nO",
-          "name": "Bearer Apify"
-        }
-      },
       "notes": "PHASE: Execution | Purpose: Start an Apify task run for the created task. | Inputs: task_id and Apify Bearer auth. | Outputs: Run metadata including run ID and status. | Dependencies: Apify API v2 /actor-tasks/{taskId}/runs. | Special Cases: Asynchronous start; handle pending states, retries, and timeouts."
     },
     {
       "parameters": {
         "url": "=https://api.apify.com/v2/actor-tasks/{{ $('Create Actor Task - Apify').item.json.data.id }}",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Accept",
               "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Vault').item.json.APIFY_TOKENS }}"
             }
           ]
         },
@@ -563,17 +560,11 @@
       "typeVersion": 4.2,
       "position": [
         -800,
-        -448
+        -464
       ],
       "id": "02e32e80-979e-46c8-abb8-63900a85ad25",
       "name": "Apify - Get task",
       "retryOnFail": true,
-      "credentials": {
-        "httpBearerAuth": {
-          "id": "c5ccYKuRoY4O10nO",
-          "name": "Bearer Apify"
-        }
-      },
       "notes": "PHASE: Execution | Purpose: Start an Apify task run for the created task. | Inputs: task_id and Apify Bearer auth. | Outputs: Run metadata including run ID and status. | Dependencies: Apify API v2 /actor-tasks/{taskId}/runs. | Special Cases: Asynchronous start; handle pending states, retries, and timeouts."
     },
     {
@@ -613,191 +604,10 @@
       "typeVersion": 2.2,
       "position": [
         -352,
-        -448
+        -464
       ],
       "id": "7963f744-a8df-4808-a615-6aaa9486fb64",
       "name": "Check Apify Capacity - IF"
-    },
-    {
-      "parameters": {
-        "operation": "create",
-        "base": {
-          "__rl": true,
-          "value": "app3ZDXRoKYAaYwlt",
-          "mode": "list",
-          "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
-        },
-        "table": {
-          "__rl": true,
-          "value": "tblLejx1Cygn9uAch",
-          "mode": "list",
-          "cachedResultName": "Apify Runs",
-          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tblLejx1Cygn9uAch"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "taskId": "={{ $('Create Actor Task - Apify').item.json.data.id }}",
-            "requestedMemoryMbytes": "={{ Math.ceil($json.data.current.actorMemoryGbytes + ($('Apify - Get task').item.json.data.options.memoryMbytes / 1000)) }}",
-            "actorMemoryGbytes": "={{ $json.data.current.actorMemoryGbytes }}",
-            "activeActorJobCount": "={{ $json.data.current.activeActorJobCount }}",
-            "maxActorMemoryGbytes": "={{ $json.data.limits.maxActorMemoryGbytes }}",
-            "maxConcurrentActorJobs": "={{ $json.data.limits.maxConcurrentActorJobs }}"
-          },
-          "matchingColumns": [],
-          "schema": [
-            {
-              "id": "taskId",
-              "displayName": "taskId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "createAt",
-              "displayName": "createAt",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "lastVerificationAt",
-              "displayName": "lastVerificationAt",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "processedAt",
-              "displayName": "processedAt",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "status",
-              "displayName": "status",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Queue",
-                  "value": "Queue"
-                },
-                {
-                  "name": "Processed",
-                  "value": "Processed"
-                }
-              ],
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "maxConcurrentActorJobs",
-              "displayName": "maxConcurrentActorJobs",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "maxActorMemoryGbytes",
-              "displayName": "maxActorMemoryGbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "activeActorJobCount",
-              "displayName": "activeActorJobCount",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "actorMemoryGbytes",
-              "displayName": "actorMemoryGbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "requestedMemoryMbytes",
-              "displayName": "requestedMemoryMbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "missingMemoryMbytes",
-              "displayName": "missingMemoryMbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.airtable",
-      "typeVersion": 2.1,
-      "position": [
-        -128,
-        -352
-      ],
-      "id": "df7f7d11-23b2-409a-9ffc-4c12fae05a44",
-      "name": "Create Run Apify Task - AT Apify Run",
-      "credentials": {
-        "airtableTokenApi": {
-          "id": "XzBWggFrPVokGo9L",
-          "name": "Airtable Personal Access Token account"
-        }
-      }
     },
     {
       "parameters": {},
@@ -805,7 +615,7 @@
       "typeVersion": 1,
       "position": [
         -1024,
-        -448
+        -464
       ],
       "id": "e0bc5f10-7bb5-4721-8441-80d06be64926",
       "name": "Check Realtime Usage > Apify"
@@ -818,7 +628,7 @@
       "typeVersion": 1,
       "position": [
         320,
-        -352
+        -368
       ],
       "id": "54f04be2-3bf0-4266-9ca0-3e5d33f67a83",
       "name": "Stop and Error"
@@ -851,191 +661,10 @@
       "typeVersion": 2.2,
       "position": [
         96,
-        -448
+        -464
       ],
       "id": "b587fddf-a7c9-46be-9c3c-ddbfd3b039d8",
       "name": "Apify Error 402 - IF"
-    },
-    {
-      "parameters": {
-        "operation": "create",
-        "base": {
-          "__rl": true,
-          "value": "app3ZDXRoKYAaYwlt",
-          "mode": "list",
-          "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
-        },
-        "table": {
-          "__rl": true,
-          "value": "tblLejx1Cygn9uAch",
-          "mode": "list",
-          "cachedResultName": "Apify Runs",
-          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tblLejx1Cygn9uAch"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "taskId": "={{ $('Create Actor Task - Apify').item.json.data.id }}",
-            "requestedMemoryMbytes": "={{ Math.ceil($json.data.current.actorMemoryGbytes + ($('Apify - Get task').item.json.data.options.memoryMbytes / 1000)) }}",
-            "actorMemoryGbytes": "={{ $json.data.current.actorMemoryGbytes }}",
-            "activeActorJobCount": "={{ $json.data.current.activeActorJobCount }}",
-            "maxActorMemoryGbytes": "={{ $json.data.limits.maxActorMemoryGbytes }}",
-            "maxConcurrentActorJobs": "={{ $json.data.limits.maxConcurrentActorJobs }}"
-          },
-          "matchingColumns": [],
-          "schema": [
-            {
-              "id": "taskId",
-              "displayName": "taskId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "createAt",
-              "displayName": "createAt",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "lastVerificationAt",
-              "displayName": "lastVerificationAt",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "processedAt",
-              "displayName": "processedAt",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "status",
-              "displayName": "status",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Queue",
-                  "value": "Queue"
-                },
-                {
-                  "name": "Processed",
-                  "value": "Processed"
-                }
-              ],
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "maxConcurrentActorJobs",
-              "displayName": "maxConcurrentActorJobs",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "maxActorMemoryGbytes",
-              "displayName": "maxActorMemoryGbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "activeActorJobCount",
-              "displayName": "activeActorJobCount",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "actorMemoryGbytes",
-              "displayName": "actorMemoryGbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "requestedMemoryMbytes",
-              "displayName": "requestedMemoryMbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "missingMemoryMbytes",
-              "displayName": "missingMemoryMbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.airtable",
-      "typeVersion": 2.1,
-      "position": [
-        320,
-        -544
-      ],
-      "id": "e81e2582-b90a-40b4-9934-0e03fe86bccd",
-      "name": "Create Run Apify Task - AT Apify Run1",
-      "credentials": {
-        "airtableTokenApi": {
-          "id": "XzBWggFrPVokGo9L",
-          "name": "Airtable Personal Access Token account"
-        }
-      }
     },
     {
       "parameters": {
@@ -1046,7 +675,7 @@
       "typeVersion": 1,
       "position": [
         -2592,
-        -352
+        -368
       ],
       "id": "213b39ee-1589-4cac-a213-9698241f1470",
       "name": "Set Variables"
@@ -1073,1466 +702,128 @@
       "typeVersion": 1.2,
       "position": [
         -2816,
-        -352
+        -368
       ],
       "id": "00cc3547-f7b8-4a36-8a79-c2987caef86b",
       "name": "Get Config"
     },
     {
       "parameters": {
-        "operation": "update",
-        "base": {
+        "workflowId": {
           "__rl": true,
-          "value": "app3ZDXRoKYAaYwlt",
+          "value": "S5knCtBpBpMCDTNI",
           "mode": "list",
-          "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
+          "cachedResultName": "Vault"
         },
-        "table": {
-          "__rl": true,
-          "value": "tbl7Ch90T04b8yjiQ",
-          "mode": "list",
-          "cachedResultName": "Apollo",
-          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tbl7Ch90T04b8yjiQ"
-        },
-        "columns": {
+        "workflowInputs": {
           "mappingMode": "defineBelow",
-          "value": {
-            "id": "={{ $('Receive Apollo Lead Request - HTTP').first().json.body.recId }}",
-            "status": "In progress",
-            "actorRunId": "={{ $json.data.id }}",
-            "statusDetails": "👉 We’re retrieving your contacts in the background. Please wait a few minutes until the process is complete."
-          },
-          "matchingColumns": [
-            "id"
-          ],
-          "schema": [
-            {
-              "id": "id",
-              "displayName": "id",
-              "required": false,
-              "defaultMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": false
-            },
-            {
-              "id": "name",
-              "displayName": "name",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "description",
-              "displayName": "description",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "recId",
-              "displayName": "recId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "user",
-              "displayName": "user",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "prospectingUrl",
-              "displayName": "prospectingUrl",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "prospectingRequest",
-              "displayName": "prospectingRequest",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "creationDate",
-              "displayName": "creationDate",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "modificationDate",
-              "displayName": "modificationDate",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "executionDate",
-              "displayName": "executionDate",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "requestNumber",
-              "displayName": "requestNumber",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "status",
-              "displayName": "status",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Pending Action",
-                  "value": "Pending Action"
-                },
-                {
-                  "name": "Ready to Start",
-                  "value": "Ready to Start"
-                },
-                {
-                  "name": "In progress",
-                  "value": "In progress"
-                },
-                {
-                  "name": "Already Processed",
-                  "value": "Already Processed"
-                },
-                {
-                  "name": "Successfully Completed",
-                  "value": "Successfully Completed"
-                },
-                {
-                  "name": "Error Detected",
-                  "value": "Error Detected"
-                }
-              ],
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "statusDetails",
-              "displayName": "statusDetails",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "industryKeywords",
-              "displayName": "industryKeywords",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "locationCityorState",
-              "displayName": "locationCityorState",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "jobTitles",
-              "displayName": "jobTitles",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "employeesNumber",
-              "displayName": "employeesNumber",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "options": [
-                {
-                  "name": "1-10",
-                  "value": "1-10"
-                },
-                {
-                  "name": "11-20",
-                  "value": "11-20"
-                },
-                {
-                  "name": "21-50",
-                  "value": "21-50"
-                },
-                {
-                  "name": "51-100",
-                  "value": "51-100"
-                },
-                {
-                  "name": "101-200",
-                  "value": "101-200"
-                },
-                {
-                  "name": "201-500",
-                  "value": "201-500"
-                },
-                {
-                  "name": "501-1000",
-                  "value": "501-1000"
-                },
-                {
-                  "name": "1001-2000",
-                  "value": "1001-2000"
-                },
-                {
-                  "name": "2001-5000",
-                  "value": "2001-5000"
-                },
-                {
-                  "name": "5001-10000",
-                  "value": "5001-10000"
-                },
-                {
-                  "name": "10001+",
-                  "value": "10001+"
-                }
-              ],
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "locationCountry",
-              "displayName": "locationCountry",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "options": [
-                {
-                  "name": "Aruba",
-                  "value": "Aruba"
-                },
-                {
-                  "name": "Afghanistan",
-                  "value": "Afghanistan"
-                },
-                {
-                  "name": "Angola",
-                  "value": "Angola"
-                },
-                {
-                  "name": "Anguilla",
-                  "value": "Anguilla"
-                },
-                {
-                  "name": "Åland Islands",
-                  "value": "Åland Islands"
-                },
-                {
-                  "name": "Albania",
-                  "value": "Albania"
-                },
-                {
-                  "name": "Andorra",
-                  "value": "Andorra"
-                },
-                {
-                  "name": "United Arab Emirates",
-                  "value": "United Arab Emirates"
-                },
-                {
-                  "name": "Argentina",
-                  "value": "Argentina"
-                },
-                {
-                  "name": "Armenia",
-                  "value": "Armenia"
-                },
-                {
-                  "name": "American Samoa",
-                  "value": "American Samoa"
-                },
-                {
-                  "name": "Antarctica",
-                  "value": "Antarctica"
-                },
-                {
-                  "name": "French Southern Territories",
-                  "value": "French Southern Territories"
-                },
-                {
-                  "name": "Antigua and Barbuda",
-                  "value": "Antigua and Barbuda"
-                },
-                {
-                  "name": "Australia",
-                  "value": "Australia"
-                },
-                {
-                  "name": "Austria",
-                  "value": "Austria"
-                },
-                {
-                  "name": "Azerbaijan",
-                  "value": "Azerbaijan"
-                },
-                {
-                  "name": "Burundi",
-                  "value": "Burundi"
-                },
-                {
-                  "name": "Belgium",
-                  "value": "Belgium"
-                },
-                {
-                  "name": "Benin",
-                  "value": "Benin"
-                },
-                {
-                  "name": "Bonaire",
-                  "value": "Bonaire"
-                },
-                {
-                  "name": "Sint Eustatius and Saba",
-                  "value": "Sint Eustatius and Saba"
-                },
-                {
-                  "name": "Burkina Faso",
-                  "value": "Burkina Faso"
-                },
-                {
-                  "name": "Bangladesh",
-                  "value": "Bangladesh"
-                },
-                {
-                  "name": "Bulgaria",
-                  "value": "Bulgaria"
-                },
-                {
-                  "name": "Bahrain",
-                  "value": "Bahrain"
-                },
-                {
-                  "name": "Bahamas",
-                  "value": "Bahamas"
-                },
-                {
-                  "name": "Bosnia and Herzegovina",
-                  "value": "Bosnia and Herzegovina"
-                },
-                {
-                  "name": "Saint Barthélemy",
-                  "value": "Saint Barthélemy"
-                },
-                {
-                  "name": "Belarus",
-                  "value": "Belarus"
-                },
-                {
-                  "name": "Belize",
-                  "value": "Belize"
-                },
-                {
-                  "name": "Bermuda",
-                  "value": "Bermuda"
-                },
-                {
-                  "name": "Bolivia",
-                  "value": "Bolivia"
-                },
-                {
-                  "name": "Plurinational State of",
-                  "value": "Plurinational State of"
-                },
-                {
-                  "name": "Brazil",
-                  "value": "Brazil"
-                },
-                {
-                  "name": "Barbados",
-                  "value": "Barbados"
-                },
-                {
-                  "name": "Brunei Darussalam",
-                  "value": "Brunei Darussalam"
-                },
-                {
-                  "name": "Bhutan",
-                  "value": "Bhutan"
-                },
-                {
-                  "name": "Bouvet Island",
-                  "value": "Bouvet Island"
-                },
-                {
-                  "name": "Botswana",
-                  "value": "Botswana"
-                },
-                {
-                  "name": "Central African Republic",
-                  "value": "Central African Republic"
-                },
-                {
-                  "name": "Canada",
-                  "value": "Canada"
-                },
-                {
-                  "name": "Cocos (Keeling) Islands",
-                  "value": "Cocos (Keeling) Islands"
-                },
-                {
-                  "name": "Switzerland",
-                  "value": "Switzerland"
-                },
-                {
-                  "name": "Chile",
-                  "value": "Chile"
-                },
-                {
-                  "name": "China",
-                  "value": "China"
-                },
-                {
-                  "name": "Côte d'Ivoire",
-                  "value": "Côte d'Ivoire"
-                },
-                {
-                  "name": "Cameroon",
-                  "value": "Cameroon"
-                },
-                {
-                  "name": "Congo",
-                  "value": "Congo"
-                },
-                {
-                  "name": "The Democratic Republic of the",
-                  "value": "The Democratic Republic of the"
-                },
-                {
-                  "name": "Cook Islands",
-                  "value": "Cook Islands"
-                },
-                {
-                  "name": "Colombia",
-                  "value": "Colombia"
-                },
-                {
-                  "name": "Comoros",
-                  "value": "Comoros"
-                },
-                {
-                  "name": "Cabo Verde",
-                  "value": "Cabo Verde"
-                },
-                {
-                  "name": "Costa Rica",
-                  "value": "Costa Rica"
-                },
-                {
-                  "name": "Cuba",
-                  "value": "Cuba"
-                },
-                {
-                  "name": "Curaçao",
-                  "value": "Curaçao"
-                },
-                {
-                  "name": "Christmas Island",
-                  "value": "Christmas Island"
-                },
-                {
-                  "name": "Cayman Islands",
-                  "value": "Cayman Islands"
-                },
-                {
-                  "name": "Cyprus",
-                  "value": "Cyprus"
-                },
-                {
-                  "name": "Czechia",
-                  "value": "Czechia"
-                },
-                {
-                  "name": "Germany",
-                  "value": "Germany"
-                },
-                {
-                  "name": "Djibouti",
-                  "value": "Djibouti"
-                },
-                {
-                  "name": "Dominica",
-                  "value": "Dominica"
-                },
-                {
-                  "name": "Denmark",
-                  "value": "Denmark"
-                },
-                {
-                  "name": "Dominican Republic",
-                  "value": "Dominican Republic"
-                },
-                {
-                  "name": "Algeria",
-                  "value": "Algeria"
-                },
-                {
-                  "name": "Ecuador",
-                  "value": "Ecuador"
-                },
-                {
-                  "name": "Egypt",
-                  "value": "Egypt"
-                },
-                {
-                  "name": "Eritrea",
-                  "value": "Eritrea"
-                },
-                {
-                  "name": "Western Sahara",
-                  "value": "Western Sahara"
-                },
-                {
-                  "name": "Spain",
-                  "value": "Spain"
-                },
-                {
-                  "name": "Estonia",
-                  "value": "Estonia"
-                },
-                {
-                  "name": "Ethiopia",
-                  "value": "Ethiopia"
-                },
-                {
-                  "name": "Finland",
-                  "value": "Finland"
-                },
-                {
-                  "name": "Fiji",
-                  "value": "Fiji"
-                },
-                {
-                  "name": "Falkland Islands (Malvinas)",
-                  "value": "Falkland Islands (Malvinas)"
-                },
-                {
-                  "name": "France",
-                  "value": "France"
-                },
-                {
-                  "name": "Faroe Islands",
-                  "value": "Faroe Islands"
-                },
-                {
-                  "name": "Micronesia",
-                  "value": "Micronesia"
-                },
-                {
-                  "name": "Federated States of",
-                  "value": "Federated States of"
-                },
-                {
-                  "name": "Gabon",
-                  "value": "Gabon"
-                },
-                {
-                  "name": "United Kingdom",
-                  "value": "United Kingdom"
-                },
-                {
-                  "name": "Georgia",
-                  "value": "Georgia"
-                },
-                {
-                  "name": "Guernsey",
-                  "value": "Guernsey"
-                },
-                {
-                  "name": "Ghana",
-                  "value": "Ghana"
-                },
-                {
-                  "name": "Gibraltar",
-                  "value": "Gibraltar"
-                },
-                {
-                  "name": "Guinea",
-                  "value": "Guinea"
-                },
-                {
-                  "name": "Guadeloupe",
-                  "value": "Guadeloupe"
-                },
-                {
-                  "name": "Gambia",
-                  "value": "Gambia"
-                },
-                {
-                  "name": "Guinea-Bissau",
-                  "value": "Guinea-Bissau"
-                },
-                {
-                  "name": "Equatorial Guinea",
-                  "value": "Equatorial Guinea"
-                },
-                {
-                  "name": "Greece",
-                  "value": "Greece"
-                },
-                {
-                  "name": "Grenada",
-                  "value": "Grenada"
-                },
-                {
-                  "name": "Greenland",
-                  "value": "Greenland"
-                },
-                {
-                  "name": "Guatemala",
-                  "value": "Guatemala"
-                },
-                {
-                  "name": "French Guiana",
-                  "value": "French Guiana"
-                },
-                {
-                  "name": "Guam",
-                  "value": "Guam"
-                },
-                {
-                  "name": "Guyana",
-                  "value": "Guyana"
-                },
-                {
-                  "name": "Hong Kong",
-                  "value": "Hong Kong"
-                },
-                {
-                  "name": "Heard Island and McDonald Islands",
-                  "value": "Heard Island and McDonald Islands"
-                },
-                {
-                  "name": "Honduras",
-                  "value": "Honduras"
-                },
-                {
-                  "name": "Croatia",
-                  "value": "Croatia"
-                },
-                {
-                  "name": "Haiti",
-                  "value": "Haiti"
-                },
-                {
-                  "name": "Hungary",
-                  "value": "Hungary"
-                },
-                {
-                  "name": "Indonesia",
-                  "value": "Indonesia"
-                },
-                {
-                  "name": "Isle of Man",
-                  "value": "Isle of Man"
-                },
-                {
-                  "name": "India",
-                  "value": "India"
-                },
-                {
-                  "name": "British Indian Ocean Territory",
-                  "value": "British Indian Ocean Territory"
-                },
-                {
-                  "name": "Ireland",
-                  "value": "Ireland"
-                },
-                {
-                  "name": "Iran",
-                  "value": "Iran"
-                },
-                {
-                  "name": "Islamic Republic of",
-                  "value": "Islamic Republic of"
-                },
-                {
-                  "name": "Iraq",
-                  "value": "Iraq"
-                },
-                {
-                  "name": "Iceland",
-                  "value": "Iceland"
-                },
-                {
-                  "name": "Israel",
-                  "value": "Israel"
-                },
-                {
-                  "name": "Italy",
-                  "value": "Italy"
-                },
-                {
-                  "name": "Jamaica",
-                  "value": "Jamaica"
-                },
-                {
-                  "name": "Jersey",
-                  "value": "Jersey"
-                },
-                {
-                  "name": "Jordan",
-                  "value": "Jordan"
-                },
-                {
-                  "name": "Japan",
-                  "value": "Japan"
-                },
-                {
-                  "name": "Kazakhstan",
-                  "value": "Kazakhstan"
-                },
-                {
-                  "name": "Kenya",
-                  "value": "Kenya"
-                },
-                {
-                  "name": "Kyrgyzstan",
-                  "value": "Kyrgyzstan"
-                },
-                {
-                  "name": "Cambodia",
-                  "value": "Cambodia"
-                },
-                {
-                  "name": "Kiribati",
-                  "value": "Kiribati"
-                },
-                {
-                  "name": "Saint Kitts and Nevis",
-                  "value": "Saint Kitts and Nevis"
-                },
-                {
-                  "name": "Korea",
-                  "value": "Korea"
-                },
-                {
-                  "name": "Republic of",
-                  "value": "Republic of"
-                },
-                {
-                  "name": "Kuwait",
-                  "value": "Kuwait"
-                },
-                {
-                  "name": "Lao People's Democratic Republic",
-                  "value": "Lao People's Democratic Republic"
-                },
-                {
-                  "name": "Lebanon",
-                  "value": "Lebanon"
-                },
-                {
-                  "name": "Liberia",
-                  "value": "Liberia"
-                },
-                {
-                  "name": "Libya",
-                  "value": "Libya"
-                },
-                {
-                  "name": "Saint Lucia",
-                  "value": "Saint Lucia"
-                },
-                {
-                  "name": "Liechtenstein",
-                  "value": "Liechtenstein"
-                },
-                {
-                  "name": "Sri Lanka",
-                  "value": "Sri Lanka"
-                },
-                {
-                  "name": "Lesotho",
-                  "value": "Lesotho"
-                },
-                {
-                  "name": "Lithuania",
-                  "value": "Lithuania"
-                },
-                {
-                  "name": "Luxembourg",
-                  "value": "Luxembourg"
-                },
-                {
-                  "name": "Latvia",
-                  "value": "Latvia"
-                },
-                {
-                  "name": "Macao",
-                  "value": "Macao"
-                },
-                {
-                  "name": "Saint Martin (French part)",
-                  "value": "Saint Martin (French part)"
-                },
-                {
-                  "name": "Morocco",
-                  "value": "Morocco"
-                },
-                {
-                  "name": "Monaco",
-                  "value": "Monaco"
-                },
-                {
-                  "name": "Moldova",
-                  "value": "Moldova"
-                },
-                {
-                  "name": "Madagascar",
-                  "value": "Madagascar"
-                },
-                {
-                  "name": "Maldives",
-                  "value": "Maldives"
-                },
-                {
-                  "name": "Mexico",
-                  "value": "Mexico"
-                },
-                {
-                  "name": "Marshall Islands",
-                  "value": "Marshall Islands"
-                },
-                {
-                  "name": "North Macedonia",
-                  "value": "North Macedonia"
-                },
-                {
-                  "name": "Mali",
-                  "value": "Mali"
-                },
-                {
-                  "name": "Malta",
-                  "value": "Malta"
-                },
-                {
-                  "name": "Myanmar",
-                  "value": "Myanmar"
-                },
-                {
-                  "name": "Montenegro",
-                  "value": "Montenegro"
-                },
-                {
-                  "name": "Mongolia",
-                  "value": "Mongolia"
-                },
-                {
-                  "name": "Northern Mariana Islands",
-                  "value": "Northern Mariana Islands"
-                },
-                {
-                  "name": "Mozambique",
-                  "value": "Mozambique"
-                },
-                {
-                  "name": "Mauritania",
-                  "value": "Mauritania"
-                },
-                {
-                  "name": "Montserrat",
-                  "value": "Montserrat"
-                },
-                {
-                  "name": "Martinique",
-                  "value": "Martinique"
-                },
-                {
-                  "name": "Mauritius",
-                  "value": "Mauritius"
-                },
-                {
-                  "name": "Malawi",
-                  "value": "Malawi"
-                },
-                {
-                  "name": "Malaysia",
-                  "value": "Malaysia"
-                },
-                {
-                  "name": "Mayotte",
-                  "value": "Mayotte"
-                },
-                {
-                  "name": "Namibia",
-                  "value": "Namibia"
-                },
-                {
-                  "name": "New Caledonia",
-                  "value": "New Caledonia"
-                },
-                {
-                  "name": "Niger",
-                  "value": "Niger"
-                },
-                {
-                  "name": "Norfolk Island",
-                  "value": "Norfolk Island"
-                },
-                {
-                  "name": "Nigeria",
-                  "value": "Nigeria"
-                },
-                {
-                  "name": "Nicaragua",
-                  "value": "Nicaragua"
-                },
-                {
-                  "name": "Niue",
-                  "value": "Niue"
-                },
-                {
-                  "name": "Netherlands",
-                  "value": "Netherlands"
-                },
-                {
-                  "name": "Norway",
-                  "value": "Norway"
-                },
-                {
-                  "name": "Nepal",
-                  "value": "Nepal"
-                },
-                {
-                  "name": "Nauru",
-                  "value": "Nauru"
-                },
-                {
-                  "name": "New Zealand",
-                  "value": "New Zealand"
-                },
-                {
-                  "name": "Oman",
-                  "value": "Oman"
-                },
-                {
-                  "name": "Pakistan",
-                  "value": "Pakistan"
-                },
-                {
-                  "name": "Panama",
-                  "value": "Panama"
-                },
-                {
-                  "name": "Pitcairn",
-                  "value": "Pitcairn"
-                },
-                {
-                  "name": "Peru",
-                  "value": "Peru"
-                },
-                {
-                  "name": "Philippines",
-                  "value": "Philippines"
-                },
-                {
-                  "name": "Palau",
-                  "value": "Palau"
-                },
-                {
-                  "name": "Papua New Guinea",
-                  "value": "Papua New Guinea"
-                },
-                {
-                  "name": "Poland",
-                  "value": "Poland"
-                },
-                {
-                  "name": "Puerto Rico",
-                  "value": "Puerto Rico"
-                },
-                {
-                  "name": "Democratic People's Republic of",
-                  "value": "Democratic People's Republic of"
-                },
-                {
-                  "name": "Portugal",
-                  "value": "Portugal"
-                },
-                {
-                  "name": "Paraguay",
-                  "value": "Paraguay"
-                },
-                {
-                  "name": "Palestine",
-                  "value": "Palestine"
-                },
-                {
-                  "name": "State of",
-                  "value": "State of"
-                },
-                {
-                  "name": "French Polynesia",
-                  "value": "French Polynesia"
-                },
-                {
-                  "name": "Qatar",
-                  "value": "Qatar"
-                },
-                {
-                  "name": "Réunion",
-                  "value": "Réunion"
-                },
-                {
-                  "name": "Romania",
-                  "value": "Romania"
-                },
-                {
-                  "name": "Russian Federation",
-                  "value": "Russian Federation"
-                },
-                {
-                  "name": "Rwanda",
-                  "value": "Rwanda"
-                },
-                {
-                  "name": "Saudi Arabia",
-                  "value": "Saudi Arabia"
-                },
-                {
-                  "name": "Sudan",
-                  "value": "Sudan"
-                },
-                {
-                  "name": "Senegal",
-                  "value": "Senegal"
-                },
-                {
-                  "name": "Singapore",
-                  "value": "Singapore"
-                },
-                {
-                  "name": "South Georgia and the South Sandwich Islands",
-                  "value": "South Georgia and the South Sandwich Islands"
-                },
-                {
-                  "name": "Saint Helena",
-                  "value": "Saint Helena"
-                },
-                {
-                  "name": "Ascension and Tristan da Cunha",
-                  "value": "Ascension and Tristan da Cunha"
-                },
-                {
-                  "name": "Svalbard and Jan Mayen",
-                  "value": "Svalbard and Jan Mayen"
-                },
-                {
-                  "name": "Solomon Islands",
-                  "value": "Solomon Islands"
-                },
-                {
-                  "name": "Sierra Leone",
-                  "value": "Sierra Leone"
-                },
-                {
-                  "name": "El Salvador",
-                  "value": "El Salvador"
-                },
-                {
-                  "name": "San Marino",
-                  "value": "San Marino"
-                },
-                {
-                  "name": "Somalia",
-                  "value": "Somalia"
-                },
-                {
-                  "name": "Saint Pierre and Miquelon",
-                  "value": "Saint Pierre and Miquelon"
-                },
-                {
-                  "name": "Serbia",
-                  "value": "Serbia"
-                },
-                {
-                  "name": "South Sudan",
-                  "value": "South Sudan"
-                },
-                {
-                  "name": "Sao Tome and Principe",
-                  "value": "Sao Tome and Principe"
-                },
-                {
-                  "name": "Suriname",
-                  "value": "Suriname"
-                },
-                {
-                  "name": "Slovakia",
-                  "value": "Slovakia"
-                },
-                {
-                  "name": "Slovenia",
-                  "value": "Slovenia"
-                },
-                {
-                  "name": "Sweden",
-                  "value": "Sweden"
-                },
-                {
-                  "name": "Eswatini",
-                  "value": "Eswatini"
-                },
-                {
-                  "name": "Sint Maarten (Dutch part)",
-                  "value": "Sint Maarten (Dutch part)"
-                },
-                {
-                  "name": "Seychelles",
-                  "value": "Seychelles"
-                },
-                {
-                  "name": "Syrian Arab Republic",
-                  "value": "Syrian Arab Republic"
-                },
-                {
-                  "name": "Turks and Caicos Islands",
-                  "value": "Turks and Caicos Islands"
-                },
-                {
-                  "name": "Chad",
-                  "value": "Chad"
-                },
-                {
-                  "name": "Togo",
-                  "value": "Togo"
-                },
-                {
-                  "name": "Thailand",
-                  "value": "Thailand"
-                },
-                {
-                  "name": "Tajikistan",
-                  "value": "Tajikistan"
-                },
-                {
-                  "name": "Tokelau",
-                  "value": "Tokelau"
-                },
-                {
-                  "name": "Turkmenistan",
-                  "value": "Turkmenistan"
-                },
-                {
-                  "name": "Timor-Leste",
-                  "value": "Timor-Leste"
-                },
-                {
-                  "name": "Tonga",
-                  "value": "Tonga"
-                },
-                {
-                  "name": "Trinidad and Tobago",
-                  "value": "Trinidad and Tobago"
-                },
-                {
-                  "name": "Tunisia",
-                  "value": "Tunisia"
-                },
-                {
-                  "name": "Turkey",
-                  "value": "Turkey"
-                },
-                {
-                  "name": "Tuvalu",
-                  "value": "Tuvalu"
-                },
-                {
-                  "name": "Taiwan",
-                  "value": "Taiwan"
-                },
-                {
-                  "name": "Province of China",
-                  "value": "Province of China"
-                },
-                {
-                  "name": "Tanzania",
-                  "value": "Tanzania"
-                },
-                {
-                  "name": "United Republic of",
-                  "value": "United Republic of"
-                },
-                {
-                  "name": "Uganda",
-                  "value": "Uganda"
-                },
-                {
-                  "name": "Ukraine",
-                  "value": "Ukraine"
-                },
-                {
-                  "name": "United States Minor Outlying Islands",
-                  "value": "United States Minor Outlying Islands"
-                },
-                {
-                  "name": "Uruguay",
-                  "value": "Uruguay"
-                },
-                {
-                  "name": "United States",
-                  "value": "United States"
-                },
-                {
-                  "name": "Uzbekistan",
-                  "value": "Uzbekistan"
-                },
-                {
-                  "name": "Holy See (Vatican City State)",
-                  "value": "Holy See (Vatican City State)"
-                },
-                {
-                  "name": "Saint Vincent and the Grenadines",
-                  "value": "Saint Vincent and the Grenadines"
-                },
-                {
-                  "name": "Venezuela",
-                  "value": "Venezuela"
-                },
-                {
-                  "name": "Bolivarian Republic of",
-                  "value": "Bolivarian Republic of"
-                },
-                {
-                  "name": "Virgin Islands",
-                  "value": "Virgin Islands"
-                },
-                {
-                  "name": "British",
-                  "value": "British"
-                },
-                {
-                  "name": "U.S.",
-                  "value": "U.S."
-                },
-                {
-                  "name": "Viet Nam",
-                  "value": "Viet Nam"
-                },
-                {
-                  "name": "Vanuatu",
-                  "value": "Vanuatu"
-                },
-                {
-                  "name": "Wallis and Futuna",
-                  "value": "Wallis and Futuna"
-                },
-                {
-                  "name": "Samoa",
-                  "value": "Samoa"
-                },
-                {
-                  "name": "Yemen",
-                  "value": "Yemen"
-                },
-                {
-                  "name": "South Africa",
-                  "value": "South Africa"
-                },
-                {
-                  "name": "Zambia",
-                  "value": "Zambia"
-                },
-                {
-                  "name": "Zimbabwe",
-                  "value": "Zimbabwe"
-                }
-              ],
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "totalRecords",
-              "displayName": "totalRecords",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "executed",
-              "displayName": "executed",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "People",
-              "displayName": "People",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "Companies",
-              "displayName": "Companies",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "totalContactFounded",
-              "displayName": "totalContactFounded",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "totalCompaniesFounded",
-              "displayName": "totalCompaniesFounded",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "apolloButtonViewUrl",
-              "displayName": "apolloButtonViewUrl",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "actorRunId",
-              "displayName": "actorRunId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            }
-          ],
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
           "attemptToConvertTypes": false,
-          "convertFieldsToString": false
+          "convertFieldsToString": true
         },
         "options": {}
       },
-      "type": "n8n-nodes-base.airtable",
-      "typeVersion": 2.1,
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -3040,
+        -368
+      ],
+      "id": "0837e9cc-558c-4eae-a9cf-636b4bd3803c",
+      "name": "Vault"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.airtable.com/v0/{{ $('Vault').item.json.BASE_ID }}/Apollo/{{ $('Receive Apollo Lead Request - HTTP').first().json.body.recId }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Vault').item.json.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"fields\": {\n    \"executionDate\": \"{{ $now }}\",\n    \"status\": \"In progress\",\n    \"statusDetails\": \"👉 We’re retrieving your contacts in the background. Please wait a few minutes until the process is complete.\",\n    \"actorRunId\": \"{{ $json.data.id }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
       "position": [
         96,
-        -640
+        -656
       ],
-      "id": "69b5aa8d-a81c-47d1-b3f4-1e86c5d18b8b",
-      "name": "Update Status",
-      "credentials": {
-        "airtableTokenApi": {
-          "id": "XzBWggFrPVokGo9L",
-          "name": "Airtable Personal Access Token account"
-        }
-      }
+      "id": "7ed14458-6bce-44a8-ba68-6b8d6a4f7b54",
+      "name": "Update status - AT Apollo",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.airtable.com/v0/{{ $('Vault').item.json.BASE_ID }}/Apify%20Runs",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Vault').item.json.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"records\": [\n    {\n      \"fields\": {\n        \"taskId\": \"{{ $('Create Actor Task - Apify').item.json.data.id }}\",\n        \"maxConcurrentActorJobs\": {{ $json.data.limits.maxConcurrentActorJobs }},\n        \"maxActorMemoryGbytes\": {{ $json.data.limits.maxActorMemoryGbytes }},\n        \"activeActorJobCount\": {{ $json.data.current.activeActorJobCount }},\n        \"actorMemoryGbytes\": {{ $json.data.current.actorMemoryGbytes }},\n        \"requestedMemoryMbytes\": {{ Math.ceil($json.data.current.actorMemoryGbytes + ($('Apify - Get task').item.json.data.options.memoryMbytes / 1000)) }}\n      }\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -128,
+        -368
+      ],
+      "id": "bad881d6-e0e7-456d-b66d-19d509ee9536",
+      "name": "Create Run Apify Task - AT Apify Run"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.airtable.com/v0/{{ $('Vault').item.json.BASE_ID }}/Apify%20Runs",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Vault').item.json.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"records\": [\n    {\n      \"fields\": {\n        \"taskId\": \"{{ $('Create Actor Task - Apify').item.json.data.id }}\",\n        \"maxConcurrentActorJobs\": {{ $json.data.limits.maxConcurrentActorJobs }},\n        \"maxActorMemoryGbytes\": {{ $json.data.limits.maxActorMemoryGbytes }},\n        \"activeActorJobCount\": {{ $json.data.current.activeActorJobCount }},\n        \"actorMemoryGbytes\": {{ $json.data.current.actorMemoryGbytes }},\n        \"requestedMemoryMbytes\": {{ Math.ceil($json.data.current.actorMemoryGbytes + ($('Apify - Get task').item.json.data.options.memoryMbytes / 1000)) }}\n      }\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        320,
+        -560
+      ],
+      "id": "fce67faf-57a6-40a0-a1e5-4fde9d076805",
+      "name": "Create Run Apify Task - AT Apify Run_2"
     }
   ],
   "repo_name": "boost-prospect-v2",
   "repo_owner": "ultimvision",
   "repo_path": "workflows",
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "xqIMv4nOqM7qzjDi"
   },
   "shared": [
     {
@@ -2545,6 +836,12 @@
   ],
   "staticData": null,
   "tags": [
+    {
+      "createdAt": "2025-08-28T20:14:40.063Z",
+      "updatedAt": "2025-08-28T20:14:40.063Z",
+      "id": "NRTwpUm4iq5jfqQG",
+      "name": "Migrated"
+    },
     {
       "createdAt": "2025-08-25T15:32:46.509Z",
       "updatedAt": "2025-08-25T15:32:46.509Z",
@@ -2559,6 +856,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-26T14:48:26.489Z",
-  "versionId": "b54ec6ea-97ab-473d-8d45-b5bb476ca2c4"
+  "updatedAt": "2025-08-28T20:14:59.919Z",
+  "versionId": "18a7251e-a7b3-423f-bc1b-b275a840d23f"
 }
