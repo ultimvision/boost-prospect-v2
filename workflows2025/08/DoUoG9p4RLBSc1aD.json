@@ -1,33 +1,11 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
-    "Receive Callback - Webhook Apify Apollo": {
-      "main": [
-        [
-          {
-            "node": "Vault",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Receive Dataset Inputs - Subflow Trigger": {
-      "main": [
-        [
-          {
-            "node": "Vault1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Get Webhook Dispatch - HTTP Apify": {
       "main": [
         [
           {
-            "node": "Search Apollo URL - AT Apollo",
+            "node": "Search recId by actorRunId - AT Apollo",
             "type": "main",
             "index": 0
           }
@@ -45,22 +23,11 @@
         ]
       ]
     },
-    "List Dataset Items - Apify Apollo": {
-      "main": [
-        [
-          {
-            "node": "If Items Exist - IF",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "If Run SUCCEEDED - IF": {
       "main": [
         [
           {
-            "node": "Recurse Dataset Pagination - Subflow",
+            "node": "Get Workflow Id - [1010:sub]",
             "type": "main",
             "index": 0
           }
@@ -68,113 +35,6 @@
         [
           {
             "node": "Fail Run - Error Handler",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Iterate Dataset Items - Util 25": {
-      "main": [
-        [
-          {
-            "node": "Aggregate Items - Util",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Prepare Person Fields - Set Apollo",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Prepare Person Fields - Set Apollo": {
-      "main": [
-        [
-          {
-            "node": "Upsert Company - AT Companies",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Next",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Set Organization ID - Set": {
-      "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If Items Exist - IF": {
-      "main": [
-        [
-          {
-            "node": "Iterate Dataset Items - Util 25",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Aggregate Items (Empty) - Util",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Aggregate Items - Util": {
-      "main": [
-        [
-          {
-            "node": "Set Next Page Flag - Subflow Set",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Recurse Dataset Pagination - Subflow": {
-      "main": [
-        [
-          {
-            "node": "If Next Page - IF",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Aggregate Items (Empty) - Util": {
-      "main": [
-        [
-          {
-            "node": "Set Next Page Flag False - Set",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Aggregate Batch Loopback - Util": {
-      "main": [
-        [
-          {
-            "node": "Iterate Dataset Items - Util 25",
             "type": "main",
             "index": 0
           }
@@ -199,7 +59,18 @@
         ]
       ]
     },
-    "Vault": {
+    "Receive Callback - Webhook Apify Apollo": {
+      "main": [
+        [
+          {
+            "node": "Workflow Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Data": {
       "main": [
         [
           {
@@ -210,7 +81,7 @@
         ]
       ]
     },
-    "Search Apollo URL - AT Apollo": {
+    "Search recId by actorRunId - AT Apollo": {
       "main": [
         [
           {
@@ -221,57 +92,35 @@
         ]
       ]
     },
-    "Vault1": {
+    "Get Workflow Id - [1010:sub]": {
       "main": [
         [
           {
-            "node": "List Dataset Items - Apify Apollo",
+            "node": "Filter Archived",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Upsert Company - AT Companies": {
+    "Filter Archived": {
       "main": [
         [
           {
-            "node": "Set Organization ID - Set",
+            "node": "Recurse Dataset Pagination - Subflow",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Merge": {
+    "Recurse Dataset Pagination - Subflow": {
       "main": [
         [
           {
-            "node": "Upsert Person - AT People",
+            "node": "If Next Page - IF",
             "type": "main",
             "index": 0
-          }
-        ]
-      ]
-    },
-    "Upsert Person - AT People": {
-      "main": [
-        [
-          {
-            "node": "Aggregate Batch Loopback - Util",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Next": {
-      "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 1
           }
         ]
       ]
@@ -283,62 +132,8 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Triggers > Apify > Apollo Webhook Callback",
+  "name": "Triggers > Apify > Apollo Webhook Callback [1010]",
   "nodes": [
-    {
-      "parameters": {
-        "httpMethod": "POST",
-        "path": "/apollo/leads",
-        "authentication": "headerAuth",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
-      "position": [
-        -1248,
-        -832
-      ],
-      "id": "2b316928-5030-4897-9f01-7949387f1cd6",
-      "name": "Receive Callback - Webhook Apify Apollo",
-      "webhookId": "d8aa40d8-35ca-4197-934c-02464d68db81",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "ugPBtZYVCmTPd1VR",
-          "name": "Bearer Apify Callback"
-        }
-      },
-      "notes": "PHASE: Input Purpose: Receive Apify webhook callback for Apollo actor completion events. Inputs: HTTP POST /apollo/leads with header auth and Apify headers including x-apify-webhook-dispatch-id. Outputs: Raw headers/body for dispatch lookup. Dependencies: Header Auth Webhook Apify credential; Apify. Special Cases: Body may be empty; header must be present or flow will fail downstream."
-    },
-    {
-      "parameters": {
-        "workflowInputs": {
-          "values": [
-            {
-              "name": "dataset"
-            },
-            {
-              "name": "offset",
-              "type": "number"
-            },
-            {
-              "name": "apolloId"
-            },
-            {
-              "name": "userId"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.executeWorkflowTrigger",
-      "typeVersion": 1.1,
-      "position": [
-        -1248,
-        -80
-      ],
-      "id": "cab49871-dc92-4320-a542-7d14eab2b0b0",
-      "name": "Receive Dataset Inputs - Subflow Trigger",
-      "notes": "PHASE: Input Purpose: Receive dataset id and offset for subflow execution. Inputs: workflowInputs dataset (string) and offset (number). Outputs: Exposes these values to downstream HTTP listing. Dependencies: Recurse Dataset Pagination - Subflow. Special Cases: Missing inputs will cause dataset fetch to fail."
-    },
     {
       "parameters": {
         "content": "# Apify Apollo Actor Callback Processing – Workflow\n\n1. This workflow processes **Apify callbacks** for Apollo actor runs and syncs the resulting company and person data into Airtable.\n\n2. On an **authenticated webhook hit**, it looks up the **Apify webhook dispatch**, fetches the related **actor run**, and proceeds only if the run succeeded.\n\n3. The workflow paginates through the actor’s **output dataset** (100 items per page) and processes items in **25-item batches** to upsert **Companies** and **People** into the **Boost Prospects Airtable** base.\n\n4. The flow loops through dataset pages via a **self-invoked subflow** until an empty page is encountered, then stops.\n\n5. Failures (non-`SUCCEEDED` runs) **short-circuit with an error**.\n\n---\n\n### 🔗 Key Integrations\n- **Apify REST API** (webhook dispatch, actor run, dataset items)  \n- **Airtable API** (Companies and People tables)\n",
@@ -356,13 +151,13 @@
     },
     {
       "parameters": {
-        "url": "=https://api.apify.com/v2/webhook-dispatches/{{ $('Receive Callback - Webhook Apify Apollo').item.json.headers['x-apify-webhook-dispatch-id'] }}",
+        "url": "=https://api.apify.com/v2/webhook-dispatches/{{ $json['x-apify-webhook-dispatch-id'] }}",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Authorization",
-              "value": "=Bearer {{ $('Vault').item.json.APIFY_TOKENS }}"
+              "value": "=Bearer {{ $('Workflow Data').item.json.config.vault.APIFY_TOKENS }}"
             },
             {
               "name": "Accept",
@@ -376,7 +171,7 @@
       "typeVersion": 4.2,
       "position": [
         -800,
-        -832
+        -432
       ],
       "id": "367ee02b-6ba5-4582-87a9-60a6c4853e37",
       "name": "Get Webhook Dispatch - HTTP Apify",
@@ -394,7 +189,7 @@
             },
             {
               "name": "Authorization",
-              "value": "=Bearer {{ $('Vault').item.json.APIFY_TOKENS }}"
+              "value": "=Bearer {{ $('Workflow Data').item.json.config.vault.APIFY_TOKENS }}"
             }
           ]
         },
@@ -404,61 +199,13 @@
       "typeVersion": 4.2,
       "position": [
         -352,
-        -832
+        -432
       ],
       "id": "66e6d1d2-f97e-48f3-8e4e-01786c67be07",
       "name": "Get Actor Run Details - Apify Apollo",
       "retryOnFail": true,
       "maxTries": 2,
       "notes": "PHASE: Execution Purpose: Fetch Apify actor run details to determine completion status and get the dataset id. Inputs: actorRunId from Get Webhook Dispatch. Outputs: JSON with data.status and data.defaultDatasetId. Dependencies: Apify HTTP API; Bearer Apify credential. Special Cases: Status may be SUCCEEDED/FAILED/TIMED-OUT; gate downstream actions accordingly."
-    },
-    {
-      "parameters": {
-        "url": "=https://api.apify.com/v2/datasets/{{ $('Receive Dataset Inputs - Subflow Trigger').item.json.dataset }}/items",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
-            {
-              "name": "format",
-              "value": "json"
-            },
-            {
-              "name": "limit",
-              "value": "100"
-            },
-            {
-              "name": "offset",
-              "value": "={{ $('Receive Dataset Inputs - Subflow Trigger').item.json.offset }}"
-            }
-          ]
-        },
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Accept",
-              "value": "application/json"
-            },
-            {
-              "name": "Authorization",
-              "value": "=Bearer {{ $('Vault1').item.json.APIFY_TOKENS }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        -800,
-        -80
-      ],
-      "id": "b47715c7-54ec-4c54-b3bf-f600b1418e79",
-      "name": "List Dataset Items - Apify Apollo",
-      "retryOnFail": true,
-      "maxTries": 2,
-      "alwaysOutputData": true,
-      "notes": "PHASE: Execution Purpose: List items from the Apify dataset produced by the actor run using pagination. Inputs: dataset id and offset from subflow inputs; limit=100. Outputs: Array of dataset items. Dependencies: Apify HTTP API; Bearer Apify credential. Special Cases: Empty result indicates no more pages; handle 429 rate limits."
     },
     {
       "parameters": {
@@ -489,7 +236,7 @@
       "typeVersion": 2.2,
       "position": [
         -128,
-        -832
+        -432
       ],
       "id": "d6478073-1990-4d44-bbff-89723a825187",
       "name": "If Run SUCCEEDED - IF",
@@ -503,290 +250,11 @@
       "typeVersion": 1,
       "position": [
         96,
-        -736
+        -336
       ],
       "id": "b7b25d13-0538-4771-92c9-ec33121b1023",
       "name": "Fail Run - Error Handler",
       "notes": "PHASE: Error Handling Purpose: Fail the workflow when the Apify actor run did not succeed. Inputs: False branch from If Run SUCCEEDED. Outputs: Error thrown with message 'Apollo Run Status Error'. Dependencies: If Run SUCCEEDED - IF. Special Cases: Stops all downstream processing."
-    },
-    {
-      "parameters": {
-        "batchSize": 25,
-        "options": {}
-      },
-      "type": "n8n-nodes-base.splitInBatches",
-      "typeVersion": 3,
-      "position": [
-        -352,
-        -224
-      ],
-      "id": "0aa0f90a-c27a-4199-8a21-02592cc68350",
-      "name": "Iterate Dataset Items - Util 25",
-      "notes": "PHASE: Utility Purpose: Process Apify dataset items in batches to control memory and rate limits. Inputs: Array of items from List Dataset Items. Outputs: Batches of up to 25 items for downstream Set/Airtable nodes; iterates until empty. Dependencies: Split In Batches behavior and the Aggregate2 loopback. Special Cases: Ensure loopback is wired or iteration will stop after first batch."
-    },
-    {
-      "parameters": {
-        "includeOtherFields": true,
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -128,
-        -256
-      ],
-      "id": "2401f692-a72f-4b92-8da4-140aa067cb02",
-      "name": "Prepare Person Fields - Set Apollo",
-      "notes": "PHASE: Configuration Purpose: Map Apollo person fields into a normalized structure for Airtable People upsert. Inputs: Current dataset item. Outputs: name, firstName, linkedin_url, title, email_status, location fields, seniority, photo_url, employment_history as JSON string, etc. Dependencies: Upsert Person - AT People expects these keys. Special Cases: Optional fields may be null and must be guarded."
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "697fa04d-e34a-4063-a65b-e13fb151320c",
-              "name": "organization_id_at",
-              "value": "={{ $json.records[0].id }}",
-              "type": "string"
-            },
-            {
-              "id": "52e796e0-1664-4d4c-8bec-7ca47d5febad",
-              "name": "apolloId",
-              "value": "={{ $('Receive Dataset Inputs - Subflow Trigger').first().json.apolloId }}",
-              "type": "string"
-            },
-            {
-              "id": "408668e9-9b57-425c-bd03-9eadb7d53a3b",
-              "name": "userId",
-              "value": "={{ $('Receive Dataset Inputs - Subflow Trigger').first().json.userId }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        320,
-        -320
-      ],
-      "id": "27b4b04b-b18c-42f2-bf17-e78da1b169f4",
-      "name": "Set Organization ID - Set",
-      "notes": "PHASE: Configuration Purpose: Expose Airtable company record id for linking from People upsert. Inputs: Company upsert output id. Outputs: organization_id field set to the company rec id. Dependencies: Upsert Person - AT People expects organization_id. Special Cases: Must run after company upsert to avoid missing link."
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "420bcfad-6f69-489f-8b19-e08ebb23d433",
-              "leftValue": "={{ $json.id }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "exists",
-                "singleValue": true
-              }
-            },
-            {
-              "id": "6c4b3878-16c9-4a81-a511-c15bca70a41f",
-              "leftValue": "={{ $json.id }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "notEmpty",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        -576,
-        -80
-      ],
-      "id": "70bf9cb1-9420-49b3-864d-307c3176ee7e",
-      "name": "If Items Exist - IF",
-      "notes": "PHASE: Execution Purpose: Gate processing based on whether the current page has items (id exists and not empty). Inputs: Items from List Dataset Items. Outputs: True branch to batching; false branch to set get_next_page=false. Dependencies: List Dataset Items; Aggregate/Clean Data - Set nodes. Special Cases: Prevents unnecessary recursion when page is empty."
-    },
-    {
-      "parameters": {
-        "aggregate": "aggregateAllItemData",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
-      "position": [
-        -128,
-        -512
-      ],
-      "id": "54101645-cf1f-40eb-adae-53bb729eba18",
-      "name": "Aggregate Items - Util",
-      "notes": "PHASE: Utility Purpose: Aggregate batch context before setting next-page control flag. Inputs: Current batch from Iterate Dataset Items. Outputs: Pass-through used by Set Next Page flag. Dependencies: Clean Data - Set true. Special Cases: No data transformation; control flow only."
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "badaa633-4a97-46f4-9916-1286fbc9b015",
-              "name": "get_next_page",
-              "value": true,
-              "type": "boolean"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        96,
-        -512
-      ],
-      "id": "c0e78055-e6dc-49a1-b422-12052e5c74e1",
-      "name": "Set Next Page Flag - Subflow Set",
-      "notes": "PHASE: Utility Purpose: Mark that another page should be fetched. Inputs: Prior aggregate context. Outputs: get_next_page=true. Dependencies: If Next Page - IF; Execute Workflow recursion. Special Cases: Paired with the false variant when no items exist."
-    },
-    {
-      "parameters": {
-        "workflowId": {
-          "__rl": true,
-          "value": "={{ $workflow.id }}",
-          "mode": "id"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "dataset": "={{ $('Get Actor Run Details - Apify Apollo').first().json.data.defaultDatasetId }}",
-            "offset": "={{ $runIndex * 100 }}",
-            "apolloId": "={{ $('Search Apollo URL - AT Apollo').item.json.records[0].id }}",
-            "userId": "={{ $('Search Apollo URL - AT Apollo').item.json.records[0].fields.user[0] }}"
-          },
-          "matchingColumns": [
-            "dataset"
-          ],
-          "schema": [
-            {
-              "id": "dataset",
-              "displayName": "dataset",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "offset",
-              "displayName": "offset",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "number",
-              "removed": false
-            },
-            {
-              "id": "apolloId",
-              "displayName": "apolloId",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "userId",
-              "displayName": "userId",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        96,
-        -928
-      ],
-      "id": "5e32b7b2-003e-4f10-83e6-36912d5079d6",
-      "name": "Recurse Dataset Pagination - Subflow",
-      "notes": "PHASE: Execution Purpose: Self-execute the workflow to fetch the next dataset page. Inputs: dataset id and offset (runIndex*100). Outputs: Invokes subflow run for next page processing. Dependencies: Execute Workflow Trigger; If Next Page - IF. Special Cases: Must stop when get_next_page=false to prevent infinite loop."
-    },
-    {
-      "parameters": {
-        "aggregate": "aggregateAllItemData",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
-      "position": [
-        -352,
-        160
-      ],
-      "id": "2330c13e-bea5-4ba1-9a6e-9499704a546c",
-      "name": "Aggregate Items (Empty) - Util",
-      "notes": "PHASE: Utility Purpose: Aggregate context for empty page to allow setting next-page flag false. Inputs: False branch from If Items Exist. Outputs: Pass-through to Set Next Page Flag False. Dependencies: Clean Data - Set1. Special Cases: No transformations."
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "badaa633-4a97-46f4-9916-1286fbc9b015",
-              "name": "get_next_page",
-              "value": false,
-              "type": "boolean"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -128,
-        160
-      ],
-      "id": "651b6337-2a5d-4316-8d94-0ce4d708f894",
-      "name": "Set Next Page Flag False - Set",
-      "notes": "PHASE: Utility Purpose: Indicate there is no next page to fetch. Inputs: Context from empty-page aggregate. Outputs: get_next_page=false. Dependencies: If Next Page - IF to halt recursion. Special Cases: Complements the true flag setter."
-    },
-    {
-      "parameters": {
-        "aggregate": "aggregateAllItemData",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
-      "position": [
-        992,
-        -176
-      ],
-      "id": "d624a1c4-3d5e-4f83-9cfd-6ba2802f1540",
-      "name": "Aggregate Batch Loopback - Util",
-      "notes": "PHASE: Utility Purpose: Support Split In Batches loopback to continue processing remaining items. Inputs: Post-upsert item. Outputs: Aggregated signal to resume next batch. Dependencies: Iterate Dataset Items node. Special Cases: No transformation; used purely for control flow."
     },
     {
       "parameters": {
@@ -816,8 +284,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        320,
-        -928
+        768,
+        -528
       ],
       "id": "e5bc0070-4842-4941-a48d-0e890060053f",
       "name": "If Next Page - IF",
@@ -825,176 +293,14 @@
     },
     {
       "parameters": {
-        "workflowId": {
-          "__rl": true,
-          "value": "S5knCtBpBpMCDTNI",
-          "mode": "list",
-          "cachedResultName": "Vault"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {},
-          "matchingColumns": [],
-          "schema": [],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        -1024,
-        -832
-      ],
-      "id": "54642ca7-6343-4002-927e-1185cf2c546a",
-      "name": "Vault"
-    },
-    {
-      "parameters": {
-        "url": "=https://api.airtable.com/v0/{{ $('Vault').item.json.BASE_ID }}/Apollo",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
-            {
-              "name": "filterByFormula",
-              "value": "={actorRunId}=\"{{ $json.data.eventData.actorRunId }}\""
-            },
-            {
-              "name": "maxRecords",
-              "value": "1"
-            }
-          ]
-        },
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "=Bearer {{ $('Vault').item.json.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        -576,
-        -832
-      ],
-      "id": "4d38e3c9-e5da-4bf9-b30a-db442fe03c03",
-      "name": "Search Apollo URL - AT Apollo",
-      "retryOnFail": true
-    },
-    {
-      "parameters": {
-        "workflowId": {
-          "__rl": true,
-          "value": "S5knCtBpBpMCDTNI",
-          "mode": "list",
-          "cachedResultName": "Vault"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {},
-          "matchingColumns": [],
-          "schema": [],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        -1024,
-        -80
-      ],
-      "id": "0e1317ff-7f29-46ef-99db-4453c831b6b7",
-      "name": "Vault1"
-    },
-    {
-      "parameters": {
         "method": "PATCH",
-        "url": "=https://api.airtable.com/v0/{{ $('Vault1').item.json.BASE_ID }}/Companies",
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').item.json.config.vault.BASE_ID }}/Apollo/{{ $('Search recId by actorRunId - AT Apollo').item.json.records[0].id }}",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Authorization",
-              "value": "=Bearer {{ $('Vault1').item.json.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={{\n(() => {\n  const org = $json.organization ?? {};\n  const cUserId = $item(0, 'Receive Dataset Inputs - Subflow Trigger').$json.userId;\n  const cApolloId = $item(0, 'Receive Dataset Inputs - Subflow Trigger').$json.apolloId;\n\n  const fields = {\n    apolloOrganizationId: org.id ?? '',\n    companyName: org.name ?? '',\n    website: org.website_url ?? '',\n    linkedinLink: org.linkedin_url ?? '',\n    facebookLink: org.facebook_url || null,\n    primaryPhoneNumber: org.primary_phone?.number || null,\n    formattedPhoneNumber: org.primary_phone?.sanitized_number || null,\n    linkedinId: org.linkedin_uid || null,\n    logoUrl: org.logo_url || null,\n    keywords: JSON.stringify(org.keywords || []),\n    industrySector: org.industry || null,\n    rawAddress: org.raw_address || null,\n    address: org.street_address || null,\n    city: org.city || null,\n    stateOrProvince: org.state || null,\n    country: org.country || null,\n    postalCode: org.postal_code || null,\n    estimatedEmployeeCount: org.estimated_num_employees || null,\n    user: [ $json.userId ?? cUserId ],\n    apolloId: [ $json.apolloId ?? cApolloId ],\n\n  };\n\n  if (Number.isFinite(org.founded_year)) {\n    fields.yearFounded = org.founded_year; // nombre\n  }\n\n  if (org.logo_url) {\n    fields.logo = [{ url: org.logo_url }];\n  }\n\n  return JSON.stringify({\n    typecast: true,\n    performUpsert: { fieldsToMergeOn: ['apolloOrganizationId'] },\n    records: [{ fields }]\n  });\n})()\n}}\n",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        96,
-        -320
-      ],
-      "id": "2a01411b-8f38-493c-8097-cb54391e6b9f",
-      "name": "Upsert Company - AT Companies",
-      "retryOnFail": true
-    },
-    {
-      "parameters": {
-        "mode": "combine",
-        "combineBy": "combineByPosition",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3.2,
-      "position": [
-        544,
-        -256
-      ],
-      "id": "f0fc0531-46b3-428b-9b1d-cefb51fe8dbd",
-      "name": "Merge"
-    },
-    {
-      "parameters": {
-        "method": "PATCH",
-        "url": "=https://api.airtable.com/v0/{{ $('Vault1').item.json.BASE_ID }}/People",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "=Bearer {{ $('Vault1').item.json.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={{\n(() => {\n  const p = $json || {};\n\n  const fields = {\n\n    apolloPeopleNumber: p.id ?? '',\n    company: [ p.organization_id_at ],\n\n    user:    [ p.userId ],\n    apolloId: [ p.apolloId ],\n\n    firstName:        p.first_name ?? null,\n    name:             p.last_name ?? null,\n    linkedinLink:     p.linkedin_url ?? null,\n    jobTitle:         p.title ?? null,\n    emailStatus:      p.email_status ?? null,\n    photoUrl:         p.photo_url ?? null,\n    facebookLink:     p.facebook_url ?? null,\n    currentPosition:  p.headline ?? null,\n    professionalEmail:p.email ?? null,\n    province:         p.state ?? null,\n    city:             p.city ?? null,\n    country:          p.country ?? null,\n    seniority:        p.seniority ?? null,\n\n    previousJobs: p.employment_history ? JSON.stringify(p.employment_history) : null,\n  };\n\n  return JSON.stringify({\n    typecast: true,\n    performUpsert: { fieldsToMergeOn: ['apolloPeopleNumber'] },\n    records: [{ fields }]\n  });\n})()\n}}\n",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        768,
-        -256
-      ],
-      "id": "4e2070dd-2637-44b7-b4aa-777c7d4a6167",
-      "name": "Upsert Person - AT People",
-      "retryOnFail": true
-    },
-    {
-      "parameters": {
-        "method": "PATCH",
-        "url": "=https://api.airtable.com/v0/{{ $('Vault').item.json.BASE_ID }}/Apollo/{{ $('Search Apollo URL - AT Apollo').item.json.records[0].id }}",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "=Bearer {{ $('Vault').item.json.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+              "value": "=Bearer {{ $('Workflow Data').item.json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
             }
           ]
         },
@@ -1006,23 +312,223 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        544,
-        -928
+        992,
+        -528
       ],
       "id": "50fe93b1-8346-4490-bb64-8992fe86f3dc",
       "name": "Update status - AT Apollo",
       "retryOnFail": true
     },
     {
-      "parameters": {},
-      "type": "n8n-nodes-base.noOp",
+      "parameters": {
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1024,
+        -432
+      ],
+      "id": "dd643b93-b29c-4662-abfd-95842291b149",
+      "name": "Workflow Data"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1248,
+        -432
+      ],
+      "id": "8dbbd7bf-7ce9-4d61-98ce-941b9d942241",
+      "name": "Receive Callback - Webhook Apify Apollo"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').item.json.config.vault.BASE_ID }}/Apollo",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "filterByFormula",
+              "value": "={actorRunId}=\"{{ $json.data.eventData.actorRunId }}\""
+            },
+            {
+              "name": "maxRecords",
+              "value": "1"
+            },
+            {
+              "name": "fields[0]",
+              "value": "recId"
+            },
+            {
+              "name": "fields[1]",
+              "value": "user"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').item.json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -576,
+        -432
+      ],
+      "id": "4d38e3c9-e5da-4bf9-b30a-db442fe03c03",
+      "name": "Search recId by actorRunId - AT Apollo",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "returnAll": false,
+        "limit": 1,
+        "filters": {
+          "activeWorkflows": false,
+          "name": "[1010:sub]",
+          "excludePinnedData": true
+        },
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.n8n",
       "typeVersion": 1,
       "position": [
-        320,
-        -128
+        96,
+        -528
       ],
-      "id": "0fe1796d-933f-4876-8bb0-8b68b69fca37",
-      "name": "Next"
+      "id": "6cd625cb-f9e8-4f7e-834c-999fb0fddf5c",
+      "name": "Get Workflow Id - [1010:sub]",
+      "credentials": {
+        "n8nApi": {
+          "id": "DeDKPUGV1gyQwspX",
+          "name": "n8n local"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e9ae0251-3cbe-43d9-a0cf-f9c189bb3084",
+              "leftValue": "={{ $json.isArchived }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        288,
+        -528
+      ],
+      "id": "4b358f5e-de5a-45e7-894d-113685413478",
+      "name": "Filter Archived"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ $('Get Workflow Id - [1010:sub]').first().json.id }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "offset": "={{ $runIndex * 100 }}",
+            "dataset": "={{ $('Get Actor Run Details - Apify Apollo').first().json.data.defaultDatasetId }}",
+            "apolloId": "={{ $('Search recId by actorRunId - AT Apollo').first().json.records[0].id }}",
+            "userId": "={{ $('Search recId by actorRunId - AT Apollo').first().json.records[0].fields.user[0] }}",
+            "config": "={{ $('Workflow Data').first().json.config }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "dataset",
+              "displayName": "dataset",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "offset",
+              "displayName": "offset",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number"
+            },
+            {
+              "id": "apolloId",
+              "displayName": "apolloId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "config",
+              "displayName": "config",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "object"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        544,
+        -528
+      ],
+      "id": "3deaae86-7217-4265-b76d-0aabaa8e5e62",
+      "name": "Recurse Dataset Pagination - Subflow",
+      "notes": "PHASE: Execution Purpose: Self-execute the workflow to fetch the next dataset page. Inputs: dataset id and offset (runIndex*100). Outputs: Invokes subflow run for next page processing. Dependencies: Execute Workflow Trigger; If Next Page - IF. Special Cases: Must stop when get_next_page=false to prevent infinite loop."
     }
   ],
   "repo_name": "boost-prospect-v2",
@@ -1044,6 +550,12 @@
   ],
   "staticData": null,
   "tags": [
+    {
+      "createdAt": "2025-09-01T18:44:12.239Z",
+      "updatedAt": "2025-09-01T18:44:12.239Z",
+      "id": "DxA0rKpUpLnrWgla",
+      "name": "Router"
+    },
     {
       "createdAt": "2025-08-28T20:14:40.063Z",
       "updatedAt": "2025-08-28T20:14:40.063Z",
@@ -1070,6 +582,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-28T20:14:40.908Z",
-  "versionId": "4221f036-9c9f-401c-a098-d7e4af7cea4d"
+  "updatedAt": "2025-09-01T18:48:55.771Z",
+  "versionId": "5f63b22f-696b-4fc5-9b0a-3fe6b8876367"
 }
