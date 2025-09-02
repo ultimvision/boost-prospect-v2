@@ -47,7 +47,13 @@
     },
     "Start Task Run - Apify": {
       "main": [
-        [],
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ],
         [
           {
             "node": "Apify Error 402 - IF",
@@ -59,7 +65,13 @@
     },
     "Generate Task Suffix - Util": {
       "main": [
-        []
+        [
+          {
+            "node": "Create Actor Task - Apify",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Prepare Task ID and Auth Header - Set": {
@@ -117,7 +129,7 @@
         ],
         [
           {
-            "node": "Create Run Apify Task - AT Apify Run",
+            "node": "Create Run Apify Task - AT Apify Run2",
             "type": "main",
             "index": 0
           }
@@ -128,7 +140,7 @@
       "main": [
         [
           {
-            "node": "Create Run Apify Task After Error - AT Apify Run",
+            "node": "Create Run Apify Task - AT Apify Run_2",
             "type": "main",
             "index": 0
           }
@@ -164,33 +176,11 @@
         ]
       ]
     },
-    "Aggregate": {
-      "main": [
-        [
-          {
-            "node": "Code",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code": {
-      "main": [
-        [
-          {
-            "node": "Generate Task Suffix - Util",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Check Urls Exists - IF": {
       "main": [
         [
           {
-            "node": "Aggregate",
+            "node": "Code",
             "type": "main",
             "index": 0
           }
@@ -220,6 +210,17 @@
         [
           {
             "node": "Check Urls Exists - IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Generate Task Suffix - Util",
             "type": "main",
             "index": 0
           }
@@ -271,7 +272,7 @@
       "typeVersion": 3.4,
       "position": [
         -8032,
-        528
+        352
       ],
       "id": "3db9e805-3ba9-456e-89fe-f08396e5d127",
       "name": "Variables - Set"
@@ -280,14 +281,16 @@
       "parameters": {
         "method": "POST",
         "url": "https://api.apify.com/v2/actor-tasks",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Accept",
               "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Vault').item.json.APIFY_TOKENS }}"
             }
           ]
         },
@@ -299,18 +302,12 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -6240,
-        432
+        -6464,
+        256
       ],
       "id": "10b4ff98-f2e1-425a-a42d-84fe93142d5f",
       "name": "Create Actor Task - Apify",
       "retryOnFail": true,
-      "credentials": {
-        "httpBearerAuth": {
-          "id": "c5ccYKuRoY4O10nO",
-          "name": "Bearer Apify"
-        }
-      },
       "notes": "PHASE: Utility | Purpose: Prepare task_id and Authorization header JSON template for Apify webhook registration. | Inputs: Apify response data.id and $vars.apify_webhook_bearer_token_callback. | Outputs: task_id field and payload_header string containing JSON headers. | Dependencies: Apify API response shape; n8n Variables. | Special Cases: Ensure bearer token exists and header JSON is valid; actorId and idempotencyKey are set elsewhere."
     },
     {
@@ -323,8 +320,8 @@
       "type": "n8n-nodes-base.crypto",
       "typeVersion": 1,
       "position": [
-        -5792,
-        432
+        -6016,
+        256
       ],
       "id": "b7a06e17-3920-4624-8e53-686206a5041e",
       "name": "Generate Idempotency Key - Util",
@@ -334,14 +331,16 @@
       "parameters": {
         "method": "POST",
         "url": "https://api.apify.com/v2/webhooks",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Accept",
               "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Vault').item.json.APIFY_TOKENS }}"
             }
           ]
         },
@@ -357,32 +356,28 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -5568,
-        432
+        -5792,
+        256
       ],
       "id": "7d093989-101e-4df3-882f-4b02d99fcde6",
       "name": "Register Task Webhook - Apify",
       "retryOnFail": true,
-      "credentials": {
-        "httpBearerAuth": {
-          "id": "c5ccYKuRoY4O10nO",
-          "name": "Bearer Apify"
-        }
-      },
       "notes": "PHASE: Execution | Purpose: Register a lifecycle webhook for the Apify task. | Inputs: task_id to bind, idempotencyKey for dedup, requestUrl from $vars.apify_apollo_webhook_callback, and headersTemplate from payload_header. | Outputs: Webhook registration metadata from Apify. | Dependencies: Apify API v2 /webhooks. | Special Cases: Ensure headersTemplate is valid JSON and handle 409 conflicts/retries."
     },
     {
       "parameters": {
         "method": "POST",
         "url": "=https://api.apify.com/v2/actor-tasks/{{ $('Prepare Task ID and Auth Header - Set').item.json.task_id }}/runs",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Accept",
               "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Vault').item.json.APIFY_TOKENS }}"
             }
           ]
         },
@@ -391,18 +386,12 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -4448,
-        336
+        -4672,
+        160
       ],
       "id": "0eb648ab-cf5e-48b6-9f4a-9e63d8fe4657",
       "name": "Start Task Run - Apify",
       "retryOnFail": true,
-      "credentials": {
-        "httpBearerAuth": {
-          "id": "c5ccYKuRoY4O10nO",
-          "name": "Bearer Apify"
-        }
-      },
       "onError": "continueErrorOutput",
       "notes": "PHASE: Execution | Purpose: Start an Apify task run for the created task. | Inputs: task_id and Apify Bearer auth. | Outputs: Run metadata including run ID and status. | Dependencies: Apify API v2 /actor-tasks/{taskId}/runs. | Special Cases: Asynchronous start; handle pending states, retries, and timeouts."
     },
@@ -416,8 +405,8 @@
       "type": "n8n-nodes-base.crypto",
       "typeVersion": 1,
       "position": [
-        -6464,
-        432
+        -6688,
+        256
       ],
       "id": "5f0f58fa-2501-4186-b059-a2576aff5c92",
       "name": "Generate Task Suffix - Util",
@@ -446,8 +435,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -6016,
-        432
+        -6240,
+        256
       ],
       "id": "f34fa5aa-5f65-4536-8301-092f2d92c8c7",
       "name": "Prepare Task ID and Auth Header - Set",
@@ -456,47 +445,16 @@
     {
       "parameters": {
         "url": "=https://api.apify.com/v2/users/me/limits",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Accept",
               "value": "application/json"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        -4896,
-        432
-      ],
-      "id": "c68b8341-884e-4998-a1ec-6a1548fc9594",
-      "name": "Apify - Get limits",
-      "retryOnFail": true,
-      "credentials": {
-        "httpBearerAuth": {
-          "id": "c5ccYKuRoY4O10nO",
-          "name": "Bearer Apify"
-        }
-      },
-      "notes": "PHASE: Execution | Purpose: Start an Apify task run for the created task. | Inputs: task_id and Apify Bearer auth. | Outputs: Run metadata including run ID and status. | Dependencies: Apify API v2 /actor-tasks/{taskId}/runs. | Special Cases: Asynchronous start; handle pending states, retries, and timeouts."
-    },
-    {
-      "parameters": {
-        "url": "=https://api.apify.com/v2/actor-tasks/{{ $('Create Actor Task - Apify').item.json.data.id }}",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
+            },
             {
-              "name": "Accept",
-              "value": "application/json"
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Vault').item.json.APIFY_TOKENS }}"
             }
           ]
         },
@@ -506,17 +464,40 @@
       "typeVersion": 4.2,
       "position": [
         -5120,
-        432
+        256
+      ],
+      "id": "c68b8341-884e-4998-a1ec-6a1548fc9594",
+      "name": "Apify - Get limits",
+      "retryOnFail": true,
+      "notes": "PHASE: Execution | Purpose: Start an Apify task run for the created task. | Inputs: task_id and Apify Bearer auth. | Outputs: Run metadata including run ID and status. | Dependencies: Apify API v2 /actor-tasks/{taskId}/runs. | Special Cases: Asynchronous start; handle pending states, retries, and timeouts."
+    },
+    {
+      "parameters": {
+        "url": "=https://api.apify.com/v2/actor-tasks/{{ $('Create Actor Task - Apify').item.json.data.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Vault').item.json.APIFY_TOKENS }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -5344,
+        256
       ],
       "id": "14e233ab-f7ee-4434-978d-574aebcd086d",
       "name": "Apify - Get task",
       "retryOnFail": true,
-      "credentials": {
-        "httpBearerAuth": {
-          "id": "c5ccYKuRoY4O10nO",
-          "name": "Bearer Apify"
-        }
-      },
       "notes": "PHASE: Execution | Purpose: Start an Apify task run for the created task. | Inputs: task_id and Apify Bearer auth. | Outputs: Run metadata including run ID and status. | Dependencies: Apify API v2 /actor-tasks/{taskId}/runs. | Special Cases: Asynchronous start; handle pending states, retries, and timeouts."
     },
     {
@@ -524,8 +505,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -5344,
-        432
+        -5568,
+        256
       ],
       "id": "a931bf9d-0831-4ce4-846e-22de5a2e42f0",
       "name": "Check Realtime Usage > Apify"
@@ -566,215 +547,11 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -4672,
-        432
+        -4896,
+        256
       ],
       "id": "3bcbfb05-97c1-443f-8f7c-df50ba3fffb5",
       "name": "Check Apify Capacity - IF"
-    },
-    {
-      "parameters": {
-        "operation": "create",
-        "base": {
-          "__rl": true,
-          "value": "app3ZDXRoKYAaYwlt",
-          "mode": "list",
-          "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
-        },
-        "table": {
-          "__rl": true,
-          "value": "tblLejx1Cygn9uAch",
-          "mode": "list",
-          "cachedResultName": "Apify Runs",
-          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tblLejx1Cygn9uAch"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "taskId": "={{ $('Create Actor Task - Apify').item.json.data.id }}",
-            "requestedMemoryMbytes": "={{ Math.ceil($json.data.current.actorMemoryGbytes + ($('Apify - Get task').item.json.data.options.memoryMbytes / 1000)) }}",
-            "actorMemoryGbytes": "={{ $json.data.current.actorMemoryGbytes }}",
-            "activeActorJobCount": "={{ $json.data.current.activeActorJobCount }}",
-            "maxActorMemoryGbytes": "={{ $json.data.limits.maxActorMemoryGbytes }}",
-            "maxConcurrentActorJobs": "={{ $json.data.limits.maxConcurrentActorJobs }}",
-            "people": "=['{{ $('Start').first().json.recId }}']"
-          },
-          "matchingColumns": [],
-          "schema": [
-            {
-              "id": "taskId",
-              "displayName": "taskId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "createAt",
-              "displayName": "createAt",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "lastVerificationAt",
-              "displayName": "lastVerificationAt",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "processedAt",
-              "displayName": "processedAt",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "status",
-              "displayName": "status",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Queue",
-                  "value": "Queue"
-                },
-                {
-                  "name": "Processed",
-                  "value": "Processed"
-                }
-              ],
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "maxConcurrentActorJobs",
-              "displayName": "maxConcurrentActorJobs",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "maxActorMemoryGbytes",
-              "displayName": "maxActorMemoryGbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "activeActorJobCount",
-              "displayName": "activeActorJobCount",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "actorMemoryGbytes",
-              "displayName": "actorMemoryGbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "requestedMemoryMbytes",
-              "displayName": "requestedMemoryMbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "missingMemoryMbytes",
-              "displayName": "missingMemoryMbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "people",
-              "displayName": "people",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "peopleFullName",
-              "displayName": "peopleFullName",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.airtable",
-      "typeVersion": 2.1,
-      "position": [
-        -4448,
-        528
-      ],
-      "id": "4794c1e9-61a2-425c-8937-5e17b42dcacf",
-      "name": "Create Run Apify Task - AT Apify Run",
-      "credentials": {
-        "airtableTokenApi": {
-          "id": "XzBWggFrPVokGo9L",
-          "name": "Airtable Personal Access Token account"
-        }
-      }
     },
     {
       "parameters": {
@@ -783,8 +560,8 @@
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
       "position": [
-        -4000,
-        432
+        -4224,
+        352
       ],
       "id": "0cba9d9a-4a3f-412a-acca-4b3bd1f52c8a",
       "name": "Stop and Error"
@@ -816,215 +593,11 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -4224,
-        336
+        -4448,
+        256
       ],
       "id": "f321d0da-f379-4091-973d-809babcda584",
       "name": "Apify Error 402 - IF"
-    },
-    {
-      "parameters": {
-        "operation": "create",
-        "base": {
-          "__rl": true,
-          "value": "app3ZDXRoKYAaYwlt",
-          "mode": "list",
-          "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
-        },
-        "table": {
-          "__rl": true,
-          "value": "tblLejx1Cygn9uAch",
-          "mode": "list",
-          "cachedResultName": "Apify Runs",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tblLejx1Cygn9uAch"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "taskId": "={{ $('Create Actor Task - Apify').item.json.data.id }}",
-            "requestedMemoryMbytes": "={{ Math.ceil($('Apify - Get limits').item.json.data.current.actorMemoryGbytes + ($('Apify - Get task').item.json.data.options.memoryMbytes / 1000)) }}",
-            "actorMemoryGbytes": "={{ $('Apify - Get limits').item.json.data.current.actorMemoryGbytes }}",
-            "activeActorJobCount": "={{ $('Apify - Get limits').item.json.data.current.activeActorJobCount }}",
-            "maxActorMemoryGbytes": "={{ $('Apify - Get limits').item.json.data.limits.maxActorMemoryGbytes }}",
-            "maxConcurrentActorJobs": "={{ $('Apify - Get limits').item.json.data.limits.maxConcurrentActorJobs }}",
-            "people": "=['{{ $('Start').first().json.recId }}']"
-          },
-          "matchingColumns": [],
-          "schema": [
-            {
-              "id": "taskId",
-              "displayName": "taskId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "createAt",
-              "displayName": "createAt",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "lastVerificationAt",
-              "displayName": "lastVerificationAt",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "processedAt",
-              "displayName": "processedAt",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "status",
-              "displayName": "status",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Queue",
-                  "value": "Queue"
-                },
-                {
-                  "name": "Processed",
-                  "value": "Processed"
-                }
-              ],
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "maxConcurrentActorJobs",
-              "displayName": "maxConcurrentActorJobs",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "maxActorMemoryGbytes",
-              "displayName": "maxActorMemoryGbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "activeActorJobCount",
-              "displayName": "activeActorJobCount",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "actorMemoryGbytes",
-              "displayName": "actorMemoryGbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "requestedMemoryMbytes",
-              "displayName": "requestedMemoryMbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "missingMemoryMbytes",
-              "displayName": "missingMemoryMbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "people",
-              "displayName": "people",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "peopleFullName",
-              "displayName": "peopleFullName",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.airtable",
-      "typeVersion": 2.1,
-      "position": [
-        -4000,
-        240
-      ],
-      "id": "78fe98c0-b6a8-40ff-939b-694e61f43bb0",
-      "name": "Create Run Apify Task After Error - AT Apify Run",
-      "credentials": {
-        "airtableTokenApi": {
-          "id": "XzBWggFrPVokGo9L",
-          "name": "Airtable Personal Access Token account"
-        }
-      }
     },
     {
       "parameters": {
@@ -1048,7 +621,7 @@
       "typeVersion": 1.2,
       "position": [
         -7584,
-        528
+        352
       ],
       "id": "07af3d73-69c8-48df-87d2-0e9f33f07364",
       "name": "Get Config"
@@ -1059,45 +632,10 @@
       "typeVersion": 1,
       "position": [
         -8256,
-        528
+        352
       ],
       "id": "66558a7c-aabc-4d41-ac60-09ce93470317",
       "name": "When clicking ‘Execute workflow’"
-    },
-    {
-      "parameters": {
-        "fieldsToAggregate": {
-          "fieldToAggregate": [
-            {
-              "fieldToAggregate": "url",
-              "renameField": true,
-              "outputFieldName": "startUrls"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
-      "position": [
-        -6912,
-        432
-      ],
-      "id": "f4a56e62-c779-4606-9fe7-d0630e416eaa",
-      "name": "Aggregate"
-    },
-    {
-      "parameters": {
-        "jsCode": "for (const item of $input.all()) {\n  // On transforme le tableau startUrls existant\n  item.json.startUrls = item.json.startUrls.map(url => ({\n    url,\n    method: \"GET\"\n  }));\n}\n\nreturn $input.all();\n"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        -6688,
-        432
-      ],
-      "id": "d45423d0-547d-46e4-ad8c-04dcf6ca600b",
-      "name": "Code"
     },
     {
       "parameters": {
@@ -1111,10 +649,10 @@
           "conditions": [
             {
               "id": "76f33ca2-02d2-4898-930b-e2d8b76eea87",
-              "leftValue": "={{ $json.id }}",
+              "leftValue": "={{ $json.records }}",
               "rightValue": "",
               "operator": {
-                "type": "string",
+                "type": "array",
                 "operation": "exists",
                 "singleValue": true
               }
@@ -1128,7 +666,7 @@
       "typeVersion": 2.2,
       "position": [
         -7136,
-        528
+        352
       ],
       "id": "8770c20a-160d-4041-9667-97f37a6b1499",
       "name": "Check Urls Exists - IF"
@@ -1139,7 +677,7 @@
       "typeVersion": 1,
       "position": [
         -6912,
-        624
+        448
       ],
       "id": "e797326a-52c6-4ecb-be78-dd2a6d96924b",
       "name": "No Operation, do nothing"
@@ -1166,37 +704,10 @@
       "typeVersion": 1.2,
       "position": [
         -7808,
-        528
+        352
       ],
       "id": "a6157a3e-3cb4-4357-865b-5aa2682c337e",
       "name": "Vault"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "=https://api.airtable.com/v0/{{ $('Vault').item.json.BASE_ID }}/Apify%20Runs",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "=Bearer {{ $('Vault').item.json.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"records\": [\n    {\n      \"fields\": {\n        \"taskId\": \"{{ $('Create Actor Task - Apify').item.json.data.id }}\",\n        \"maxConcurrentActorJobs\": {{ $json.data.limits.maxConcurrentActorJobs }},\n        \"maxActorMemoryGbytes\": {{ $json.data.limits.maxActorMemoryGbytes }},\n        \"activeActorJobCount\": {{ $json.data.current.activeActorJobCount }},\n        \"actorMemoryGbytes\": {{ $json.data.current.actorMemoryGbytes }},\n        \"requestedMemoryMbytes\": {{ Math.ceil($json.data.current.actorMemoryGbytes + ($('Apify - Get task').item.json.data.options.memoryMbytes / 1000)) }}\n      }\n    }\n  ]\n}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        -6528,
-        1040
-      ],
-      "id": "5dc262bc-bbc5-41ee-9604-e1c5eeac2609",
-      "name": "Create Run Apify Task - AT Apify Run1"
     },
     {
       "parameters": {
@@ -1237,11 +748,89 @@
       "typeVersion": 4.2,
       "position": [
         -7360,
-        528
+        352
       ],
       "id": "532c07b6-f070-4e92-85c9-b8c8bb6168b3",
       "name": "Search Active Url - AT Urls Scrapping",
       "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    json: {\n      startUrls: $input.all()\n        .flatMap(i => Array.isArray(i.json.records) ? i.json.records.map(r => r?.fields?.url) : i.json.startUrls || [])\n        .filter(Boolean)\n        .map(u => String(u).trim())\n        .filter(u => /^https?:\\/\\//i.test(u))\n        .filter((u, idx, arr) => arr.indexOf(u) === idx)\n        .map(url => ({ url, method: \"GET\" }))\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -6912,
+        256
+      ],
+      "id": "a18fe0a4-8dc8-4897-ba09-d6ea4a3075e7",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.airtable.com/v0/{{ $('Vault').item.json.BASE_ID }}/Apify%20Runs",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Vault').item.json.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"records\": [\n    {\n      \"fields\": {\n        \"taskId\": \"{{ $('Create Actor Task - Apify').item.json.data.id }}\",\n        \"maxConcurrentActorJobs\": {{ $json.data.limits.maxConcurrentActorJobs }},\n        \"maxActorMemoryGbytes\": {{ $json.data.limits.maxActorMemoryGbytes }},\n        \"activeActorJobCount\": {{ $json.data.current.activeActorJobCount }},\n        \"actorMemoryGbytes\": {{ $json.data.current.actorMemoryGbytes }},\n        \"requestedMemoryMbytes\": {{ Math.ceil($json.data.current.actorMemoryGbytes + ($('Apify - Get task').item.json.data.options.memoryMbytes / 1000)) }}\n      }\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -4224,
+        160
+      ],
+      "id": "596e19cd-6228-4ccf-be7d-95de4c5a944b",
+      "name": "Create Run Apify Task - AT Apify Run_2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.airtable.com/v0/{{ $('Vault').item.json.BASE_ID }}/Apify%20Runs",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Vault').item.json.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"records\": [\n    {\n      \"fields\": {\n        \"taskId\": \"{{ $('Create Actor Task - Apify').item.json.data.id }}\",\n        \"maxConcurrentActorJobs\": {{ $json.data.limits.maxConcurrentActorJobs }},\n        \"maxActorMemoryGbytes\": {{ $json.data.limits.maxActorMemoryGbytes }},\n        \"activeActorJobCount\": {{ $json.data.current.activeActorJobCount }},\n        \"actorMemoryGbytes\": {{ $json.data.current.actorMemoryGbytes }},\n        \"requestedMemoryMbytes\": {{ Math.ceil($json.data.current.actorMemoryGbytes + ($('Apify - Get task').item.json.data.options.memoryMbytes / 1000)) }}\n      }\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -4672,
+        352
+      ],
+      "id": "01b8c0d9-7895-46c1-b473-a5a62266141f",
+      "name": "Create Run Apify Task - AT Apify Run2"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -4448,
+        64
+      ],
+      "id": "06db0022-c5a9-4b67-80b2-4652edf5ac78",
+      "name": "No Operation, do nothing1"
     }
   ],
   "repo_name": "boost-prospect-v2",
@@ -1264,6 +853,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-08-28T21:35:22.288Z",
-  "versionId": "94f43051-0f71-4be8-b605-ea315987f233"
+  "updatedAt": "2025-09-01T11:28:37.738Z",
+  "versionId": "8fef4c1a-af9e-4f3e-b668-6f81ca3bd998"
 }
