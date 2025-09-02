@@ -1,40 +1,11 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "Variables - Set": {
       "main": [
         [
           {
-            "node": "Vault",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Receive Apollo Lead Request - HTTP": {
-      "main": [
-        [
-          {
-            "node": "Variables - Set",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Check Prospecting URL Present - IF": {
-      "main": [
-        [
-          {
             "node": "Generate Task Suffix - Util",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Handle Missing Prospecting URL - Error",
             "type": "main",
             "index": 0
           }
@@ -183,33 +154,80 @@
         ]
       ]
     },
-    "Get Config": {
+    "Receive Apollo Lead Request - HTTP": {
       "main": [
         [
           {
-            "node": "Set Variables",
+            "node": "Workflow Data",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Set Variables": {
+    "Check recId Exists - IF": {
       "main": [
         [
           {
-            "node": "Check Prospecting URL Present - IF",
+            "node": "Get Apollo Data by recId - AT Apollo",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Handle Missing recId - Error",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Vault": {
+    "Get Apollo Data by recId - AT Apollo": {
       "main": [
         [
           {
-            "node": "Get Config",
+            "node": "Check Values - IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Values - IF": {
+      "main": [
+        [
+          {
+            "node": "Update status In Progress - AT Apollo",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update status Error - AT Apollo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update status In Progress - AT Apollo": {
+      "main": [
+        [
+          {
+            "node": "Variables - Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Data": {
+      "main": [
+        [
+          {
+            "node": "Check recId Exists - IF",
             "type": "main",
             "index": 0
           }
@@ -223,7 +241,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Triggers  > Apify > Apollo Create a Task",
+  "name": "Triggers  > Apify > Apollo Create a Task [1000]",
   "nodes": [
     {
       "parameters": {
@@ -238,13 +256,13 @@
             {
               "id": "9bb6b181-b2b9-4e0f-991c-59d7819d49cf",
               "name": "total_records",
-              "value": "={{ $json.body.total_records }}",
+              "value": "={{ $json.fields.totalRecords }}",
               "type": "number"
             },
             {
               "id": "174d0a57-7aa5-4e8b-a951-f2940513f45f",
               "name": "prospecting_url",
-              "value": "={{ $json.body.prospecting_url }}",
+              "value": "={{ $json.fields.prospectingUrl }}",
               "type": "string"
             }
           ]
@@ -254,81 +272,11 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -3264,
-        -368
+        -2752,
+        -416
       ],
       "id": "1b1d96f8-b54a-4ad7-b6e5-95f55e40d191",
       "name": "Variables - Set"
-    },
-    {
-      "parameters": {
-        "httpMethod": "POST",
-        "path": "/apollo/get-leads",
-        "authentication": "headerAuth",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
-      "position": [
-        -3488,
-        -368
-      ],
-      "id": "cf480a9f-1d97-4df5-b3c8-9787f9710c47",
-      "name": "Receive Apollo Lead Request - HTTP",
-      "webhookId": "c3627432-c26e-4633-bb46-0f3f37f7b0f4",
-      "notesInFlow": false,
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "6gVvkFZGh8dqIc8X",
-          "name": "Auth_Post_Webhook_N8N"
-        }
-      },
-      "notes": "PHASE: Input. Purpose: Receive HTTP webhook to initiate an Apollo lead scrape by record ID and parameters. Inputs: JSON body fields recId, totalRecords, optional prospectingUrl; headers and query params optional. Outputs: One item forwarding the request fields downstream. Dependencies: n8n webhook endpoint at /apollo/get-leads. Special Cases: Validate recId presence, avoid logging PII, return 400 on malformed input, and consider rate limiting."
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "ac2d8168-9cfd-4e1a-a249-05040835c3fa",
-              "leftValue": "={{ $('Variables - Set').first().json.prospecting_url }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "exists",
-                "singleValue": true
-              }
-            },
-            {
-              "id": "9b9ce1fd-00fb-4919-bfec-cae41dcb24a0",
-              "leftValue": "={{ $('Variables - Set').first().json.prospecting_url }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "notEmpty",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        -2368,
-        -368
-      ],
-      "id": "65d163d5-6985-4add-b560-4d1f818d39fe",
-      "name": "Check Prospecting URL Present - IF",
-      "notes": "PHASE: Configuration | Purpose: Branch execution based on whether prospecting_url is present and non-empty on the current item. | Inputs: Item from prior Set step populated from the webhook with prospecting_url. | Outputs: True branch when prospecting_url exists and notEmpty; False branch routes to the error handler. | Dependencies: Output of 'Variables - Set'. | Special Cases: Normalize/trim value; update rules if upstream schema or field name changes."
     },
     {
       "parameters": {
@@ -343,7 +291,7 @@
             },
             {
               "name": "Authorization",
-              "value": "=Bearer {{ $('Vault').item.json.APIFY_TOKENS }}"
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.APIFY_TOKENS }}"
             }
           ]
         },
@@ -355,8 +303,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -1920,
-        -464
+        -2304,
+        -416
       ],
       "id": "3e152c57-5639-403d-923d-d568cdd887a4",
       "name": "Create Actor Task - Apify",
@@ -373,8 +321,8 @@
       "type": "n8n-nodes-base.crypto",
       "typeVersion": 1,
       "position": [
-        -1472,
-        -464
+        -1856,
+        -416
       ],
       "id": "1734ea98-4ddf-4c07-b390-30e03b23603a",
       "name": "Generate Idempotency Key - Util",
@@ -393,13 +341,13 @@
             },
             {
               "name": "Authorization",
-              "value": "=Bearer {{ $('Vault').item.json.APIFY_TOKENS }}"
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.APIFY_TOKENS }}"
             }
           ]
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"isAdHoc\": false,\n  \"eventTypes\": [\n    \"ACTOR.RUN.SUCCEEDED\",\n    \"ACTOR.RUN.FAILED\",\n    \"ACTOR.RUN.ABORTED\",\n    \"ACTOR.RUN.TIMED_OUT\"\n  ],\n  \"condition\": {\n    \"actorTaskId\": \"{{ $json.task_id }}\"\n  },\n  \"idempotencyKey\": \"{{ $json.idempotencyKey }}\",\n  \"ignoreSslErrors\": false,\n  \"doNotRetry\": false,\n  \"requestUrl\": \"{{ $('Set Variables').first().json.data[0]['apify_apollo_webhook_callback\t'] }}\",\n  \"payloadTemplate\": \"{}\",\n  \"headersTemplate\": \"{{ $json.payload_header }}\",\n  \"description\": \"This is webhook callback for Apollo Scraper to N8N.\",\n  \"shouldInterpolateStrings\": false\n}",
+        "jsonBody": "={\n  \"isAdHoc\": false,\n  \"eventTypes\": [\n    \"ACTOR.RUN.SUCCEEDED\",\n    \"ACTOR.RUN.FAILED\",\n    \"ACTOR.RUN.ABORTED\",\n    \"ACTOR.RUN.TIMED_OUT\"\n  ],\n  \"condition\": {\n    \"actorTaskId\": \"{{ $json.task_id }}\"\n  },\n  \"idempotencyKey\": \"{{ $json.idempotencyKey }}\",\n  \"ignoreSslErrors\": false,\n  \"doNotRetry\": false,\n  \"requestUrl\": \"{{ $('Workflow Data').item.json.config.variable['apify_apollo_webhook_callback\t'] }}\",\n  \"payloadTemplate\": \"{}\",\n  \"headersTemplate\": \"{{ $json.payload_header }}\",\n  \"description\": \"This is webhook callback for Apollo Scraper to N8N.\",\n  \"shouldInterpolateStrings\": false\n}",
         "options": {
           "redirect": {
             "redirect": {}
@@ -409,8 +357,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -1248,
-        -464
+        -1632,
+        -416
       ],
       "id": "fbbcbe4e-3fb4-413c-b053-e29c026166fa",
       "name": "Register Task Webhook - Apify",
@@ -430,7 +378,7 @@
             },
             {
               "name": "Authorization",
-              "value": "=Bearer {{ $('Vault').item.json.APIFY_TOKENS }}"
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.APIFY_TOKENS }}"
             }
           ]
         },
@@ -439,28 +387,14 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -128,
-        -560
+        -512,
+        -512
       ],
       "id": "0ac41ba2-810b-4280-830a-9a05453e7d67",
       "name": "Start Task Run - Apify",
       "retryOnFail": false,
       "onError": "continueErrorOutput",
       "notes": "PHASE: Execution | Purpose: Start an Apify task run for the created task. | Inputs: task_id and Apify Bearer auth. | Outputs: Run metadata including run ID and status. | Dependencies: Apify API v2 /actor-tasks/{taskId}/runs. | Special Cases: Asynchronous start; handle pending states, retries, and timeouts."
-    },
-    {
-      "parameters": {
-        "errorMessage": "No Prospecting Url"
-      },
-      "type": "n8n-nodes-base.stopAndError",
-      "typeVersion": 1,
-      "position": [
-        -2144,
-        -272
-      ],
-      "id": "4fe2f2f6-e69e-4a6d-a825-a164da91285b",
-      "name": "Handle Missing Prospecting URL - Error",
-      "notes": "PHASE: Error Handling | Purpose: Stop execution and raise an error when prospecting_url validation fails. | Inputs: Items from IF false branch (missing/empty prospecting_url). | Outputs: Error with message 'No Prospecting Url'. | Dependencies: n8n error handling and webhook response behavior. | Special Cases: Return 400 to caller to indicate invalid input."
     },
     {
       "parameters": {
@@ -472,8 +406,8 @@
       "type": "n8n-nodes-base.crypto",
       "typeVersion": 1,
       "position": [
-        -2144,
-        -464
+        -2528,
+        -416
       ],
       "id": "f1b4576a-8faa-4cc1-82e6-26048dac6f6e",
       "name": "Generate Task Suffix - Util",
@@ -486,7 +420,7 @@
             {
               "id": "a222e988-efad-4f98-b868-eedd998eb466",
               "name": "payload_header",
-              "value": "={\\n  \\\"Authorization\\\": \\\"Bearer {{ $('Set Variables').first().json.data[0].apify_webhook_bearer_token_callback }}\\\"\\n}",
+              "value": "={\\n  \\\"Authorization\\\": \\\"Bearer {{ $('Workflow Data').first().json.config.variable.apify_webhook_bearer_token_callback }}\\\"\\n}",
               "type": "string"
             },
             {
@@ -502,8 +436,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1696,
-        -464
+        -2080,
+        -416
       ],
       "id": "73812d02-0c3a-4f05-a6db-675cc2d88cf0",
       "name": "Prepare Task ID and Auth Header - Set",
@@ -521,7 +455,7 @@
             },
             {
               "name": "Authorization",
-              "value": "=Bearer {{ $('Vault').item.json.APIFY_TOKENS }}"
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.APIFY_TOKENS }}"
             }
           ]
         },
@@ -530,8 +464,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -576,
-        -464
+        -960,
+        -416
       ],
       "id": "c1add31c-1dfd-47ca-9ab0-3a44e9fe54a1",
       "name": "Apify - Get limits",
@@ -550,7 +484,7 @@
             },
             {
               "name": "Authorization",
-              "value": "=Bearer {{ $('Vault').item.json.APIFY_TOKENS }}"
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.APIFY_TOKENS }}"
             }
           ]
         },
@@ -559,8 +493,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -800,
-        -464
+        -1184,
+        -416
       ],
       "id": "02e32e80-979e-46c8-abb8-63900a85ad25",
       "name": "Apify - Get task",
@@ -603,8 +537,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -352,
-        -464
+        -736,
+        -416
       ],
       "id": "7963f744-a8df-4808-a615-6aaa9486fb64",
       "name": "Check Apify Capacity - IF"
@@ -614,8 +548,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -1024,
-        -464
+        -1408,
+        -416
       ],
       "id": "e0bc5f10-7bb5-4721-8441-80d06be64926",
       "name": "Check Realtime Usage > Apify"
@@ -627,8 +561,8 @@
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
       "position": [
-        320,
-        -368
+        -64,
+        -320
       ],
       "id": "54f04be2-3bf0-4266-9ca0-3e5d33f67a83",
       "name": "Stop and Error"
@@ -660,90 +594,22 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        96,
-        -464
+        -288,
+        -416
       ],
       "id": "b587fddf-a7c9-46be-9c3c-ddbfd3b039d8",
       "name": "Apify Error 402 - IF"
     },
     {
       "parameters": {
-        "aggregate": "aggregateAllItemData",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
-      "position": [
-        -2592,
-        -368
-      ],
-      "id": "213b39ee-1589-4cac-a213-9698241f1470",
-      "name": "Set Variables"
-    },
-    {
-      "parameters": {
-        "workflowId": {
-          "__rl": true,
-          "value": "oSwgKHI5ETDqWKLL",
-          "mode": "list",
-          "cachedResultName": "Variables"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {},
-          "matchingColumns": [],
-          "schema": [],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        -2816,
-        -368
-      ],
-      "id": "00cc3547-f7b8-4a36-8a79-c2987caef86b",
-      "name": "Get Config"
-    },
-    {
-      "parameters": {
-        "workflowId": {
-          "__rl": true,
-          "value": "S5knCtBpBpMCDTNI",
-          "mode": "list",
-          "cachedResultName": "Vault"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {},
-          "matchingColumns": [],
-          "schema": [],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        -3040,
-        -368
-      ],
-      "id": "0837e9cc-558c-4eae-a9cf-636b4bd3803c",
-      "name": "Vault"
-    },
-    {
-      "parameters": {
         "method": "PATCH",
-        "url": "=https://api.airtable.com/v0/{{ $('Vault').item.json.BASE_ID }}/Apollo/{{ $('Receive Apollo Lead Request - HTTP').first().json.body.recId }}",
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').first().json.config.vault.BASE_ID }}/Apollo/{{ $('Workflow Data').first().json.recId }}",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Authorization",
-              "value": "=Bearer {{ $('Vault').item.json.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
             }
           ]
         },
@@ -755,8 +621,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        96,
-        -656
+        -288,
+        -608
       ],
       "id": "7ed14458-6bce-44a8-ba68-6b8d6a4f7b54",
       "name": "Update status - AT Apollo",
@@ -765,13 +631,13 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://api.airtable.com/v0/{{ $('Vault').item.json.BASE_ID }}/Apify%20Runs",
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').first().json.config.vault.BASE_ID }}/Apify%20Runs",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Authorization",
-              "value": "=Bearer {{ $('Vault').item.json.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
             }
           ]
         },
@@ -783,8 +649,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -128,
-        -368
+        -512,
+        -320
       ],
       "id": "bad881d6-e0e7-456d-b66d-19d509ee9536",
       "name": "Create Run Apify Task - AT Apify Run"
@@ -792,13 +658,13 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://api.airtable.com/v0/{{ $('Vault').item.json.BASE_ID }}/Apify%20Runs",
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').first().json.config.vault.BASE_ID }}/Apify%20Runs",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Authorization",
-              "value": "=Bearer {{ $('Vault').item.json.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
             }
           ]
         },
@@ -810,11 +676,248 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        320,
-        -560
+        -64,
+        -512
       ],
       "id": "fce67faf-57a6-40a0-a1e5-4fde9d076805",
       "name": "Create Run Apify Task - AT Apify Run_2"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -4096,
+        -224
+      ],
+      "id": "82b32bbb-7da9-4e6c-af20-c739fc45e5f8",
+      "name": "Receive Apollo Lead Request - HTTP"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "adabec29-1094-49c5-9a26-23b52d25d8c9",
+              "leftValue": "={{ $json.recId }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "8bd23be0-daec-4cbd-9359-682ad2119cee",
+              "leftValue": "={{ $json.recId }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -3648,
+        -224
+      ],
+      "id": "e850f486-792b-4497-aca8-96b26420650d",
+      "name": "Check recId Exists - IF"
+    },
+    {
+      "parameters": {
+        "errorMessage": "No recID"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        -3424,
+        -128
+      ],
+      "id": "99b882d7-ac80-482d-aa36-f18b501b5edb",
+      "name": "Handle Missing recId - Error",
+      "notes": "PHASE: Error Handling | Purpose: Stop execution and raise an error when prospecting_url validation fails. | Inputs: Items from IF false branch (missing/empty prospecting_url). | Outputs: Error with message 'No Prospecting Url'. | Dependencies: n8n error handling and webhook response behavior. | Special Cases: Return 400 to caller to indicate invalid input."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "1c83514e-1c43-431f-95ce-24dbf0ab4727",
+              "leftValue": "={{ $json.fields.executed }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "5bbda9ba-4af5-4732-bac2-95555ebea045",
+              "leftValue": "={{ $json.fields.totalRecords }}",
+              "rightValue": 500,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            },
+            {
+              "id": "3a4870a8-93fa-4a5d-a413-532f2851141f",
+              "leftValue": "={{ $json.fields.totalRecords }}",
+              "rightValue": 10000,
+              "operator": {
+                "type": "number",
+                "operation": "lte"
+              }
+            },
+            {
+              "id": "0939cc87-1ae2-4ccf-b51a-6dcf2fd243f8",
+              "leftValue": "={{ $json.fields.prospectingUrl }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "b5e424da-57d7-4376-ac5e-f0c43b11e8fd",
+              "leftValue": "={{ $json.fields.prospectingUrl }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -3200,
+        -320
+      ],
+      "id": "fdba853e-d633-42d9-8bc8-63fbbef91743",
+      "name": "Check Values - IF"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').first().json.config.vault.BASE_ID }}/Apollo/{{ $('Workflow Data').first().json.recId }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -3424,
+        -320
+      ],
+      "id": "05e44115-470d-4fd5-adba-f362b9e95fca",
+      "name": "Get Apollo Data by recId - AT Apollo",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').first().json.config.vault.BASE_ID }}/Apollo/{{ $('Workflow Data').first().json.recId }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"fields\": {\n    \"executionDate\": \"{{ $now }}\",\n    \"status\": \"Error Detected\",\n    \"statusDetails\": \"Already executed, URL problem, or invalid quantity.\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -2976,
+        -224
+      ],
+      "id": "a4025b9f-e693-4576-b429-7bebcd4f60e5",
+      "name": "Update status Error - AT Apollo",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').first().json.config.vault.BASE_ID }}/Apollo/{{ $('Workflow Data').first().json.recId }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"fields\": {\n    \"executionDate\": \"{{ $now }}\",\n    \"status\": \"In progress\",\n    \"statusDetails\": \"\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -2976,
+        -416
+      ],
+      "id": "b10cd3bb-4968-4ef1-bca5-60db25d59501",
+      "name": "Update status In Progress - AT Apollo",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3872,
+        -224
+      ],
+      "id": "e6680733-53ad-44b2-aea1-b141d1460906",
+      "name": "Workflow Data"
     }
   ],
   "repo_name": "boost-prospect-v2",
@@ -856,6 +959,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-28T20:14:59.919Z",
-  "versionId": "18a7251e-a7b3-423f-bc1b-b275a840d23f"
+  "updatedAt": "2025-09-01T15:51:21.019Z",
+  "versionId": "31aac39e-3c30-4920-8d9e-faa809fabce2"
 }
