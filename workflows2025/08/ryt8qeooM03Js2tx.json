@@ -16,7 +16,7 @@
       "main": [
         [
           {
-            "node": "ReInit Processed Value - AT People",
+            "node": "Update Previous Job Summary - AT People",
             "type": "main",
             "index": 0
           }
@@ -109,8 +109,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        1848,
-        888
+        1856,
+        896
       ],
       "id": "d12c7643-e0c1-4a11-8392-f4e325848d00",
       "name": "Chat Model - OpenRouter",
@@ -131,7 +131,7 @@
       "typeVersion": 1,
       "position": [
         2640,
-        760
+        768
       ],
       "id": "21f0b88d-97ef-4fcc-a869-5ba486ea9e5b",
       "name": "Fail Job Summary Generation - Error Handler",
@@ -210,7 +210,7 @@
       "typeVersion": 2.2,
       "position": [
         2416,
-        760
+        768
       ],
       "id": "da85eabf-7d15-47d7-8ec3-56071ca13d94",
       "name": "If Retry Count LT 2 - IF",
@@ -224,8 +224,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        1976,
-        888
+        1984,
+        896
       ],
       "id": "5675f03a-70cc-4c2f-9aec-e49108830be7",
       "name": "Chat Model (Fallback)",
@@ -255,7 +255,7 @@
       "typeVersion": 1.7,
       "position": [
         1840,
-        664
+        672
       ],
       "id": "c6d80275-90c1-4119-9129-0259b2a4a60b",
       "name": "Summarize Previous Jobs - LLM",
@@ -270,7 +270,7 @@
       "typeVersion": 1.1,
       "position": [
         1392,
-        664
+        672
       ],
       "id": "3057b26b-4a4f-4826-a935-6eaebd62be31",
       "name": "Receive Person Work History - Subflow",
@@ -290,6 +290,23 @@
       ],
       "id": "573281d3-6ee0-4156-bc8b-7f5da22a24b0",
       "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": []
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1616,
+        672
+      ],
+      "id": "8b2a945b-68d3-469d-8038-790aec0cb6fd",
+      "name": "Workflow Data"
     },
     {
       "parameters": {
@@ -316,25 +333,8 @@
         544
       ],
       "id": "5e1b3e96-d802-4139-ac38-3c2e963d28b0",
-      "name": "ReInit Processed Value - AT People",
+      "name": "Update Previous Job Summary - AT People",
       "retryOnFail": true
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": []
-        },
-        "includeOtherFields": true,
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        1616,
-        664
-      ],
-      "id": "8b2a945b-68d3-469d-8038-790aec0cb6fd",
-      "name": "Workflow Data"
     }
   ],
   "repo_name": "boost-prospect-v2",
@@ -357,16 +357,16 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-08-28T20:14:40.063Z",
-      "updatedAt": "2025-08-28T20:14:40.063Z",
-      "id": "NRTwpUm4iq5jfqQG",
-      "name": "Migrated"
-    },
-    {
       "createdAt": "2025-09-01T18:44:12.239Z",
       "updatedAt": "2025-09-01T18:44:12.239Z",
       "id": "DxA0rKpUpLnrWgla",
       "name": "Router"
+    },
+    {
+      "createdAt": "2025-08-28T20:14:40.063Z",
+      "updatedAt": "2025-08-28T20:14:40.063Z",
+      "id": "NRTwpUm4iq5jfqQG",
+      "name": "Migrated"
     },
     {
       "createdAt": "2025-08-26T10:41:15.177Z",
@@ -382,6 +382,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-09-01T22:32:04.360Z",
-  "versionId": "d70f3cfc-8154-475e-ae2d-1cd9f78ddf2d"
+  "updatedAt": "2025-09-02T11:12:09.979Z",
+  "versionId": "6b2fefc1-02f2-4fd0-9a7f-14247acb6001"
 }
