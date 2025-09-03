@@ -1,17 +1,6 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
-    "Receive Callback - Webhook Apify Apollo": {
-      "main": [
-        [
-          {
-            "node": "Get Webhook Dispatch - HTTP Apify",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Get Webhook Dispatch - HTTP Apify": {
       "main": [
         [
@@ -209,30 +198,6 @@
   "nodes": [
     {
       "parameters": {
-        "httpMethod": "POST",
-        "path": "/apollo/web-scraping",
-        "authentication": "headerAuth",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
-      "position": [
-        -2080,
-        388
-      ],
-      "id": "0f2ab68a-cb81-48fb-ab0b-90f01633b791",
-      "name": "Receive Callback - Webhook Apify Apollo",
-      "webhookId": "d8aa40d8-35ca-4197-934c-02464d68db81",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "ugPBtZYVCmTPd1VR",
-          "name": "Bearer Apify Callback"
-        }
-      },
-      "notes": "PHASE: Input Purpose: Receive Apify webhook callback for Apollo actor completion events. Inputs: HTTP POST /apollo/leads with header auth and Apify headers including x-apify-webhook-dispatch-id. Outputs: Raw headers/body for dispatch lookup. Dependencies: Header Auth Webhook Apify credential; Apify. Special Cases: Body may be empty; header must be present or flow will fail downstream."
-    },
-    {
-      "parameters": {
         "url": "=https://api.apify.com/v2/webhook-dispatches/{{ $json.headers['x-apify-webhook-dispatch-id'] }}",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpBearerAuth",
@@ -242,7 +207,7 @@
       "typeVersion": 4.2,
       "position": [
         -1856,
-        388
+        400
       ],
       "id": "eef272fe-6239-4dbc-83a4-59ec09821146",
       "name": "Get Webhook Dispatch - HTTP Apify",
@@ -274,7 +239,7 @@
       "typeVersion": 4.2,
       "position": [
         -1408,
-        388
+        400
       ],
       "id": "4b2cc3b2-cb2b-4fc4-a79d-a4938c67e21e",
       "name": "Get Actor Run Details - Apify Apollo",
@@ -325,7 +290,7 @@
       "typeVersion": 4.2,
       "position": [
         -960,
-        244
+        256
       ],
       "id": "2b856d18-b1e4-4342-85f8-d112f9832c3b",
       "name": "List Dataset Items - Apify Apollo",
@@ -369,7 +334,7 @@
       "typeVersion": 2.2,
       "position": [
         -1184,
-        388
+        400
       ],
       "id": "7691f931-18ee-405b-b394-b0ed6eedd72b",
       "name": "If Run SUCCEEDED - IF",
@@ -383,7 +348,7 @@
       "typeVersion": 1,
       "position": [
         -960,
-        436
+        448
       ],
       "id": "eefb5f9e-50fe-45e3-bc41-7887455f0a59",
       "name": "Fail Run - Error Handler",
@@ -413,7 +378,7 @@
       "typeVersion": 3.4,
       "position": [
         -512,
-        52
+        64
       ],
       "id": "7dd39e02-6689-4a64-9403-b6cdab69f207",
       "name": "Prepare Website Content - SET"
@@ -1359,8 +1324,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        -56,
-        520
+        -64,
+        528
       ],
       "id": "ae575c8d-1aed-47ef-91d5-2ab491bda6e9",
       "name": "Chat Model - OpenRouter",
@@ -1378,8 +1343,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        72,
-        520
+        80,
+        528
       ],
       "id": "e09cb649-7790-4c8f-a153-875821fd2632",
       "name": "Chat Model - OpenRouter - Fallback",
@@ -1398,7 +1363,7 @@
       "typeVersion": 3,
       "position": [
         -288,
-        52
+        64
       ],
       "id": "2358d3eb-66da-415f-a1e1-61cf3050edce",
       "name": "Loop Over Pages"
@@ -1411,7 +1376,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        296,
+        304,
         224
       ],
       "id": "e0a59ac5-fb3b-490e-ac1c-b01db305ca58",
@@ -1431,7 +1396,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        424,
+        432,
         224
       ],
       "id": "4cd87e64-dba5-4f1a-9729-b581c514e439",
@@ -1461,7 +1426,7 @@
       "typeVersion": 1.7,
       "position": [
         -64,
-        296
+        304
       ],
       "id": "2eed2f9c-1cef-4025-a698-17a12e9240f4",
       "name": "Analyse Page Content",
@@ -1523,7 +1488,7 @@
       "typeVersion": 2.1,
       "position": [
         -1632,
-        388
+        400
       ],
       "id": "f05087ad-4fcb-41b8-9fdf-fdaf40832eab",
       "name": "Search Actor Run ID - AT People",
@@ -1573,7 +1538,7 @@
       "typeVersion": 2.2,
       "position": [
         -736,
-        244
+        256
       ],
       "id": "d5a84a72-e48f-4524-a738-30c783a59347",
       "name": "Check Website Content Exists - IF"
@@ -2650,7 +2615,7 @@
       "typeVersion": 2.1,
       "position": [
         -512,
-        244
+        256
       ],
       "id": "c57b5748-64b7-4a91-a9ae-276ebc7e2b15",
       "name": "Update Website Content - AT People1",
@@ -2660,6 +2625,17 @@
           "name": "Airtable Personal Access Token account"
         }
       }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1968,
+        192
+      ],
+      "id": "5922bd51-7a6d-440e-bcf7-edbdb60708ee",
+      "name": "When clicking ‘Execute workflow’"
     }
   ],
   "repo_name": "boost-prospect-v2",
@@ -2695,6 +2671,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-08-26T18:01:56.103Z",
-  "versionId": "16bf38f1-2172-4176-bab2-455d736d1c18"
+  "updatedAt": "2025-09-02T13:52:31.468Z",
+  "versionId": "e0dad8c0-7639-4c2f-8753-c870254ffa26"
 }
