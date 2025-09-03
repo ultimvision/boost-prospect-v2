@@ -83,7 +83,7 @@
         ],
         [
           {
-            "node": "Update Person Reaction Fields - AT People1",
+            "node": "Update People Reactions Behavior - AT People1",
             "type": "main",
             "index": 0
           }
@@ -116,7 +116,7 @@
       "main": [
         [
           {
-            "node": "Update Person Reaction Fields - AT People",
+            "node": "Update People Reactions Behavior - AT People",
             "type": "main",
             "index": 0
           }
@@ -203,7 +203,7 @@
       "main": [
         [
           {
-            "node": "Apify Actors Config - Set",
+            "node": "Workflow Data",
             "type": "main",
             "index": 0
           }
@@ -278,6 +278,17 @@
           }
         ]
       ]
+    },
+    "Workflow Data": {
+      "main": [
+        [
+          {
+            "node": "Apify Actors Config - Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-08-25T15:10:24.122Z",
@@ -286,7 +297,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Processing > Sub > LinkedIn Profile Reactions > Apify",
+  "name": "Processing > Sub > LinkedIn Profile Reactions > Apify [2300]",
   "nodes": [
     {
       "parameters": {
@@ -335,8 +346,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3504,
-        1376
+        3376,
+        1208
       ],
       "id": "8a9616ef-ce65-4fb7-a187-f70b38275837",
       "name": "Normalize Reaction Fields - Set",
@@ -350,8 +361,8 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        3728,
-        1520
+        3600,
+        1356
       ],
       "id": "c1ac8231-3089-4ac8-8c5f-e68dfa5b89bb",
       "name": "Aggregate Items for LLM - Util",
@@ -359,14 +370,14 @@
     },
     {
       "parameters": {
-        "model": "google/gemini-2.5-flash",
+        "model": "=google/gemini-2.5-flash",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        3968,
-        1744
+        3832,
+        1580
       ],
       "id": "6c73e7bf-e70b-4b9a-89e0-6859c131c69d",
       "name": "Language Model - OpenRouter",
@@ -393,8 +404,8 @@
       "type": "n8n-nodes-base.sort",
       "typeVersion": 1,
       "position": [
-        3728,
-        1152
+        3600,
+        992
       ],
       "id": "e30268b6-7a91-4672-9dea-59bc598f4a44",
       "name": "Sort Reactions by Date Desc - Util",
@@ -414,8 +425,8 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        4016,
-        1152
+        3888,
+        992
       ],
       "id": "6ee541c5-6588-43f0-9f30-d64fcb94fcf7",
       "name": "Collect Reaction Dates - Util",
@@ -428,8 +439,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        4304,
-        1152
+        4176,
+        992
       ],
       "id": "a2ff16fb-694c-4bd3-bfb5-171cb5b453dc",
       "name": "Compute Monthly Reaction Stats - Code",
@@ -473,8 +484,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        3280,
-        1472
+        3152,
+        1304
       ],
       "id": "ef174eb1-ba7a-41d1-97f2-f3d7e0e71d03",
       "name": "If Action Exists - IF",
@@ -503,8 +514,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4528,
-        1152
+        4400,
+        992
       ],
       "id": "7094c12b-fe7a-4b1e-833b-5a95010c0aa5",
       "name": "Set Reaction Stats Fields - Set",
@@ -527,8 +538,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4528,
-        1408
+        4400,
+        1236
       ],
       "id": "fa06145d-105a-42a8-a4da-9c996a23671a",
       "name": "Set Reaction Behavior Summary - Set",
@@ -543,8 +554,8 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        4752,
-        1248
+        4624,
+        1088
       ],
       "id": "2f042c2b-3f3a-4912-bc49-4b0b9a111739",
       "name": "Merge Stats and Summary - Util",
@@ -554,14 +565,16 @@
       "parameters": {
         "method": "POST",
         "url": "https://api.apify.com/v2/acts/apimaestro~linkedin-profile-reactions/run-sync-get-dataset-items",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Accept",
               "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').item.json.config.vault.APIFY_TOKENS }}"
             }
           ]
         },
@@ -573,918 +586,26 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3056,
-        1568
+        2928,
+        1400
       ],
       "id": "1b3465c2-7e9f-4b8e-ac41-4607bc51f64a",
       "name": "Fetch Profile Reactions - Apify",
       "alwaysOutputData": true,
       "retryOnFail": false,
-      "credentials": {
-        "httpBearerAuth": {
-          "id": "c5ccYKuRoY4O10nO",
-          "name": "Bearer Apify"
-        }
-      },
       "onError": "continueErrorOutput",
       "notes": "PHASE: Execution | Purpose: Call the Apify actor to retrieve up to 10 recent LinkedIn profile reactions for the provided username. | Inputs: json.linkedinLink from Start and HTTP query auth credentials (Apify Boost Connect). | Outputs: Array of reaction items with action, author.*, text, and timestamps.date. | Dependencies: Apify actor apimaestro~linkedin-profile-reactions over HTTPS. | Special Cases: Limit and pagination fixed (10, page 1); rate limits and schema changes may affect fields."
     },
     {
       "parameters": {
-        "operation": "update",
-        "base": {
-          "__rl": true,
-          "value": "app3ZDXRoKYAaYwlt",
-          "mode": "list",
-          "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
-        },
-        "table": {
-          "__rl": true,
-          "value": "tblpxuiyiGDvZXUzG",
-          "mode": "list",
-          "cachedResultName": "People",
-          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tblpxuiyiGDvZXUzG"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "id": "={{ $('Receive LinkedIn Profile Inputs - Subflow Trigger').first().json.recId }}",
-            "lastLinkedinActivity": "={{ $json['Last Action on LinkedIn'] }}",
-            "lastReactionStats": "={{$json.monthlyStats && Array.isArray($json.monthlyStats)\n  ? $json.monthlyStats\n      .slice(0, 10)\n      .filter(item => item.month)\n      .map(item => {\n        const month = item.month.charAt(0).toUpperCase() + item.month.slice(1);\n        const count = item.count;\n        const label = `réaction${count > 1 ? 's' : ''}`;\n        return `${month} ${item.year} = ${count} ${label}`;\n      })\n      .join('\\n')\n  : ''\n}}\n",
-            "reactionBehavior": "={{ $json.Comportement }}",
-            "jsonProfileLinkedInReactions": "={{ $('Aggregate Items for LLM - Util').item.json.data.toJsonString() }}",
-            "profileLinkedInReactionsProcessed": "={{ true }}"
-          },
-          "matchingColumns": [
-            "id"
-          ],
-          "schema": [
-            {
-              "id": "id",
-              "displayName": "id",
-              "required": false,
-              "defaultMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": false
-            },
-            {
-              "id": "fullName",
-              "displayName": "fullName",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "recId",
-              "displayName": "recId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "apolloPeopleNumber",
-              "displayName": "apolloPeopleNumber",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "creationDate",
-              "displayName": "creationDate",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "modificationDate",
-              "displayName": "modificationDate",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "company",
-              "displayName": "company",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "logo (from company)",
-              "displayName": "logo (from company)",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyName",
-              "displayName": "companyName",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyWebsite",
-              "displayName": "companyWebsite",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyLinkedinId",
-              "displayName": "companyLinkedinId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyFacebookLink",
-              "displayName": "companyFacebookLink",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyPrimaryPhoneNumber",
-              "displayName": "companyPrimaryPhoneNumber",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "Identifiant LinkedIn (from Compagnie)",
-              "displayName": "Identifiant LinkedIn (from Compagnie)",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyYearFoundedFromCompany",
-              "displayName": "companyYearFoundedFromCompany",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyLogoUrl",
-              "displayName": "companyLogoUrl",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyIndustrySector",
-              "displayName": "companyIndustrySector",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyAddress",
-              "displayName": "companyAddress",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyCity",
-              "displayName": "companyCity",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyProvince",
-              "displayName": "companyProvince",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyCountry",
-              "displayName": "companyCountry",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "postalCodeFromCompanie",
-              "displayName": "postalCodeFromCompanie",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyEstimatedEmployeeCount",
-              "displayName": "companyEstimatedEmployeeCount",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "user",
-              "displayName": "user",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "firstName",
-              "displayName": "firstName",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "name",
-              "displayName": "name",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "linkedinLink",
-              "displayName": "linkedinLink",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "linkedinButtonPeople",
-              "displayName": "linkedinButtonPeople",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "jobTitle",
-              "displayName": "jobTitle",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "emailStatus",
-              "displayName": "emailStatus",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "photo",
-              "displayName": "photo",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "photoUrl",
-              "displayName": "photoUrl",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "twitterLink",
-              "displayName": "twitterLink",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "githubLink",
-              "displayName": "githubLink",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "facebookLink",
-              "displayName": "facebookLink",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "extrapolatedEmailConfidence",
-              "displayName": "extrapolatedEmailConfidence",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "currentPosition",
-              "displayName": "currentPosition",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "previousJobSummary",
-              "displayName": "previousJobSummary",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "previousJobs",
-              "displayName": "previousJobs",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "professionalEmail",
-              "displayName": "professionalEmail",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "province",
-              "displayName": "province",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "city",
-              "displayName": "city",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "country",
-              "displayName": "country",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "departments",
-              "displayName": "departments",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "subDepartments",
-              "displayName": "subDepartments",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "seniority",
-              "displayName": "seniority",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "roles",
-              "displayName": "roles",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "intentStrength",
-              "displayName": "intentStrength",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "intentDisplayed",
-              "displayName": "intentDisplayed",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "catchallEmailDomain",
-              "displayName": "catchallEmailDomain",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "personalEmails",
-              "displayName": "personalEmails",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "action",
-              "displayName": "action",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Ready for AI analysis",
-                  "value": "Ready for AI analysis"
-                },
-                {
-                  "name": "AI analysis in progress",
-                  "value": "AI analysis in progress"
-                }
-              ],
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "websiteButton",
-              "displayName": "websiteButton",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "linkedinButton",
-              "displayName": "linkedinButton",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "facebookButton",
-              "displayName": "facebookButton",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "notes",
-              "displayName": "notes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "lastLinkedinActivity",
-              "displayName": "lastLinkedinActivity",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "reactionBehavior",
-              "displayName": "reactionBehavior",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "postBehavior",
-              "displayName": "postBehavior",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "companyPostBehavior",
-              "displayName": "companyPostBehavior",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "lastReactionStats",
-              "displayName": "lastReactionStats",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "connectionLinkedinMessage",
-              "displayName": "connectionLinkedinMessage",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "connectionEmailMessage",
-              "displayName": "connectionEmailMessage",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "connectionEmailSubject",
-              "displayName": "connectionEmailSubject",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "apolloId",
-              "displayName": "apolloId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "evaluation",
-              "displayName": "evaluation",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "lastAIActionDate",
-              "displayName": "lastAIActionDate",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "actionStatusDetails",
-              "displayName": "actionStatusDetails",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "jsonCompanyLinkedInPosts",
-              "displayName": "jsonCompanyLinkedInPosts",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "jsonProfileLinkedInPosts",
-              "displayName": "jsonProfileLinkedInPosts",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "jsonProfileLinkedInReactions",
-              "displayName": "jsonProfileLinkedInReactions",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "companyLinkedInPostsProcessed",
-              "displayName": "companyLinkedInPostsProcessed",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "profileLinkedInPostsProcessed",
-              "displayName": "profileLinkedInPostsProcessed",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "profileLinkedInReactionsProcessed",
-              "displayName": "profileLinkedInReactionsProcessed",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "companyWebsiteScrappingProcessed",
-              "displayName": "companyWebsiteScrappingProcessed",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": true
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.airtable",
-      "typeVersion": 2.1,
-      "position": [
-        4976,
-        1248
-      ],
-      "id": "9e83c15a-a478-4a94-8107-05c9a406fa39",
-      "name": "Update Person Reaction Fields - AT People",
-      "credentials": {
-        "airtableTokenApi": {
-          "id": "XzBWggFrPVokGo9L",
-          "name": "Airtable Personal Access Token account"
-        }
-      },
-      "notes": "PHASE: Execution | Purpose: Persist reaction summary fields into Airtable People. | Inputs: json.recId from Start and fields Last Action on LinkedIn, monthlyStats (formatted lines), reactionBehavior from previous nodes. | Outputs: Updated record matched by id in People table. | Dependencies: Airtable base appXWrDgZs0SvNNMq People table with Token Boost Connect 2 credential. | Special Cases: monthlyStats is joined with newlines; guard against empty arrays to avoid clutter."
-    },
-    {
-      "parameters": {
+        "model": "=openai/gpt-4.1-mini",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        4096,
-        1744
+        3960,
+        1580
       ],
       "id": "fa9f1f9c-1d58-4d13-9479-36d44238c92a",
       "name": "Language Model (Fallback)",
@@ -1504,8 +625,8 @@
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
       "position": [
-        4752,
-        1616
+        4624,
+        1452
       ],
       "id": "546374b7-58d0-4b4e-af75-4ebc8ecbfa9f",
       "name": "Fail Run - Error Handler",
@@ -1519,7 +640,7 @@
         "messages": {
           "messageValues": [
             {
-              "message": "=Today is {{ $now }}.\n\n**Role:**\nYou are an AI-powered expert in behavioral analysis, specialized in creating concise professional summaries from interaction data to enrich a CRM and better understand a person’s engagement style and motivations.\n\n**Action:**\nAnalyze structured data representing a user’s reactions, comments, and shares on professional posts (LinkedIn, internal networks, etc.) and produce **one fluent paragraph in {{ $vars.default_llm_output_language }}** language summarizing their engagement habits, content preferences, emotional tendencies, and inferred motivations.\n\n**Context:**\nThe data includes topics, formats, tones, reaction types, timing, and engagement volume, possibly across multiple time periods.\n\n**Requirements:**\n\n* In **one paragraph only**, synthesize key insights covering:\n\n  1. Overall engagement style (active/quiet, expressive/reserved, enthusiastic/critical)\n  2. Most engaged content types and formats\n  3. Common emotional tones in reactions\n  4. Frequency, timing, and patterns of activity\n  5. Likely motivations (e.g., networking, recruiting, seeking visibility, following trends)\n  6. Brief psychographic profile (personality traits, professional interests, communication style)\n* If multiple datasets are provided, include aggregated statistics and note any significant behavioral changes.\n* Maintain a **concise, polished, and neutral** tone suitable for CRM enrichment and audience profiling.\n* Do not invent missing information; use neutral, non-speculative phrasing instead."
+              "message": "=Today is {{ $now }}.\n\n**Role:**\nYou are an AI-powered expert in behavioral analysis, specialized in creating concise professional summaries from interaction data to enrich a CRM and better understand a person’s engagement style and motivations.\n\n**Action:**\nAnalyze structured data representing a user’s reactions, comments, and shares on professional posts (LinkedIn, internal networks, etc.) and produce **one fluent paragraph in **{{ $('Workflow Data').first().json.config.variable.default_llm_output_language }}** language summarizing their engagement habits, content preferences, emotional tendencies, and inferred motivations.\n\n**Context:**\nThe data includes topics, formats, tones, reaction types, timing, and engagement volume, possibly across multiple time periods.\n\n**Requirements:**\n\n* In **one paragraph only**, synthesize key insights covering:\n\n  1. Overall engagement style (active/quiet, expressive/reserved, enthusiastic/critical)\n  2. Most engaged content types and formats\n  3. Common emotional tones in reactions\n  4. Frequency, timing, and patterns of activity\n  5. Likely motivations (e.g., networking, recruiting, seeking visibility, following trends)\n  6. Brief psychographic profile (personality traits, professional interests, communication style)\n* If multiple datasets are provided, include aggregated statistics and note any significant behavioral changes.\n* Maintain a **concise, polished, and neutral** tone suitable for CRM enrichment and audience profiling.\n* Do not invent missing information; use neutral, non-speculative phrasing instead."
             }
           ]
         },
@@ -1528,8 +649,8 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.7,
       "position": [
-        3952,
-        1520
+        3824,
+        1356
       ],
       "id": "3173713c-fa45-4c87-9332-e583944dd886",
       "name": "Summarize Reactions - LLM Chain",
@@ -1574,8 +695,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        4304,
-        1456
+        4176,
+        1284
       ],
       "id": "cb9a84d9-79e5-4105-bb76-c90c44977bb5",
       "name": "If Reaction Summary Exists - IF",
@@ -1608,8 +729,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        4528,
-        1616
+        4400,
+        1452
       ],
       "id": "ef1ee23d-37e1-4d48-8179-a7453c142d76",
       "name": "If Summary Retries Under 2 - IF",
@@ -1622,8 +743,8 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        2160,
-        1712
+        1808,
+        1544
       ],
       "id": "0bafb741-1289-46fd-ad2d-01af40ec4368",
       "name": "Receive LinkedIn Profile Inputs - Subflow Trigger",
@@ -1638,8 +759,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        992,
-        1472
+        512,
+        1456
       ],
       "id": "7cd2693e-50ad-4532-882c-3748875b2a69",
       "name": "Sticky Note"
@@ -1647,14 +768,16 @@
     {
       "parameters": {
         "url": "=https://api.apify.com/v2/users/me/limits",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Accept",
               "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').item.json.config.vault.APIFY_TOKENS }}"
             }
           ]
         },
@@ -1663,18 +786,12 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2608,
-        1632
+        2480,
+        1472
       ],
       "id": "a77d61a2-c3d8-447d-a8f9-5bb535992d30",
       "name": "Apify - Get limits",
       "retryOnFail": true,
-      "credentials": {
-        "httpBearerAuth": {
-          "id": "c5ccYKuRoY4O10nO",
-          "name": "Bearer Apify"
-        }
-      },
       "notes": "PHASE: Execution | Purpose: Start an Apify task run for the created task. | Inputs: task_id and Apify Bearer auth. | Outputs: Run metadata including run ID and status. | Dependencies: Apify API v2 /actor-tasks/{taskId}/runs. | Special Cases: Asynchronous start; handle pending states, retries, and timeouts."
     },
     {
@@ -1713,8 +830,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2832,
-        1632
+        2704,
+        1472
       ],
       "id": "6a7d461d-bd70-4d01-af21-6e70488827f8",
       "name": "Check Apify Capacity - IF"
@@ -1736,8 +853,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2384,
-        1712
+        2256,
+        1544
       ],
       "id": "9799aeb8-4a68-4e72-80c6-f5ec7e915b5a",
       "name": "Apify Actors Config - Set"
@@ -1749,8 +866,8 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        3504,
-        2048
+        3376,
+        1736
       ],
       "id": "056b9725-3458-46e3-8851-e1cfb3702666",
       "name": "Wait",
@@ -1783,8 +900,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        3280,
-        1952
+        3152,
+        1640
       ],
       "id": "e4796fa9-4cde-4fe9-b590-fad61736399c",
       "name": "Apify Error 402 - IF"
@@ -1796,894 +913,81 @@
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
       "position": [
-        3504,
-        2240
+        3376,
+        1928
       ],
       "id": "7bb9cff6-a638-4527-8da3-419ded99b96a",
       "name": "Stop and Error"
     },
     {
       "parameters": {
-        "operation": "update",
-        "base": {
-          "__rl": true,
-          "value": "app3ZDXRoKYAaYwlt",
-          "mode": "list",
-          "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
-        },
-        "table": {
-          "__rl": true,
-          "value": "tblpxuiyiGDvZXUzG",
-          "mode": "list",
-          "cachedResultName": "People",
-          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tblpxuiyiGDvZXUzG"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "id": "={{ $('Receive LinkedIn Profile Inputs - Subflow Trigger').first().json.recId }}",
-            "profileLinkedInReactionsProcessed": "={{ true }}"
-          },
-          "matchingColumns": [
-            "id"
-          ],
-          "schema": [
-            {
-              "id": "id",
-              "displayName": "id",
-              "required": false,
-              "defaultMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": false
-            },
-            {
-              "id": "fullName",
-              "displayName": "fullName",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "recId",
-              "displayName": "recId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "apolloPeopleNumber",
-              "displayName": "apolloPeopleNumber",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "creationDate",
-              "displayName": "creationDate",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "modificationDate",
-              "displayName": "modificationDate",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "company",
-              "displayName": "company",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "logo (from company)",
-              "displayName": "logo (from company)",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyName",
-              "displayName": "companyName",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyWebsite",
-              "displayName": "companyWebsite",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyLinkedinId",
-              "displayName": "companyLinkedinId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyFacebookLink",
-              "displayName": "companyFacebookLink",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyPrimaryPhoneNumber",
-              "displayName": "companyPrimaryPhoneNumber",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "Identifiant LinkedIn (from Compagnie)",
-              "displayName": "Identifiant LinkedIn (from Compagnie)",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyYearFoundedFromCompany",
-              "displayName": "companyYearFoundedFromCompany",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyLogoUrl",
-              "displayName": "companyLogoUrl",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyIndustrySector",
-              "displayName": "companyIndustrySector",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyAddress",
-              "displayName": "companyAddress",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyCity",
-              "displayName": "companyCity",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyProvince",
-              "displayName": "companyProvince",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyCountry",
-              "displayName": "companyCountry",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "postalCodeFromCompanie",
-              "displayName": "postalCodeFromCompanie",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyEstimatedEmployeeCount",
-              "displayName": "companyEstimatedEmployeeCount",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "user",
-              "displayName": "user",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "firstName",
-              "displayName": "firstName",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "name",
-              "displayName": "name",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "linkedinLink",
-              "displayName": "linkedinLink",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "linkedinButtonPeople",
-              "displayName": "linkedinButtonPeople",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "jobTitle",
-              "displayName": "jobTitle",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "emailStatus",
-              "displayName": "emailStatus",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "photo",
-              "displayName": "photo",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "photoUrl",
-              "displayName": "photoUrl",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "twitterLink",
-              "displayName": "twitterLink",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "githubLink",
-              "displayName": "githubLink",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "facebookLink",
-              "displayName": "facebookLink",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "extrapolatedEmailConfidence",
-              "displayName": "extrapolatedEmailConfidence",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "currentPosition",
-              "displayName": "currentPosition",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "previousJobSummary",
-              "displayName": "previousJobSummary",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "previousJobs",
-              "displayName": "previousJobs",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "professionalEmail",
-              "displayName": "professionalEmail",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "province",
-              "displayName": "province",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "city",
-              "displayName": "city",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "country",
-              "displayName": "country",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "departments",
-              "displayName": "departments",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "subDepartments",
-              "displayName": "subDepartments",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "seniority",
-              "displayName": "seniority",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "roles",
-              "displayName": "roles",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "intentStrength",
-              "displayName": "intentStrength",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "intentDisplayed",
-              "displayName": "intentDisplayed",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "catchallEmailDomain",
-              "displayName": "catchallEmailDomain",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "personalEmails",
-              "displayName": "personalEmails",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "action",
-              "displayName": "action",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Ready for AI analysis",
-                  "value": "Ready for AI analysis"
-                },
-                {
-                  "name": "AI analysis in progress",
-                  "value": "AI analysis in progress"
-                }
-              ],
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "websiteButton",
-              "displayName": "websiteButton",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "linkedinButton",
-              "displayName": "linkedinButton",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "facebookButton",
-              "displayName": "facebookButton",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "notes",
-              "displayName": "notes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "lastLinkedinActivity",
-              "displayName": "lastLinkedinActivity",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "reactionBehavior",
-              "displayName": "reactionBehavior",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "postBehavior",
-              "displayName": "postBehavior",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "companyPostBehavior",
-              "displayName": "companyPostBehavior",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "lastReactionStats",
-              "displayName": "lastReactionStats",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "connectionLinkedinMessage",
-              "displayName": "connectionLinkedinMessage",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "connectionEmailMessage",
-              "displayName": "connectionEmailMessage",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "connectionEmailSubject",
-              "displayName": "connectionEmailSubject",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "apolloId",
-              "displayName": "apolloId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "evaluation",
-              "displayName": "evaluation",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "lastAIActionDate",
-              "displayName": "lastAIActionDate",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "actionStatusDetails",
-              "displayName": "actionStatusDetails",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "jsonCompanyLinkedInPosts",
-              "displayName": "jsonCompanyLinkedInPosts",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "jsonProfileLinkedInPosts",
-              "displayName": "jsonProfileLinkedInPosts",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "jsonProfileLinkedInReactions",
-              "displayName": "jsonProfileLinkedInReactions",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "companyLinkedInPostsProcessed",
-              "displayName": "companyLinkedInPostsProcessed",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "profileLinkedInPostsProcessed",
-              "displayName": "profileLinkedInPostsProcessed",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "profileLinkedInReactionsProcessed",
-              "displayName": "profileLinkedInReactionsProcessed",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "companyWebsiteScrappingProcessed",
-              "displayName": "companyWebsiteScrappingProcessed",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": true
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        },
+        "includeOtherFields": true,
         "options": {}
       },
-      "type": "n8n-nodes-base.airtable",
-      "typeVersion": 2.1,
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
       "position": [
-        3520,
-        1680
+        2032,
+        1544
       ],
-      "id": "28649ba6-dbd3-4ec5-8bca-68d233ce09ae",
-      "name": "Update Person Reaction Fields - AT People1",
-      "credentials": {
-        "airtableTokenApi": {
-          "id": "XzBWggFrPVokGo9L",
-          "name": "Airtable Personal Access Token account"
-        }
+      "id": "b3c9d58e-e95a-4054-a600-b5ec607bf8a5",
+      "name": "Workflow Data"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').first().json.config.vault.BASE_ID }}/People/{{ $('Workflow Data').first().json.recId }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ \n  JSON.stringify({\n    fields: {\n      lastLinkedinActivity: $json['Last Action on LinkedIn'],\n      reactionBehavior: $json.Comportement,\nlastReactionStats : $json.monthlyStats && Array.isArray($json.monthlyStats)\n  ? $json.monthlyStats\n      .slice(0, 10)\n      .filter(item => item.month)\n      .map(item => {\n        const month = item.month.charAt(0).toUpperCase() + item.month.slice(1);\n        const count = item.count;\n        const label = `réaction${count > 1 ? 's' : ''}`;\n        return `${month} ${item.year} = ${count} ${label}`;\n      })\n      .join('\\n')\n  : '',\n      jsonProfileLinkedInReactions: JSON.stringify($('Aggregate Items for LLM - Util').item.json.data),\n      profileLinkedInReactionsProcessed: true\n    }\n  })\n}}",
+        "options": {}
       },
-      "notes": "PHASE: Execution | Purpose: Persist reaction summary fields into Airtable People. | Inputs: json.recId from Start and fields Last Action on LinkedIn, monthlyStats (formatted lines), reactionBehavior from previous nodes. | Outputs: Updated record matched by id in People table. | Dependencies: Airtable base appXWrDgZs0SvNNMq People table with Token Boost Connect 2 credential. | Special Cases: monthlyStats is joined with newlines; guard against empty arrays to avoid clutter."
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4848,
+        1088
+      ],
+      "id": "40538dfb-2469-4c70-8e0e-483c96537d09",
+      "name": "Update People Reactions Behavior - AT People",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').first().json.config.vault.BASE_ID }}/People/{{ $('Workflow Data').first().json.recId }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ \n  JSON.stringify({\n    fields: {\n      profileLinkedInReactionsProcessed: true\n    }\n  })\n}}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3376,
+        1400
+      ],
+      "id": "de048fea-94eb-4d2e-b419-185bc04452aa",
+      "name": "Update People Reactions Behavior - AT People1",
+      "retryOnFail": true
     }
   ],
   "repo_name": "boost-prospect-v2",
@@ -2706,6 +1010,12 @@
   "staticData": null,
   "tags": [
     {
+      "createdAt": "2025-09-01T18:44:12.239Z",
+      "updatedAt": "2025-09-01T18:44:12.239Z",
+      "id": "DxA0rKpUpLnrWgla",
+      "name": "Router"
+    },
+    {
       "createdAt": "2025-08-26T10:41:15.177Z",
       "updatedAt": "2025-08-26T10:41:15.177Z",
       "id": "SkbNGlFjPGusXj0B",
@@ -2725,6 +1035,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-08-26T17:04:44.319Z",
-  "versionId": "a4cd29c8-b61c-4980-9fd7-66a47de052ac"
+  "updatedAt": "2025-09-02T12:18:08.820Z",
+  "versionId": "a5cee0b5-4854-4df6-b7ce-32865d43dd25"
 }
