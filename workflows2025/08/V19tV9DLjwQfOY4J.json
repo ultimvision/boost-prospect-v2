@@ -1,42 +1,20 @@
 {
   "active": false,
   "connections": {
-    "Schedule Trigger": {
-      "main": [
-        [
-          {
-            "node": "Get Runs Jobs Queue Status - AT Apify Runs",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Start Task Run - Apify": {
       "main": [
         [
           {
-            "node": "Update ActorRunId - AT People",
+            "node": "Update ActorRunId - AT People1",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Update Run Apify Status - AT Apify Run1",
+            "node": "Update Run Apify Status - AT Apify Run2",
             "type": "main",
             "index": 0
           }
         ],
-        [
-          {
-            "node": "Clean Data",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Update ActorRunId - AT People": {
-      "main": [
         [
           {
             "node": "Clean Data",
@@ -104,39 +82,6 @@
         ]
       ]
     },
-    "Get Runs Jobs Queue Status - AT Apify Runs": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "When clicking ‘Execute workflow’": {
-      "main": [
-        [
-          {
-            "node": "Get Runs Jobs Queue Status - AT Apify Runs",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Update Run Apify Status - AT Apify Run": {
-      "main": [
-        [
-          {
-            "node": "Clean Data",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Clean Data": {
       "main": [
         [
@@ -158,6 +103,90 @@
           }
         ]
       ]
+    },
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Workflow Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Data": {
+      "main": [
+        [
+          {
+            "node": "Search Apify Runs in Queue - AT Apify Runs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Runs Exists - IF": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Run Apify Status - AT Apify Run": {
+      "main": [
+        [
+          {
+            "node": "Clean Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search Apify Runs in Queue - AT Apify Runs": {
+      "main": [
+        [
+          {
+            "node": "Check Runs Exists - IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Run Apify Status - AT Apify Run2": {
+      "main": [
+        [
+          {
+            "node": "Clean Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-08-25T14:27:08.470Z",
@@ -166,39 +195,22 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Triggers > Scheduler > Execute Apify Runs",
+  "name": "Triggers > Scheduler > Execute Apify Runs [2800]",
   "nodes": [
-    {
-      "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "field": "minutes"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.2,
-      "position": [
-        -1616,
-        224
-      ],
-      "id": "de06794f-f548-4b14-8b7c-85e8db07a512",
-      "name": "Schedule Trigger"
-    },
     {
       "parameters": {
         "method": "POST",
         "url": "=https://api.apify.com/v2/actor-tasks/{{ $('Apify - Get task').item.json.data.id }}/runs",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Accept",
               "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.APIFY_TOKENS }}"
             }
           ]
         },
@@ -207,1080 +219,28 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -272,
-        -16
+        -320,
+        160
       ],
       "id": "bf0c1e7c-33dc-4130-a982-ef97d0045436",
       "name": "Start Task Run - Apify",
       "retryOnFail": true,
-      "credentials": {
-        "httpBearerAuth": {
-          "id": "c5ccYKuRoY4O10nO",
-          "name": "Bearer Apify"
-        }
-      },
       "onError": "continueErrorOutput",
       "notes": "PHASE: Execution | Purpose: Start an Apify task run for the created task. | Inputs: task_id and Apify Bearer auth. | Outputs: Run metadata including run ID and status. | Dependencies: Apify API v2 /actor-tasks/{taskId}/runs. | Special Cases: Asynchronous start; handle pending states, retries, and timeouts."
     },
     {
       "parameters": {
-        "operation": "update",
-        "base": {
-          "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
-          "mode": "list",
-          "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
-        },
-        "table": {
-          "__rl": true,
-          "value": "tblpxuiyiGDvZXUzG",
-          "mode": "list",
-          "cachedResultName": "People",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tblpxuiyiGDvZXUzG"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "id": "={{ $('Loop Over Items').item.json.peopleRecId[0] }}",
-            "actorRunIdWebsiteScrapping": "={{ $json.data.id }}"
-          },
-          "matchingColumns": [
-            "id"
-          ],
-          "schema": [
-            {
-              "id": "id",
-              "displayName": "id",
-              "required": false,
-              "defaultMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": false
-            },
-            {
-              "id": "fullName",
-              "displayName": "fullName",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "recId",
-              "displayName": "recId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "favorite",
-              "displayName": "favorite",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "apolloPeopleNumber",
-              "displayName": "apolloPeopleNumber",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "creationDate",
-              "displayName": "creationDate",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "modificationDate",
-              "displayName": "modificationDate",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "company",
-              "displayName": "company",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "logo (from company)",
-              "displayName": "logo (from company)",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyName",
-              "displayName": "companyName",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyWebsite",
-              "displayName": "companyWebsite",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyLinkedinId",
-              "displayName": "companyLinkedinId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyFacebookLink",
-              "displayName": "companyFacebookLink",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyPrimaryPhoneNumber",
-              "displayName": "companyPrimaryPhoneNumber",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "Identifiant LinkedIn (from Compagnie)",
-              "displayName": "Identifiant LinkedIn (from Compagnie)",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyYearFoundedFromCompany",
-              "displayName": "companyYearFoundedFromCompany",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyLogoUrl",
-              "displayName": "companyLogoUrl",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyIndustrySector",
-              "displayName": "companyIndustrySector",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyAddress",
-              "displayName": "companyAddress",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyCity",
-              "displayName": "companyCity",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyProvince",
-              "displayName": "companyProvince",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyCountry",
-              "displayName": "companyCountry",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "postalCodeFromCompanie",
-              "displayName": "postalCodeFromCompanie",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "companyEstimatedEmployeeCount",
-              "displayName": "companyEstimatedEmployeeCount",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "user",
-              "displayName": "user",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "userRecId",
-              "displayName": "userRecId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "firstName",
-              "displayName": "firstName",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "name",
-              "displayName": "name",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "linkedinLink",
-              "displayName": "linkedinLink",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "linkedinButtonPeople",
-              "displayName": "linkedinButtonPeople",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "jobTitle",
-              "displayName": "jobTitle",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "emailStatus",
-              "displayName": "emailStatus",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "photo",
-              "displayName": "photo",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "photoUrl",
-              "displayName": "photoUrl",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "twitterLink",
-              "displayName": "twitterLink",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "githubLink",
-              "displayName": "githubLink",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "facebookLink",
-              "displayName": "facebookLink",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "extrapolatedEmailConfidence",
-              "displayName": "extrapolatedEmailConfidence",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "currentPosition",
-              "displayName": "currentPosition",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "previousJobSummary",
-              "displayName": "previousJobSummary",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "previousJobs",
-              "displayName": "previousJobs",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "professionalEmail",
-              "displayName": "professionalEmail",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "province",
-              "displayName": "province",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "city",
-              "displayName": "city",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "country",
-              "displayName": "country",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "departments",
-              "displayName": "departments",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "subDepartments",
-              "displayName": "subDepartments",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "seniority",
-              "displayName": "seniority",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "roles",
-              "displayName": "roles",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "intentStrength",
-              "displayName": "intentStrength",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "intentDisplayed",
-              "displayName": "intentDisplayed",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "catchallEmailDomain",
-              "displayName": "catchallEmailDomain",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "personalEmails",
-              "displayName": "personalEmails",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "action",
-              "displayName": "action",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Ready for AI analysis",
-                  "value": "Ready for AI analysis"
-                },
-                {
-                  "name": "AI analysis in progress",
-                  "value": "AI analysis in progress"
-                }
-              ],
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "websiteButton",
-              "displayName": "websiteButton",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "linkedinButton",
-              "displayName": "linkedinButton",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "facebookButton",
-              "displayName": "facebookButton",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "notes",
-              "displayName": "notes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "lastLinkedinActivity",
-              "displayName": "lastLinkedinActivity",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "reactionBehavior",
-              "displayName": "reactionBehavior",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "postBehavior",
-              "displayName": "postBehavior",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "companyPostBehavior",
-              "displayName": "companyPostBehavior",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "lastReactionStats",
-              "displayName": "lastReactionStats",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "connectionLinkedinMessage",
-              "displayName": "connectionLinkedinMessage",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "connectionEmailMessage",
-              "displayName": "connectionEmailMessage",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "connectionEmailSubject",
-              "displayName": "connectionEmailSubject",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "apolloId",
-              "displayName": "apolloId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "evaluation",
-              "displayName": "evaluation",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "lastAIActionDate",
-              "displayName": "lastAIActionDate",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "actionStatusDetails",
-              "displayName": "actionStatusDetails",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "jsonCompanyLinkedInPosts",
-              "displayName": "jsonCompanyLinkedInPosts",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "jsonProfileLinkedInPosts",
-              "displayName": "jsonProfileLinkedInPosts",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "jsonProfileLinkedInReactions",
-              "displayName": "jsonProfileLinkedInReactions",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "companyLinkedInPostsProcessed",
-              "displayName": "companyLinkedInPostsProcessed",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "profileLinkedInPostsProcessed",
-              "displayName": "profileLinkedInPostsProcessed",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "profileLinkedInReactionsProcessed",
-              "displayName": "profileLinkedInReactionsProcessed",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "companyWebsiteScrappingProcessed",
-              "displayName": "companyWebsiteScrappingProcessed",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "actorRunIdWebsiteScrapping",
-              "displayName": "actorRunIdWebsiteScrapping",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "websiteContent",
-              "displayName": "websiteContent",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "websiteContentSummary",
-              "displayName": "websiteContentSummary",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "Analysis",
-              "displayName": "Analysis",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "scoringProfilePosts",
-              "displayName": "scoringProfilePosts",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "scoringCompanyPosts",
-              "displayName": "scoringCompanyPosts",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "scoringWebsite",
-              "displayName": "scoringWebsite",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "scoringOverall",
-              "displayName": "scoringOverall",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "scoringNote",
-              "displayName": "scoringNote",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "scoringExplication",
-              "displayName": "scoringExplication",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "analyzedWithAI",
-              "displayName": "analyzedWithAI",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "analyzeWithAIRunning",
-              "displayName": "analyzeWithAIRunning",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "boolean",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "Apify Runs",
-              "displayName": "Apify Runs",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "readOnly": false,
-              "removed": true
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.airtable",
-      "typeVersion": 2.1,
-      "position": [
-        -48,
-        -16
-      ],
-      "id": "4e7e3d4e-a855-41ac-a5bc-a21c00c85942",
-      "name": "Update ActorRunId - AT People",
-      "retryOnFail": true,
-      "credentials": {
-        "airtableTokenApi": {
-          "id": "XzBWggFrPVokGo9L",
-          "name": "Airtable Personal Access Token account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "url": "=https://api.apify.com/v2/users/me/limits",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Accept",
               "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.APIFY_TOKENS }}"
             }
           ]
         },
@@ -1289,31 +249,27 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -720,
-        128
+        -768,
+        232
       ],
       "id": "7b6447f1-7194-4ca1-a300-aca93a4679e6",
       "name": "Apify - Get limits",
       "retryOnFail": true,
-      "credentials": {
-        "httpBearerAuth": {
-          "id": "c5ccYKuRoY4O10nO",
-          "name": "Bearer Apify"
-        }
-      },
       "notes": "PHASE: Execution | Purpose: Start an Apify task run for the created task. | Inputs: task_id and Apify Bearer auth. | Outputs: Run metadata including run ID and status. | Dependencies: Apify API v2 /actor-tasks/{taskId}/runs. | Special Cases: Asynchronous start; handle pending states, retries, and timeouts."
     },
     {
       "parameters": {
-        "url": "=https://api.apify.com/v2/actor-tasks/{{ $json.taskId }}",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
+        "url": "=https://api.apify.com/v2/actor-tasks/{{ $json.fields.taskId }}",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Accept",
               "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.APIFY_TOKENS }}"
             }
           ]
         },
@@ -1322,18 +278,12 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -944,
-        128
+        -992,
+        232
       ],
       "id": "2df3673b-410c-4f27-a183-dcaecb38ff47",
       "name": "Apify - Get task",
       "retryOnFail": true,
-      "credentials": {
-        "httpBearerAuth": {
-          "id": "c5ccYKuRoY4O10nO",
-          "name": "Bearer Apify"
-        }
-      },
       "notes": "PHASE: Execution | Purpose: Start an Apify task run for the created task. | Inputs: task_id and Apify Bearer auth. | Outputs: Run metadata including run ID and status. | Dependencies: Apify API v2 /actor-tasks/{taskId}/runs. | Special Cases: Asynchronous start; handle pending states, retries, and timeouts."
     },
     {
@@ -1372,8 +322,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -496,
-        128
+        -544,
+        232
       ],
       "id": "75a98d15-e3a8-4c2c-8da7-059767f85449",
       "name": "Check Apify Capacity - IF"
@@ -1385,510 +335,11 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -1168,
-        128
+        -1216,
+        304
       ],
       "id": "d3a64134-454f-48ad-83b5-1b32f8cc77ac",
       "name": "Loop Over Items"
-    },
-    {
-      "parameters": {
-        "operation": "search",
-        "base": {
-          "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
-          "mode": "list",
-          "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
-        },
-        "table": {
-          "__rl": true,
-          "value": "tblLejx1Cygn9uAch",
-          "mode": "list",
-          "cachedResultName": "Apify Runs",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tblLejx1Cygn9uAch"
-        },
-        "filterByFormula": "{status} = \"Queue\"",
-        "options": {
-          "fields": [
-            "taskId",
-            "status",
-            "peopleRecId"
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.airtable",
-      "typeVersion": 2.1,
-      "position": [
-        -1392,
-        128
-      ],
-      "id": "bc1447a8-86c5-4f01-96d9-ae882e5900eb",
-      "name": "Get Runs Jobs Queue Status - AT Apify Runs",
-      "credentials": {
-        "airtableTokenApi": {
-          "id": "XzBWggFrPVokGo9L",
-          "name": "Airtable Personal Access Token account"
-        }
-      }
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.manualTrigger",
-      "typeVersion": 1,
-      "position": [
-        -1616,
-        32
-      ],
-      "id": "3ac1afc5-6472-42b0-abd1-f0ffc842c2b7",
-      "name": "When clicking ‘Execute workflow’"
-    },
-    {
-      "parameters": {
-        "operation": "update",
-        "base": {
-          "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
-          "mode": "list",
-          "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
-        },
-        "table": {
-          "__rl": true,
-          "value": "tblLejx1Cygn9uAch",
-          "mode": "list",
-          "cachedResultName": "Apify Runs",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tblLejx1Cygn9uAch"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "lastVerificationAt": "={{ $now }}",
-            "id": "={{ $('Loop Over Items').item.json.id }}"
-          },
-          "matchingColumns": [
-            "id"
-          ],
-          "schema": [
-            {
-              "id": "id",
-              "displayName": "id",
-              "required": false,
-              "defaultMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": false
-            },
-            {
-              "id": "taskId",
-              "displayName": "taskId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "createAt",
-              "displayName": "createAt",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "lastVerificationAt",
-              "displayName": "lastVerificationAt",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "processedAt",
-              "displayName": "processedAt",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "status",
-              "displayName": "status",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Queue",
-                  "value": "Queue"
-                },
-                {
-                  "name": "Processed",
-                  "value": "Processed"
-                }
-              ],
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "maxConcurrentActorJobs",
-              "displayName": "maxConcurrentActorJobs",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "maxActorMemoryGbytes",
-              "displayName": "maxActorMemoryGbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "activeActorJobCount",
-              "displayName": "activeActorJobCount",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "actorMemoryGbytes",
-              "displayName": "actorMemoryGbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "requestedMemoryMbytes",
-              "displayName": "requestedMemoryMbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "missingMemoryMbytes",
-              "displayName": "missingMemoryMbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "people",
-              "displayName": "people",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "peopleRecId",
-              "displayName": "peopleRecId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "peopleFullName",
-              "displayName": "peopleFullName",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.airtable",
-      "typeVersion": 2.1,
-      "position": [
-        -48,
-        272
-      ],
-      "id": "20bdd20b-7bd9-4260-8e26-a6ccd9f0a2dc",
-      "name": "Update Run Apify Status - AT Apify Run",
-      "retryOnFail": true,
-      "credentials": {
-        "airtableTokenApi": {
-          "id": "XzBWggFrPVokGo9L",
-          "name": "Airtable Personal Access Token account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "update",
-        "base": {
-          "__rl": true,
-          "value": "app1cypH1v3pTZcFi",
-          "mode": "list",
-          "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi"
-        },
-        "table": {
-          "__rl": true,
-          "value": "tblLejx1Cygn9uAch",
-          "mode": "list",
-          "cachedResultName": "Apify Runs",
-          "cachedResultUrl": "https://airtable.com/app1cypH1v3pTZcFi/tblLejx1Cygn9uAch"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "id": "={{ $('Loop Over Items').item.json.id }}",
-            "processedAt": "={{ $now }}",
-            "status": "Processed"
-          },
-          "matchingColumns": [
-            "id"
-          ],
-          "schema": [
-            {
-              "id": "id",
-              "displayName": "id",
-              "required": false,
-              "defaultMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": false
-            },
-            {
-              "id": "taskId",
-              "displayName": "taskId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "createAt",
-              "displayName": "createAt",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "lastVerificationAt",
-              "displayName": "lastVerificationAt",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "processedAt",
-              "displayName": "processedAt",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "status",
-              "displayName": "status",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Queue",
-                  "value": "Queue"
-                },
-                {
-                  "name": "Processed",
-                  "value": "Processed"
-                }
-              ],
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "maxConcurrentActorJobs",
-              "displayName": "maxConcurrentActorJobs",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "maxActorMemoryGbytes",
-              "displayName": "maxActorMemoryGbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "activeActorJobCount",
-              "displayName": "activeActorJobCount",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "actorMemoryGbytes",
-              "displayName": "actorMemoryGbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "requestedMemoryMbytes",
-              "displayName": "requestedMemoryMbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "missingMemoryMbytes",
-              "displayName": "missingMemoryMbytes",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "people",
-              "displayName": "people",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "peopleRecId",
-              "displayName": "peopleRecId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "peopleFullName",
-              "displayName": "peopleFullName",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": true,
-              "removed": true
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.airtable",
-      "typeVersion": 2.1,
-      "position": [
-        -48,
-        -208
-      ],
-      "id": "00e6ddf1-2b7a-4585-a19a-45c4926ffd2c",
-      "name": "Update Run Apify Status - AT Apify Run1",
-      "retryOnFail": true,
-      "credentials": {
-        "airtableTokenApi": {
-          "id": "XzBWggFrPVokGo9L",
-          "name": "Airtable Personal Access Token account"
-        }
-      }
     },
     {
       "parameters": {
@@ -1897,8 +348,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        176,
-        192
+        128,
+        304
       ],
       "id": "440fd318-9c48-4621-9045-a3fd67cee80a",
       "name": "Clean Data"
@@ -1911,8 +362,8 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        -944,
-        -64
+        -992,
+        40
       ],
       "id": "2ba903d8-9c9b-4ca3-8557-e7689f7376f1",
       "name": "Done"
@@ -1922,12 +373,224 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        400,
-        368
+        352,
+        472
       ],
       "id": "dc8cc8b7-1b59-429b-a04c-23451ef45790",
       "name": "Wait",
       "webhookId": "3c6c1e6d-3e42-4a79-8a4a-eb0c37e3fc15"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -2336,
+        400
+      ],
+      "id": "d561fa68-f100-40c8-a711-0f8c3a20feac",
+      "name": "Start"
+    },
+    {
+      "parameters": {
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2112,
+        400
+      ],
+      "id": "7681913b-7c5c-4990-9421-da8ff226afc0",
+      "name": "Workflow Data"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fb306daf-6317-4b8b-8068-4c003fafec36",
+              "leftValue": "={{ $json.records[0].id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1664,
+        400
+      ],
+      "id": "a696e371-6751-4ec2-83be-f438f8a9147e",
+      "name": "Check Runs Exists - IF"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "records",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -1440,
+        304
+      ],
+      "id": "29754a1c-dd2d-45a3-b1a8-00ab5c02c3dc",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').first().json.config.vault.BASE_ID }}/Apify%20Runs/{{ $('Loop Over Items').item.json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"fields\": {\n    \"lastVerificationAt\": \"{{ $now }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -96,
+        448
+      ],
+      "id": "fa6f7fdc-ddce-4ae3-8723-3f7359f91a7f",
+      "name": "Update Run Apify Status - AT Apify Run",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').first().json.config.vault.BASE_ID }}/Apify%20Runs",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "filterByFormula",
+              "value": "={status} = \"Queue\""
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1888,
+        400
+      ],
+      "id": "a36a3067-4936-4b65-b1c9-6850759fe633",
+      "name": "Search Apify Runs in Queue - AT Apify Runs",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -1440,
+        496
+      ],
+      "id": "4ca5c993-dc12-4103-8d5e-cace4366a18e",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').first().json.config.vault.BASE_ID }}/People/{{ $('Loop Over Items').item.json.fields.people[0] }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"fields\": {\n    \"actorRunIdWebsiteScrapping\": \"{{ $json.data.id }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -96,
+        -32
+      ],
+      "id": "9fb893bd-d311-4279-8cfc-965a16ec8a21",
+      "name": "Update ActorRunId - AT People1",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').first().json.config.vault.BASE_ID }}/Apify%20Runs/{{ $('Loop Over Items').item.json.id }}",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "filterByFormula",
+              "value": "={status} = \"Queue\""
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"fields\": {\n    \"status\": \"Processed\",\n    \"processedAt\": \"{{ $now }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -96,
+        160
+      ],
+      "id": "1b7947d1-a549-4d46-b52b-c7ca40bf97aa",
+      "name": "Update Run Apify Status - AT Apify Run2",
+      "retryOnFail": true
     }
   ],
   "repo_name": "boost-prospect-v2",
@@ -1950,19 +613,19 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-08-25T15:32:46.509Z",
-      "updatedAt": "2025-08-25T15:32:46.509Z",
-      "id": "4ptvvLb7NgD8g7Ar",
-      "name": "Apify"
-    },
-    {
       "createdAt": "2025-08-26T10:51:03.420Z",
       "updatedAt": "2025-08-26T10:51:03.420Z",
       "id": "WzQA3j1qTOPUfJ1x",
       "name": "Scheduler"
+    },
+    {
+      "createdAt": "2025-08-25T15:32:46.509Z",
+      "updatedAt": "2025-08-25T15:32:46.509Z",
+      "id": "4ptvvLb7NgD8g7Ar",
+      "name": "Apify"
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-08-26T10:51:11.539Z",
-  "versionId": "2e4febe9-b476-4f91-a56f-7a9ec46688e5"
+  "updatedAt": "2025-09-04T21:49:31.980Z",
+  "versionId": "954bdf93-8ea5-4b76-a0f2-5e473bfe9ea9"
 }
