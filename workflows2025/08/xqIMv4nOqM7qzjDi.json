@@ -5,7 +5,51 @@
       "main": [
         [
           {
-            "node": "Insert Error Details - AT Errors Log1",
+            "node": "Get Workflow Router Id - [0000]",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Workflow Router Id - [0000]": {
+      "main": [
+        [
+          {
+            "node": "Filter Not Archived",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Not Archived": {
+      "main": [
+        [
+          {
+            "node": "Get Config from Router",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Config from Router": {
+      "main": [
+        [
+          {
+            "node": "Workflow Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Data": {
+      "main": [
+        [
+          {
+            "node": "Insert Error Details - AT Errors Log",
             "type": "main",
             "index": 0
           }
@@ -26,175 +70,139 @@
       "type": "n8n-nodes-base.errorTrigger",
       "typeVersion": 1,
       "position": [
-        -320,
-        -16
+        -464,
+        -320
       ],
       "id": "f01dc773-9a30-4d4c-b7a5-478d8877c09a",
       "name": "Error Trigger"
     },
     {
       "parameters": {
-        "operation": "create",
-        "base": {
-          "__rl": true,
-          "value": "app3ZDXRoKYAaYwlt",
-          "mode": "list",
-          "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
+        "returnAll": false,
+        "limit": 1,
+        "filters": {
+          "name": "[0000]",
+          "excludePinnedData": true
         },
-        "table": {
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        -240,
+        -320
+      ],
+      "id": "a58ecd4f-1693-41fc-a774-82348baa1155",
+      "name": "Get Workflow Router Id - [0000]",
+      "credentials": {
+        "n8nApi": {
+          "id": "DeDKPUGV1gyQwspX",
+          "name": "n8n local"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
           "__rl": true,
-          "value": "tbl0XgBNJDMWMbEfU",
-          "mode": "list",
-          "cachedResultName": "Errors Log",
-          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tbl0XgBNJDMWMbEfU"
+          "value": "={{ $json.id }}",
+          "mode": "id"
         },
-        "columns": {
+        "workflowInputs": {
           "mappingMode": "defineBelow",
-          "value": {
-            "name": "={{ $json.execution.error.name }}",
-            "workflowId": "={{ $json.workflow.id }}",
-            "workflowName": "={{ $json.workflow.name }}",
-            "executionId": "={{ $json.execution.id }}",
-            "executionUrl": "={{ $json.execution.url }}",
-            "errorLevel": "={{ $json.execution.error.level }}",
-            "errorDescription": "={{ $json.execution.error.description }}",
-            "errorMessage": "={{ $json.execution.error.messages[0] }}",
-            "httpCode": "={{ $json.execution.error.httpCode }}",
-            "createdAt": "={{ new Date($json.execution.error.timestamp).toISOString() }}"
-          },
+          "value": {},
           "matchingColumns": [],
-          "schema": [
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        -320
+      ],
+      "id": "1e34e0bc-c995-4329-8b1a-2eea51e41cd3",
+      "name": "Get Config from Router"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
             {
-              "id": "name",
-              "displayName": "name",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "createdAt",
-              "displayName": "createdAt",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "workflowId",
-              "displayName": "workflowId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "workflowName",
-              "displayName": "workflowName",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "executionId",
-              "displayName": "executionId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "executionUrl",
-              "displayName": "executionUrl",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "errorLevel",
-              "displayName": "errorLevel",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "errorDescription",
-              "displayName": "errorDescription",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "errorMessage",
-              "displayName": "errorMessage",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "httpCode",
-              "displayName": "httpCode",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
+              "id": "e9ae0251-3cbe-43d9-a0cf-f9c189bb3084",
+              "leftValue": "={{ $json.isArchived }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
             }
           ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
+          "combinator": "and"
         },
         "options": {}
       },
-      "type": "n8n-nodes-base.airtable",
-      "typeVersion": 2.1,
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
       "position": [
-        -96,
-        -16
+        -16,
+        -320
       ],
-      "id": "4728caf5-8e0d-4143-956a-1462070f33df",
-      "name": "Insert Error Details - AT Errors Log1",
-      "credentials": {
-        "airtableTokenApi": {
-          "id": "XzBWggFrPVokGo9L",
-          "name": "Airtable Personal Access Token account"
-        }
-      }
+      "id": "ee031311-5942-4703-9179-aac1d5365ad9",
+      "name": "Filter Not Archived"
+    },
+    {
+      "parameters": {
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        432,
+        -320
+      ],
+      "id": "68ef3685-52c4-42ba-9094-9818a87fee13",
+      "name": "Workflow Data"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').first().json.config.vault.BASE_ID }}/Errors%20Log",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{\n(() => {\n  const src = $('Error Trigger').item.json ?? {};\n  const err = src.execution?.error ?? {};\n  const wf  = src.workflow ?? {};\n  const exe = src.execution ?? {};\n\n  const payload = {\n    records: [\n      {\n        fields: {\n          name: err.name ?? null,\n          createdAt: err.timestamp ? new Date(err.timestamp).toISOString() : null,\n          workflowId: wf.id ?? null,\n          workflowName: wf.name ?? null,\n          executionId: exe.id ?? null,\n          executionUrl: exe.url ?? null,\n          errorLevel: err.level ?? null,\n          errorDescription: err.description ?? null,\n          errorMessage: (Array.isArray(err.messages) && err.messages.length) ? err.messages[0] : null,\n          // httpCode conservé en STRING comme demandé\n          httpCode: err.httpCode ?? null\n        }\n      }\n    ]\n  };\n\n  return JSON.stringify(payload);\n})()\n}}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        656,
+        -320
+      ],
+      "id": "4a28de69-35e7-4c8b-ac23-2dc8c6b6dd3e",
+      "name": "Insert Error Details - AT Errors Log"
     }
   ],
   "repo_name": "boost-prospect-v2",
@@ -213,8 +221,15 @@
     }
   ],
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2025-09-01T18:44:12.239Z",
+      "updatedAt": "2025-09-01T18:44:12.239Z",
+      "id": "DxA0rKpUpLnrWgla",
+      "name": "Router"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2025-08-26T17:08:53.373Z",
-  "versionId": "b2161352-76cd-4387-b35b-6fbdd622b6d4"
+  "updatedAt": "2025-09-04T17:13:37.218Z",
+  "versionId": "31790459-1757-42a8-aeb3-9c78bf94480f"
 }
