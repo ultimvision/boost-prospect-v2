@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "Get Webhook Dispatch - HTTP Apify": {
       "main": [
@@ -23,107 +23,11 @@
         ]
       ]
     },
-    "Receive Callback - Webhook Apify facebook": {
-      "main": [
-        [
-          {
-            "node": "Get Webhook Dispatch - HTTP Apify",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Receive Dataset Inputs - Subflow Trigger": {
-      "main": [
-        [
-          {
-            "node": "List Dataset Items - Apify Apollo1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Iterate Dataset Items - Util 25": {
-      "main": [
-        [
-          {
-            "node": "Aggregate Items - Util",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Search Params - AT by Url",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If Items Exist - IF": {
-      "main": [
-        [
-          {
-            "node": "Split Out",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Aggregate Items (Empty) - Util",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Aggregate Items - Util": {
-      "main": [
-        [
-          {
-            "node": "Set Next Page Flag - Subflow Set",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Aggregate Items (Empty) - Util": {
-      "main": [
-        [
-          {
-            "node": "Set Next Page Flag False - Set",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "List Dataset Items - Apify Apollo1": {
-      "main": [
-        [
-          {
-            "node": "Aggregate",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Summarize",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "If Run SUCCEEDED - IF": {
       "main": [
         [
           {
-            "node": "Recurse Dataset Pagination - Subflow",
+            "node": "Get Workflow Id - [2710:sub]",
             "type": "main",
             "index": 0
           }
@@ -131,17 +35,6 @@
         [
           {
             "node": "Fail Run - Error Handler",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Recurse Dataset Pagination - Subflow": {
-      "main": [
-        [
-          {
-            "node": "If Next Page - IF",
             "type": "main",
             "index": 0
           }
@@ -160,132 +53,49 @@
         []
       ]
     },
-    "Summarize": {
+    "Workflow Data": {
       "main": [
         [
           {
-            "node": "Merge",
-            "type": "main",
-            "index": 1
-          }
-        ]
-      ]
-    },
-    "Aggregate": {
-      "main": [
-        [
-          {
-            "node": "Merge",
+            "node": "Get Webhook Dispatch - HTTP Apify",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Merge": {
+    "Filter Archived": {
       "main": [
         [
           {
-            "node": "If Items Exist - IF",
+            "node": "Recurse Dataset Pagination - Subflow",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Split Out": {
+    "Recurse Dataset Pagination - Subflow": {
+      "main": [
+        []
+      ]
+    },
+    "Start": {
       "main": [
         [
           {
-            "node": "Filter",
+            "node": "Workflow Data",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Filter": {
+    "Get Workflow Id - [2710:sub]": {
       "main": [
         [
           {
-            "node": "Iterate Dataset Items - Util 25",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenRouter Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Check if is a Lead - LLM",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Structured Output Parser": {
-      "ai_outputParser": [
-        [
-          {
-            "node": "Check if is a Lead - LLM",
-            "type": "ai_outputParser",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenRouter Chat Model1": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Structured Output Parser",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Check if is a Lead - LLM": {
-      "main": [
-        [
-          {
-            "node": "Insert Post with Analyse - AT",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenRouter Chat Model2": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Check if is a Lead - LLM",
-            "type": "ai_languageModel",
-            "index": 1
-          }
-        ]
-      ]
-    },
-    "Search Params - AT by Url": {
-      "main": [
-        [
-          {
-            "node": "Check if is a Lead - LLM",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Insert Post with Analyse - AT": {
-      "main": [
-        [
-          {
-            "node": "Iterate Dataset Items - Util 25",
+            "node": "Filter Archived",
             "type": "main",
             "index": 0
           }
@@ -299,66 +109,62 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Triggers > Apify > Facebook Group Webhook Callback",
+  "name": "Triggers > Apify > Facebook Group Webhook Callback [2710]",
   "nodes": [
     {
       "parameters": {
-        "httpMethod": "POST",
-        "path": "/facebook/group-scraping",
-        "authentication": "headerAuth",
-        "options": {}
+        "inputSource": "passthrough"
       },
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
       "position": [
-        -1808,
+        -1936,
         -1680
       ],
-      "id": "9e92c6b6-25b4-482e-ad2d-957736240249",
-      "name": "Receive Callback - Webhook Apify facebook",
-      "webhookId": "d8aa40d8-35ca-4197-934c-02464d68db81",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "ugPBtZYVCmTPd1VR",
-          "name": "Bearer Apify Callback"
-        }
-      },
-      "notes": "PHASE: Input Purpose: Receive Apify webhook callback for Apollo actor completion events. Inputs: HTTP POST /apollo/leads with header auth and Apify headers including x-apify-webhook-dispatch-id. Outputs: Raw headers/body for dispatch lookup. Dependencies: Header Auth Webhook Apify credential; Apify. Special Cases: Body may be empty; header must be present or flow will fail downstream."
+      "id": "d84e8972-aeb0-4651-8bf2-31cb927caa29",
+      "name": "Start"
     },
     {
       "parameters": {
-        "url": "=https://api.apify.com/v2/webhook-dispatches/{{ $json.headers['x-apify-webhook-dispatch-id'] }}",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
+        "url": "=https://api.apify.com/v2/webhook-dispatches/{{ $json['x-apify-webhook-dispatch-id'] }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').item.json.config.vault.APIFY_TOKENS }}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -1584,
+        -1488,
         -1680
       ],
-      "id": "be4844e8-3645-4042-b141-45c0854166fb",
+      "id": "9ef94ac6-fe53-4c23-969d-8da4154e9117",
       "name": "Get Webhook Dispatch - HTTP Apify",
-      "credentials": {
-        "httpBearerAuth": {
-          "id": "c5ccYKuRoY4O10nO",
-          "name": "Bearer Apify"
-        }
-      },
       "notes": "PHASE: Execution Purpose: Retrieve the Apify webhook dispatch to extract actorRunId and metadata for this callback. Inputs: Header x-apify-webhook-dispatch-id from Webhook; Apify Bearer credential. Outputs: JSON dispatch including data.eventData.actorRunId and metadata. Dependencies: Webhook - Apify Callback - Apollo; Apify HTTP API; Bearer Apify credential. Special Cases: 401/403 for auth errors; 429 for rate limits; no retry configured."
     },
     {
       "parameters": {
         "url": "=https://api.apify.com/v2/actor-runs/{{ $('Get Webhook Dispatch - HTTP Apify').item.json.data.eventData.actorRunId }}",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Accept",
               "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').item.json.config.vault.APIFY_TOKENS }}"
             }
           ]
         },
@@ -367,228 +173,14 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -1360,
+        -1264,
         -1680
       ],
-      "id": "dcad9e72-f11b-4f8c-8fba-b863e02471aa",
+      "id": "5f9a3c45-8be2-488b-8b4c-64a5724e40c7",
       "name": "Get Actor Run Details - Apify Apollo",
       "retryOnFail": true,
       "maxTries": 2,
-      "credentials": {
-        "httpBearerAuth": {
-          "id": "c5ccYKuRoY4O10nO",
-          "name": "Bearer Apify"
-        }
-      },
       "notes": "PHASE: Execution Purpose: Fetch Apify actor run details to determine completion status and get the dataset id. Inputs: actorRunId from Get Webhook Dispatch. Outputs: JSON with data.status and data.defaultDatasetId. Dependencies: Apify HTTP API; Bearer Apify credential. Special Cases: Status may be SUCCEEDED/FAILED/TIMED-OUT; gate downstream actions accordingly."
-    },
-    {
-      "parameters": {
-        "workflowInputs": {
-          "values": [
-            {
-              "name": "dataset"
-            },
-            {
-              "name": "offset",
-              "type": "number"
-            },
-            {
-              "name": "apolloId"
-            },
-            {
-              "name": "userId"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.executeWorkflowTrigger",
-      "typeVersion": 1.1,
-      "position": [
-        -1808,
-        -784
-      ],
-      "id": "c015de87-a1b5-45d0-9525-fdb25fe29697",
-      "name": "Receive Dataset Inputs - Subflow Trigger",
-      "notes": "PHASE: Input Purpose: Receive dataset id and offset for subflow execution. Inputs: workflowInputs dataset (string) and offset (number). Outputs: Exposes these values to downstream HTTP listing. Dependencies: Recurse Dataset Pagination - Subflow. Special Cases: Missing inputs will cause dataset fetch to fail."
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "n8n-nodes-base.splitInBatches",
-      "typeVersion": 3,
-      "position": [
-        -240,
-        -960
-      ],
-      "id": "6ea08ea2-f072-4e8b-abde-2d6b55e87109",
-      "name": "Iterate Dataset Items - Util 25",
-      "notes": "PHASE: Utility Purpose: Process Apify dataset items in batches to control memory and rate limits. Inputs: Array of items from List Dataset Items. Outputs: Batches of up to 25 items for downstream Set/Airtable nodes; iterates until empty. Dependencies: Split In Batches behavior and the Aggregate2 loopback. Special Cases: Ensure loopback is wired or iteration will stop after first batch."
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "420bcfad-6f69-489f-8b19-e08ebb23d433",
-              "leftValue": "={{ $json.count_facebookUrl }}",
-              "rightValue": 0,
-              "operator": {
-                "type": "number",
-                "operation": "gt"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        -912,
-        -784
-      ],
-      "id": "00e9f0af-c5f4-43ba-9e58-bc91a3697a3b",
-      "name": "If Items Exist - IF",
-      "notes": "PHASE: Execution Purpose: Gate processing based on whether the current page has items (id exists and not empty). Inputs: Items from List Dataset Items. Outputs: True branch to batching; false branch to set get_next_page=false. Dependencies: List Dataset Items; Aggregate/Clean Data - Set nodes. Special Cases: Prevents unnecessary recursion when page is empty."
-    },
-    {
-      "parameters": {
-        "aggregate": "aggregateAllItemData",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
-      "position": [
-        -16,
-        -1360
-      ],
-      "id": "21f5031e-8212-4f2a-afd8-19bf721a3d2d",
-      "name": "Aggregate Items - Util",
-      "notes": "PHASE: Utility Purpose: Aggregate batch context before setting next-page control flag. Inputs: Current batch from Iterate Dataset Items. Outputs: Pass-through used by Set Next Page flag. Dependencies: Clean Data - Set true. Special Cases: No data transformation; control flow only."
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "badaa633-4a97-46f4-9916-1286fbc9b015",
-              "name": "get_next_page",
-              "value": true,
-              "type": "boolean"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        408,
-        -1360
-      ],
-      "id": "19bba080-c20b-4494-a97a-2532cb65a341",
-      "name": "Set Next Page Flag - Subflow Set",
-      "notes": "PHASE: Utility Purpose: Mark that another page should be fetched. Inputs: Prior aggregate context. Outputs: get_next_page=true. Dependencies: If Next Page - IF; Execute Workflow recursion. Special Cases: Paired with the false variant when no items exist."
-    },
-    {
-      "parameters": {
-        "aggregate": "aggregateAllItemData",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
-      "position": [
-        -688,
-        -688
-      ],
-      "id": "bbe5c227-9607-49db-9870-95931f796ee1",
-      "name": "Aggregate Items (Empty) - Util",
-      "notes": "PHASE: Utility Purpose: Aggregate context for empty page to allow setting next-page flag false. Inputs: False branch from If Items Exist. Outputs: Pass-through to Set Next Page Flag False. Dependencies: Clean Data - Set1. Special Cases: No transformations."
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "badaa633-4a97-46f4-9916-1286fbc9b015",
-              "name": "get_next_page",
-              "value": false,
-              "type": "boolean"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -464,
-        -688
-      ],
-      "id": "a60afd63-245f-4fe4-89b5-b9c82b712a90",
-      "name": "Set Next Page Flag False - Set",
-      "notes": "PHASE: Utility Purpose: Indicate there is no next page to fetch. Inputs: Context from empty-page aggregate. Outputs: get_next_page=false. Dependencies: If Next Page - IF to halt recursion. Special Cases: Complements the true flag setter."
-    },
-    {
-      "parameters": {
-        "url": "=https://api.apify.com/v2/datasets/{{ $json.dataset }}/items",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
-            {
-              "name": "format",
-              "value": "json"
-            },
-            {
-              "name": "limit",
-              "value": "100"
-            },
-            {
-              "name": "offset",
-              "value": "={{ $json.offset }}"
-            }
-          ]
-        },
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Accept",
-              "value": "application/json"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        -1584,
-        -784
-      ],
-      "id": "5862875e-e37e-4e71-b2a7-37f1947ca385",
-      "name": "List Dataset Items - Apify Apollo1",
-      "retryOnFail": true,
-      "maxTries": 2,
-      "alwaysOutputData": true,
-      "credentials": {
-        "httpBearerAuth": {
-          "id": "c5ccYKuRoY4O10nO",
-          "name": "Bearer Apify"
-        }
-      },
-      "notes": "PHASE: Execution Purpose: List items from the Apify dataset produced by the actor run using pagination. Inputs: dataset id and offset from subflow inputs; limit=100. Outputs: Array of dataset items. Dependencies: Apify HTTP API; Bearer Apify credential. Special Cases: Empty result indicates no more pages; handle 429 rate limits."
     },
     {
       "parameters": {
@@ -618,10 +210,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1136,
+        -1040,
         -1680
       ],
-      "id": "0376dd98-46d2-485f-b7f2-c3f46d98cef1",
+      "id": "f1466880-9ecb-4dd2-8a0e-a6333dc4a7eb",
       "name": "If Run SUCCEEDED - IF",
       "notes": "PHASE: Execution Purpose: Branch based on Apify actor run status being SUCCEEDED. Inputs: data.status from Get Actor Run Details. Outputs: True path triggers pagination; false path goes to Stop with Error. Dependencies: Get Actor Run Details. Special Cases: Non-SUCCEEDED statuses are treated as failures."
     },
@@ -632,85 +224,12 @@
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
       "position": [
-        -912,
+        -816,
         -1584
       ],
-      "id": "d7d1f00d-caff-4946-921f-2b9e1a807ebc",
+      "id": "4c50c76a-9809-4c74-a583-094b0c3a06d5",
       "name": "Fail Run - Error Handler",
       "notes": "PHASE: Error Handling Purpose: Fail the workflow when the Apify actor run did not succeed. Inputs: False branch from If Run SUCCEEDED. Outputs: Error thrown with message 'Apollo Run Status Error'. Dependencies: If Run SUCCEEDED - IF. Special Cases: Stops all downstream processing."
-    },
-    {
-      "parameters": {
-        "workflowId": {
-          "__rl": true,
-          "value": "={{ $workflow.id }}",
-          "mode": "id"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "dataset": "={{ $('Get Actor Run Details - Apify Apollo').first().json.data.defaultDatasetId }}",
-            "offset": "={{ $runIndex * 100 }}"
-          },
-          "matchingColumns": [
-            "dataset"
-          ],
-          "schema": [
-            {
-              "id": "dataset",
-              "displayName": "dataset",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": false
-            },
-            {
-              "id": "offset",
-              "displayName": "offset",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "number",
-              "removed": false
-            },
-            {
-              "id": "apolloId",
-              "displayName": "apolloId",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            },
-            {
-              "id": "userId",
-              "displayName": "userId",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "canBeUsedToMatch": true,
-              "type": "string",
-              "removed": true
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        -912,
-        -1776
-      ],
-      "id": "a70b1ae2-454d-4f19-9aa3-f681da62848e",
-      "name": "Recurse Dataset Pagination - Subflow",
-      "notes": "PHASE: Execution Purpose: Self-execute the workflow to fetch the next dataset page. Inputs: dataset id and offset (runIndex*100). Outputs: Invokes subflow run for next page processing. Dependencies: Execute Workflow Trigger; If Next Page - IF. Special Cases: Must stop when get_next_page=false to prevent infinite loop."
     },
     {
       "parameters": {
@@ -740,75 +259,54 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -688,
+        -144,
         -1776
       ],
-      "id": "84e89cf0-0323-45d0-b830-d390493cd19d",
+      "id": "8dbd95a9-61a5-4e73-a30d-2f7542b16394",
       "name": "If Next Page - IF",
       "notes": "PHASE: Execution Purpose: Branch based on get_next_page to control recursion. Inputs: Boolean get_next_page from Set nodes. Outputs: True path executes next page; false path stops. Dependencies: Set Next Page Flag True/False; Recurse Dataset Pagination - Subflow. Special Cases: Always set flag to avoid infinite loops."
     },
     {
       "parameters": {
-        "fieldsToSummarize": {
-          "values": [
+        "method": "PATCH",
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').item.json.config.vault.BASE_ID }}/Apollo/{{ $('Search recId by actorRunId - AT Apollo').item.json.records[0].id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
             {
-              "field": "facebookUrl"
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').item.json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
             }
           ]
         },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"fields\": {\n    \"executionDate\": \"{{ $now }}\",\n    \"status\": \"Successfully Completed\",\n    \"statusDetails\": \"🚀 All done! Your task was completed successfully.\",\n    \"executed\": true\n  }\n}",
         "options": {}
       },
-      "type": "n8n-nodes-base.summarize",
-      "typeVersion": 1.1,
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
       "position": [
-        -1360,
-        -688
+        80,
+        -1776
       ],
-      "id": "525fe49a-ce17-447b-bb73-0c408e253441",
-      "name": "Summarize"
+      "id": "dbebe93c-9323-47da-adb6-875ddb30f58b",
+      "name": "Update status - AT Apollo",
+      "retryOnFail": true
     },
     {
       "parameters": {
-        "aggregate": "aggregateAllItemData",
+        "includeOtherFields": true,
         "options": {}
       },
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
       "position": [
-        -1360,
-        -880
+        -1712,
+        -1680
       ],
-      "id": "07775d71-c2e1-4788-b0d9-e4536de7c573",
-      "name": "Aggregate"
-    },
-    {
-      "parameters": {
-        "mode": "combine",
-        "combineBy": "combineByPosition",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3.2,
-      "position": [
-        -1136,
-        -784
-      ],
-      "id": "5deec872-eb80-4122-8ba2-4e06688667b1",
-      "name": "Merge"
-    },
-    {
-      "parameters": {
-        "fieldToSplitOut": "data",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.splitOut",
-      "typeVersion": 1,
-      "position": [
-        -688,
-        -960
-      ],
-      "id": "7d29f49f-8977-4f3a-808f-985bfe2f7dd8",
-      "name": "Split Out"
+      "id": "44863e4f-e71a-45f4-9b25-d1e2206ef328",
+      "name": "Workflow Data"
     },
     {
       "parameters": {
@@ -821,12 +319,12 @@
           },
           "conditions": [
             {
-              "id": "6cc1996b-41ad-4881-becf-09d02d7a150a",
-              "leftValue": "={{ $json.error }}",
+              "id": "e9ae0251-3cbe-43d9-a0cf-f9c189bb3084",
+              "leftValue": "={{ $json.isArchived }}",
               "rightValue": "",
               "operator": {
-                "type": "string",
-                "operation": "notExists",
+                "type": "boolean",
+                "operation": "false",
                 "singleValue": true
               }
             }
@@ -838,380 +336,97 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
       "position": [
-        -464,
-        -960
+        -592,
+        -1776
       ],
-      "id": "4e721c6c-a983-412c-b662-62f47e7df20b",
-      "name": "Filter"
+      "id": "dc6d526a-df48-494d-85ac-ebba885a2a09",
+      "name": "Filter Archived"
     },
     {
       "parameters": {
-        "model": "google/gemini-2.5-flash",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
-      "typeVersion": 1,
-      "position": [
-        208,
-        -736
-      ],
-      "id": "2b7da46c-4d5b-43c6-89e5-c2b221e8a4ae",
-      "name": "OpenRouter Chat Model",
-      "credentials": {
-        "openRouterApi": {
-          "id": "0qavXgV1FZOxQIaU",
-          "name": "OpenRouter"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "schemaType": "manual",
-        "inputSchema": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"title\": \"LeadValidation\",\n  \"type\": \"object\",\n  \"additionalProperties\": false,\n  \"required\": [\"lead\", \"explication\"],\n  \"properties\": {\n    \"lead\": {\n      \"type\": \"string\",\n      \"enum\": [\"Yes\", \"No\"],\n      \"description\": \"Yes or No only\"\n    },\n    \"explication\": {\n      \"type\": \"string\",\n      \"minLength\": 1,\n      \"description\": \"Reasoning\"\n    }\n  }\n}",
-        "autoFix": true
-      },
-      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
-      "typeVersion": 1.3,
-      "position": [
-        464,
-        -736
-      ],
-      "id": "c5b0d031-483b-4887-9406-acec425dca1f",
-      "name": "Structured Output Parser"
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
-      "typeVersion": 1,
-      "position": [
-        544,
-        -528
-      ],
-      "id": "88b2dce8-e83a-483d-94f6-ba4653edf8e4",
-      "name": "OpenRouter Chat Model1",
-      "credentials": {
-        "openRouterApi": {
-          "id": "0qavXgV1FZOxQIaU",
-          "name": "OpenRouter"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "=Facebook Post Content to Analyse :\nGroup Title : {{ $('Iterate Dataset Items - Util 25').item.json.groupTitle }}\n\nUserName : {{ $('Iterate Dataset Items - Util 25').item.json.user.name }}\n\nTitle : {{ $('Iterate Dataset Items - Util 25').item.json.title }}\n\nPrice : {{ $('Iterate Dataset Items - Util 25').item.json.price }}\n\nLocation : {{ $('Iterate Dataset Items - Util 25').item.json.location }}\n\nContent : {{ $('Iterate Dataset Items - Util 25').item.json.text }}\n\nTop Comments : {{ JSON.stringify($('Iterate Dataset Items - Util 25').item.json.topComments) }}\n\n",
-        "hasOutputParser": true,
-        "needsFallback": true,
-        "messages": {
-          "messageValues": [
-            {
-              "message": "={{ $json.promptInstructions[0] }}\n\nLead definition :\n{{ $json.leadDefinition[0] }}"
-            }
-          ]
-        },
-        "batching": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.7,
-      "position": [
-        264,
-        -960
-      ],
-      "id": "96fba505-0dec-4fc1-8b23-b664da6d3fc8",
-      "name": "Check if is a Lead - LLM",
-      "retryOnFail": true
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
-      "typeVersion": 1,
-      "position": [
-        336,
-        -736
-      ],
-      "id": "ef9e1b51-19b7-4dbd-9825-c4fbea44b4df",
-      "name": "OpenRouter Chat Model2",
-      "credentials": {
-        "openRouterApi": {
-          "id": "0qavXgV1FZOxQIaU",
-          "name": "OpenRouter"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "search",
-        "base": {
+        "workflowId": {
           "__rl": true,
-          "value": "app3ZDXRoKYAaYwlt",
-          "mode": "list",
-          "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
+          "value": "={{ $('Get Workflow Id - [2710:sub]').first().json.id }}",
+          "mode": "id"
         },
-        "table": {
-          "__rl": true,
-          "value": "tbl36JCi2WpvTIXar",
-          "mode": "list",
-          "cachedResultName": "Urls Scraping",
-          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tbl36JCi2WpvTIXar"
-        },
-        "filterByFormula": "=SEARCH('{{ $json.facebookUrl }}', {url}) > 0",
-        "returnAll": false,
-        "limit": 1,
-        "options": {}
-      },
-      "type": "n8n-nodes-base.airtable",
-      "typeVersion": 2.1,
-      "position": [
-        -16,
-        -960
-      ],
-      "id": "ee8112b1-4135-41b6-b619-6dee37a2f19b",
-      "name": "Search Params - AT by Url",
-      "retryOnFail": true,
-      "credentials": {
-        "airtableTokenApi": {
-          "id": "XzBWggFrPVokGo9L",
-          "name": "Airtable Personal Access Token account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "upsert",
-        "base": {
-          "__rl": true,
-          "value": "app3ZDXRoKYAaYwlt",
-          "mode": "list",
-          "cachedResultName": "Boost Prospect v2",
-          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt"
-        },
-        "table": {
-          "__rl": true,
-          "value": "tblxjAhCS99MWKSQs",
-          "mode": "list",
-          "cachedResultName": "Posts Analysis",
-          "cachedResultUrl": "https://airtable.com/app3ZDXRoKYAaYwlt/tblxjAhCS99MWKSQs"
-        },
-        "columns": {
+        "workflowInputs": {
           "mappingMode": "defineBelow",
           "value": {
-            "title": "={{ $('Iterate Dataset Items - Util 25').item.json.title }}",
-            "postDate": "={{ $('Iterate Dataset Items - Util 25').item.json.time }}",
-            "leadStatus": "={{ $json.output.lead }}",
-            "leadReasoning": "={{ $json.output.explication }}",
-            "facebookUrl": "={{ $('Iterate Dataset Items - Util 25').item.json.facebookUrl }}",
-            "postUrl": "={{ $('Iterate Dataset Items - Util 25').item.json.url }}",
-            "message": "={{ $('Iterate Dataset Items - Util 25').item.json.text }}",
-            "price": "={{ $('Iterate Dataset Items - Util 25').item.json.price }}",
-            "location": "={{ $('Iterate Dataset Items - Util 25').item.json.location }}",
-            "groupTitle": "={{ $('Iterate Dataset Items - Util 25').item.json.groupTitle }}",
-            "urlScraping": "=['{{ $('Search Params - AT by Url').item.json.id }}']",
-            "leadDefinition": "={{ $('Search Params - AT by Url').item.json.leadDefinition[0] }}",
-            "promptInstruction": "={{ $('Search Params - AT by Url').item.json.promptInstructions[0] }}",
-            "messageId": "={{ $('Iterate Dataset Items - Util 25').item.json.legacyId }}"
+            "offset": "={{ $runIndex * 100 }}",
+            "dataset": "={{ $('Get Actor Run Details - Apify Apollo').first().json.data.defaultDatasetId }}",
+            "config": "={{ $('Workflow Data').item.json.config }}"
           },
-          "matchingColumns": [
-            "messageId"
-          ],
+          "matchingColumns": [],
           "schema": [
             {
-              "id": "id",
-              "displayName": "id",
+              "id": "dataset",
+              "displayName": "dataset",
               "required": false,
-              "defaultMatch": true,
+              "defaultMatch": false,
               "display": true,
+              "canBeUsedToMatch": true,
               "type": "string",
-              "readOnly": true,
-              "removed": true
-            },
-            {
-              "id": "messageId",
-              "displayName": "messageId",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
               "removed": false
             },
             {
-              "id": "title",
-              "displayName": "title",
+              "id": "offset",
+              "displayName": "offset",
               "required": false,
               "defaultMatch": false,
-              "canBeUsedToMatch": true,
               "display": true,
-              "type": "string",
-              "readOnly": false,
+              "canBeUsedToMatch": true,
+              "type": "number",
               "removed": false
             },
             {
-              "id": "message",
-              "displayName": "message",
+              "id": "config",
+              "displayName": "config",
               "required": false,
               "defaultMatch": false,
-              "canBeUsedToMatch": true,
               "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "postDate",
-              "displayName": "postDate",
-              "required": false,
-              "defaultMatch": false,
               "canBeUsedToMatch": true,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "leadStatus",
-              "displayName": "leadStatus",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "options",
-              "options": [
-                {
-                  "name": "Yes",
-                  "value": "Yes"
-                },
-                {
-                  "name": "No",
-                  "value": "No"
-                }
-              ],
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "leadReasoning",
-              "displayName": "leadReasoning",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "facebookUrl",
-              "displayName": "facebookUrl",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "postUrl",
-              "displayName": "postUrl",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "price",
-              "displayName": "price",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "location",
-              "displayName": "location",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "groupTitle",
-              "displayName": "groupTitle",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "urlScraping",
-              "displayName": "urlScraping",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "array",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "leadDefinition",
-              "displayName": "leadDefinition",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "promptInstruction",
-              "displayName": "promptInstruction",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
+              "type": "object",
               "removed": false
             }
           ],
           "attemptToConvertTypes": false,
-          "convertFieldsToString": false
+          "convertFieldsToString": true
         },
         "options": {}
       },
-      "type": "n8n-nodes-base.airtable",
-      "typeVersion": 2.1,
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
       "position": [
-        832,
-        -880
+        -368,
+        -1776
       ],
-      "id": "3b0f2cf3-4b6c-46f0-afeb-5fc126c1c8b4",
-      "name": "Insert Post with Analyse - AT",
-      "retryOnFail": true,
+      "id": "f13fd6a9-b9d3-4555-bc10-14af9cc3683a",
+      "name": "Recurse Dataset Pagination - Subflow",
+      "notes": "PHASE: Execution Purpose: Self-execute the workflow to fetch the next dataset page. Inputs: dataset id and offset (runIndex*100). Outputs: Invokes subflow run for next page processing. Dependencies: Execute Workflow Trigger; If Next Page - IF. Special Cases: Must stop when get_next_page=false to prevent infinite loop."
+    },
+    {
+      "parameters": {
+        "returnAll": false,
+        "limit": 1,
+        "filters": {
+          "activeWorkflows": false,
+          "name": "[2710:sub]",
+          "excludePinnedData": true
+        },
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        -816,
+        -1776
+      ],
+      "id": "3de4b687-dffe-4d28-b32b-a50c1364fdd4",
+      "name": "Get Workflow Id - [2710:sub]",
       "credentials": {
-        "airtableTokenApi": {
-          "id": "XzBWggFrPVokGo9L",
-          "name": "Airtable Personal Access Token account"
+        "n8nApi": {
+          "id": "DeDKPUGV1gyQwspX",
+          "name": "n8n local"
         }
       }
     }
@@ -1236,6 +451,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-08-27T12:47:56.810Z",
-  "versionId": "1e869265-a138-43eb-9fd8-630b09db36ec"
+  "updatedAt": "2025-09-04T13:26:37.850Z",
+  "versionId": "11e5d78b-6b47-4076-9e30-6deff9d2eaad"
 }
