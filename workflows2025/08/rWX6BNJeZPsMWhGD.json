@@ -540,7 +540,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"records\": [\n    {\n      \"fields\": {\n        \"taskId\": \"{{ $('Create Actor Task - Apify').item.json.data.id }}\",\n        \"maxConcurrentActorJobs\": {{ $json.data.limits.maxConcurrentActorJobs }},\n        \"maxActorMemoryGbytes\": {{ $json.data.limits.maxActorMemoryGbytes }},\n        \"activeActorJobCount\": {{ $json.data.current.activeActorJobCount }},\n        \"actorMemoryGbytes\": {{ $json.data.current.actorMemoryGbytes }},\n        \"requestedMemoryMbytes\": {{ Math.ceil($json.data.current.actorMemoryGbytes + ($('Apify - Get task').item.json.data.options.memoryMbytes / 1000)) }}\n      }\n    }\n  ]\n}",
+        "jsonBody": "={\n  \"records\": [\n    {\n      \"fields\": {\n        \"taskId\": \"{{ $('Create Actor Task - Apify').item.json.data.id }}\",\n        \"people\": [\"{{ $('Workflow Data').first().json.recId }}\"],\n        \"maxConcurrentActorJobs\": {{ $json.data.limits.maxConcurrentActorJobs }},\n        \"maxActorMemoryGbytes\": {{ $json.data.limits.maxActorMemoryGbytes }},\n        \"activeActorJobCount\": {{ $json.data.current.activeActorJobCount }},\n        \"actorMemoryGbytes\": {{ $json.data.current.actorMemoryGbytes }},\n        \"requestedMemoryMbytes\": {{ Math.ceil($json.data.current.actorMemoryGbytes + ($('Apify - Get task').item.json.data.options.memoryMbytes / 1000)) }}\n      }\n    }\n  ]\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -567,7 +567,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"records\": [\n    {\n      \"fields\": {\n        \"taskId\": \"{{ $('Create Actor Task - Apify').item.json.data.id }}\",\n        \"maxConcurrentActorJobs\": {{ $json.data.limits.maxConcurrentActorJobs }},\n        \"maxActorMemoryGbytes\": {{ $json.data.limits.maxActorMemoryGbytes }},\n        \"activeActorJobCount\": {{ $json.data.current.activeActorJobCount }},\n        \"actorMemoryGbytes\": {{ $json.data.current.actorMemoryGbytes }},\n        \"requestedMemoryMbytes\": {{ Math.ceil($json.data.current.actorMemoryGbytes + ($('Apify - Get task').item.json.data.options.memoryMbytes / 1000)) }}\n      }\n    }\n  ]\n}",
+        "jsonBody": "={\n  \"records\": [\n    {\n      \"fields\": {\n        \"taskId\": \"{{ $('Create Actor Task - Apify').item.json.data.id }}\",\n        \"people\": [\"{{ $('Workflow Data').first().json.recId }}\"],\n        \"maxConcurrentActorJobs\": {{ $json.data.limits.maxConcurrentActorJobs }},\n        \"maxActorMemoryGbytes\": {{ $json.data.limits.maxActorMemoryGbytes }},\n        \"activeActorJobCount\": {{ $json.data.current.activeActorJobCount }},\n        \"actorMemoryGbytes\": {{ $json.data.current.actorMemoryGbytes }},\n        \"requestedMemoryMbytes\": {{ Math.ceil($json.data.current.actorMemoryGbytes + ($('Apify - Get task').item.json.data.options.memoryMbytes / 1000)) }}\n      }\n    }\n  ]\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -678,7 +678,7 @@
             {
               "id": "174d0a57-7aa5-4e8b-a951-f2940513f45f",
               "name": "websiteUrl",
-              "value": "={{ $json.website }}",
+              "value": "={{ $json.website.startsWith('http://') ? $json.website.replace('http://', 'https://') : $json.website }}",
               "type": "string"
             },
             {
@@ -774,6 +774,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-09-02T14:04:51.362Z",
-  "versionId": "a1008f2c-0c6f-45a1-93d8-94b1c2f25e26"
+  "updatedAt": "2025-09-04T21:35:39.145Z",
+  "versionId": "e5db5d2e-89e6-41a7-9328-fc5ec498bdfd"
 }
