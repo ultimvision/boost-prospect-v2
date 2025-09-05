@@ -243,7 +243,7 @@
       "typeVersion": 4.2,
       "position": [
         3376,
-        272
+        268
       ],
       "id": "d896dea5-fdc1-4de9-82c2-8dec119acd48",
       "name": "Get Profile Posts - Apify LinkedIn",
@@ -261,7 +261,7 @@
       "typeVersion": 1,
       "position": [
         3600,
-        176
+        172
       ],
       "id": "7a5fac8e-b6e4-4f25-aa5a-c8916511cd75",
       "name": "Aggregate Items - Util",
@@ -276,7 +276,7 @@
       "typeVersion": 1,
       "position": [
         4848,
-        128
+        120
       ],
       "id": "7d714d28-3245-4607-8e61-c77561a629e7",
       "name": "Fail Run - Error Handler",
@@ -315,7 +315,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        4192,
+        4184,
         144
       ],
       "id": "c1d02711-7f86-4d7b-91d5-175c943574a9",
@@ -336,7 +336,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        4064,
+        4056,
         144
       ],
       "id": "4735c9de-b56a-4ff3-8ab7-a0a371787d27",
@@ -422,7 +422,7 @@
       "typeVersion": 2.2,
       "position": [
         4624,
-        128
+        120
       ],
       "id": "17b47d08-ae69-40eb-a6f2-52f7ccd607ff",
       "name": "If Retry Count LT 2 - IF",
@@ -436,7 +436,7 @@
       "typeVersion": 1.1,
       "position": [
         2256,
-        416
+        412
       ],
       "id": "a66f4d3b-574d-4bc9-8453-90065c882bd7",
       "name": "Receive Inputs - Subflow Trigger",
@@ -481,7 +481,7 @@
       "typeVersion": 2.2,
       "position": [
         3824,
-        176
+        172
       ],
       "id": "312109d4-9b23-4344-b4c9-f55da47d756a",
       "name": "If Data Exists - IF",
@@ -496,8 +496,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1040,
-        528
+        1088,
+        176
       ],
       "id": "5f5e2fdf-0c3b-491d-9975-50f1fae932d0",
       "name": "Sticky Note"
@@ -510,7 +510,7 @@
       "typeVersion": 1.1,
       "position": [
         3824,
-        512
+        508
       ],
       "id": "0e6201f3-e343-4412-a4e6-47f2dd9bc821",
       "name": "Wait",
@@ -544,7 +544,7 @@
       "typeVersion": 2.2,
       "position": [
         3600,
-        416
+        412
       ],
       "id": "a5986869-c4d5-4e83-9684-663bb97e3970",
       "name": "Apify Error 402 - IF"
@@ -557,7 +557,7 @@
       "typeVersion": 1,
       "position": [
         3824,
-        704
+        700
       ],
       "id": "08abe4ad-e085-4798-be02-3c9bbbd49bf3",
       "name": "Stop and Error"
@@ -584,7 +584,7 @@
       "typeVersion": 4.2,
       "position": [
         2928,
-        352
+        340
       ],
       "id": "947caf4f-059a-4acd-9b77-0d4b147e1cd8",
       "name": "Apify - Get limits",
@@ -628,7 +628,7 @@
       "typeVersion": 2.2,
       "position": [
         3152,
-        352
+        340
       ],
       "id": "f4ea7b19-13ea-4645-984b-44d5010698a1",
       "name": "Check Apify Capacity - IF"
@@ -651,7 +651,7 @@
       "typeVersion": 3.4,
       "position": [
         2704,
-        416
+        412
       ],
       "id": "cffac654-ff50-4f8b-b46c-1ade0cfe39a8",
       "name": "Apify Actors Config - Set"
@@ -665,7 +665,7 @@
       "typeVersion": 3.4,
       "position": [
         2480,
-        416
+        412
       ],
       "id": "bb6a023d-e0cb-4338-bdf2-5de378b742ba",
       "name": "Workflow Data"
@@ -772,6 +772,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-09-02T12:10:33.775Z",
-  "versionId": "c04cf9fe-73b0-4484-a30d-975d09190fff"
+  "updatedAt": "2025-09-04T11:57:05.590Z",
+  "versionId": "51efebf3-404a-4493-be10-e54a4942a165"
 }
