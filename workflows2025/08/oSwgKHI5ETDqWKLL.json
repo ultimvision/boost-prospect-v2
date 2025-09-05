@@ -15,7 +15,7 @@
   },
   "createdAt": "2025-08-26T12:30:40.257Z",
   "id": "oSwgKHI5ETDqWKLL",
-  "isArchived": false,
+  "isArchived": true,
   "meta": null,
   "name": "Variables",
   "nodes": [
@@ -111,6 +111,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-08-26T18:46:31.194Z",
-  "versionId": "78d39b2e-c2d4-4770-b450-3d5e90ac380f"
+  "updatedAt": "2025-09-04T15:21:16.479Z",
+  "versionId": "c14fe928-178f-4bb7-8deb-81304a82ec1d"
 }
