@@ -223,7 +223,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Triggers  > Apify > Scrape Facebook Group Create a Task [2700]",
+  "name": "[2700] Apify > Create a Task > Facebook Groups Scraping",
   "nodes": [
     {
       "parameters": {
@@ -804,13 +804,13 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-09-01T18:44:12.239Z",
-      "updatedAt": "2025-09-01T18:44:12.239Z",
-      "id": "DxA0rKpUpLnrWgla",
-      "name": "Router"
+      "createdAt": "2025-09-05T11:43:12.743Z",
+      "updatedAt": "2025-09-05T11:43:12.743Z",
+      "id": "2WGDY3428pMfpzn6",
+      "name": "Boost Prospect"
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-09-04T15:32:14.125Z",
-  "versionId": "5af24f48-be91-4c8b-9805-0c1c41ba8ac1"
+  "updatedAt": "2025-09-05T12:30:30.953Z",
+  "versionId": "1c6b81a6-a87a-40e3-8e1e-43622728c465"
 }
