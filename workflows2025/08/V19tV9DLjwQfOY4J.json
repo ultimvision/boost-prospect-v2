@@ -195,7 +195,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Triggers > Scheduler > Execute Apify Runs [2800]",
+  "name": "[0050] Scheduler > Apify > Execute Runs",
   "nodes": [
     {
       "parameters": {
@@ -250,7 +250,7 @@
       "typeVersion": 4.2,
       "position": [
         -768,
-        232
+        240
       ],
       "id": "7b6447f1-7194-4ca1-a300-aca93a4679e6",
       "name": "Apify - Get limits",
@@ -279,7 +279,7 @@
       "typeVersion": 4.2,
       "position": [
         -992,
-        232
+        240
       ],
       "id": "2df3673b-410c-4f27-a183-dcaecb38ff47",
       "name": "Apify - Get task",
@@ -323,7 +323,7 @@
       "typeVersion": 2.2,
       "position": [
         -544,
-        232
+        240
       ],
       "id": "75a98d15-e3a8-4c2c-8da7-059767f85449",
       "name": "Check Apify Capacity - IF"
@@ -363,7 +363,7 @@
       "typeVersion": 1,
       "position": [
         -992,
-        40
+        48
       ],
       "id": "2ba903d8-9c9b-4ca3-8557-e7689f7376f1",
       "name": "Done"
@@ -374,7 +374,7 @@
       "typeVersion": 1.1,
       "position": [
         352,
-        472
+        480
       ],
       "id": "dc8cc8b7-1b59-429b-a04c-23451ef45790",
       "name": "Wait",
@@ -613,19 +613,13 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-08-26T10:51:03.420Z",
-      "updatedAt": "2025-08-26T10:51:03.420Z",
-      "id": "WzQA3j1qTOPUfJ1x",
-      "name": "Scheduler"
-    },
-    {
-      "createdAt": "2025-08-25T15:32:46.509Z",
-      "updatedAt": "2025-08-25T15:32:46.509Z",
-      "id": "4ptvvLb7NgD8g7Ar",
-      "name": "Apify"
+      "createdAt": "2025-09-05T11:43:12.743Z",
+      "updatedAt": "2025-09-05T11:43:12.743Z",
+      "id": "2WGDY3428pMfpzn6",
+      "name": "Boost Prospect"
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-09-04T21:49:31.980Z",
-  "versionId": "954bdf93-8ea5-4b76-a0f2-5e473bfe9ea9"
+  "updatedAt": "2025-09-05T12:27:26.093Z",
+  "versionId": "d74fc037-73cb-4005-bc3b-bb08bce7130f"
 }
