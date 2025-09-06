@@ -109,7 +109,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Triggers > Apify > Facebook Group Webhook Callback [2710]",
+  "name": "[2710] Apify > Webhook Callback > Facebook Groups Scraping",
   "nodes": [
     {
       "parameters": {
@@ -449,8 +449,15 @@
     }
   ],
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2025-09-05T11:43:12.743Z",
+      "updatedAt": "2025-09-05T11:43:12.743Z",
+      "id": "2WGDY3428pMfpzn6",
+      "name": "Boost Prospect"
+    }
+  ],
   "triggerCount": 1,
-  "updatedAt": "2025-09-04T13:26:37.850Z",
-  "versionId": "11e5d78b-6b47-4076-9e30-6deff9d2eaad"
+  "updatedAt": "2025-09-05T12:30:14.305Z",
+  "versionId": "89a427a2-12d1-43e1-b11e-ddf512c6629e"
 }
