@@ -468,7 +468,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Triggers > Calculating Profile Score [3010]",
+  "name": "[3010] Calculating Profile Score",
   "nodes": [
     {
       "parameters": {
@@ -1552,19 +1552,13 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-08-26T10:37:23.328Z",
-      "updatedAt": "2025-08-26T10:37:23.328Z",
-      "id": "fgJFu3bUWZN42vve",
-      "name": "Scoring"
-    },
-    {
-      "createdAt": "2025-08-25T15:32:43.780Z",
-      "updatedAt": "2025-08-25T15:32:43.780Z",
-      "id": "iG6zhvDmNAekSWMV",
-      "name": "Webhook"
+      "createdAt": "2025-09-05T11:43:12.743Z",
+      "updatedAt": "2025-09-05T11:43:12.743Z",
+      "id": "2WGDY3428pMfpzn6",
+      "name": "Boost Prospect"
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-09-04T19:26:27.122Z",
-  "versionId": "78c402b9-d2c3-4872-975c-002e1e60d21d"
+  "updatedAt": "2025-09-05T12:33:59.763Z",
+  "versionId": "dc46cf43-d35d-46f1-a3eb-50c115e9fa4d"
 }
