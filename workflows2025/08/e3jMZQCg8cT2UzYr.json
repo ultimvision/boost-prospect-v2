@@ -297,7 +297,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Processing > Sub > LinkedIn Profile Reactions > Apify [2300]",
+  "name": "[2030] Sub > LinkedIn > Analyze Profile Reactions > Apify",
   "nodes": [
     {
       "parameters": {
@@ -347,7 +347,7 @@
       "typeVersion": 3.4,
       "position": [
         3376,
-        1208
+        1216
       ],
       "id": "8a9616ef-ce65-4fb7-a187-f70b38275837",
       "name": "Normalize Reaction Fields - Set",
@@ -362,7 +362,7 @@
       "typeVersion": 1,
       "position": [
         3600,
-        1356
+        1360
       ],
       "id": "c1ac8231-3089-4ac8-8c5f-e68dfa5b89bb",
       "name": "Aggregate Items for LLM - Util",
@@ -376,8 +376,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        3832,
-        1580
+        3840,
+        1584
       ],
       "id": "6c73e7bf-e70b-4b9a-89e0-6859c131c69d",
       "name": "Language Model - OpenRouter",
@@ -485,7 +485,7 @@
       "typeVersion": 2.2,
       "position": [
         3152,
-        1304
+        1312
       ],
       "id": "ef174eb1-ba7a-41d1-97f2-f3d7e0e71d03",
       "name": "If Action Exists - IF",
@@ -539,7 +539,7 @@
       "typeVersion": 3.4,
       "position": [
         4400,
-        1236
+        1248
       ],
       "id": "fa06145d-105a-42a8-a4da-9c996a23671a",
       "name": "Set Reaction Behavior Summary - Set",
@@ -587,7 +587,7 @@
       "typeVersion": 4.2,
       "position": [
         2928,
-        1400
+        1408
       ],
       "id": "1b3465c2-7e9f-4b8e-ac41-4607bc51f64a",
       "name": "Fetch Profile Reactions - Apify",
@@ -604,8 +604,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        3960,
-        1580
+        3968,
+        1584
       ],
       "id": "fa9f1f9c-1d58-4d13-9479-36d44238c92a",
       "name": "Language Model (Fallback)",
@@ -626,7 +626,7 @@
       "typeVersion": 1,
       "position": [
         4624,
-        1452
+        1456
       ],
       "id": "546374b7-58d0-4b4e-af75-4ebc8ecbfa9f",
       "name": "Fail Run - Error Handler",
@@ -650,7 +650,7 @@
       "typeVersion": 1.7,
       "position": [
         3824,
-        1356
+        1360
       ],
       "id": "3173713c-fa45-4c87-9332-e583944dd886",
       "name": "Summarize Reactions - LLM Chain",
@@ -696,7 +696,7 @@
       "typeVersion": 2.2,
       "position": [
         4176,
-        1284
+        1296
       ],
       "id": "cb9a84d9-79e5-4105-bb76-c90c44977bb5",
       "name": "If Reaction Summary Exists - IF",
@@ -730,7 +730,7 @@
       "typeVersion": 2.2,
       "position": [
         4400,
-        1452
+        1456
       ],
       "id": "ef1ee23d-37e1-4d48-8179-a7453c142d76",
       "name": "If Summary Retries Under 2 - IF",
@@ -744,7 +744,7 @@
       "typeVersion": 1.1,
       "position": [
         1808,
-        1544
+        1552
       ],
       "id": "0bafb741-1289-46fd-ad2d-01af40ec4368",
       "name": "Receive LinkedIn Profile Inputs - Subflow Trigger",
@@ -854,7 +854,7 @@
       "typeVersion": 3.4,
       "position": [
         2256,
-        1544
+        1552
       ],
       "id": "9799aeb8-4a68-4e72-80c6-f5ec7e915b5a",
       "name": "Apify Actors Config - Set"
@@ -867,7 +867,7 @@
       "typeVersion": 1.1,
       "position": [
         3376,
-        1736
+        1744
       ],
       "id": "056b9725-3458-46e3-8851-e1cfb3702666",
       "name": "Wait",
@@ -901,7 +901,7 @@
       "typeVersion": 2.2,
       "position": [
         3152,
-        1640
+        1648
       ],
       "id": "e4796fa9-4cde-4fe9-b590-fad61736399c",
       "name": "Apify Error 402 - IF"
@@ -914,7 +914,7 @@
       "typeVersion": 1,
       "position": [
         3376,
-        1928
+        1936
       ],
       "id": "7bb9cff6-a638-4527-8da3-419ded99b96a",
       "name": "Stop and Error"
@@ -928,7 +928,7 @@
       "typeVersion": 3.4,
       "position": [
         2032,
-        1544
+        1552
       ],
       "id": "b3c9d58e-e95a-4054-a600-b5ec607bf8a5",
       "name": "Workflow Data"
@@ -983,7 +983,7 @@
       "typeVersion": 4.2,
       "position": [
         3376,
-        1400
+        1408
       ],
       "id": "de048fea-94eb-4d2e-b419-185bc04452aa",
       "name": "Update People Reactions Behavior - AT People1",
@@ -1010,31 +1010,13 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-09-01T18:44:12.239Z",
-      "updatedAt": "2025-09-01T18:44:12.239Z",
-      "id": "DxA0rKpUpLnrWgla",
-      "name": "Router"
-    },
-    {
-      "createdAt": "2025-08-26T10:41:15.177Z",
-      "updatedAt": "2025-08-26T10:41:15.177Z",
-      "id": "SkbNGlFjPGusXj0B",
-      "name": "LinkedIn"
-    },
-    {
-      "createdAt": "2025-08-26T10:33:17.006Z",
-      "updatedAt": "2025-08-26T10:33:17.006Z",
-      "id": "Emw8imBHM3k6zkUo",
-      "name": "Sub-Workflow"
-    },
-    {
-      "createdAt": "2025-08-25T15:32:46.509Z",
-      "updatedAt": "2025-08-25T15:32:46.509Z",
-      "id": "4ptvvLb7NgD8g7Ar",
-      "name": "Apify"
+      "createdAt": "2025-09-05T11:43:12.743Z",
+      "updatedAt": "2025-09-05T11:43:12.743Z",
+      "id": "2WGDY3428pMfpzn6",
+      "name": "Boost Prospect"
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-09-02T12:18:08.820Z",
-  "versionId": "a5cee0b5-4854-4df6-b7ce-32865d43dd25"
+  "updatedAt": "2025-09-05T12:15:03.541Z",
+  "versionId": "d9aae556-ade4-45b4-847e-3a9daba91193"
 }
