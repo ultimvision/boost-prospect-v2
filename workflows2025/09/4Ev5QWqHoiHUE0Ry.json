@@ -1,0 +1,793 @@
+{
+  "active": false,
+  "connections": {
+    "Receive Dataset Inputs - Subflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Workflow Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Iterate Dataset Items - Util 25": {
+      "main": [
+        [
+          {
+            "node": "Aggregate Items - Util",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Search Params - AT by Url1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Items Exist - IF": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Aggregate Items (Empty) - Util",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate Items - Util": {
+      "main": [
+        [
+          {
+            "node": "Set Next Page Flag - Subflow Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate Items (Empty) - Util": {
+      "main": [
+        [
+          {
+            "node": "Set Next Page Flag False - Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Dataset Items - Apify Apollo1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Summarize",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "If Items Exist - IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Iterate Dataset Items - Util 25",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Check if is a Lead - LLM",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Check if is a Lead - LLM",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check if is a Lead - LLM": {
+      "main": [
+        [
+          {
+            "node": "Insert Post with Analyse - AT2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Check if is a Lead - LLM",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Workflow Data": {
+      "main": [
+        [
+          {
+            "node": "List Dataset Items - Apify Apollo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search Params - AT by Url1": {
+      "main": [
+        [
+          {
+            "node": "Url Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Url Data": {
+      "main": [
+        [
+          {
+            "node": "Check if is a Lead - LLM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert Post with Analyse - AT2": {
+      "main": [
+        [
+          {
+            "node": "Iterate Dataset Items - Util 25",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-09-04T13:14:51.456Z",
+  "id": "4Ev5QWqHoiHUE0Ry",
+  "isArchived": false,
+  "meta": null,
+  "name": "[2710:sub] Apify > Webhook Callback > Facebook Groups Scraping",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "dataset"
+            },
+            {
+              "name": "offset",
+              "type": "number"
+            },
+            {
+              "name": "config",
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -2000,
+        112
+      ],
+      "id": "6aaa58d3-8830-438a-ad48-ebd980bcce0f",
+      "name": "Receive Dataset Inputs - Subflow Trigger",
+      "notes": "PHASE: Input Purpose: Receive dataset id and offset for subflow execution. Inputs: workflowInputs dataset (string) and offset (number). Outputs: Exposes these values to downstream HTTP listing. Dependencies: Recurse Dataset Pagination - Subflow. Special Cases: Missing inputs will cause dataset fetch to fail."
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -208,
+        -64
+      ],
+      "id": "e6fca8d1-d29c-4c7e-ba0d-b3fb6cc5f730",
+      "name": "Iterate Dataset Items - Util 25",
+      "notes": "PHASE: Utility Purpose: Process Apify dataset items in batches to control memory and rate limits. Inputs: Array of items from List Dataset Items. Outputs: Batches of up to 25 items for downstream Set/Airtable nodes; iterates until empty. Dependencies: Split In Batches behavior and the Aggregate2 loopback. Special Cases: Ensure loopback is wired or iteration will stop after first batch."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "420bcfad-6f69-489f-8b19-e08ebb23d433",
+              "leftValue": "={{ $json.count_facebookUrl }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -880,
+        112
+      ],
+      "id": "35c2ca00-28aa-4b76-85ed-623754a8ad23",
+      "name": "If Items Exist - IF",
+      "notes": "PHASE: Execution Purpose: Gate processing based on whether the current page has items (id exists and not empty). Inputs: Items from List Dataset Items. Outputs: True branch to batching; false branch to set get_next_page=false. Dependencies: List Dataset Items; Aggregate/Clean Data - Set nodes. Special Cases: Prevents unnecessary recursion when page is empty."
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        16,
+        -256
+      ],
+      "id": "e6cd4f4e-d51e-462e-b398-3a41c28c675b",
+      "name": "Aggregate Items - Util",
+      "notes": "PHASE: Utility Purpose: Aggregate batch context before setting next-page control flag. Inputs: Current batch from Iterate Dataset Items. Outputs: Pass-through used by Set Next Page flag. Dependencies: Clean Data - Set true. Special Cases: No data transformation; control flow only."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "badaa633-4a97-46f4-9916-1286fbc9b015",
+              "name": "get_next_page",
+              "value": true,
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        240,
+        -256
+      ],
+      "id": "0a5a8379-0137-4c81-9248-ad266a040478",
+      "name": "Set Next Page Flag - Subflow Set",
+      "notes": "PHASE: Utility Purpose: Mark that another page should be fetched. Inputs: Prior aggregate context. Outputs: get_next_page=true. Dependencies: If Next Page - IF; Execute Workflow recursion. Special Cases: Paired with the false variant when no items exist."
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -656,
+        208
+      ],
+      "id": "5c8fd56b-da3a-4f8e-9574-e5e5dd2acd43",
+      "name": "Aggregate Items (Empty) - Util",
+      "notes": "PHASE: Utility Purpose: Aggregate context for empty page to allow setting next-page flag false. Inputs: False branch from If Items Exist. Outputs: Pass-through to Set Next Page Flag False. Dependencies: Clean Data - Set1. Special Cases: No transformations."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "badaa633-4a97-46f4-9916-1286fbc9b015",
+              "name": "get_next_page",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -432,
+        208
+      ],
+      "id": "6dfd847f-4d50-42c0-95d1-23c291b1c801",
+      "name": "Set Next Page Flag False - Set",
+      "notes": "PHASE: Utility Purpose: Indicate there is no next page to fetch. Inputs: Context from empty-page aggregate. Outputs: get_next_page=false. Dependencies: If Next Page - IF to halt recursion. Special Cases: Complements the true flag setter."
+    },
+    {
+      "parameters": {
+        "url": "=https://api.apify.com/v2/datasets/{{ $json.dataset }}/items",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "format",
+              "value": "json"
+            },
+            {
+              "name": "limit",
+              "value": "100"
+            },
+            {
+              "name": "offset",
+              "value": "={{ $json.offset }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1552,
+        112
+      ],
+      "id": "3cf32fa7-9da0-421c-ac95-e910c664a0b8",
+      "name": "List Dataset Items - Apify Apollo1",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "alwaysOutputData": true,
+      "notes": "PHASE: Execution Purpose: List items from the Apify dataset produced by the actor run using pagination. Inputs: dataset id and offset from subflow inputs; limit=100. Outputs: Array of dataset items. Dependencies: Apify HTTP API; Bearer Apify credential. Special Cases: Empty result indicates no more pages; handle 429 rate limits."
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "field": "facebookUrl"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1.1,
+      "position": [
+        -1328,
+        208
+      ],
+      "id": "f2ac92b6-30eb-4b92-9106-c571f8f5582e",
+      "name": "Summarize"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -1328,
+        16
+      ],
+      "id": "0a837027-0511-43e5-bddf-4d763dcc6df1",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -1104,
+        112
+      ],
+      "id": "dfc9630c-43f5-4f22-9997-42f5bd390db6",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -656,
+        -64
+      ],
+      "id": "8d51c9fe-4883-48b8-bc07-4e27b640c7fb",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "6cc1996b-41ad-4881-becf-09d02d7a150a",
+              "leftValue": "={{ $json.error }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -432,
+        -64
+      ],
+      "id": "22f970c8-9c65-4eb0-8fac-b28ddaa5c155",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "model": "=google/gemini-2.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        464,
+        160
+      ],
+      "id": "cb0c6ce9-e3da-4fe0-8dd5-17e9dadf2e58",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"title\": \"LeadValidation\",\n  \"type\": \"object\",\n  \"additionalProperties\": false,\n  \"required\": [\"lead\", \"explication\"],\n  \"properties\": {\n    \"lead\": {\n      \"type\": \"string\",\n      \"enum\": [\"Yes\", \"No\"],\n      \"description\": \"Yes or No only\"\n    },\n    \"explication\": {\n      \"type\": \"string\",\n      \"minLength\": 1,\n      \"description\": \"Reasoning\"\n    }\n  }\n}",
+        "autoFix": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        720,
+        160
+      ],
+      "id": "4ba7c6dc-35b4-4432-8641-81068a8219b4",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "model": "=openai/gpt-4.1-mini",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        800,
+        368
+      ],
+      "id": "53081369-01e9-46af-9ac1-048707de51aa",
+      "name": "OpenRouter Chat Model1",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Facebook Post Content to Analyse :\nGroup Title : {{ $('Iterate Dataset Items - Util 25').item.json.groupTitle }}\n\nUserName : {{ $('Iterate Dataset Items - Util 25').item.json.user.name }}\n\nTitle : {{ $('Iterate Dataset Items - Util 25').item.json.title }}\n\nPrice : {{ $('Iterate Dataset Items - Util 25').item.json.price }}\n\nLocation : {{ $('Iterate Dataset Items - Util 25').item.json.location }}\n\nContent : {{ $('Iterate Dataset Items - Util 25').item.json.text }}\n\nTop Comments : {{ JSON.stringify($('Iterate Dataset Items - Util 25').item.json.topComments) }}\n\n",
+        "hasOutputParser": true,
+        "needsFallback": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "={{ $json.promptInstructions }}\n\nLead definition :\n{{ $json.leadDefinition }}"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        520,
+        -64
+      ],
+      "id": "de4ad715-50d2-4f0f-b225-c9695fb9139f",
+      "name": "Check if is a Lead - LLM",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "model": "=openai/gpt-4.1-mini",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        592,
+        160
+      ],
+      "id": "acf57844-1339-4d2c-b0c0-68a1181c673c",
+      "name": "OpenRouter Chat Model2",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1776,
+        112
+      ],
+      "id": "45571812-ce39-4b20-9680-779a4939052e",
+      "name": "Workflow Data"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').first().json.config.vault.BASE_ID }}/Urls%20Scraping",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "filterByFormula",
+              "value": "=SEARCH('{{ $json.facebookUrl }}', {url}) > 0"
+            },
+            {
+              "name": "limit",
+              "value": "1"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        16,
+        -64
+      ],
+      "id": "65887041-e747-4671-9020-1bbcb45787f7",
+      "name": "Search Params - AT by Url1",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').first().json.config.vault.BASE_ID }}/Posts%20Analysis",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{\n(() => {\n  const iter = $('Iterate Dataset Items - Util 25').item?.json ?? {};\n  const params = $('Url Data').item?.json ?? {};\n  const out = $json.output ?? {};\n\n  const fields = {\n    // clé d'upsert\n    messageId: iter.id ?? $json.id ?? null,\n\n    // contenu du post\n    title: iter.title ?? '',\n    message: iter.text ?? '',\n    postDate: iter.time ?? null,\n\n    // analyse lead\n    leadStatus: out.lead ?? null,\n    leadReasoning: out.explication ?? null,\n\n    // liens & méta\n    facebookUrl: iter.facebookUrl ?? null,\n    postUrl: iter.url ?? null,\n    price: Number.isFinite(Number(iter.price)) ? Number(iter.price) : null,\n    location: iter.location ?? null,\n    groupTitle: iter.groupTitle ?? null,\n\n    // données de Url Data\n    urlScraping: params.urlScrapingId ? [String(params.urlScrapingId)] : [],\n    leadDefinition: params.leadDefinition ?? null,\n    promptInstruction: params.promptInstructions ?? null,\n  };\n\n  return JSON.stringify({\n    typecast: true,\n    performUpsert: { fieldsToMergeOn: ['messageId'] },\n    records: [{ fields }]\n  });\n})()\n}}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1088,
+        16
+      ],
+      "id": "3aee26d1-0fcc-4dea-b2b6-9ee108218339",
+      "name": "Insert Post with Analyse - AT2",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d2b92b55-4dd4-4c4b-815a-9f1c72d50a11",
+              "name": "urlScrapingId",
+              "value": "={{ $json.records[0].id }}",
+              "type": "string"
+            },
+            {
+              "id": "f9ec20df-9652-440b-b400-b22c18a41e25",
+              "name": "promptInstructions",
+              "value": "={{ $json.records[0].fields.promptInstructions[0] }}",
+              "type": "string"
+            },
+            {
+              "id": "e70e54e8-bce6-4524-a215-e89a632a5940",
+              "name": "leadDefinition",
+              "value": "={{ $json.records[0].fields.leadDefinition[0] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        240,
+        -64
+      ],
+      "id": "8d17427b-e175-43d5-be99-2c5b7fe1a8c7",
+      "name": "Url Data"
+    }
+  ],
+  "repo_name": "boost-prospect-v2",
+  "repo_owner": "ultimvision",
+  "repo_path": "workflows",
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "xqIMv4nOqM7qzjDi"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-09-04T13:14:51.456Z",
+      "updatedAt": "2025-09-04T13:14:51.456Z",
+      "role": "workflow:owner",
+      "workflowId": "4Ev5QWqHoiHUE0Ry",
+      "projectId": "zxVtQj8AiJx7hlkL"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-09-05T11:43:12.743Z",
+      "updatedAt": "2025-09-05T11:43:12.743Z",
+      "id": "2WGDY3428pMfpzn6",
+      "name": "Boost Prospect"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-09-05T12:48:34.380Z",
+  "versionId": "77829de0-b228-4615-9d2d-f6e38804e350"
+}
