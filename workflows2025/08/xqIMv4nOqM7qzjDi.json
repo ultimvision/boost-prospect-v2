@@ -63,7 +63,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Handling Errors",
+  "name": "[9000] Handling Errors",
   "nodes": [
     {
       "parameters": {},
@@ -223,13 +223,13 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-09-01T18:44:12.239Z",
-      "updatedAt": "2025-09-01T18:44:12.239Z",
-      "id": "DxA0rKpUpLnrWgla",
-      "name": "Router"
+      "createdAt": "2025-09-05T11:43:12.743Z",
+      "updatedAt": "2025-09-05T11:43:12.743Z",
+      "id": "2WGDY3428pMfpzn6",
+      "name": "Boost Prospect"
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-09-04T17:13:37.218Z",
-  "versionId": "31790459-1757-42a8-aeb3-9c78bf94480f"
+  "updatedAt": "2025-09-05T11:48:14.915Z",
+  "versionId": "35aaacb8-2e4c-4973-b0df-ed0ca5dcab64"
 }
