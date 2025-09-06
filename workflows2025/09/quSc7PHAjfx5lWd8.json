@@ -1,0 +1,292 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        []
+      ]
+    },
+    "Get Apollo Data by recId - AT Apollo": {
+      "main": [
+        [
+          {
+            "node": "Search Apollo URL - AT Apollo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search Apollo URL - AT Apollo": {
+      "main": [
+        [
+          {
+            "node": "Update status In Progress - AT Apollo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update status In Progress - AT Apollo": {
+      "main": [
+        [
+          {
+            "node": "Create Run Apify Task - AT Apify Run",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Run Apify Task - AT Apify Run": {
+      "main": [
+        [
+          {
+            "node": "Search Active Url - AT Urls Scrapping",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search Active Url - AT Urls Scrapping": {
+      "main": [
+        [
+          {
+            "node": "Update People Post Behavior - AT People",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-09-01T17:32:17.280Z",
+  "id": "quSc7PHAjfx5lWd8",
+  "isArchived": false,
+  "meta": null,
+  "name": "DEV HTTP AT",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -784,
+        -320
+      ],
+      "id": "f625756d-c140-48b0-8d0d-4c0228696c20",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').item.json.config.vault.BASE_ID }}/Apollo",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "filterByFormula",
+              "value": "={actorRunId}=\"{{ $json.data.eventData.actorRunId }}\""
+            },
+            {
+              "name": "maxRecords",
+              "value": "1"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').item.json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -336,
+        -320
+      ],
+      "id": "42186f00-8cb3-4896-8687-0d88a2e51701",
+      "name": "Search Apollo URL - AT Apollo",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').first().json.config.vault.BASE_ID }}/Apollo/{{ $('Workflow Data').first().json.recId }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"fields\": {\n    \"executionDate\": \"{{ $now }}\",\n    \"status\": \"In progress\",\n    \"statusDetails\": \"\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -112,
+        -320
+      ],
+      "id": "cfdc9602-96e7-493a-a696-502834802699",
+      "name": "Update status In Progress - AT Apollo",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').first().json.config.vault.BASE_ID }}/Apify%20Runs",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"records\": [\n    {\n      \"fields\": {\n        \"taskId\": \"{{ $('Create Actor Task - Apify').item.json.data.id }}\",\n        \"maxConcurrentActorJobs\": {{ $json.data.limits.maxConcurrentActorJobs }},\n        \"maxActorMemoryGbytes\": {{ $json.data.limits.maxActorMemoryGbytes }},\n        \"activeActorJobCount\": {{ $json.data.current.activeActorJobCount }},\n        \"actorMemoryGbytes\": {{ $json.data.current.actorMemoryGbytes }},\n        \"requestedMemoryMbytes\": {{ Math.ceil($json.data.current.actorMemoryGbytes + ($('Apify - Get task').item.json.data.options.memoryMbytes / 1000)) }}\n      }\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        112,
+        -320
+      ],
+      "id": "2b1a2b60-606b-46ee-8319-f52a23fd5f7e",
+      "name": "Create Run Apify Task - AT Apify Run"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').first().json.config.vault.BASE_ID }}/Apollo/{{ $('Workflow Data').first().json.recId }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -560,
+        -320
+      ],
+      "id": "09b1f1db-57ef-46ee-bd44-4dc726967c30",
+      "name": "Get Apollo Data by recId - AT Apollo",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "url": "=https://api.airtable.com/v0/{{ $('Vault').item.json.BASE_ID }}/Urls%20Scraping",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "filterByFormula",
+              "value": "={status} ='Active'"
+            },
+            {
+              "name": "fields[]",
+              "value": "url"
+            },
+            {
+              "name": "sort[0][direction]",
+              "value": "desc"
+            },
+            {
+              "name": "sort[0][field]",
+              "value": "name"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Vault').item.json.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        336,
+        -320
+      ],
+      "id": "27440673-32c2-49db-a0d4-3c8229575c92",
+      "name": "Search Active Url - AT Urls Scrapping",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').first().json.config.vault.BASE_ID }}/People/{{ $('Workflow Data').first().json.recId }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ \n  JSON.stringify({\n    fields: {\n      postBehavior: $json.text,\n      jsonProfileLinkedInPosts: JSON.stringify($('Aggregate Items - Util').first().json.data),\n      profileLinkedInPostsProcessed: true\n    }\n  })\n}}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        576,
+        -320
+      ],
+      "id": "1d8db5e7-5fd9-41f8-a261-887eee346c56",
+      "name": "Update People Post Behavior - AT People",
+      "retryOnFail": true
+    }
+  ],
+  "repo_name": "boost-prospect-v2",
+  "repo_owner": "ultimvision",
+  "repo_path": "workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-09-01T17:32:17.280Z",
+      "updatedAt": "2025-09-01T17:32:17.280Z",
+      "role": "workflow:owner",
+      "workflowId": "quSc7PHAjfx5lWd8",
+      "projectId": "zxVtQj8AiJx7hlkL"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-09-04T14:51:18.334Z",
+  "versionId": "a610ec15-52e7-4702-85b9-f9039cbf3010"
+}
