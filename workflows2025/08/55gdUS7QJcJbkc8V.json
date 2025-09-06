@@ -49,7 +49,7 @@
       "main": [
         [
           {
-            "node": "Get Workflow Id - [2100]",
+            "node": "Get Workflow Id - [2010]",
             "type": "main",
             "index": 0
           }
@@ -72,17 +72,17 @@
             "index": 0
           },
           {
-            "node": "Get Workflow Id - [2200]",
+            "node": "Get Workflow Id - [2020]",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Get Workflow Id - [2300]",
+            "node": "Get Workflow Id - [2030]",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Get Workflow Id - [2400]",
+            "node": "Get Workflow Id - [2040]",
             "type": "main",
             "index": 0
           },
@@ -126,7 +126,7 @@
       "main": [
         [
           {
-            "node": "Get Workflow Id - [2500]",
+            "node": "Get Workflow Id - [2050]",
             "type": "main",
             "index": 0
           }
@@ -155,7 +155,7 @@
       "main": [
         [
           {
-            "node": "Get Workflow Id - [2600]",
+            "node": "Get Workflow Id - [2100]",
             "type": "main",
             "index": 0
           }
@@ -281,44 +281,11 @@
         ]
       ]
     },
-    "Get Workflow Id - [2100]": {
-      "main": [
-        [
-          {
-            "node": "Filter Archived2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Filter Archived": {
       "main": [
         [
           {
             "node": "Prepare LinkedIn Inputs - Subflow Util",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Workflow Id - [2200]": {
-      "main": [
-        [
-          {
-            "node": "Filter Archived",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Workflow Id - [2300]": {
-      "main": [
-        [
-          {
-            "node": "Filter Archived1",
             "type": "main",
             "index": 0
           }
@@ -336,33 +303,11 @@
         ]
       ]
     },
-    "Get Workflow Id - [2400]": {
-      "main": [
-        [
-          {
-            "node": "Filter Archived3",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Filter Archived3": {
       "main": [
         [
           {
             "node": "Prepare LinkedIn Inputs (Connection) - Set",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Workflow Id - [2500]": {
-      "main": [
-        [
-          {
-            "node": "Filter Archived4",
             "type": "main",
             "index": 0
           }
@@ -391,22 +336,77 @@
         ]
       ]
     },
-    "Get Workflow Id - [2600]": {
+    "Filter Archived5": {
       "main": [
         [
           {
-            "node": "Filter Archived5",
+            "node": "Prepare Company LinkedIn Inputs - Subflow Util1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Filter Archived5": {
+    "Get Workflow Id - [2010]": {
       "main": [
         [
           {
-            "node": "Prepare Company LinkedIn Inputs - Subflow Util1",
+            "node": "Filter Archived2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Workflow Id - [2020]": {
+      "main": [
+        [
+          {
+            "node": "Filter Archived",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Workflow Id - [2030]": {
+      "main": [
+        [
+          {
+            "node": "Filter Archived1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Workflow Id - [2040]": {
+      "main": [
+        [
+          {
+            "node": "Filter Archived3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Workflow Id - [2050]": {
+      "main": [
+        [
+          {
+            "node": "Filter Archived4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Workflow Id - [2100]": {
+      "main": [
+        [
+          {
+            "node": "Filter Archived5",
             "type": "main",
             "index": 0
           }
@@ -420,7 +420,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Processing > LinkedIn > Analyze People and Companies with AI [2000]",
+  "name": "[2000] Analyze People and Companies",
   "nodes": [
     {
       "parameters": {
@@ -1395,31 +1395,6 @@
     },
     {
       "parameters": {
-        "returnAll": false,
-        "limit": 1,
-        "filters": {
-          "name": "[2100]",
-          "excludePinnedData": true
-        },
-        "requestOptions": {}
-      },
-      "type": "n8n-nodes-base.n8n",
-      "typeVersion": 1,
-      "position": [
-        -336,
-        -208
-      ],
-      "id": "e880d873-f749-469c-be6f-9d81a4a50a06",
-      "name": "Get Workflow Id - [2100]",
-      "credentials": {
-        "n8nApi": {
-          "id": "DeDKPUGV1gyQwspX",
-          "name": "n8n local"
-        }
-      }
-    },
-    {
-      "parameters": {
         "conditions": {
           "options": {
             "caseSensitive": true,
@@ -1451,31 +1426,6 @@
       ],
       "id": "09928a7d-c847-42b3-bd45-da8fab7bdc20",
       "name": "Filter Archived"
-    },
-    {
-      "parameters": {
-        "returnAll": false,
-        "limit": 1,
-        "filters": {
-          "name": "[2200]",
-          "excludePinnedData": true
-        },
-        "requestOptions": {}
-      },
-      "type": "n8n-nodes-base.n8n",
-      "typeVersion": 1,
-      "position": [
-        -560,
-        176
-      ],
-      "id": "8dd140ce-64c0-44ca-b453-39bb037a383f",
-      "name": "Get Workflow Id - [2200]",
-      "credentials": {
-        "n8nApi": {
-          "id": "DeDKPUGV1gyQwspX",
-          "name": "n8n local"
-        }
-      }
     },
     {
       "parameters": {
@@ -1513,31 +1463,6 @@
     },
     {
       "parameters": {
-        "returnAll": false,
-        "limit": 1,
-        "filters": {
-          "name": "[2300]",
-          "excludePinnedData": true
-        },
-        "requestOptions": {}
-      },
-      "type": "n8n-nodes-base.n8n",
-      "typeVersion": 1,
-      "position": [
-        -560,
-        368
-      ],
-      "id": "9b4f350a-c2fb-450c-8daf-339a4a7bafee",
-      "name": "Get Workflow Id - [2300]",
-      "credentials": {
-        "n8nApi": {
-          "id": "DeDKPUGV1gyQwspX",
-          "name": "n8n local"
-        }
-      }
-    },
-    {
-      "parameters": {
         "conditions": {
           "options": {
             "caseSensitive": true,
@@ -1572,31 +1497,6 @@
     },
     {
       "parameters": {
-        "returnAll": false,
-        "limit": 1,
-        "filters": {
-          "name": "[2400]",
-          "excludePinnedData": true
-        },
-        "requestOptions": {}
-      },
-      "type": "n8n-nodes-base.n8n",
-      "typeVersion": 1,
-      "position": [
-        -560,
-        560
-      ],
-      "id": "90aeb488-f259-4f07-b721-841cac6bcaec",
-      "name": "Get Workflow Id - [2400]",
-      "credentials": {
-        "n8nApi": {
-          "id": "DeDKPUGV1gyQwspX",
-          "name": "n8n local"
-        }
-      }
-    },
-    {
-      "parameters": {
         "conditions": {
           "options": {
             "caseSensitive": true,
@@ -1628,31 +1528,6 @@
       ],
       "id": "f832dc81-ab80-4f57-be65-965e68fd4452",
       "name": "Filter Archived4"
-    },
-    {
-      "parameters": {
-        "returnAll": false,
-        "limit": 1,
-        "filters": {
-          "name": "[2500]",
-          "excludePinnedData": true
-        },
-        "requestOptions": {}
-      },
-      "type": "n8n-nodes-base.n8n",
-      "typeVersion": 1,
-      "position": [
-        -560,
-        1136
-      ],
-      "id": "bad1c533-a54c-46fe-bc36-8b6e17405170",
-      "name": "Get Workflow Id - [2500]",
-      "credentials": {
-        "n8nApi": {
-          "id": "DeDKPUGV1gyQwspX",
-          "name": "n8n local"
-        }
-      }
     },
     {
       "parameters": {
@@ -1787,31 +1662,6 @@
     },
     {
       "parameters": {
-        "returnAll": false,
-        "limit": 1,
-        "filters": {
-          "name": "[2600]",
-          "excludePinnedData": true
-        },
-        "requestOptions": {}
-      },
-      "type": "n8n-nodes-base.n8n",
-      "typeVersion": 1,
-      "position": [
-        -112,
-        1424
-      ],
-      "id": "48e10801-663f-412e-acb8-370dc617f926",
-      "name": "Get Workflow Id - [2600]",
-      "credentials": {
-        "n8nApi": {
-          "id": "DeDKPUGV1gyQwspX",
-          "name": "n8n local"
-        }
-      }
-    },
-    {
-      "parameters": {
         "workflowId": {
           "__rl": true,
           "mode": "id",
@@ -1839,6 +1689,156 @@
       "id": "25f35bce-2703-4a9c-bd9a-4076c441a1c5",
       "name": "Triggers  > Apify > Web Scraping Create a Task",
       "notes": "PHASE: Execution | Purpose: Invoke the child workflow that triggers Apify to collect the target profile's LinkedIn posts (fire-and-forget). | Inputs: recId and linkedinLink prepared by the upstream Set node plus execution context. | Outputs: No immediate payload due to waitForSubWorkflow=false; main flow continues. | Dependencies: Subflow 'Boost Research — Processing > Sub > Linkedin Profile Posts > Apify' and Apify credentials/config in that subflow. | Special Cases: Branch should only run when linkedinLink is present; subflow may throttle per Apify limits and handle its own errors."
+    },
+    {
+      "parameters": {
+        "returnAll": false,
+        "limit": 1,
+        "filters": {
+          "name": "[2010]",
+          "excludePinnedData": true
+        },
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        -336,
+        -208
+      ],
+      "id": "e880d873-f749-469c-be6f-9d81a4a50a06",
+      "name": "Get Workflow Id - [2010]",
+      "credentials": {
+        "n8nApi": {
+          "id": "DeDKPUGV1gyQwspX",
+          "name": "n8n local"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "returnAll": false,
+        "limit": 1,
+        "filters": {
+          "name": "[2020]",
+          "excludePinnedData": true
+        },
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        176
+      ],
+      "id": "8dd140ce-64c0-44ca-b453-39bb037a383f",
+      "name": "Get Workflow Id - [2020]",
+      "credentials": {
+        "n8nApi": {
+          "id": "DeDKPUGV1gyQwspX",
+          "name": "n8n local"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "returnAll": false,
+        "limit": 1,
+        "filters": {
+          "name": "[2030]",
+          "excludePinnedData": true
+        },
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        368
+      ],
+      "id": "9b4f350a-c2fb-450c-8daf-339a4a7bafee",
+      "name": "Get Workflow Id - [2030]",
+      "credentials": {
+        "n8nApi": {
+          "id": "DeDKPUGV1gyQwspX",
+          "name": "n8n local"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "returnAll": false,
+        "limit": 1,
+        "filters": {
+          "name": "[2040]",
+          "excludePinnedData": true
+        },
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        560
+      ],
+      "id": "90aeb488-f259-4f07-b721-841cac6bcaec",
+      "name": "Get Workflow Id - [2040]",
+      "credentials": {
+        "n8nApi": {
+          "id": "DeDKPUGV1gyQwspX",
+          "name": "n8n local"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "returnAll": false,
+        "limit": 1,
+        "filters": {
+          "name": "[2050]",
+          "excludePinnedData": true
+        },
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        1136
+      ],
+      "id": "bad1c533-a54c-46fe-bc36-8b6e17405170",
+      "name": "Get Workflow Id - [2050]",
+      "credentials": {
+        "n8nApi": {
+          "id": "DeDKPUGV1gyQwspX",
+          "name": "n8n local"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "returnAll": false,
+        "limit": 1,
+        "filters": {
+          "name": "[2100]",
+          "excludePinnedData": true
+        },
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        -112,
+        1424
+      ],
+      "id": "48e10801-663f-412e-acb8-370dc617f926",
+      "name": "Get Workflow Id - [2100]",
+      "credentials": {
+        "n8nApi": {
+          "id": "DeDKPUGV1gyQwspX",
+          "name": "n8n local"
+        }
+      }
     }
   ],
   "repo_name": "boost-prospect-v2",
@@ -1861,37 +1861,13 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-08-28T20:14:40.063Z",
-      "updatedAt": "2025-08-28T20:14:40.063Z",
-      "id": "NRTwpUm4iq5jfqQG",
-      "name": "Migrated"
-    },
-    {
-      "createdAt": "2025-09-01T18:44:12.239Z",
-      "updatedAt": "2025-09-01T18:44:12.239Z",
-      "id": "DxA0rKpUpLnrWgla",
-      "name": "Router"
-    },
-    {
-      "createdAt": "2025-08-26T10:33:17.006Z",
-      "updatedAt": "2025-08-26T10:33:17.006Z",
-      "id": "Emw8imBHM3k6zkUo",
-      "name": "Sub-Workflow"
-    },
-    {
-      "createdAt": "2025-08-25T15:32:46.509Z",
-      "updatedAt": "2025-08-25T15:32:46.509Z",
-      "id": "4ptvvLb7NgD8g7Ar",
-      "name": "Apify"
-    },
-    {
-      "createdAt": "2025-08-25T15:32:43.780Z",
-      "updatedAt": "2025-08-25T15:32:43.780Z",
-      "id": "iG6zhvDmNAekSWMV",
-      "name": "Webhook"
+      "createdAt": "2025-09-05T11:43:12.743Z",
+      "updatedAt": "2025-09-05T11:43:12.743Z",
+      "id": "2WGDY3428pMfpzn6",
+      "name": "Boost Prospect"
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-09-02T14:04:29.234Z",
-  "versionId": "32955634-5504-4978-8214-6f4a5b092942"
+  "updatedAt": "2025-09-05T12:20:21.072Z",
+  "versionId": "fe2b2a04-039b-4169-aa9f-66a7def8d27f"
 }
