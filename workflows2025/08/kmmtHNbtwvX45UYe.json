@@ -118,6 +118,13 @@
             "type": "main",
             "index": 0
           }
+        ],
+        [
+          {
+            "node": "Return",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
@@ -267,7 +274,7 @@
       "type": "n8n-nodes-base.if",
       "position": [
         816,
-        -24
+        -32
       ],
       "typeVersion": 2
     },
@@ -388,7 +395,8 @@
           "id": "YXXomzx0R4s4cLH1",
           "name": "GitHub account"
         }
-      }
+      },
+      "onError": "continueErrorOutput"
     },
     {
       "parameters": {
@@ -471,7 +479,7 @@
       "type": "n8n-nodes-base.github",
       "position": [
         592,
-        -24
+        -32
       ],
       "typeVersion": 1,
       "alwaysOutputData": true,
@@ -565,6 +573,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-08-26T11:05:30.710Z",
-  "versionId": "4d4fdef8-fc48-4c94-af66-d128919eb020"
+  "updatedAt": "2025-09-05T11:42:05.514Z",
+  "versionId": "d0a307f3-6d28-4be2-bfd8-4c73155874dc"
 }
