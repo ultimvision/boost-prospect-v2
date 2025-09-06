@@ -201,7 +201,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Triggers  > Apify > Web Scraping Create a Task [2600]",
+  "name": "[2100] Apify > Create a Task > Web Scraping",
   "nodes": [
     {
       "parameters": {
@@ -755,25 +755,13 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-09-01T18:44:12.239Z",
-      "updatedAt": "2025-09-01T18:44:12.239Z",
-      "id": "DxA0rKpUpLnrWgla",
-      "name": "Router"
-    },
-    {
-      "createdAt": "2025-08-26T10:33:17.006Z",
-      "updatedAt": "2025-08-26T10:33:17.006Z",
-      "id": "Emw8imBHM3k6zkUo",
-      "name": "Sub-Workflow"
-    },
-    {
-      "createdAt": "2025-08-25T15:32:46.509Z",
-      "updatedAt": "2025-08-25T15:32:46.509Z",
-      "id": "4ptvvLb7NgD8g7Ar",
-      "name": "Apify"
+      "createdAt": "2025-09-05T11:43:12.743Z",
+      "updatedAt": "2025-09-05T11:43:12.743Z",
+      "id": "2WGDY3428pMfpzn6",
+      "name": "Boost Prospect"
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-09-04T21:35:39.145Z",
-  "versionId": "e5db5d2e-89e6-41a7-9328-fc5ec498bdfd"
+  "updatedAt": "2025-09-05T12:19:40.331Z",
+  "versionId": "faa5115b-5a7d-4c9b-b474-e79d639b9f08"
 }
