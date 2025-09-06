@@ -1,0 +1,315 @@
+{
+  "active": false,
+  "connections": {
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Workflow Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Data": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Upsert Property - AT DuProprio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upsert Property - AT DuProprio": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-09-04T22:12:50.200Z",
+  "id": "Lx1KVpX7bKNNy2JF",
+  "isArchived": false,
+  "meta": null,
+  "name": "Triggers > Sync with DuProprio [REAL-1010:sub]",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://duproprio.com/fr/api-proxy/map-search",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "regions[]",
+              "value": "={{ $json.regions }}"
+            },
+            {
+              "name": "online_since",
+              "value": "365"
+            },
+            {
+              "name": "parent",
+              "value": "1"
+            },
+            {
+              "name": "sort",
+              "value": "-published_at"
+            },
+            {
+              "name": "page[number]",
+              "value": "1"
+            },
+            {
+              "name": "province",
+              "value": "1"
+            },
+            {
+              "name": "page[size]",
+              "value": "11"
+            },
+            {
+              "name": "with_builders",
+              "value": "1"
+            },
+            {
+              "name": "include",
+              "value": "builders"
+            },
+            {
+              "name": "min_latitude",
+              "value": "42.77014"
+            },
+            {
+              "name": "min_longitude",
+              "value": "-80.48584"
+            },
+            {
+              "name": "max_latitude",
+              "value": "63.01511"
+            },
+            {
+              "name": "max_longitude",
+              "value": "-55.59082"
+            },
+            {
+              "name": "search_scope",
+              "value": "in"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1168,
+        -80
+      ],
+      "id": "2b945c63-29af-4d3d-b806-6f2357ffa8e0",
+      "name": "HTTP Request2"
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -272,
+        -16
+      ],
+      "id": "b73b88b6-46cd-4c76-bf7f-38ee35e6b098",
+      "name": "Wait",
+      "webhookId": "94772fdd-6306-4297-bba0-d4b340d01d1b"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1616,
+        -80
+      ],
+      "id": "e3bdf061-00f6-4057-861b-f962d0befa87",
+      "name": "Start"
+    },
+    {
+      "parameters": {
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1392,
+        -80
+      ],
+      "id": "a4ba69b6-8928-4317-967c-13bf6f029ca7",
+      "name": "Workflow Data"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -944,
+        -80
+      ],
+      "id": "d33792cf-76e8-4d87-84f8-d31fb52b18e9",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "batchSize": 25,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -720,
+        -80
+      ],
+      "id": "5a168e27-1327-4193-ad51-f68cb22135c9",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').first().json.config.vault.BASE_ID }}/DuProprio",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{\n(() => {\n  const src = $json ?? {};\n  const addr = src.address ?? {};\n  const photo = src.photo_primary ?? {};\n\n  // === Choisis le format des booléens ici ===\n  // 'checkbox' -> true/false (pour champs \"Checkbox\")\n  // 'number'   -> 1/0      (pour champs \"Number\")\n  // 'string'   -> 'Yes'/'No' (ou 'true'/'false' si tu préfères)\n  const BOOL_AS = 'number'; // <- change ici si Airtable refuse\n\n  const parseBoolLike = (v) => {\n    if (v === true || v === 1 || v === '1' || v === 'true' || v === 'True' || v === 'yes' || v === 'Yes') return true;\n    if (v === false || v === 0 || v === '0' || v === 'false' || v === 'False' || v === 'no' || v === 'No') return false;\n    return null; // inconnu / absent\n  };\n\n  const outBool = (v) => {\n    const b = parseBoolLike(v);\n    if (b === null) return null;               // n’envoie rien / vide le champ\n    if (BOOL_AS === 'number') return b ? 1 : 0;\n    if (BOOL_AS === 'string') return b ? 'Yes' : 'No'; // ou 'true'/'false'\n    return b; // 'checkbox' -> true/false\n  };\n\n  const toNum = (v) => (Number.isFinite(Number(v)) ? Number(v) : null);\n\n  const fields = {\n    // clé d'upsert\n    id_ek: src.id ?? '',\n\n    // généraux\n    group: src.group ?? null,\n    source: src.source ?? null,\n\n    // flags (utilisent outBool)\n    is_builder: outBool(src.is_builder),\n    is_rental: outBool(src.is_rental),\n    is_new_used: outBool(src.is_new_used),\n    is_new: outBool(src.is_new),\n    is_sold: outBool(src.is_sold),\n    in_search: outBool(src.in_search),\n    is_featured_home: outBool(src.is_featured_home),\n\n    // localisation\n    latitude: toNum(src.latitude),\n    longitude: toNum(src.longitude),\n\n    // prix & type\n    price: toNum(src.price),\n    price_display: src.price_display ?? null,\n    type: src.type ?? null,\n    property_type: src.property_type ?? null,\n\n    // adresse\n    street: addr.street ?? null,\n    city: addr.city ?? null,\n    city_id: addr.city_id ?? null,\n    region: addr.region ?? null,\n    region_id: addr.region_id ?? null,\n    province: addr.province ?? null,\n    province_abbr: addr.province_abbr ?? null,\n    province_id: addr.province_id ?? null,\n    postal_code: addr.postal_code ?? null,\n\n    // photos (Airtable \"Attachment\")\n    photo_primary_uri: photo.uri ?? null,\n    photo_primary_uri_1024: photo.uri_1024 ?? null,\n    photo: photo.uri ? [{ url: 'https://photos.duproprio.com/' + photo.uri }] : [],\n    big_photo: photo.uri_1024 ? [{ url: 'https://photos.duproprio.com/' + photo.uri_1024 }] : []\n  };\n\n  return JSON.stringify({\n    typecast: true,\n    performUpsert: { fieldsToMergeOn: ['id_ek'] },\n    records: [{ fields }]\n  });\n})()\n}}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -496,
+        -80
+      ],
+      "id": "2e1945a2-febd-43cb-ab59-f951aaf26310",
+      "name": "Upsert Property - AT DuProprio",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -496,
+        -272
+      ],
+      "id": "8dd70e41-b1cc-4125-a913-7c82f9fc3e22",
+      "name": "No Operation, do nothing"
+    }
+  ],
+  "repo_name": "boost-prospect-v2",
+  "repo_owner": "ultimvision",
+  "repo_path": "workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-09-04T22:12:50.200Z",
+      "updatedAt": "2025-09-04T22:12:50.200Z",
+      "role": "workflow:owner",
+      "workflowId": "Lx1KVpX7bKNNy2JF",
+      "projectId": "zxVtQj8AiJx7hlkL"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-09-04T22:43:01.865Z",
+      "updatedAt": "2025-09-04T22:43:01.865Z",
+      "id": "Cp4HuHYYH5oI0kTw",
+      "name": "Real Estate"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-09-04T22:43:33.110Z",
+  "versionId": "418189d5-3b54-4625-8236-0c18e4877ffa"
+}
