@@ -132,7 +132,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Triggers > Apify > Apollo Webhook Callback [1010]",
+  "name": "[1010] Apify > Webhook Callback > Apollo",
   "nodes": [
     {
       "parameters": {
@@ -551,37 +551,13 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-09-01T18:44:12.239Z",
-      "updatedAt": "2025-09-01T18:44:12.239Z",
-      "id": "DxA0rKpUpLnrWgla",
-      "name": "Router"
-    },
-    {
-      "createdAt": "2025-08-28T20:14:40.063Z",
-      "updatedAt": "2025-08-28T20:14:40.063Z",
-      "id": "NRTwpUm4iq5jfqQG",
-      "name": "Migrated"
-    },
-    {
-      "createdAt": "2025-08-26T10:33:17.006Z",
-      "updatedAt": "2025-08-26T10:33:17.006Z",
-      "id": "Emw8imBHM3k6zkUo",
-      "name": "Sub-Workflow"
-    },
-    {
-      "createdAt": "2025-08-25T15:32:46.509Z",
-      "updatedAt": "2025-08-25T15:32:46.509Z",
-      "id": "4ptvvLb7NgD8g7Ar",
-      "name": "Apify"
-    },
-    {
-      "createdAt": "2025-08-25T15:32:43.780Z",
-      "updatedAt": "2025-08-25T15:32:43.780Z",
-      "id": "iG6zhvDmNAekSWMV",
-      "name": "Webhook"
+      "createdAt": "2025-09-05T11:43:12.743Z",
+      "updatedAt": "2025-09-05T11:43:12.743Z",
+      "id": "2WGDY3428pMfpzn6",
+      "name": "Boost Prospect"
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-09-01T18:48:55.771Z",
-  "versionId": "5f63b22f-696b-4fc5-9b0a-3fe6b8876367"
+  "updatedAt": "2025-09-05T12:03:48.930Z",
+  "versionId": "3288b6b1-560a-42ce-9e8d-c2061271953e"
 }
