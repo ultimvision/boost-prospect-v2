@@ -204,7 +204,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Processing > Sub > Linkedin Connection Message [2400]",
+  "name": "[2040] Sub > Linkedin > Create Connection Message",
   "nodes": [
     {
       "parameters": {
@@ -214,7 +214,7 @@
       "typeVersion": 1.1,
       "position": [
         1184,
-        812
+        816
       ],
       "id": "92f46e94-fcf5-4a2c-8c69-d5528e9b3250",
       "name": "Receive Person Inputs - Subflow Trigger",
@@ -228,7 +228,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        2760,
+        2768,
         544
       ],
       "id": "cea1d504-ad77-4978-89d9-1dbeb5237089",
@@ -267,7 +267,7 @@
       "typeVersion": 4.2,
       "position": [
         2304,
-        668
+        672
       ],
       "id": "282bd00c-7f91-4d7b-a3bb-1c4822bee850",
       "name": "Get LinkedIn Profile Details - HTTP Apify",
@@ -308,7 +308,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        2888,
+        2896,
         544
       ],
       "id": "75856ad4-5887-476f-b773-e7640850cfa5",
@@ -330,7 +330,7 @@
       "typeVersion": 1,
       "position": [
         3552,
-        520
+        528
       ],
       "id": "6786ac68-c848-4b4c-a4a8-bf56f9c993fb",
       "name": "Fail Workflow - Error",
@@ -409,7 +409,7 @@
       "typeVersion": 2.2,
       "position": [
         3328,
-        520
+        528
       ],
       "id": "939c5516-bd5a-4eab-915b-433e27b20da9",
       "name": "If Attempts lt 2 - IF",
@@ -454,7 +454,7 @@
       "typeVersion": 2.2,
       "position": [
         2528,
-        572
+        576
       ],
       "id": "7cfe683f-df26-4fa3-9cf2-b01ed2a278ad",
       "name": "If Profile Data Present - IF",
@@ -509,7 +509,7 @@
       "typeVersion": 4.2,
       "position": [
         1856,
-        740
+        752
       ],
       "id": "6e089dc6-f679-49fd-ba48-1c404610b22c",
       "name": "Apify - Get limits",
@@ -553,7 +553,7 @@
       "typeVersion": 2.2,
       "position": [
         2080,
-        740
+        752
       ],
       "id": "4ba4a9cd-6d76-4c08-a318-597c9f7856cd",
       "name": "Check Apify Capacity - IF"
@@ -576,7 +576,7 @@
       "typeVersion": 3.4,
       "position": [
         1632,
-        812
+        816
       ],
       "id": "7190eab5-42b1-40f2-b20d-251cd60f5934",
       "name": "Apify Actors Config - Set"
@@ -650,7 +650,7 @@
       "typeVersion": 3.4,
       "position": [
         1408,
-        812
+        816
       ],
       "id": "4a54d00e-895f-4617-a3af-9f4c0b0cc07c",
       "name": "Workflow Data"
@@ -704,31 +704,13 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-09-01T18:44:12.239Z",
-      "updatedAt": "2025-09-01T18:44:12.239Z",
-      "id": "DxA0rKpUpLnrWgla",
-      "name": "Router"
-    },
-    {
-      "createdAt": "2025-08-26T10:41:15.177Z",
-      "updatedAt": "2025-08-26T10:41:15.177Z",
-      "id": "SkbNGlFjPGusXj0B",
-      "name": "LinkedIn"
-    },
-    {
-      "createdAt": "2025-08-26T10:33:17.006Z",
-      "updatedAt": "2025-08-26T10:33:17.006Z",
-      "id": "Emw8imBHM3k6zkUo",
-      "name": "Sub-Workflow"
-    },
-    {
-      "createdAt": "2025-08-25T15:32:46.509Z",
-      "updatedAt": "2025-08-25T15:32:46.509Z",
-      "id": "4ptvvLb7NgD8g7Ar",
-      "name": "Apify"
+      "createdAt": "2025-09-05T11:43:12.743Z",
+      "updatedAt": "2025-09-05T11:43:12.743Z",
+      "id": "2WGDY3428pMfpzn6",
+      "name": "Boost Prospect"
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-09-02T12:26:59.388Z",
-  "versionId": "f34f8b3b-2f92-44a5-a155-8c135b69d2ab"
+  "updatedAt": "2025-09-05T12:16:12.221Z",
+  "versionId": "bd0ebed0-5863-4d36-854c-521fdd377095"
 }
