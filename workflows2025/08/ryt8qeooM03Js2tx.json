@@ -99,7 +99,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Processing > Sub > LinkedIn Summarize Previous Jobs [2100]",
+  "name": "[2010] Sub > LinkedIn > Summarize Previous Jobs > Apify",
   "nodes": [
     {
       "parameters": {
@@ -357,31 +357,13 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-09-01T18:44:12.239Z",
-      "updatedAt": "2025-09-01T18:44:12.239Z",
-      "id": "DxA0rKpUpLnrWgla",
-      "name": "Router"
-    },
-    {
-      "createdAt": "2025-08-28T20:14:40.063Z",
-      "updatedAt": "2025-08-28T20:14:40.063Z",
-      "id": "NRTwpUm4iq5jfqQG",
-      "name": "Migrated"
-    },
-    {
-      "createdAt": "2025-08-26T10:41:15.177Z",
-      "updatedAt": "2025-08-26T10:41:15.177Z",
-      "id": "SkbNGlFjPGusXj0B",
-      "name": "LinkedIn"
-    },
-    {
-      "createdAt": "2025-08-26T10:33:17.006Z",
-      "updatedAt": "2025-08-26T10:33:17.006Z",
-      "id": "Emw8imBHM3k6zkUo",
-      "name": "Sub-Workflow"
+      "createdAt": "2025-09-05T11:43:12.743Z",
+      "updatedAt": "2025-09-05T11:43:12.743Z",
+      "id": "2WGDY3428pMfpzn6",
+      "name": "Boost Prospect"
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-09-02T11:12:09.979Z",
-  "versionId": "6b2fefc1-02f2-4fd0-9a7f-14247acb6001"
+  "updatedAt": "2025-09-05T12:12:43.274Z",
+  "versionId": "ce611aa8-9e8e-4be0-b268-3123fc1006ed"
 }
