@@ -1,0 +1,30 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-09-02T13:17:09.729Z",
+  "id": "qqaQmKakzEnktXZa",
+  "isArchived": false,
+  "meta": null,
+  "name": "DEV - PAT",
+  "nodes": [],
+  "repo_name": "boost-prospect-v2",
+  "repo_owner": "ultimvision",
+  "repo_path": "workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-09-02T13:17:09.729Z",
+      "updatedAt": "2025-09-02T13:17:09.729Z",
+      "role": "workflow:owner",
+      "workflowId": "qqaQmKakzEnktXZa",
+      "projectId": "zxVtQj8AiJx7hlkL"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-09-02T14:01:04.487Z",
+  "versionId": "616fe081-e0c7-4b94-995f-cfa6bf4f4531"
+}
