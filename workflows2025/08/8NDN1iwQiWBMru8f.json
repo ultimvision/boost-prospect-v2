@@ -408,7 +408,7 @@
             {
               "id": "a222e988-efad-4f98-b868-eedd998eb466",
               "name": "payload_header",
-              "value": "={\\n  \\\"Authorization\\\": \\\"Bearer {{ $('Workflow Data').first().json.config.variable.apify_webhook_bearer_token_callback }}\\\"\\n}",
+              "value": "={\\n  \\\"Authorization\\\": \\\"{{ $('Workflow Data').first().json.config.variable.apify_webhook_bearer_token_callback }}\\\"\\n}",
               "type": "string"
             },
             {
@@ -811,6 +811,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-09-05T12:30:30.953Z",
-  "versionId": "1c6b81a6-a87a-40e3-8e1e-43622728c465"
+  "updatedAt": "2025-09-06T12:03:04.238Z",
+  "versionId": "5764cee3-1d4c-4a1b-8373-9fe20cf170d4"
 }
