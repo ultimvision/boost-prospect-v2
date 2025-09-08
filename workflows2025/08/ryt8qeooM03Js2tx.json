@@ -70,17 +70,6 @@
         ]
       ]
     },
-    "Receive Person Work History - Subflow": {
-      "main": [
-        [
-          {
-            "node": "Workflow Data",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Workflow Data": {
       "main": [
         [
@@ -95,7 +84,7 @@
   },
   "createdAt": "2025-08-25T15:27:33.299Z",
   "id": "ryt8qeooM03Js2tx",
-  "isArchived": false,
+  "isArchived": true,
   "meta": {
     "templateCredsSetupCompleted": true
   },
@@ -264,20 +253,6 @@
     },
     {
       "parameters": {
-        "inputSource": "passthrough"
-      },
-      "type": "n8n-nodes-base.executeWorkflowTrigger",
-      "typeVersion": 1.1,
-      "position": [
-        1392,
-        672
-      ],
-      "id": "3057b26b-4a4f-4826-a935-6eaebd62be31",
-      "name": "Receive Person Work History - Subflow",
-      "notes": "PHASE: Input Purpose: Receive person context and work-history payload for summarization. Inputs: fullName, jobTitle, companyName, previousJobs (JSON string), and recId (Airtable record ID). Outputs: Pass-through of the payload to the LLM node. Dependencies: Invoked by parent workflow. Special Cases: recId must be present for later update; previousJobs should parse as JSON."
-    },
-    {
-      "parameters": {
         "content": "# Prior Roles Summary Generation – Subflow\n\n1. This sub-workflow generates a concise professional summary of a person's prior roles and writes it back to Airtable.\n\n2. It receives person context (**name**, **title**, **company**) plus a **work-history payload** and an **Airtable record ID**.\n\n3. The workflow calls an **OpenRouter-backed LLM** (with an optional fallback model) via a **LangChain chain** to produce a one-paragraph summary.\n\n4. It guards for a non-empty LLM `text` output, retries once based on run index, and fails fast if the output remains invalid.\n\n5. On success, it updates the `previousJobSummary` field in the **Airtable People** table.\n\n---\n\n### 🔗 Key Integrations\n- **OpenRouter** (LLM with fallback)  \n- **LangChain** (LLM orchestration)  \n- **Airtable API** (People table)\n",
         "height": 576,
         "width": 704
@@ -364,6 +339,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-09-05T12:12:43.274Z",
-  "versionId": "ce611aa8-9e8e-4be0-b268-3123fc1006ed"
+  "updatedAt": "2025-09-07T13:55:46.752Z",
+  "versionId": "ac470d18-0539-4a2f-9c1d-9609607f482a"
 }
