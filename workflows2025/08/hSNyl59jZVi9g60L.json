@@ -736,8 +736,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        16,
-        1152
+        -112,
+        1200
       ],
       "id": "e8dd60a4-1dba-4ede-b317-5105bb641dfd",
       "name": "Not Ready - DONE"
@@ -1492,7 +1492,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ \n  JSON.stringify({\n    fields: {\n      scoringOverall: $json.output.toJsonString(),\n    scoringNote: ($json.output.score * 10) / 100,\nscoringExplication : \"Reasoning :\" + $json.output.reasoning + \" Final answer : \" + $json.output.final_answer,\nanalyzedWithAI: true,\nanalyzeWithAIRunning: false,\nscoringStatus: \"Completed\"\n    }\n  })\n}}",
+        "jsonBody": "={{ \n  JSON.stringify({\n    fields: {\n      scoringOverall: $json.output.toJsonString(),\n    scoringNote: ($json.output.score * 10) / 100,\nscoringExplication : \"Reasoning :\" + $json.output.reasoning + \" Final answer : \" + $json.output.final_answer,\nanalyzedWithAI: true,\nanalyzeWithAIRunning: false,\nscoringStatus: \"Completed\",\naction: \"AI analysis completed\",\n    lastAIActionDate: $now,\n    actionStatusDetails: \"LinkedIn profile analysis with AI completed.\"\n    }\n  })\n}}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -1520,7 +1520,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ \n  JSON.stringify({\n    fields: {\n      scoringOverall: $json.output.toJsonString(),\n    scoringNote: ($json.output.score * 10) / 100,\nscoringExplication : \"Reasoning :\" + $json.output.reasoning + \" Final answer : \" + $json.output.final_answer,\nanalyzedWithAI: true,\nanalyzeWithAIRunning: false,\nscoringStatus: \"Completed\"\n    }\n  })\n}}",
+        "jsonBody": "={{ \n  JSON.stringify({\n    fields: {\n      scoringOverall: $json.output.toJsonString(),\n    scoringNote: ($json.output.score * 10) / 100,\nscoringExplication : \"Reasoning :\" + $json.output.reasoning + \" Final answer : \" + $json.output.final_answer,\nanalyzedWithAI: true,\nanalyzeWithAIRunning: false,\nscoringStatus: \"Completed\",\naction: \"AI analysis completed\",\n    lastAIActionDate: $now,\n    actionStatusDetails: \"LinkedIn profile analysis with AI completed.\"\n    }\n  })\n}}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -1552,6 +1552,12 @@
   "staticData": null,
   "tags": [
     {
+      "createdAt": "2025-09-07T13:56:33.651Z",
+      "updatedAt": "2025-09-07T13:56:33.651Z",
+      "id": "p3ITgML19KuPj74r",
+      "name": "Version : 1.1"
+    },
+    {
       "createdAt": "2025-09-05T11:43:12.743Z",
       "updatedAt": "2025-09-05T11:43:12.743Z",
       "id": "2WGDY3428pMfpzn6",
@@ -1559,6 +1565,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-09-05T12:33:59.763Z",
-  "versionId": "dc46cf43-d35d-46f1-a3eb-50c115e9fa4d"
+  "updatedAt": "2025-09-07T14:15:28.890Z",
+  "versionId": "34d4206d-d2de-45aa-9102-9db3563458b5"
 }
