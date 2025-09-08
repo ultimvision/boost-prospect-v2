@@ -27,6 +27,11 @@
       "main": [
         [
           {
+            "node": "Check Previous Jobs",
+            "type": "main",
+            "index": 0
+          },
+          {
             "node": "If Profile Data Present - IF",
             "type": "main",
             "index": 0
@@ -196,6 +201,93 @@
           }
         ]
       ]
+    },
+    "Chat Model - OpenRouter": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Summarize Previous Jobs - LLM",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Summary Text Present - IF": {
+      "main": [
+        [
+          {
+            "node": "Update Previous Job Summary - AT People",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If Retry Count LT 2 - IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Retry Count LT 2 - IF": {
+      "main": [
+        [
+          {
+            "node": "Summarize Previous Jobs - LLM",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Fail Job Summary Generation - Error Handler",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Model (Fallback)": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Summarize Previous Jobs - LLM",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Summarize Previous Jobs - LLM": {
+      "main": [
+        [
+          {
+            "node": "If Summary Text Present - IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Previous Jobs": {
+      "main": [
+        [
+          {
+            "node": "Summarize Previous Jobs - LLM",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-08-25T15:00:43.080Z",
@@ -204,7 +296,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "[2040] Sub > Linkedin > Create Connection Message",
+  "name": "[2040] Sub > Linkedin > Summarize Previous Jobs and Create Connection Message",
   "nodes": [
     {
       "parameters": {
@@ -214,7 +306,7 @@
       "typeVersion": 1.1,
       "position": [
         1184,
-        816
+        -48
       ],
       "id": "92f46e94-fcf5-4a2c-8c69-d5528e9b3250",
       "name": "Receive Person Inputs - Subflow Trigger",
@@ -229,7 +321,7 @@
       "typeVersion": 1,
       "position": [
         2768,
-        544
+        -320
       ],
       "id": "cea1d504-ad77-4978-89d9-1dbeb5237089",
       "name": "Configure Chat Model - Util OpenRouter",
@@ -267,7 +359,7 @@
       "typeVersion": 4.2,
       "position": [
         2304,
-        672
+        -288
       ],
       "id": "282bd00c-7f91-4d7b-a3bb-1c4822bee850",
       "name": "Get LinkedIn Profile Details - HTTP Apify",
@@ -284,7 +376,7 @@
         "messages": {
           "messageValues": [
             {
-              "message": "=Role\nYou are a smart, efficient writing assistant.\n\nAction\nGenerate a very short, punchy connection‐request opener in {{ $('Workflow Data').item.json.config.variable.default_llm_output_language }} based on LinkedIn profile data.\n\nContext\nYou will receive a structured object (JSON or similar) containing a person’s LinkedIn fields (name, current title, past roles, interests, etc.). Your output will be used directly as the connection‐request message.\n\nRequirements\n\nUse this exact template:\n\n“Hello name, I really enjoyed seeing thingAboutThem. I’m growing my business and professional network, and I thought it would be great to connect.”\n\nthingAboutThem must come from your own analysis of their LinkedIn profile (e.g. role transitions, specific achievements, industries, interests, skills, or causes) and not from copying text verbatim. Always rephrase.\n\nEnsure thingAboutThem creates a direct, natural link to their experience, expertise, or interests (e.g. “your move from finance to AI,” “your work in renewable energy,” “your leadership in scaling startups”).\n\nSound human and spontaneous, not automated.\n\nKeep it under 25 words.\n\nAvoid vague filler (“passionate about…”)—be ultra-concise and specific.\n\nOutput only the one‐line English message, nothing else.\n"
+              "message": "=Role\nYou are a smart, efficient writing assistant.\n\nAction\nGenerate a very short, punchy connection‐request opener in {{ $('Workflow Data').first().json.config.variable.default_llm_output_language }} based on LinkedIn profile data.\n\nContext\nYou will receive a structured object (JSON or similar) containing a person’s LinkedIn fields (name, current title, past roles, interests, etc.). Your output will be used directly as the connection‐request message.\n\nRequirements\n\nUse this exact template:\n\n“Hello name, I really enjoyed seeing thingAboutThem. I’m growing my business and professional network, and I thought it would be great to connect.”\n\nthingAboutThem must come from your own analysis of their LinkedIn profile (e.g. role transitions, specific achievements, industries, interests, skills, or causes) and not from copying text verbatim. Always rephrase.\n\nEnsure thingAboutThem creates a direct, natural link to their experience, expertise, or interests (e.g. “your move from finance to AI,” “your work in renewable energy,” “your leadership in scaling startups”).\n\nSound human and spontaneous, not automated.\n\nKeep it under 25 words.\n\nAvoid vague filler (“passionate about…”)—be ultra-concise and specific.\n\nOutput only the one‐line English message, nothing else.\n"
             }
           ]
         }
@@ -293,7 +385,7 @@
       "typeVersion": 1.6,
       "position": [
         2752,
-        320
+        -544
       ],
       "id": "75b984b9-c0e3-46af-883d-80a539faadd1",
       "name": "Generate Connection Message - Util OpenRouter",
@@ -309,7 +401,7 @@
       "typeVersion": 1,
       "position": [
         2896,
-        544
+        -320
       ],
       "id": "75856ad4-5887-476f-b773-e7640850cfa5",
       "name": "Configure Fallback Chat Model - Util OpenRouter",
@@ -330,7 +422,7 @@
       "typeVersion": 1,
       "position": [
         3552,
-        528
+        -352
       ],
       "id": "6786ac68-c848-4b4c-a4a8-bf56f9c993fb",
       "name": "Fail Workflow - Error",
@@ -375,7 +467,7 @@
       "typeVersion": 2.2,
       "position": [
         3104,
-        352
+        -592
       ],
       "id": "a6c881db-d243-4d17-89ce-21da2bfcb95a",
       "name": "If Connection Message Present - IF",
@@ -409,7 +501,7 @@
       "typeVersion": 2.2,
       "position": [
         3328,
-        528
+        -352
       ],
       "id": "939c5516-bd5a-4eab-915b-433e27b20da9",
       "name": "If Attempts lt 2 - IF",
@@ -454,7 +546,7 @@
       "typeVersion": 2.2,
       "position": [
         2528,
-        576
+        -288
       ],
       "id": "7cfe683f-df26-4fa3-9cf2-b01ed2a278ad",
       "name": "If Profile Data Present - IF",
@@ -466,7 +558,7 @@
       "typeVersion": 1,
       "position": [
         2816,
-        720
+        -144
       ],
       "id": "8e3ebbab-4468-4076-9b87-3da42673ddc8",
       "name": "No Operation - Util",
@@ -509,7 +601,7 @@
       "typeVersion": 4.2,
       "position": [
         1856,
-        752
+        -128
       ],
       "id": "6e089dc6-f679-49fd-ba48-1c404610b22c",
       "name": "Apify - Get limits",
@@ -553,7 +645,7 @@
       "typeVersion": 2.2,
       "position": [
         2080,
-        752
+        -128
       ],
       "id": "4ba4a9cd-6d76-4c08-a318-597c9f7856cd",
       "name": "Check Apify Capacity - IF"
@@ -576,7 +668,7 @@
       "typeVersion": 3.4,
       "position": [
         1632,
-        816
+        -48
       ],
       "id": "7190eab5-42b1-40f2-b20d-251cd60f5934",
       "name": "Apify Actors Config - Set"
@@ -589,7 +681,7 @@
       "typeVersion": 1.1,
       "position": [
         2816,
-        1056
+        224
       ],
       "id": "731b8255-6601-4f0d-a8f5-14468ef2c4f7",
       "name": "Wait",
@@ -623,7 +715,7 @@
       "typeVersion": 2.2,
       "position": [
         2528,
-        960
+        -16
       ],
       "id": "76d1b6ab-2eec-44c1-a9fb-0fc4ac7f109d",
       "name": "Apify Error 402 - IF"
@@ -635,8 +727,8 @@
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
       "position": [
-        2816,
-        1248
+        2832,
+        416
       ],
       "id": "e584b618-bfb6-4338-8ff7-2c981b96798a",
       "name": "Stop and Error"
@@ -650,7 +742,7 @@
       "typeVersion": 3.4,
       "position": [
         1408,
-        816
+        -48
       ],
       "id": "4a54d00e-895f-4617-a3af-9f4c0b0cc07c",
       "name": "Workflow Data"
@@ -677,11 +769,255 @@
       "typeVersion": 4.2,
       "position": [
         3328,
-        256
+        -640
       ],
       "id": "f05a2a09-63ab-44ad-b212-0854fbf84c21",
       "name": "Update People Connection Message - AT People",
       "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "model": "=google/gemini-2.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        2768,
+        -912
+      ],
+      "id": "f68d13f2-c8e8-44a3-bc2c-28991b67632d",
+      "name": "Chat Model - OpenRouter",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      },
+      "notes": "PHASE: Configuration Purpose: Provide the OpenRouter Gemini 2.5 Flash chat model handle for the summarization chain. Inputs: OpenRouter API credentials only, no item data consumed. Outputs: Language model instance passed to the LLM chain. Dependencies: OpenRouter Boost Performance credentials and LangChain LLM nodes. Special Cases: Subject to OpenRouter rate limits/quotas; change model here to alter behavior."
+    },
+    {
+      "parameters": {
+        "errorType": "errorObject",
+        "errorObject": "={{ JSON.stringify($json) }}"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        3552,
+        -864
+      ],
+      "id": "8904cfd3-c866-4899-8993-39645efea472",
+      "name": "Fail Job Summary Generation - Error Handler",
+      "notes": "PHASE: Error Handling Purpose: Fail the run when job summary generation has exceeded retries or produced invalid/empty output. Inputs: Current item ($json) and $runIndex for context. Outputs: Throws an error object to halt execution. Dependencies: Built-in error handling only. Special Cases: Serializes the current item into errorObject; used on the false branch of retry guard."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "def6644c-7b30-4c64-97cb-70dce510f2a1",
+              "leftValue": "={{ $json.text }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "389e619d-3986-49ea-93dc-ecae24324c50",
+              "leftValue": "={{ $json.text }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3104,
+        -1104
+      ],
+      "id": "4db1421e-378e-4278-9615-a36e75d3b11c",
+      "name": "If Summary Text Present - IF",
+      "notes": "PHASE: Execution Purpose: Guard that the LLM output contains a non-empty text summary before updating Airtable. Inputs: Item from LLM chain containing potential 'text' property. Outputs: True branch when $json.text exists and notEmpty; false branch when missing or empty. Dependencies: LLM chain output shape. Special Cases: Strict type validation and caseSensitive checks enabled."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "06b508ed-51fa-4bc9-960c-f8f86b9d3273",
+              "leftValue": "={{ $runIndex }}",
+              "rightValue": 2,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3328,
+        -864
+      ],
+      "id": "bb25f00c-9362-424b-9f49-be6f4d050767",
+      "name": "If Retry Count LT 2 - IF",
+      "notes": "PHASE: Execution Purpose: Gate retries so the LLM is called again only when $runIndex is less than 2; otherwise route to failure. Inputs: Implicit $runIndex. Outputs: True branch to LLM retry; false branch to error handler. Dependencies: LLM chain node and Stop/Error node. Special Cases: Adjust threshold to change retry policy."
+    },
+    {
+      "parameters": {
+        "model": "=openai/gpt-4.1-mini",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        2896,
+        -912
+      ],
+      "id": "e4dd29fd-12cf-49c9-94e7-2aa8e59a5301",
+      "name": "Chat Model (Fallback)",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      },
+      "notes": "PHASE: Configuration Purpose: Provide a fallback OpenRouter chat model used by the LLM chain if the primary model fails. Inputs: OpenRouter API credentials. Outputs: Fallback model handle to the chain. Dependencies: OpenRouter Boost Performance credentials; LangChain LLM nodes. Special Cases: Select a concrete model here to guarantee deterministic behavior."
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=###Fullname of the person :\n{{ $json.basic_info.fullname }}\n\n###Job Title :\n{{ $json.basic_info.headline }}\n\n###Company :\n{{ $json.basic_info.current_company }}\n\n###Previous Jobs :\n```json\n{{ $json.experience.toJsonString() }}\n",
+        "needsFallback": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=**Role:**\nYou are an intelligent assistant specialized in creating professional narrative summaries from raw data, with the goal of enriching a CRM and better understanding a person’s profile.\n\n**Action:**\nAnalyze raw JSON work-history data and produce a smooth, natural one-paragraph summary.\n\n**Context:**\nThe JSON contains a person’s employment history in reverse-chronological order, including job titles, organizations, dates, and responsibilities or achievements.\n\n**Requirements:**\n\n* For each position (most recent first), include:\n\n  1. Job title\n  2. Organization (if provided)\n  3. Start and end dates (or “Present” if ongoing)\n  4. Key responsibilities or achievements (if provided)\n* Write in concise, polished **{{ $('Workflow Data').first().json.config.variable.default_llm_output_language }}** language, in no more than one paragraph.\n* Use a tone that conveys the person’s career trajectory, areas of expertise, and level of experience.\n* Conclude with a brief sentence summarizing the progression or breadth of experience, useful for CRM qualification.\n* Do not invent missing details; use neutral phrasing instead.\n"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        2752,
+        -1136
+      ],
+      "id": "cf316cb6-5e1d-4238-9a1e-a8fcff957c01",
+      "name": "Summarize Previous Jobs - LLM",
+      "retryOnFail": true,
+      "notes": "PHASE: Execution Purpose: Use the LLM to produce a one-paragraph professional summary of prior roles for CRM enrichment. Inputs: fullName, jobTitle, companyName (string), previousJobs (JSON string), and $vars.default_llm_output_language. Outputs: text field with the summary. Dependencies: OpenRouter model nodes and LangChain chain. Special Cases: Avoid indexing companyName; ensure previousJobs is valid JSON; fallback requires a second model input."
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.airtable.com/v0/{{ $('Workflow Data').first().json.config.vault.BASE_ID }}/People/{{ $('Workflow Data').first().json.recId }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Workflow Data').first().json.config.vault.AIRTABLE_PERSONAL_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"fields\": {\n    \"previousJobSummary\": {{ JSON.stringify($json.text) }}\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3328,
+        -1152
+      ],
+      "id": "612933fd-f2c8-4741-9e51-e14c49dad7df",
+      "name": "Update Previous Job Summary - AT People",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c8946e59-ee43-4b49-8056-7180dd42d7c1",
+              "leftValue": "={{ $json.experience }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "ca221d44-e258-4167-a011-fb1be218a97a",
+              "leftValue": "={{ $json.experience[0] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2528,
+        -880
+      ],
+      "id": "9c0a60ba-42d7-42e0-abab-995650dfa2d6",
+      "name": "Check Previous Jobs"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2816,
+        -736
+      ],
+      "id": "388a3efc-af82-4645-920f-c9c82c06f214",
+      "name": "No Operation, do nothing"
     }
   ],
   "repo_name": "boost-prospect-v2",
@@ -704,6 +1040,12 @@
   "staticData": null,
   "tags": [
     {
+      "createdAt": "2025-09-07T13:56:33.651Z",
+      "updatedAt": "2025-09-07T13:56:33.651Z",
+      "id": "p3ITgML19KuPj74r",
+      "name": "Version : 1.1"
+    },
+    {
       "createdAt": "2025-09-05T11:43:12.743Z",
       "updatedAt": "2025-09-05T11:43:12.743Z",
       "id": "2WGDY3428pMfpzn6",
@@ -711,6 +1053,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-09-05T12:16:12.221Z",
-  "versionId": "bd0ebed0-5863-4d36-854c-521fdd377095"
+  "updatedAt": "2025-09-07T14:15:10.950Z",
+  "versionId": "d44990f4-cf71-4b93-a7af-10179c362c5e"
 }
