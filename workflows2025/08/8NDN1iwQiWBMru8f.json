@@ -285,7 +285,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"actId\": \"{{ $('Variables - Set').first().json.actId }}\",\n  \"name\": \"{{ $json.unique_name }}-{{ DateTime.now().toFormat('yyyy-MM-dd-HH-mm') }}\",\n  \"options\": {\n    \"build\": \"latest\",\n    \"timeoutSecs\": 3600,\n    \"memoryMbytes\": 4096\n  },\n  \"input\": \n    {\n      \"onlyPostsNewerThan\": \"{{ $now.minus({ days: 1 }).format('yyyy-LL-dd') }}\",\n      \"resultsLimit\": 50,\n      \"startUrls\": {{ $json.startUrls.toJsonString() }},\n      \"viewOption\": \"RECENT_ACTIVITY\"\n    }\n}",
+        "jsonBody": "={\n  \"actId\": \"{{ $('Variables - Set').first().json.actId }}\",\n  \"name\": \"{{ $json.unique_name }}-{{ DateTime.now().toFormat('yyyy-MM-dd-HH-mm') }}\",\n  \"options\": {\n    \"build\": \"latest\",\n    \"timeoutSecs\": 3600,\n    \"memoryMbytes\": 4096\n  },\n  \"input\": \n    {\n      \"onlyPostsNewerThan\": \"{{ $now.minus({ days: 1 }).format('yyyy-LL-dd') }}\",\n      \"resultsLimit\": 50,\n      \"startUrls\": {{ $json.startUrls.toJsonString() }},\n      \"viewOption\": \"CHRONOLOGICAL\"\n    }\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -811,6 +811,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-09-06T12:03:04.238Z",
-  "versionId": "5764cee3-1d4c-4a1b-8373-9fe20cf170d4"
+  "updatedAt": "2025-09-07T17:03:40.373Z",
+  "versionId": "90dc69bd-1db4-49fe-8df2-5756b2a01387"
 }
