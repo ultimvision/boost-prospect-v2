@@ -1,0 +1,183 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        []
+      ]
+    },
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-09-13T14:29:57.463Z",
+  "id": "yUWLqK8ey22hUKVp",
+  "isArchived": false,
+  "meta": null,
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -112,
+        48
+      ],
+      "id": "ebc8cd95-81c1-4a9a-9c86-6d37e4f73284",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://api.reimage.io/api/v1/job/36860910183331/status",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "a1ccc17c38b8cbdf83b386d3ce7ae3bf"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        128,
+        48
+      ],
+      "id": "e9bd6c1b-5dcf-4e7a-bb9a-f7b3e6b9c927",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.reimage.io/api/v1/interior-remodel",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "a1ccc17c38b8cbdf83b386d3ce7ae3bf"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "preset",
+              "value": "modern"
+            },
+            {
+              "name": "room_type",
+              "value": "kitchen"
+            },
+            {
+              "parameterType": "formBinaryData",
+              "name": "image",
+              "inputDataFieldName": "=image"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        304,
+        -224
+      ],
+      "id": "29b60c90-946e-48cd-afb6-172260184666",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "formTitle": "Kitchen Image",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "image",
+              "fieldType": "file",
+              "multipleFiles": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        -32,
+        -224
+      ],
+      "id": "a5849fd1-6081-496d-b52b-ebe599013669",
+      "name": "On form submission",
+      "webhookId": "994ac824-9f8a-4160-91ef-85176e25d511"
+    },
+    {
+      "parameters": {
+        "url": "https://api.reimage.io/api/v1/ping",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "a1ccc17c38b8cbdf83b386d3ce7ae3bf"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        128,
+        288
+      ],
+      "id": "4c5c61d6-134d-4253-bceb-fae07053015d",
+      "name": "HTTP Request2"
+    }
+  ],
+  "repo_name": "boost-prospect-v2",
+  "repo_owner": "ultimvision",
+  "repo_path": "workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-09-13T14:29:57.463Z",
+      "updatedAt": "2025-09-13T14:29:57.463Z",
+      "role": "workflow:owner",
+      "workflowId": "yUWLqK8ey22hUKVp",
+      "projectId": "zxVtQj8AiJx7hlkL"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-09-13T14:38:48.626Z",
+  "versionId": "89080291-764d-4c6b-8a0d-0d11feb439df"
+}
