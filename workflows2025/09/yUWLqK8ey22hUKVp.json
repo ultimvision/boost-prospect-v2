@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "HTTP Request",
+            "node": "Edit Image (OpenAI)1",
             "type": "main",
             "index": 0
           }
@@ -21,7 +21,95 @@
       "main": [
         [
           {
-            "node": "HTTP Request1",
+            "node": "Edit Image (OpenAI)2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Image (OpenAI)": {
+      "main": [
+        [
+          {
+            "node": "Convert json binary to File final",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create image call": {
+      "main": [
+        [
+          {
+            "node": "Convert json binary to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert json binary to File": {
+      "main": [
+        [
+          {
+            "node": "Edit Image (OpenAI)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Image (OpenAI)1": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Convert json binary to File final1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert json binary to File final1": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Image (OpenAI)2": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Convert json binary to File final2",
             "type": "main",
             "index": 0
           }
@@ -32,16 +120,18 @@
   "createdAt": "2025-09-13T14:29:57.463Z",
   "id": "yUWLqK8ey22hUKVp",
   "isArchived": false,
-  "meta": null,
-  "name": "My workflow 3",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Open AI Image",
   "nodes": [
     {
       "parameters": {},
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -112,
-        48
+        -144,
+        416
       ],
       "id": "ebc8cd95-81c1-4a9a-9c86-6d37e4f73284",
       "name": "When clicking ‘Execute workflow’"
@@ -63,8 +153,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        128,
-        48
+        48,
+        -528
       ],
       "id": "e9bd6c1b-5dcf-4e7a-bb9a-f7b3e6b9c927",
       "name": "HTTP Request"
@@ -106,8 +196,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        304,
-        -224
+        -192,
+        -528
       ],
       "id": "29b60c90-946e-48cd-afb6-172260184666",
       "name": "HTTP Request1"
@@ -121,6 +211,11 @@
               "fieldLabel": "image",
               "fieldType": "file",
               "multipleFiles": false
+            },
+            {
+              "fieldLabel": "image2",
+              "fieldType": "file",
+              "multipleFiles": false
             }
           ]
         },
@@ -129,8 +224,8 @@
       "type": "n8n-nodes-base.formTrigger",
       "typeVersion": 2.3,
       "position": [
-        -32,
-        -224
+        -240,
+        1008
       ],
       "id": "a5849fd1-6081-496d-b52b-ebe599013669",
       "name": "On form submission",
@@ -153,11 +248,405 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        128,
-        288
+        304,
+        -528
       ],
       "id": "4c5c61d6-134d-4253-bceb-fae07053015d",
       "name": "HTTP Request2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/images/edits",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openAiApi",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "image",
+              "inputDataFieldName": "data"
+            },
+            {
+              "name": "prompt",
+              "value": "add a mask with horns"
+            },
+            {
+              "name": "model",
+              "value": "gpt-image-1"
+            },
+            {
+              "name": "n",
+              "value": "1"
+            },
+            {
+              "name": "size",
+              "value": "1024x1024"
+            },
+            {
+              "name": "quality",
+              "value": "high"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cae544d3-371a-4b7c-b09f-a1294ac1ee4c",
+      "name": "Edit Image (OpenAI)",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        688,
+        -16
+      ],
+      "typeVersion": 4.2,
+      "credentials": {
+        "openAiApi": {
+          "id": "NaiLgUVmz13wmsKs",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/images/generations",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openAiApi",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "model",
+              "value": "gpt-image-1"
+            },
+            {
+              "name": "prompt",
+              "value": "A cute red panda like dark super hero"
+            },
+            {
+              "name": "n",
+              "value": "={{Number(1)}}"
+            },
+            {
+              "name": "size",
+              "value": "1024x1024"
+            },
+            {
+              "name": "moderation",
+              "value": "low"
+            },
+            {
+              "name": "background",
+              "value": "auto"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f881418f-14c9-4629-8252-4cf6b04ac8d1",
+      "name": "Create image call",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        64,
+        -16
+      ],
+      "typeVersion": 4.2,
+      "credentials": {
+        "openAiApi": {
+          "id": "NaiLgUVmz13wmsKs",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "data[0].b64_json",
+        "options": {
+          "fileName": "name_example",
+          "mimeType": "image/png"
+        }
+      },
+      "id": "1fbbe4db-ea7e-47f8-ac9b-b382f2641f7b",
+      "name": "Convert json binary to File",
+      "type": "n8n-nodes-base.convertToFile",
+      "position": [
+        384,
+        -16
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "data[0].b64_json",
+        "options": {
+          "fileName": "",
+          "mimeType": "image/png"
+        }
+      },
+      "id": "6b46bf8d-7741-42ba-ad29-31936757a935",
+      "name": "Convert json binary to File final",
+      "type": "n8n-nodes-base.convertToFile",
+      "position": [
+        1008,
+        -16
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "content": "### 🎨 Image Generation (OpenAI)\nSends a POST request to the OpenAI `/v1/images/generations` endpoint.\n\n- Uses `gpt-image-1` model\n- Generates an image from a given prompt\n- Returns a base64-encoded image (`b64_json`)\n\n📌 Output: `data[0].b64_json`\n",
+        "height": 440,
+        "width": 280,
+        "color": 3
+      },
+      "id": "2ad9330f-839e-4f9a-8d96-6b09e5a5c079",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -16,
+        -304
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### 🧾 Convert base64 to File\nConverts the `b64_json` field into a binary PNG file to use in the next step.\n\n📤 Output: Binary image under the `data` field\n",
+        "height": 320,
+        "width": 280,
+        "color": 5
+      },
+      "id": "dee212dd-2b8b-4a2f-bfd7-0a2b94ca76ba",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        288,
+        -176
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### ✏️ Image Editing (OpenAI)\nSends the binary image to OpenAI’s `/v1/images/edits` endpoint with a descriptive prompt.\n\n- Model: `gpt-image-1`\n- Format: `multipart/form-data`\n- Requires a real file (not base64)\n- Supports optional `mask` input\n\n📥 Input: Binary image from `data`\n📤 Output: Edited image in `b64_json`\n",
+        "height": 440,
+        "width": 280,
+        "color": 3
+      },
+      "id": "16f2f9e4-33f3-430e-bf7e-5c00d2b7bc98",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        608,
+        -304
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### 🧾 Final Conversion (base64 → File)\nConverts the edited image (`b64_json`) into a downloadable or previewable PNG file.\n\n📤 Output: Final binary image\n",
+        "height": 360,
+        "width": 280,
+        "color": 5
+      },
+      "id": "9b8ca0bb-da44-4094-b284-0e07ff445f7c",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        928,
+        -224
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/images/edits",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openAiApi",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "image",
+              "inputDataFieldName": "image"
+            },
+            {
+              "name": "prompt",
+              "value": "Goal: Clean up the photo by removing all clutter. Strictly keep: walls, ceiling, windows, door, cabinets and handles, drawers, built-in appliances, range hood, sink, faucet, backsplash, countertops, island, table, chairs, floor tiles, baseboards. Geometry constraints: Do not move, resize, distort, or change the perspective of any fixed element or furniture; preserve original proportions and alignment. Material & color constraints: Keep the existing materials and colors (cabinet wood, countertop finish, backsplash, tiles, faucet metal). Lighting: Maintain the light direction, shadows, and reflections exactly as in the original photo. Authorized edits (only): Remove objects placed on the table (and tablecloth if requested), on the island, and on the back countertops (cups, boxes, papers, bottles, bags, small loose appliances). Do not add anything. Reconstruct the visible surfaces in a photorealistic way (textures, joints, wood grain). Output: same framing, photorealistic, clean and tidy."
+            },
+            {
+              "name": "model",
+              "value": "gpt-image-1"
+            },
+            {
+              "name": "n",
+              "value": "2"
+            },
+            {
+              "name": "size",
+              "value": "1536x1024"
+            },
+            {
+              "name": "quality",
+              "value": "high"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b3e55dcd-66a7-4b56-a53e-5c77b3e1912c",
+      "name": "Edit Image (OpenAI)1",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        224,
+        544
+      ],
+      "typeVersion": 4.2,
+      "credentials": {
+        "openAiApi": {
+          "id": "NaiLgUVmz13wmsKs",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "b64_json",
+        "options": {
+          "fileName": "",
+          "mimeType": "image/png"
+        }
+      },
+      "id": "7a27a1a1-87c7-419a-8e5a-baed1c03ab41",
+      "name": "Convert json binary to File final1",
+      "type": "n8n-nodes-base.convertToFile",
+      "position": [
+        704,
+        544
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        480,
+        544
+      ],
+      "id": "d492b9a8-80e0-4818-b008-a6b5cba8ca11",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        912,
+        544
+      ],
+      "id": "f127a6ce-36f8-4c54-9a9a-7dcb40a0e96c",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/images/edits",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openAiApi",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "image[0]",
+              "inputDataFieldName": "image"
+            },
+            {
+              "name": "prompt",
+              "value": "=Modifie l'image de la cuisine 1. Conserve 100% de l'image 1, mais change uniquement les couleurs en t'inspirant des couleurs de la photo 2. Tu ne peux pas modifier aucun élément de la photo a part la couleur des armoires, planchers et du comptoir, inspiré de l'image 2. Tu dois garder la précision des détails de l'image 2 dans ton design. Par exemple granularité de la couleur du bois, granularité des plachers, etc."
+            },
+            {
+              "name": "model",
+              "value": "gpt-image-1"
+            },
+            {
+              "name": "n",
+              "value": "2"
+            },
+            {
+              "name": "size",
+              "value": "1536x1024"
+            },
+            {
+              "name": "quality",
+              "value": "high"
+            },
+            {
+              "parameterType": "formBinaryData",
+              "name": "image[1]",
+              "inputDataFieldName": "image2"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "87214c95-86cd-4e37-a596-19bc3177b3c4",
+      "name": "Edit Image (OpenAI)2",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        160,
+        928
+      ],
+      "typeVersion": 4.2,
+      "credentials": {
+        "openAiApi": {
+          "id": "NaiLgUVmz13wmsKs",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "b64_json",
+        "options": {
+          "fileName": "",
+          "mimeType": "image/png"
+        }
+      },
+      "id": "d40fa33f-e887-49d1-9151-6d61903c330d",
+      "name": "Convert json binary to File final2",
+      "type": "n8n-nodes-base.convertToFile",
+      "position": [
+        640,
+        928
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        416,
+        928
+      ],
+      "id": "be013df5-be92-4233-a2ab-4d29c13b0b19",
+      "name": "Split Out1"
     }
   ],
   "repo_name": "boost-prospect-v2",
@@ -178,6 +667,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-09-13T14:38:48.626Z",
-  "versionId": "89080291-764d-4c6b-8a0d-0d11feb439df"
+  "updatedAt": "2025-09-14T12:50:39.274Z",
+  "versionId": "d302d84a-b411-41f1-806a-22658db6e8c4"
 }
