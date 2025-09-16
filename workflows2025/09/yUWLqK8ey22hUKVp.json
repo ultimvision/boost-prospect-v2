@@ -1,17 +1,6 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
-    "When clicking ‘Execute workflow’": {
-      "main": [
-        [
-          {
-            "node": "Edit Image (OpenAI)1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "HTTP Request": {
       "main": [
         []
@@ -19,13 +8,7 @@
     },
     "On form submission": {
       "main": [
-        [
-          {
-            "node": "Edit Image (OpenAI)2",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Edit Image (OpenAI)": {
@@ -76,7 +59,7 @@
       "main": [
         [
           {
-            "node": "Convert json binary to File final1",
+            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
@@ -87,7 +70,7 @@
       "main": [
         [
           {
-            "node": "Limit",
+            "node": "Upload to DO",
             "type": "main",
             "index": 0
           }
@@ -109,7 +92,388 @@
       "main": [
         [
           {
-            "node": "Convert json binary to File final2",
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Split Out2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out2": {
+      "main": [
+        [
+          {
+            "node": "Create a record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Get Demande Details",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Original Image": {
+      "main": [
+        [
+          {
+            "node": "Download Original Picture",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Prompt": {
+      "main": [
+        [
+          {
+            "node": "Set Prompt Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Preset": {
+      "main": [
+        [
+          {
+            "node": "Set Preset Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Prompt Data": {
+      "main": [
+        [
+          {
+            "node": "Recipe",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Preset Data": {
+      "main": [
+        [
+          {
+            "node": "Recipe",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Recipe": {
+      "main": [
+        [
+          {
+            "node": "Get Original Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Original Picture": {
+      "main": [
+        [
+          {
+            "node": "Edit Image (OpenAI)1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Get Picture",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Picture": {
+      "main": [
+        [
+          {
+            "node": "Add Nano Image",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download": {
+      "main": [
+        []
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Generate filename - Util",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate filename - Util": {
+      "main": [
+        [
+          {
+            "node": "Convert json binary to File final1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload to DO": {
+      "main": [
+        [
+          {
+            "node": "Add Image1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Demande Details": {
+      "main": [
+        [
+          {
+            "node": "Get Prompt",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get Preset",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Image1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Get Picture",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Prompt1": {
+      "main": [
+        [
+          {
+            "node": "Set Prompt Data1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Demande Details1": {
+      "main": [
+        [
+          {
+            "node": "Get Prompt1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get Inspiration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Inspiration": {
+      "main": [
+        [
+          {
+            "node": "Set Preset Data1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Prompt Data1": {
+      "main": [
+        [
+          {
+            "node": "Recipe1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Preset Data1": {
+      "main": [
+        [
+          {
+            "node": "Recipe1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Recipe1": {
+      "main": [
+        [
+          {
+            "node": "Originale",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Originale": {
+      "main": [
+        [
+          {
+            "node": "Inspiration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Inspiration": {
+      "main": [
+        [
+          {
+            "node": "Edit Image (OpenAI)2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert json binary to File final3": {
+      "main": [
+        [
+          {
+            "node": "Upload to DO1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Image": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload to DO1": {
+      "main": [
+        [
+          {
+            "node": "Add Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Generate filename - Util1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate filename - Util1": {
+      "main": [
+        [
+          {
+            "node": "Convert json binary to File final3",
             "type": "main",
             "index": 0
           }
@@ -125,17 +489,6 @@
   },
   "name": "Open AI Image",
   "nodes": [
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.manualTrigger",
-      "typeVersion": 1,
-      "position": [
-        -144,
-        416
-      ],
-      "id": "ebc8cd95-81c1-4a9a-9c86-6d37e4f73284",
-      "name": "When clicking ‘Execute workflow’"
-    },
     {
       "parameters": {
         "url": "https://api.reimage.io/api/v1/job/36860910183331/status",
@@ -224,8 +577,8 @@
       "type": "n8n-nodes-base.formTrigger",
       "typeVersion": 2.3,
       "position": [
-        -240,
-        1008
+        -304,
+        144
       ],
       "id": "a5849fd1-6081-496d-b52b-ebe599013669",
       "name": "On form submission",
@@ -473,11 +826,11 @@
             {
               "parameterType": "formBinaryData",
               "name": "image",
-              "inputDataFieldName": "image"
+              "inputDataFieldName": "data"
             },
             {
               "name": "prompt",
-              "value": "Goal: Clean up the photo by removing all clutter. Strictly keep: walls, ceiling, windows, door, cabinets and handles, drawers, built-in appliances, range hood, sink, faucet, backsplash, countertops, island, table, chairs, floor tiles, baseboards. Geometry constraints: Do not move, resize, distort, or change the perspective of any fixed element or furniture; preserve original proportions and alignment. Material & color constraints: Keep the existing materials and colors (cabinet wood, countertop finish, backsplash, tiles, faucet metal). Lighting: Maintain the light direction, shadows, and reflections exactly as in the original photo. Authorized edits (only): Remove objects placed on the table (and tablecloth if requested), on the island, and on the back countertops (cups, boxes, papers, bottles, bags, small loose appliances). Do not add anything. Reconstruct the visible surfaces in a photorealistic way (textures, joints, wood grain). Output: same framing, photorealistic, clean and tidy."
+              "value": "={{ $('Recipe').item.json.prompt.Description }}\n\n{roomType} = Kitchen\n\n{{ $('Recipe').item.json.preset.Description }}"
             },
             {
               "name": "model",
@@ -485,7 +838,7 @@
             },
             {
               "name": "n",
-              "value": "2"
+              "value": "1"
             },
             {
               "name": "size",
@@ -503,8 +856,8 @@
       "name": "Edit Image (OpenAI)1",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        224,
-        544
+        1760,
+        1328
       ],
       "typeVersion": 4.2,
       "credentials": {
@@ -527,8 +880,8 @@
       "name": "Convert json binary to File final1",
       "type": "n8n-nodes-base.convertToFile",
       "position": [
-        704,
-        544
+        2752,
+        1440
       ],
       "typeVersion": 1.1
     },
@@ -540,22 +893,11 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        480,
-        544
+        1984,
+        1328
       ],
       "id": "d492b9a8-80e0-4818-b008-a6b5cba8ca11",
       "name": "Split Out"
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.limit",
-      "typeVersion": 1,
-      "position": [
-        912,
-        544
-      ],
-      "id": "f127a6ce-36f8-4c54-9a9a-7dcb40a0e96c",
-      "name": "Limit"
     },
     {
       "parameters": {
@@ -570,11 +912,11 @@
             {
               "parameterType": "formBinaryData",
               "name": "image[0]",
-              "inputDataFieldName": "image"
+              "inputDataFieldName": "=original"
             },
             {
               "name": "prompt",
-              "value": "=Modifie l'image de la cuisine 1. Conserve 100% de l'image 1, mais change uniquement les couleurs en t'inspirant des couleurs de la photo 2. Tu ne peux pas modifier aucun élément de la photo a part la couleur des armoires, planchers et du comptoir, inspiré de l'image 2. Tu dois garder la précision des détails de l'image 2 dans ton design. Par exemple granularité de la couleur du bois, granularité des plachers, etc."
+              "value": "=Modifie l'image de la cuisine 1. Conserve 100% de l'image 1, mais change uniquement les couleurs en t'inspirant des couleurs de la photo 2. Tu ne peux pas modifier aucun élément de la photo a part la couleur des armoires, planchers et du comptoir, inspiré de l'image 2. Tu dois garder la précision des détails de l'image 2 dans ton design. Par exemple granularité de la couleur du bois, granularité des plachers, etc.\n\nVoici les détails de l'image 2 :\n\n{{ $json.inspiration.details }}"
             },
             {
               "name": "model",
@@ -582,7 +924,7 @@
             },
             {
               "name": "n",
-              "value": "2"
+              "value": "1"
             },
             {
               "name": "size",
@@ -595,7 +937,7 @@
             {
               "parameterType": "formBinaryData",
               "name": "image[1]",
-              "inputDataFieldName": "image2"
+              "inputDataFieldName": "image"
             }
           ]
         },
@@ -605,8 +947,8 @@
       "name": "Edit Image (OpenAI)2",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        160,
-        928
+        1392,
+        1984
       ],
       "typeVersion": 4.2,
       "credentials": {
@@ -629,8 +971,8 @@
       "name": "Convert json binary to File final2",
       "type": "n8n-nodes-base.convertToFile",
       "position": [
-        640,
-        928
+        2560,
+        2480
       ],
       "typeVersion": 1.1
     },
@@ -642,11 +984,1147 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        416,
-        928
+        1680,
+        2032
       ],
       "id": "be013df5-be92-4233-a2ab-4d29c13b0b19",
       "name": "Split Out1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c3a748f6-f239-4df9-8a6a-512e77716279",
+              "name": "tableau",
+              "value": "=[\n  {\n    \"index\": 1,\n    \"label\": \"Minimalist\",\n    \"description\": \"Minimalist {roomType} reduces everything to distilled geometry and slim profiles, letting voids, alignment, and floating volumes carry the composition. Materials lean to smooth plaster, satin or matte lacquer, pale ash or birch, honed concrete, and clear glass, with seamless junctions or shadow gaps. Surfaces stay uninterrupted and flush, hardware is concealed or touch-latch, and reflectivity is kept low to control glare. Metal is brushed aluminum or blackened steel handled as lines and points, glass is frameless or razor thin, textiles are fine plain weaves with low pile and tone on tone. Patterns are essentially absent apart from micro textures such as plaster grain and ray fleck in wood. Lighting is quiet and architectural with concealed coves and pinpoint accents around 3000 to 3500 K, designed to wash planes rather than spotlight objects. The palette centers on soft whites, fog grays, pale wood, and disciplined carbon accents with at most one considered color accent to achieve serenity through order, proportion, and silence.\"\n  },\n  {\n    \"index\": 2,\n    \"label\": \"Scandinavian\",\n    \"description\": \"Scandinavian {roomType} design keeps forms human scaled with gentle radii, light frames, and lifted bases that leave visual air around objects. Materials include blond woods such as oak, ash, and birch with soap or oil finishes, matte ceramics, wool felt, paper, and leather accents. Surfaces emphasize tactility over gloss, with hand rubbed oils and open grain, while hardware is integrated or minimal in brushed steel or warm brass used as small functional touches with honest screws and tidy joinery. Glass is clear or opal in softly diffusing lantern forms, textiles are linen, wool, and cotton with chunky knits and sheepskin layered for warmth. Patterns are small checks, stripes, and micro geometrics with restrained nature motifs, and lighting relies on multiple gentle sources at 2700 to 3000 K with paper, opal, or linen shades to amplify winter light. The palette blends white and warm neutrals with pale woods and muted blues or greens as accents, delivering warmth through simplicity, craft, light, and everyday comfort.\"\n  },\n  {\n    \"index\": 3,\n    \"label\": \"Modern\",\n    \"description\": \"Modern {roomType} language favors crisp horizontals and planar stacks with disciplined asymmetry and explicit edges. Materials combine glass, satin stone, leather, walnut or oak, and powder coated metal to balance soft and hard sensations. Surfaces are large and uninterrupted with reveals as graphic breaks and linear, spare hardware in blackened steel or aluminum. Glass is clear or smoked in planar sheets, textiles are refined wools, cotton sateen, micro bouclé, and leather tailored rather than plush. Patterns read as solids and large color fields with generous geometric scale. Lighting is architectural with a single sculptural accent around 3000 to 3500 K and grazing that articulates planes. The palette mixes warm and cool neutrals anchored by wood and black with one or two saturated accents for streamlined elegance where function leads and ornament stays secondary.\"\n  },\n  {\n    \"index\": 4,\n    \"label\": \"Mid-Century Modern\",\n    \"description\": \"Mid-Century Modern {roomType} presents poised horizontals, tapered profiles, and gentle compound curves with mass lifted on slender supports. Materials include teak, walnut, or rosewood veneers, molded plywood, fiberglass, cordage, and steel with oiled or satin finishes and book matched faces that often show finger joint hints and integrated pulls. Metals are brass and blackened steel in fine sections with visible, legible mechanics; glass is clear or softly tinted with acceptably rounded corners. Textiles such as tweed, bouclé, wool blends, and leather appear in color blocked cushions with a nubby yet refined hand, while patterns prefer atomic and geometric micro prints and simple repeats. Lighting is warm at 2700 to 3000 K with globes, cones, and counterweighted arms aimed at glow rather than glare. The palette of warm woods, off whites, and accents of olive, mustard, teal, and paprika supports a humanist modernity that is optimistic, practical, and lightly playful.\"\n  },\n  {\n    \"index\": 5,\n    \"label\": \"Industrial\",\n    \"description\": \"Industrial {roomType} language expresses structural honesty with stout members, bolted or welded modules, and celebrated tolerances. Materials include raw or blackened steel, cast iron, weathered wood, concrete, brick, wire mesh, and patinated zinc. Surfaces keep mill scale, saw marks, and casting texture visible with clear waxes and matte sealers; hardware is exposed fasteners, angle brackets, and pipe fittings chosen for rugged serviceability. Glass is wired, ribbed, or factory sash within unapologetically heavy frames; textiles are canvas, denim, saddle leather, and burlap with minimal padding. Patterns show stencils, gridlines, and industrial numerals in repetitive arrays. Lighting uses enamel shades, cages, and linear strips at 3000 to 3500 K to achieve purposeful brightness with controlled glare. The palette focuses on iron, graphite, oxidized browns, and concrete gray with occasional signal color pops, projecting workshop pragmatism where utility itself is the aesthetic.\"\n  },\n  {\n    \"index\": 6,\n    \"label\": \"Bohemian (Boho)\",\n    \"description\": \"Bohemian (Boho) {roomType} rooms relax silhouettes into low, loungey arrangements that favor asymmetry and clustered groupings over strict axes. Materials feature rattan, cane, carved woods, glazed ceramics, and hammered brass with handworked evidence left visible, while surfaces show sun kissed patina and travel worn chips that read as charming rather than shabby, softened by layered textiles. Metals mix warmly with engraved or hand pressed details, hardware feels like jewelry, and glass arrives colored, bubbled, or pressed in lantern and bottle references. Textiles include kilims, suzanis, ikat, and block printed cottons with macramé, tassels, and fringe held in check by a coherent palette. Pattern on pattern is welcomed when chroma is shared and vintage fade is preferred over pristine prints. Lighting lives at about 2700 K with lantern glow, strings, pierced shades, and candles that privilege atmosphere over task. The palette blends sandy neutrals with sun faded jewel tones tied together by brass or bronze warmth, creating a layered, personal, and easygoing space.\"\n  },\n  {\n    \"index\": 7,\n    \"label\": \"Contemporary\",\n    \"description\": \"Contemporary {roomType} design edits profiles into soft cornered silhouettes that feel current without quoting history. Materials include matte lacquer, engineered stone, light woods, and smoked glass with performance textiles that emphasize comfort. Finishes mix matte and satin for depth, and hardware remains thin and linear with technology integrated discreetly; metals come in black, brushed nickel, or warm brass in slender gauges with crisp geometry. Glass is clear, smoked, or bronze in large calm planes, and textiles range from smooth wools to bouclé and microfiber with velvet as an accent. Patterns are quiet textures or big abstract gestures rather than busy repeats, and lighting is layered ambient, task, and accent at about 3000 K with a balanced sculptural statement. The palette relies on complex neutrals such as greige and taupe lifted by a single current accent hue, delivering a livable polish that feels now without novelty.\"\n  },\n  {\n    \"index\": 8,\n    \"label\": \"Japandi\",\n    \"description\": \"Japandi {roomType} blends Scandinavian warmth with Japanese restraint through low, lean compositions that use emptiness as a designed element and soften edges without ornament. Materials include pale ash or oak, bamboo, linen, stone, clay, and washi textures finished with soap and hand oils. Surfaces are flush, quiet, and tactile with modest, legible joinery, and metals are slim blackened steel or bronzed brass with cutout pulls or discreet tabs. Glass is clear or lightly smoked while paper like diffusion is preferred, and textiles are linen, cotton, and wool with slub and plain weaves layered sparingly for calm. Patterns are almost nonexistent aside from subtle sashiko like stitch or grid. Lighting sits at 2700 to 3000 K with paper or wood shades, low glare, and pools of light. The palette gathers oatmeal, rice, charcoal, and inky blue warmed by natural wood, creating tranquil utility where simplicity and craft meet.\"\n  },\n  {\n    \"index\": 9,\n    \"label\": \"Farmhouse\",\n    \"description\": \"Farmhouse {roomType} design is straightforward and sturdy with the sense of human hands in eased corners and practical proportions. Materials include pine or oak, beadboard or shiplap, stoneware, and galvanized metal finished with milk paint and matte varnish. Surfaces and finishes accept honest wear with nothing precious or high gloss, and hardware arrives as black iron or pewter latches, cup pulls, and strap hinges that feel tactile and simple. Glass shows slight waves and seeds with lantern cues, textiles are cottons with ticking stripes, gingham, and braided or woven rugs that express an aproned, practical spirit. Patterns are checks, stripes, and micro florals that repeat calmly, and lighting at about 2700 K uses barn shades, lantern silhouettes, and seeded glass that reads hearty rather than harsh. The palette favors creams, butter tones, warm woods, and soot black accents, delivering utilitarian comfort shaped by honest tools turned toward the home.\"\n  },\n  {\n    \"index\": 10,\n    \"label\": \"Coastal\",\n    \"description\": \"Coastal {roomType} spaces are light legged and lifted with breezy silhouettes and visually permeable forms. Materials include whitewashed woods, rattan, rope, and driftwood tones with corrosion friendly finishes, while surfaces remain matte and chalky with sun bleach acceptable and minimal hardware. Metals are nickel, brushed steel, or aged brass used sparingly in salt ready details. Glass is clear or opal with sea glass hints and tolerates ripple, and textiles are airy linens, cotton, and seersucker with stripes and open weaves that drape easily. Pattern logic uses nautical stripes and quiet coral or shell references with restraint to avoid theme park effects. Lighting is bright soft at 3000 to 3500 K with woven or opal shades that amplify daylight, and the palette keeps to white, sand, dune grass, and sea glass blues and greens with navy used sparingly. The result is relaxed freshness where the idea of a cross breeze is made visible.\"\n  },\n  {\n    \"index\": 11,\n    \"label\": \"Eclectic\",\n    \"description\": \"Eclectic {roomType} rooms orchestrate contrasting silhouettes and eras with rhythmic placement and intentional tensions of scale and finish. Materials are diverse yet tied together by repeating two or three textures or tones across pieces, and surfaces welcome patina where gloss and matte converse. Metals can mix when unified by repeated finishes or echoed motifs, glass ranges from clear to smoked to colored with vintage quirks invited. Textiles layer weaves, vintage rugs, and global patterns unified by a color throughline, while patterns combine florals, geometrics, and abstracts curated by a hierarchy of scale. Lighting combines character fixtures with quiet support at 2700 to 3000 K. The palette presents a curated spectrum anchored by a few neutrals with planned accents, delivering personality expressed with discipline so curation prevents chaos.\"\n  },\n  {\n    \"index\": 12,\n    \"label\": \"Rustic\",\n    \"description\": \"Rustic {roomType} language is hefty and straightforward with comfort first and visible hand tooling. Materials include knotty woods, raw stone, forged iron, and hides in thick sections that celebrate sap, grain, and natural irregularities. Surfaces use oil and wax with scraped boards and tool marks while avoiding plastic gloss, and metals are hammered, blackened, or rusted with strap logic and exposed rivets. Glass appears bubbled or thick with iron muntins, textiles are wool, burlap, and heavy cotton in plaids and earth toned solids layered for warmth. Patterns are primitive geometrics at low chroma with nature derived cues, and lighting at 2400 to 2700 K uses mica, parchment, or iron shades to create ember like glow. The palette of bark, moss, clay, bone, and charcoal shapes a sheltering, grounded character where nature has the stronger hand.\"\n  },\n  {\n    \"index\": 13,\n    \"label\": \"Art Deco\",\n    \"description\": \"Art Deco {roomType} composes stepped profiles, streamlines, and sunbursts with symmetry and axial drama. Materials include lacquer, macassar or ebony veneers, brass and chrome, marble, mirror, and verre eglomise accents. Surfaces balance high gloss with satin where inlay and banding create graphic rhythm, and metals appear as polished brass or chrome with pulls shaped as bars, hoops, or fan motifs. Glass is frosted, ribbed, or beveled with geometric prisms and smoked mirrors, while textiles bring velvet, satin, and mohair with glamorous hand, piping, and corded edges. Pattern logic favors chevrons, zigzags, fan radiants, and Greek key rendered boldly but with discipline. Lighting sits at 2700 to 3000 K with tiered chandeliers, torchieres, and ribbed globes that sparkle in a controlled way. The palette pairs ivory and black with emerald, sapphire, ruby, and brass along with inky blues and oxblood, delivering machine age glamour balanced by precision.\"\n  },\n  {\n    \"index\": 14,\n    \"label\": \"Traditional\",\n    \"description\": \"Traditional {roomType} spaces use classical proportions, balanced symmetry, and molded transitions with restrained profile depth. Materials are fine grain woods, marble, and polished brass or bronze, along with painted finishes that allow a subtle brush trace. Surfaces are organized by paneled logic and framed fields with satin to semi gloss sheen, metals appear as cast pulls, rosettes, and escutcheons with crisp details. Glass may be beveled or clear with understated leaded patterns, textiles include damask, brocade, chintz, and wool twills that are lined and tailored with trims used judiciously. Patterns coordinate florals, toiles, and stripes by scale and color families. Lighting around 2700 K favors fabric shades and moderated crystal, while the palette uses creams, navy, forest, burgundy, warm golds, and small notes of black for punctuation. The mood emphasizes steadiness and refinement with time tested harmony.\"\n  },\n  {\n    \"index\": 15,\n    \"label\": \"Transitional\",\n    \"description\": \"Transitional {roomType} design simplifies classic silhouettes and softens corners while editing ornament to a whisper. Materials mix stained woods with painted planes, quartz or stone surfaces, and satin metals. Surfaces remain smooth with fine reveals, and hardware is proportionate rather than tiny, using brushed nickel, muted brass, or oil rubbed bronze that read unified rather than wildly mixed. Glass is clear or opal in simple geometries, and textiles are cotton, linen, and wool with occasional velvet where comfort is prioritized. Patterns favor gentle geometrics with an occasional floral at medium to large scale, and lighting at 2700 to 3000 K mixes drum or fabric shades with clean metal forms. The palette layers neutrals such as ivory, greige, and taupe with one restrained accent, bridging tradition and modernity for calm sophistication.\"\n  },\n  {\n    \"index\": 16,\n    \"label\": \"Vintage\",\n    \"description\": \"Vintage {roomType} styling introduces modest curves, softened corners, and lightly turned details so silhouettes feel collected over time rather than uniform. Materials include time worn pine or oak and painted timber with subtle crazing, porcelain or milk glass hardware, and gently patinated brass. Surfaces carry rubbed edges, sun fade hints, and soft sheen where age is present but never damaged. Metals are warm brass and aged iron with visible wear at touch points and simple latches or knobs instead of sleek pulls. Glass shows wavy or rippled panes with seed bubbles and display glass that reads slightly aged rather than crystal clear. Textiles rely on cotton and linen with quilts, ticking stripes, small florals, and occasional lace or crochet trims kept sparing, with pile low to medium. Patterns are faded florals and micro prints against creams and mints that read as inherited. Lighting is warm around 2700 to 3000 K with parchment or pleated fabric shades that soften edges. The palette includes cream, mint, muted honey, soft sage, and dusty rose with creamy whites and warm metals for sentimental warmth and lived in charm.\"\n  },\n  {\n    \"index\": 17,\n    \"label\": \"Urban Modern\",\n    \"description\": \"Urban Modern {roomType} speaks with sleek, assertive forms where thin metal lines frame calm planes and proportions are tuned for compact spaces. Materials include smoked glass, blackened steel, dark walnut, concrete composites, and engineered stone, with surfaces favoring matte over mirror and fingerprint tolerance. Hardware is linear with shadow gaps, metals read as black, gunmetal, or brushed steel with uninterrupted bars and knife pulls, and glass is tinted or ribbed reeded for privacy and texture. Textiles are bouclé, wool, and leather with limited plush for contrast and blackout when needed, while patterns include bold geometrics and monochrome graphics with typographic hints. Lighting at 3000 to 3500 K combines track with sculptural statements and baffles to control glare. The palette spans graphite, espresso, deep umber, and concrete gray with rare jewel tone pops, producing metropolitan polish with disciplined edge.\"\n  },\n  {\n    \"index\": 18,\n    \"label\": \"Hollywood Regency\",\n    \"description\": \"Hollywood Regency {roomType} favors dramatic silhouettes with crisp edges where curves meet hard geometry to achieve showmanship without clutter. Materials include high gloss lacquer, mirror, brass, chrome, colored glass, and polished stone. Surfaces emphasize reflective contrast with bevels and banding that read like jewelry, metals present as bright brass and chrome with ring pulls, Greek key trims, and bamboo style accents. Glass includes crystal, smoked mirror, and fluted panels for deliberate sparkle. Textiles run to silk, satin, and velvet with piping, contrast welt, and occasional animal prints. Pattern logic features trellis, Greek key, and bold stripes with high contrast black and white grounds. Lighting at 2700 to 3000 K uses chandeliers, crystal accents, and dimmers to control mood. The palette anchors in black and white with highlights of emerald, fuchsia, cobalt, and gold to deliver lush theatricality and glamorous confidence.\"\n  },\n  {\n    \"index\": 19,\n    \"label\": \"Mediterranean\",\n    \"description\": \"Mediterranean {roomType} rooms carry weighty yet relaxed forms with arcs, softened corners, and a courtyard sensibility. Materials are hand troweled plaster, limestone, terracotta, olive wood, and wrought iron that age with grace. Surfaces include limewash, mineral paints, and textured plaster that accept patina from salt and sun. Metals are iron and aged brass with simplified scrolls and robust latches, glass is clear with ripple and small colored inserts. Textiles are linen and cotton with open weave and embroidered bands that drape breezily. Pattern logic favors tile geometry, Moorish stars, and hand painted stripes organized as rhythmic repeats. Lighting sits at about 2700 K using iron or brass lanterns and seeded or textured glass where shadows become part of the experience. The palette gathers ivory, sand, terracotta, olive, and indigo for sun warmed ease with artisanal stone and plaster at the center.\"\n  },\n  {\n    \"index\": 20,\n    \"label\": \"Shabby Chic\",\n    \"description\": \"Shabby Chic {roomType} reads as romantic softness with rounded profiles and light silhouettes that feel well loved. Materials include painted woods with gentle distress, crackle glazes, vintage metals, and wicker touches. Surfaces use chalk paints and wax with softly worn edges that stop short of aggressive scraping, and metals appear as aged brass, pewter, or painted iron with porcelain knobs and gentle patina. Glass has slight wave and vintage jar references, textiles are washed linen and cotton with restrained ruffles and lace and faded florals. Pattern logic includes cabbage roses, tiny polka dots, and pastel stripes coordinated by value rather than saturation. Lighting stays warm and diffuse with fabric shades, small chandeliers, and candlelike glow. The palette brings white, cream, blush, duck egg, and pale sage with muted metallics to create tender nostalgia and comfort.\"\n  },\n  {\n    \"index\": 21,\n    \"label\": \"Cottagecore\",\n    \"description\": \"Cottagecore {roomType} favors quaint, handmade character with small scale, friendly curves, and celebrated imperfections. Materials are painted wood, wicker, stoneware, and raw linen finished with beeswax, while surfaces show visible brush marks and honest edges with hand sewn hems. Metals are iron or pewter latches and knobs that are simple and tactile, and glass includes bubbles, jars, cloches, and vintage panes. Textiles include ditsy florals, gingham, and crochet layered but breathable, and patterns mix meadow prints with stripes and checks harmonized by gentle value steps. Lighting at about 2700 K blends lamplight and daylight with scalloped shades. The palette features cream, butter, sage, lavender, and sky along with dirt friendly neutrals to foreground pastoral coziness and gentle domestic rituals.\"\n  },\n  {\n    \"index\": 22,\n    \"label\": \"Tropical\",\n    \"description\": \"Tropical {roomType} settings keep forms open, raised, and breeze friendly with rounded corners and a relaxed stature. Materials include rattan, bamboo, teak, and woven grasses with breathable caning and finishes ready for salt air. Surfaces accept oil and shellac sheens with patina from humidity, and metals are bronzed brass and nickel with corrosion aware details that often echo louvers and slats. Glass is clear or tinted with references to jalousies, textiles are linen, cotton, and rayon blends with palms and leaf prints used sparingly in moisture happy weaves. Patterns emphasize botanical scale balanced by wide solids, and lighting is bright warm at 3000 to 3500 K with woven shades and pierced lanterns that create a dappled effect. The palette uses lush greens, turquoise, coral, banana leaf tones, warm woods, and ivory to express indoor outdoor ease where ventilation is part of the aesthetic.\"\n  },\n  {\n    \"index\": 23,\n    \"label\": \"Modern Rustic\",\n    \"description\": \"Modern Rustic {roomType} combines clean geometry with natural irregularities so edges are eased by texture. Materials include live edge or wire brushed woods, honed stone, blackened steel, and wool felts finished with matte sealers that preserve saw kerfs, knots, and mineral streaks. Surfaces maintain modern order while honoring material character, metals are simple black or bronzed bars with minimal plates. Glass is clear with low iron to show true material color and ribbed variants for warmth, while textiles are linen, wool, and leather layered as durable neutrals. Patterns are understated plaids and geometrics inspired by nature, and lighting at 2700 to 3000 K uses grazing to reveal grain with simple metal and glass forms. The palette of charcoal, taupe, clay, natural wood, and black accents yields contemporary clarity grounded in material honesty.\"\n  },\n  {\n    \"index\": 24,\n    \"label\": \"Maximalist\",\n    \"description\": \"Maximalist {roomType} embraces bold outlines and exuberant silhouettes with purposeful crowding and games of scale. Materials range from lacquer and patterned stone to metallic leaf and richly grained woods with mixed gloss levels that create depth. Surfaces build in layers with frames, trims, and edging celebrated, while metals mix fearlessly across brass, chrome, and bronze with decorative pulls as statements. Glass can be colored, faceted, or mirrored for sparkle. Textiles include saturated velvets, brocades, and embroidered linens with trims, fringe, and passementerie. Pattern logic allows florals, stripes, animal motifs, and geometrics to coexist, relying on repeated colors and values for cohesion. Lighting is plentiful at 2700 to 3000 K with statement fixtures and essential dimming. The palette uses high chroma anchored by deep neutrals and metallics to produce narrative abundance with curatorial control.\"\n  },\n  {\n    \"index\": 25,\n    \"label\": \"Bauhaus\",\n    \"description\": \"Bauhaus {roomType} design is rectilinear and grid led with honest cantilevers where appropriate and no applied ornament. Materials include tubular steel in chrome or black, birch or beech plywood, smooth plaster, and linoleum or laminate. Surfaces aim for planar clarity with handleless doors or simple tabs and precisely readable joints, while metal components reduce to cylinders and flats with minimal fasteners that either disappear or present as pure geometry. Glass is clear or frosted in planar partitions that can double as color fields, and textiles are flat woven cotton or wool in solids, pinstripes, and micro checks. Patterns follow orthogonal geometry with primary color blocks where structure dictates the graphic. Lighting uses frosted globes and cylinders in a neutral white of 3500 to 4000 K for even distribution. The palette is white, black, gray, and light wood with disciplined red, blue, and yellow accents for functional clarity and standardization centered on proportion and alignment.\"\n  },\n  {\n    \"index\": 26,\n    \"label\": \"Wabi Sabi\",\n    \"description\": \"Wabi Sabi {roomType} accepts asymmetry, incompletion, and pause so objects feel found rather than designed. Materials are weathered woods, clay, stone, paper, and linen with hand touched surfaces that carry limewash, slip glazes, or soot marks. Repairs remain visible in the spirit of kintsugi, metals are blackened iron and dark bronze used sparingly and purposefully. Glass is seldom bright, preferring fogged or textured surfaces in minimal frames, and textiles are raw linen, wool, and cotton gauze with frayed edges permitted in undyed or plant dyed hues. Patterns are nearly absent as nature's grain and weave supply interest. Lighting sits low and indirect at 2400 to 2700 K with candlelike pools and cherished shadow. The palette gathers bone, clay, soot, tea, and moss for quiet authenticity that honors impermanence and care.\"\n  },\n  {\n    \"index\": 27,\n    \"label\": \"Zen\",\n    \"description\": \"Zen {roomType} composition is low, balanced, and axial where emptiness holds equal weight and no object labors for attention. Materials include bamboo, pale woods, tatami like textures, river stone, and paper, with smooth unbroken planes and softened edges that keep joinery serene. Metals and hardware retreat into blackened or natural finishes and often disappear into shadow lines, while glass is used sparingly and favors shoji like diffusion. Textiles are fine cotton and linen in smooth weaves with precise folds, and pattern logic limits itself to a simple grid or none at all with nature suggested rather than depicted. Lighting is soft and diffuse at 2700 to 3000 K from hidden sources with glare eliminated. The palette of sand, rice white, charcoal, bamboo, and soft green creates meditative equilibrium where emptiness reads as luxury.\"\n  },\n  {\n    \"index\": 28,\n    \"label\": \"Southwestern\",\n    \"description\": \"Southwestern {roomType} language emphasizes rounded corners and the visual weight of thickened walls balanced by inherent softness. Materials include adobe and plaster textures, mesquite or pine, terracotta, and wrought iron. Surfaces show trowel marks, kiva inspired curves, and sun burnished edges with patina from salt and dust. Metals are iron with hand forged pulls, strap accents, and occasional turquoise inlay, while glass is small paned or mica referenced with warm diffusion. Textiles feature Navajo inspired weaves, serapes, and raw wools with leather accents. Patterns use stepped geometrics and thunderbird echoes set in earth anchored chroma. Lighting runs at 2400 to 2700 K with mica, punched tin, and sconces that hug adobe walls. The palette includes clay, adobe, desert sage, turquoise, and sunset coral for desert hospitality that weaves craft and landscape together.\"\n  },\n  {\n    \"index\": 29,\n    \"label\": \"French Country\",\n    \"description\": \"French Country {roomType} blends graceful curves with rustic structure so the result feels refined but unpretentious. Materials include limed oak, painted woods with gentle wear, stone and ceramic, and abundant linen. Surfaces use limewash, chalk paints, and waxed wood with a touch of age at edges, and metals appear as aged brass or iron with quiet scalloped or ribbon hints. Glass has ripple and hand blown references, textiles are linen, toile, ticking, and soft checks with minimal ruffles. Pattern logic mixes pastoral scenes, small florals, and stripes harmonized by value. Lighting is warm with linen shades on aged metal arms at candle proportion. The palette brings cream, duck egg, cornflower, flax, and wheat to create provincial elegance and comfort shaped by a gardener's hand.\"\n  },\n  {\n    \"index\": 30,\n    \"label\": \"Neo Classical\",\n    \"description\": \"Neo Classical {roomType} style relies on strict symmetry and axial clarity with simplified fluting cues and bold cornice lines. Materials include painted woods, marble, and gilt or burnished brass set against crisp plaster. Surfaces organize into framed fields, string courses, and measured profiles, while metals abstract classical motifs such as the meander and laurel into polished details that stop short of flash. Glass uses bevels sparingly and crystal with discipline, textiles are silk, damask, and fine wool with borders and key patterns. Patterns include meander, anthemion, and ordered stripes at medium scale. Lighting at 2700 to 3000 K balances crystal and metal with precise dimming. The palette pairs chalk white, dove gray, black, and gold with muted blues and greens to achieve measured grandeur and a sense of civility through order.\"\n  },\n  {\n    \"index\": 31,\n    \"label\": \"Moroccan\",\n    \"description\": \"Moroccan {roomType} design pairs scalloped arches and lattice echoes with low slung ease where geometry meets comfort. Materials include zellige, tadelakt plaster, carved wood, and beaten brass with mother of pearl hints. Surfaces highlight glossy tiles with artisanal variation, lime plaster sheen, and carved relief, while metals show pierced brass and aged silver with star and interlace motifs. Glass mixes colored and clear in filigree lanterns that cast patterned light. Textiles include Beni Ourain and flatweave rugs, sabra silk, and embroidered cushions. Pattern logic draws on stars, polygons, and arabesques layered across scales to build rhythm rather than clutter. Lighting is warm with lantern glow where patterned shadows are integral, and the palette uses indigo, emerald, saffron, and terracotta supported by ivory and black. The intent is sumptuous craft where geometry reads as poetry.\"\n  },\n  {\n    \"index\": 32,\n    \"label\": \"Victorian\",\n    \"description\": \"Victorian {roomType} language favors ornate profiles, turned details, and vertical emphasis with layered parts. Materials include dark woods, marble, and brass with rich varnish and patterned inlay. Surfaces carry carving, beading, and pressed ornament finished to a polished depth, while metals offer intricate brass with porcelain and glass details. Glass is etched, stained, or beveled with decorative leadwork, and textiles include damask, velvet, and lace with tassels and fringe that contribute to weighty drape. Pattern logic embraces florals, damasks, and paisleys that are dense but coordinated. Lighting is warm with etched and frosted glass that recalls gaslight reinterpreted for electricity. The palette of burgundy, forest, midnight, and plum is relieved by cream and gilt to deliver opulent historicism with spectacle in surface.\"\n  },\n  {\n    \"index\": 33,\n    \"label\": \"Greek Revival\",\n    \"description\": \"Greek Revival {roomType} seeks temple calm with triglyph and pilaster cues abstracted into bold entablatures. Materials include painted wood, plaster, and marble with matte to satin restraint. Surfaces favor planar white fields where shadow lines define the profile, metals are brass or bronze kept austere with simple geometry. Glass is clear with straight muntins, textiles are crisp cottons and linens with simple borders and no fuss. Pattern logic keeps to key patterns and anthemion spaced with discipline. Lighting is warm with classical silhouettes and restrained sparkle. The palette is white, stone, and black with sparing Aegean blue to communicate austere clarity and civic poise.\"\n  },\n  {\n    \"index\": 34,\n    \"label\": \"Colonial\",\n    \"description\": \"Colonial {roomType} design is straightforward and balanced with practical joinery and modest projection. Materials include maple, cherry, and pine with iron or tin hardware, milk paint, and oil finishes. Surfaces are planed rather than polished with age arising from use, metals present as strap hinges, simple knobs, and hand wrought nails. Glass is formed into small panes with wave and lantern references, textiles are wool and cotton with ticking, checks, and braided rugs. Pattern logic uses stripes and small florals with steady repetition. Lighting is warm with candlestick forms and tin or iron shades. The palette includes cream, buttermilk, barn red, indigo, and bottle green to express early craft honesty with humble dignity.\"\n  },\n  {\n    \"index\": 35,\n    \"label\": \"Art Nouveau\",\n    \"description\": \"Art Nouveau {roomType} flows through whiplash curves, botanical linework, and asymmetrical compositions where ornament is integrated rather than applied. Materials include walnut or mahogany with fine marquetry, smooth plaster, and stone with radiused edges. Surfaces introduce glazed pastels and muted jewel tones with tendril stenciling and softly beveled joins, while metals are patinated brass and wrought iron with elongated vine like pulls. Glass is stained, opalescent, or iridescent with lead lines that act as drawing. Textiles include silk, satin, and low pile wool with flowing arabesques. Pattern logic uses lilies, irises, and vines scaled as large sweeps balanced by quiet solids. Lighting is warm with opalescent shades on sculptural stems. The palette centers on sage, lilac, and cream with gentle notes of peacock and amber to create organic elegance with continuity of line and craft.\"\n  },\n  {\n    \"index\": 36,\n    \"label\": \"Tuscan\",\n    \"description\": \"Tuscan {roomType} environments feel substantial and relaxed with thickened edges that convey rural nobility. Materials include travertine, terracotta, chestnut, wrought iron, and lime plaster. Surfaces are hand troweled and textured with sun softened age and waxed stone, metals use simplified iron scrolls with hefty pulls and burnished brass. Glass is clear with ripple in small panes framed heavily. Textiles are linen and cotton with robust weaves and occasional tapestry notes. Pattern logic references vineyards and leaves, along with terra patterns in low chroma. Lighting at 2700 K uses iron lanterns and textured glass. The palette brings ochre, sienna, olive, umber, and cream to foreground agrarian warmth with stone, wood, and sun in chorus.\"\n  },\n  {\n    \"index\": 37,\n    \"label\": \"Craftsman\",\n    \"description\": \"Craftsman {roomType} rooms are stout, low, and horizontally settled with structure and joinery expressed. Materials include quarter sawn oak or fir, river stone, hammered copper or bronze, and references to mica and art glass. Surfaces use oil and shellac that celebrate ray fleck, with pegs and tenons visible; metals arrive as patinated bronze or copper on rectilinear backplates with a hand wrought feel. Glass is leaded with simple geometrics in amber and green tones. Textiles are handwoven wool in nature hues with simple borders, and patterns use rectilinear motifs with branch and leaf abstractions. Lighting is warm with mica shades in stubby grounded forms. The palette spans moss, russet, amber, and umber over warm neutrals to convey honest craft, human scale, and durability.\"\n  },\n  {\n    \"index\": 38,\n    \"label\": \"Gothic\",\n    \"description\": \"Gothic {roomType} expression reaches vertically with simplified pointed arches, trefoil and quatrefoil echoes, and articulated mass. Materials include dark woods, carved stone cues, wrought iron, and leather. Surfaces show tracery references and deep shadow with polish confined to small highlights, and metals are iron straps and ring pulls with aged brass used sparingly. Glass is stained or jewel toned with lead came patterns, textiles include velvet, brocade, and tapestry with heavy drape. Pattern logic favors heraldic and foliate motifs arranged with ordered complexity. Lighting is warm and dramatic with pools and shafts that evoke candlelight. The palette of oxblood, midnight, and forest relieved by parchment and aged gold gives romantic drama that echoes architecture in object language.\"\n  },\n  {\n    \"index\": 39,\n    \"label\": \"High Tech\",\n    \"description\": \"High Tech {roomType} design presents skeletal frames, modular bays, and exposed infrastructure where panels can dissolve into mesh. Materials include aluminum, stainless steel, float glass, and carbon fiber with elastomers. Surfaces are bead blasted, brushed, or anodized with showcased fasteners and visible gaskets, and hardware expresses engineered precision with hinges and slides as features and knurled details. Glass is low iron, fritted, or laminated and becomes structural where safe, while textiles are technical knits, breathable mesh, and performance microfiber. Patterns follow grids, perforations, and barcode like markings supported by clear signage. Lighting is neutral white at 3500 to 4000 K in linear and point sources that reveal systems and paths. The palette uses silver, graphite, white, and black with disciplined neon accents to celebrate machines and systems as beauty.\"\n  },\n  {\n    \"index\": 40,\n    \"label\": \"Brutalism\",\n    \"description\": \"Brutalism {roomType} builds with monolithic blocks, carved voids, and heavy reveals so mass reads first. Materials are raw concrete, rough plaster, unfinished wood, and blackened steel with the texture of aggregate fully expressed. Surfaces retain board form imprints, bugholes, and chamfers without cosmetic veneers, and metals are chunky and utilitarian with hardware that nearly disappears into the mass. Glass is deep set in dark or clear panes with minimal recessed frames, and textiles are coarse weaves of wool and canvas that add only limited softness as counterpoint. Pattern logic is absent, leaving texture and shadow to do the visual work. Lighting creates dramatic contrast with grazing and slot lights at 3000 to 3500 K. The palette embraces concrete gray, soot, rust, and raw oak in a restrained mineral range to express material truth and sculptural gravity.\"\n  }\n]",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -64,
+        288
+      ],
+      "id": "6ea267f7-b13e-4f42-90d9-a6f2e61774bd",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "tableau",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        144,
+        288
+      ],
+      "id": "40a1d72a-c488-4183-929a-382bc74329ce",
+      "name": "Split Out2"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appGh8MOgzCa511e9",
+          "mode": "list",
+          "cachedResultName": "Armoire AD+",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl0SBnSHoGleEIBM",
+          "mode": "list",
+          "cachedResultName": "Preset",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9/tbl0SBnSHoGleEIBM"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json.label }}",
+            "Description": "={{ $json.description }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Description",
+              "displayName": "Description",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        416,
+        288
+      ],
+      "id": "df773164-86b9-4981-8282-3d1753be21f0",
+      "name": "Create a record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "MOYbosKBB6TiMaTh",
+          "name": "Airtable Personal Access Token Armoire AD+"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -544,
+        1136
+      ],
+      "id": "ebc8cd95-81c1-4a9a-9c86-6d37e4f73284",
+      "name": "Start"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.Image[0].url }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1520,
+        1328
+      ],
+      "id": "74ffbd48-1d88-45ac-9889-377742e5e4a5",
+      "name": "Download Original Picture"
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "appGh8MOgzCa511e9",
+          "mode": "list",
+          "cachedResultName": "Armoire AD+",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl1e8oP4ghwP1YR2",
+          "mode": "list",
+          "cachedResultName": "Images",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9/tbl1e8oP4ghwP1YR2"
+        },
+        "id": "={{ $('Get Demande Details').item.json.Image[0] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1024,
+        1136
+      ],
+      "id": "d7d8c47a-bd1f-4412-935f-3fe16f1f76c0",
+      "name": "Get Original Image",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "MOYbosKBB6TiMaTh",
+          "name": "Airtable Personal Access Token Armoire AD+"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "appGh8MOgzCa511e9",
+          "mode": "list",
+          "cachedResultName": "Armoire AD+",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbloSYbNGofuLQkbd",
+          "mode": "list",
+          "cachedResultName": "Prompt",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9/tbloSYbNGofuLQkbd"
+        },
+        "id": "={{ $json.Prompt[0] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        208,
+        1040
+      ],
+      "id": "15d4430d-b726-4d78-81d4-7fd3b4b02fd4",
+      "name": "Get Prompt",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "MOYbosKBB6TiMaTh",
+          "name": "Airtable Personal Access Token Armoire AD+"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "appGh8MOgzCa511e9",
+          "mode": "list",
+          "cachedResultName": "Armoire AD+",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl0SBnSHoGleEIBM",
+          "mode": "list",
+          "cachedResultName": "Preset",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9/tbl0SBnSHoGleEIBM"
+        },
+        "id": "={{ $json.Preset[0] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        208,
+        1248
+      ],
+      "id": "89c72d8b-2f85-46a1-8d51-990e2cc611a4",
+      "name": "Get Preset",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "MOYbosKBB6TiMaTh",
+          "name": "Airtable Personal Access Token Armoire AD+"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d935e5a6-f5fd-487d-ad02-263168f674cb",
+              "name": "prompt.Name",
+              "value": "={{ $json.Name }}",
+              "type": "string"
+            },
+            {
+              "id": "0a98c10c-e583-495f-bad3-5196dae6c594",
+              "name": "prompt.Description",
+              "value": "={{ $json.Description }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        416,
+        1040
+      ],
+      "id": "7defa54e-98ef-4b46-ac9c-7ff54ed18114",
+      "name": "Set Prompt Data"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f5987986-4ac5-4d98-bcfc-cd66388cea20",
+              "name": "preset.Name",
+              "value": "={{ $json.Name }}",
+              "type": "string"
+            },
+            {
+              "id": "51d813ad-f110-4660-b316-2274eb4dcbe6",
+              "name": "preset.Description",
+              "value": "={{ $json.Description }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        416,
+        1248
+      ],
+      "id": "5a99f74f-f41d-4361-918d-0a784fa97877",
+      "name": "Set Preset Data"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        752,
+        1136
+      ],
+      "id": "d2644b98-28fa-4378-8072-5aeb882f4e87",
+      "name": "Recipe"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/images/edits",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openAiApi",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "image",
+              "inputDataFieldName": "data"
+            },
+            {
+              "name": "prompt",
+              "value": "=Goal: Clean up the photo by removing all clutter. Strictly keep: walls, ceiling, windows, door, cabinets and handles, drawers, built-in appliances, range hood, sink, faucet, backsplash, countertops, island, table, chairs, floor tiles, baseboards. Geometry constraints: Do not move, resize, distort, or change the perspective of any fixed element or furniture; preserve original proportions and alignment. Material & color constraints: Keep the existing materials and colors (cabinet wood, countertop finish, backsplash, tiles, faucet metal). Lighting: Maintain the light direction, shadows, and reflections exactly as in the original photo. Authorized edits (only): Remove objects placed on the table (and tablecloth if requested), on the island, and on the back countertops (cups, boxes, papers, bottles, bags, small loose appliances). Do not add anything. Reconstruct the visible surfaces in a photorealistic way (textures, joints, wood grain). Output: same framing, photorealistic, clean and tidy."
+            },
+            {
+              "name": "model",
+              "value": "gpt-image-1"
+            },
+            {
+              "name": "n",
+              "value": "2"
+            },
+            {
+              "name": "size",
+              "value": "1536x1024"
+            },
+            {
+              "name": "quality",
+              "value": "high"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5bb8945c-bf97-4f15-ad17-46441667689b",
+      "name": "Edit Image Clean",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1712,
+        -192
+      ],
+      "typeVersion": 4.2,
+      "credentials": {
+        "openAiApi": {
+          "id": "NaiLgUVmz13wmsKs",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://queue.fal.run/fal-ai/nano-banana/edit",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Key a689688c-e14f-4a57-bc81-32d9bf7101ea:0633419ab1fd453e1d276a38166122ad"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"prompt\": {{ JSON.stringify($('Recipe').item.json.prompt.Description + ' Roomtype is Kitchen. ' + $('Recipe').item.json.preset.Description) }},\n  \"image_urls\": [{{ JSON.stringify($json.Image[0].url) }}]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1296,
+        880
+      ],
+      "id": "c281bf71-d794-43f6-b1d3-da0c3db9b072",
+      "name": "HTTP Request3"
+    },
+    {
+      "parameters": {
+        "url": "=https://queue.fal.run/fal-ai/nano-banana/requests/{{ $('HTTP Request3').item.json.request_id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Key a689688c-e14f-4a57-bc81-32d9bf7101ea:0633419ab1fd453e1d276a38166122ad"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1552,
+        880
+      ],
+      "id": "3bce4bf3-9c96-4b08-8542-e482528d7abc",
+      "name": "Get Picture",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appGh8MOgzCa511e9",
+          "mode": "list",
+          "cachedResultName": "Armoire AD+",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblDfo75o4Ti309A1",
+          "mode": "list",
+          "cachedResultName": "Création",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9/tblDfo75o4Ti309A1"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Image Création": "=[   { \"url\": \"https://boost-data.nyc3.cdn.digitaloceanspaces.com/armoire/{{ $('Generate filename - Util').item.json.unique_name }}.png\" } ]",
+            "Demande": "=['{{ $('Get Demande Details').item.json.id }}']",
+            "Modèle": "gpt-1"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Numéro",
+              "displayName": "Numéro",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Image Création",
+              "displayName": "Image Création",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Demande",
+              "displayName": "Demande",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Modèle",
+              "displayName": "Modèle",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        3232,
+        1440
+      ],
+      "id": "a1e49da0-91a9-496c-aab9-dbf54dde44fa",
+      "name": "Add Image1",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "MOYbosKBB6TiMaTh",
+          "name": "Airtable Personal Access Token Armoire AD+"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appGh8MOgzCa511e9",
+          "mode": "list",
+          "cachedResultName": "Armoire AD+",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblDfo75o4Ti309A1",
+          "mode": "list",
+          "cachedResultName": "Création",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9/tblDfo75o4Ti309A1"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Image Création": "=[   { \"url\": \"{{ $json.images[0].url }}\" } ]",
+            "Modèle": "nano",
+            "Demande": "=['{{ $('Get Demande Details').item.json.id }}']"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Numéro",
+              "displayName": "Numéro",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Image Création",
+              "displayName": "Image Création",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Demande",
+              "displayName": "Demande",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Modèle",
+              "displayName": "Modèle",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1840,
+        768
+      ],
+      "id": "52c2386a-291c-445b-bd77-2fd1a79d2ffb",
+      "name": "Add Nano Image",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "MOYbosKBB6TiMaTh",
+          "name": "Airtable Personal Access Token Armoire AD+"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "bucketName": "boost-data",
+        "fileName": "=armoire/{{ $('Generate filename - Util').item.json.unique_name }}.png",
+        "additionalFields": {
+          "acl": "publicRead"
+        }
+      },
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        2992,
+        1440
+      ],
+      "id": "a0a23c40-f059-4cb8-9647-a71c26a5883c",
+      "name": "Upload to DO",
+      "credentials": {
+        "s3": {
+          "id": "MCBbSm5D2ENvgY0H",
+          "name": "S3 DO"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.images[0].url }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1408,
+        -192
+      ],
+      "id": "4e0f437b-1014-4e94-8a06-65c3de46390b",
+      "name": "Download"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2192,
+        1328
+      ],
+      "id": "2898380a-01c5-4b0c-ab21-b20eff343587",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "action": "generate",
+        "dataPropertyName": "unique_name",
+        "encodingType": "hex",
+        "stringLength": 10
+      },
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        2464,
+        1440
+      ],
+      "id": "1e30ed19-d73a-435c-b977-e191e68fa41d",
+      "name": "Generate filename - Util",
+      "notes": "PHASE: Utility | Purpose: Generate a random hex suffix to append to the Apify task name for uniqueness. | Inputs: None. | Outputs: unique_name as 10 hex characters (~5 bytes, ~40 bits). | Dependencies: n8n Crypto node. | Special Cases: Increase length for stronger uniqueness; regenerate on retries if a name collision occurs."
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appGh8MOgzCa511e9",
+          "mode": "list",
+          "cachedResultName": "Armoire AD+",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblPur3OWO3Zk5tzn",
+          "mode": "list",
+          "cachedResultName": "Demande",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9/tblPur3OWO3Zk5tzn"
+        },
+        "filterByFormula": "{Numéro} = 10",
+        "returnAll": false,
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -160,
+        1136
+      ],
+      "id": "e58c4120-87f0-4f30-9288-dcbdd8accf9e",
+      "name": "Get Demande Details",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "MOYbosKBB6TiMaTh",
+          "name": "Airtable Personal Access Token Armoire AD+"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "683ea7a9-5dd4-4388-b574-965c422bf2a4",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "IN_QUEUE",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1792,
+        960
+      ],
+      "id": "10c0142e-d4fe-41c4-87c9-1a50397245be",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "amount": 15
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2080,
+        960
+      ],
+      "id": "50f511a5-e204-4c38-8842-3fad302e0e5e",
+      "name": "Wait",
+      "webhookId": "21d00ba3-e9c2-485e-9248-1e1519621400"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appGh8MOgzCa511e9",
+          "mode": "list",
+          "cachedResultName": "Armoire AD+",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblPur3OWO3Zk5tzn",
+          "mode": "list",
+          "cachedResultName": "Demande",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9/tblPur3OWO3Zk5tzn"
+        },
+        "filterByFormula": "{Numéro} = 7",
+        "returnAll": false,
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -144,
+        1968
+      ],
+      "id": "cbc88109-44d8-4c62-9363-efe2f9c4991b",
+      "name": "Get Demande Details1",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "MOYbosKBB6TiMaTh",
+          "name": "Airtable Personal Access Token Armoire AD+"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "appGh8MOgzCa511e9",
+          "mode": "list",
+          "cachedResultName": "Armoire AD+",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbloSYbNGofuLQkbd",
+          "mode": "list",
+          "cachedResultName": "Prompt",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9/tbloSYbNGofuLQkbd"
+        },
+        "id": "={{ $json.Prompt[0] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        144,
+        1856
+      ],
+      "id": "18f83a10-ffc4-4c77-b9e9-135f530a7044",
+      "name": "Get Prompt1",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "MOYbosKBB6TiMaTh",
+          "name": "Airtable Personal Access Token Armoire AD+"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d935e5a6-f5fd-487d-ad02-263168f674cb",
+              "name": "prompt.Name",
+              "value": "={{ $json.Name }}",
+              "type": "string"
+            },
+            {
+              "id": "0a98c10c-e583-495f-bad3-5196dae6c594",
+              "name": "prompt.Description",
+              "value": "={{ $json.Description }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        352,
+        1856
+      ],
+      "id": "ada37b6e-f6da-4381-b8af-dd5de1f9184e",
+      "name": "Set Prompt Data1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "51d813ad-f110-4660-b316-2274eb4dcbe6",
+              "name": "inspiration.details",
+              "value": "={{ $json.Inspiration }}",
+              "type": "string"
+            },
+            {
+              "id": "2416b152-7f99-430f-9df7-368643a2e629",
+              "name": "inspiration.image",
+              "value": "={{ $json.Image[0].url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        352,
+        2096
+      ],
+      "id": "068a7632-2369-4e85-ae5f-1c0dc16d623f",
+      "name": "Set Preset Data1"
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "appGh8MOgzCa511e9",
+          "mode": "list",
+          "cachedResultName": "Armoire AD+",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbltCCHAHqQFrZZ7l",
+          "mode": "list",
+          "cachedResultName": "Inspiration",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9/tbltCCHAHqQFrZZ7l"
+        },
+        "id": "={{ $json.Inspiration[0] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        144,
+        2096
+      ],
+      "id": "2bcede8c-a420-4697-abea-a2ca37f3ad36",
+      "name": "Get Inspiration",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "MOYbosKBB6TiMaTh",
+          "name": "Airtable Personal Access Token Armoire AD+"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        656,
+        1984
+      ],
+      "id": "148cb236-a392-4909-adff-984877b971c1",
+      "name": "Recipe1"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Get Demande Details1').item.json['Image (from Image)'][0].url }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file",
+              "outputPropertyName": "original"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        880,
+        1984
+      ],
+      "id": "92cebd0a-e147-47fe-9665-56b05846936f",
+      "name": "Originale"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Get Inspiration').item.json.Image[0].url }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file",
+              "outputPropertyName": "image"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1088,
+        1984
+      ],
+      "id": "a215f0ff-dea2-4c26-96ee-a36106be5e25",
+      "name": "Inspiration"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "b64_json",
+        "options": {
+          "fileName": "",
+          "mimeType": "image/png"
+        }
+      },
+      "id": "46d4a995-fa67-4509-a25c-da443e6477db",
+      "name": "Convert json binary to File final3",
+      "type": "n8n-nodes-base.convertToFile",
+      "position": [
+        2544,
+        2160
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appGh8MOgzCa511e9",
+          "mode": "list",
+          "cachedResultName": "Armoire AD+",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblDfo75o4Ti309A1",
+          "mode": "list",
+          "cachedResultName": "Création",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9/tblDfo75o4Ti309A1"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Image Création": "=[   { \"url\": \"https://boost-data.nyc3.cdn.digitaloceanspaces.com/armoire/{{ $('Generate filename - Util1').item.json.unique_name }}.png\" } ]",
+            "Demande": "=['{{ $('Get Demande Details1').item.json.id }}']",
+            "Modèle": "gpt-1"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Numéro",
+              "displayName": "Numéro",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Image Création",
+              "displayName": "Image Création",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Demande",
+              "displayName": "Demande",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Modèle",
+              "displayName": "Modèle",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        3024,
+        2160
+      ],
+      "id": "17a652be-0270-4507-83e0-a5915c5a777c",
+      "name": "Add Image",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "MOYbosKBB6TiMaTh",
+          "name": "Airtable Personal Access Token Armoire AD+"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "bucketName": "boost-data",
+        "fileName": "=armoire/{{ $('Generate filename - Util1').item.json.unique_name }}.png",
+        "additionalFields": {
+          "acl": "publicRead"
+        }
+      },
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        2784,
+        2160
+      ],
+      "id": "dc5cb920-9e43-440e-9d8b-04621f5c9d28",
+      "name": "Upload to DO1",
+      "credentials": {
+        "s3": {
+          "id": "MCBbSm5D2ENvgY0H",
+          "name": "S3 DO"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1984,
+        2048
+      ],
+      "id": "9d5a9585-08c4-4299-a380-04fd72db02b1",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "action": "generate",
+        "dataPropertyName": "unique_name",
+        "encodingType": "hex",
+        "stringLength": 10
+      },
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        2256,
+        2160
+      ],
+      "id": "1a8cede6-504d-4fad-ab79-be45056201b3",
+      "name": "Generate filename - Util1",
+      "notes": "PHASE: Utility | Purpose: Generate a random hex suffix to append to the Apify task name for uniqueness. | Inputs: None. | Outputs: unique_name as 10 hex characters (~5 bytes, ~40 bits). | Dependencies: n8n Crypto node. | Special Cases: Increase length for stronger uniqueness; regenerate on retries if a name collision occurs."
     }
   ],
   "repo_name": "boost-prospect-v2",
@@ -666,7 +2144,7 @@
   ],
   "staticData": null,
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2025-09-14T12:50:39.274Z",
-  "versionId": "d302d84a-b411-41f1-806a-22658db6e8c4"
+  "triggerCount": 1,
+  "updatedAt": "2025-09-15T18:28:20.993Z",
+  "versionId": "afa22ddb-a99b-4c38-b6fa-4705a5094c35"
 }
