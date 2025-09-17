@@ -1,0 +1,1258 @@
+{
+  "active": false,
+  "connections": {
+    "Get Demande2 Details": {
+      "main": [
+        [
+          {
+            "node": "Prepare Setup",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data Workflow": {
+      "main": [
+        [
+          {
+            "node": "Get Demande2 Details",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Setup": {
+      "main": [
+        [
+          {
+            "node": "Generate Design Picture",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Picture": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Get Picture",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Design Picture": {
+      "main": [
+        [
+          {
+            "node": "Get Picture",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search records": {
+      "main": [
+        [
+          {
+            "node": "Style principal",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Équipements",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Staging",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Équipements": {
+      "main": [
+        [
+          {
+            "node": "Aggregate Equipements",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Staging": {
+      "main": [
+        [
+          {
+            "node": "Aggregate Staging",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Style principal": {
+      "main": [
+        [
+          {
+            "node": "Aggregate Style",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Data Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Data": {
+      "main": [
+        [
+          {
+            "node": "Search records",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Data": {
+      "main": [
+        [
+          {
+            "node": "Create a record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a record": {
+      "main": [
+        [
+          {
+            "node": "Clean",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate Style": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate Equipements": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Aggregate Staging": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Prepare Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clean": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Add Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-09-16T14:03:40.854Z",
+  "id": "PigjtxZjgcS70qAh",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Generate Nano Image",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appGh8MOgzCa511e9",
+          "mode": "list",
+          "cachedResultName": "Armoire AD+",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbll6kz4sZ5zF9I9G",
+          "mode": "list",
+          "cachedResultName": "Demande2",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9/tbll6kz4sZ5zF9I9G"
+        },
+        "filterByFormula": "={Numéro} = {{ $json.request_number }}",
+        "returnAll": false,
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -576,
+        32
+      ],
+      "id": "4294ce18-723b-42ee-b7c1-7305ece6b533",
+      "name": "Get Demande2 Details",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "MOYbosKBB6TiMaTh",
+          "name": "Airtable Personal Access Token Armoire AD+"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7c63b6f2-cc17-458d-9183-04bb4c347378",
+              "name": "request_number",
+              "value": 169,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -800,
+        32
+      ],
+      "id": "e82eb17b-f149-49c4-ae7c-c0b0aa591015",
+      "name": "Data Workflow"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dc611be5-d3f4-4784-a7d7-c0bb19a907cd",
+              "name": "image_originale_url",
+              "value": "={{ $json['Image originale'][0].url }}",
+              "type": "string"
+            },
+            {
+              "id": "f9a4475e-08e7-4056-91ef-dc46d1f40ec6",
+              "name": "style",
+              "value": "={{ $json['Instructions Style'][0] }}",
+              "type": "string"
+            },
+            {
+              "id": "8ed57933-4c78-423c-b4f5-6f566de24655",
+              "name": "contrainte",
+              "value": "={{ $json['Instructions Contrainte'][0] }}",
+              "type": "string"
+            },
+            {
+              "id": "687745d8-11e5-4c3a-a8a9-c7a26d7a5a15",
+              "name": "equipements",
+              "value": "={{ $json['Instructions Équipements'][0] }}",
+              "type": "string"
+            },
+            {
+              "id": "cb559ab2-e207-4f16-9dd4-d7670d97ceb8",
+              "name": "staging",
+              "value": "={{ $json['Instructions Staging'][0] }}",
+              "type": "string"
+            },
+            {
+              "id": "198be53c-8ba7-481e-a605-490276c5801c",
+              "name": "important",
+              "value": "={{ $json['Instructions Important'][0] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -352,
+        32
+      ],
+      "id": "a7dae14a-93fe-410c-9013-0d93744952b9",
+      "name": "Prepare Setup"
+    },
+    {
+      "parameters": {
+        "url": "=https://queue.fal.run/fal-ai/nano-banana/requests/{{ $('Generate Design Picture').item.json.request_id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Key a689688c-e14f-4a57-bc81-32d9bf7101ea:0633419ab1fd453e1d276a38166122ad"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        96,
+        32
+      ],
+      "id": "5bbf5392-45a1-470b-8e6e-d87bb02be792",
+      "name": "Get Picture",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "683ea7a9-5dd4-4388-b574-965c422bf2a4",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "IN_QUEUE",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        384,
+        176
+      ],
+      "id": "526f592c-b3fb-485b-a1d4-326b2c8aea9f",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "amount": 15
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        640,
+        240
+      ],
+      "id": "8ec6d8d4-ea6d-4526-b9c3-f008d4ef7445",
+      "name": "Wait",
+      "webhookId": "21d00ba3-e9c2-485e-9248-1e1519621400"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://queue.fal.run/fal-ai/nano-banana/edit",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Key a689688c-e14f-4a57-bc81-32d9bf7101ea:0633419ab1fd453e1d276a38166122ad"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"prompt\": {{ JSON.stringify(\"Base Constraint : \" + $json.contrainte + \"Style : \" + $json.style + \"Equipments : \" + $json.equipements + \"Staging : \" + $json.staging + \" Important : \" + $json.important + $json.contrainte) }},\n  \"image_urls\": [{{ JSON.stringify($json.image_originale_url) }}],\n  \"num_images\": 3\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -128,
+        32
+      ],
+      "id": "7735b7a5-1554-4a40-a8fc-532938810d9a",
+      "name": "Generate Design Picture"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appGh8MOgzCa511e9",
+          "mode": "list",
+          "cachedResultName": "Armoire AD+",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblq5z1tEFlJ9SZat",
+          "mode": "list",
+          "cachedResultName": "Création2",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9/tblq5z1tEFlJ9SZat"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Image": "=[   { \"url\": \"{{ $json.url }}\" } ]",
+            "Modèle IA": "nano",
+            "Demande2": "=['{{ $('Get Demande2 Details').item.json.id }}']"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Numéro",
+              "displayName": "Numéro",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Image",
+              "displayName": "Image",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Modèle IA",
+              "displayName": "Modèle IA",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Demande2",
+              "displayName": "Demande2",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        608,
+        -112
+      ],
+      "id": "ba648fc6-5c7e-46ed-a0fe-2b31984618f2",
+      "name": "Add Image",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "MOYbosKBB6TiMaTh",
+          "name": "Airtable Personal Access Token Armoire AD+"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Nano Banana",
+        "height": 608,
+        "width": 1744
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -912,
+        -208
+      ],
+      "id": "239c0b28-f474-4438-b6d1-8e7f906b2432",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appGh8MOgzCa511e9",
+          "mode": "list",
+          "cachedResultName": "Armoire AD+",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl9hK4BEc3Aiau0q",
+          "mode": "list",
+          "cachedResultName": "Preset2",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9/tbl9hK4BEc3Aiau0q"
+        },
+        "filterByFormula": "{recIdPreset} = 'receNtcpT4jprd5bF'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -352,
+        -576
+      ],
+      "id": "58b827c0-2a24-4949-9da3-c610c31d31b8",
+      "name": "Search records",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "MOYbosKBB6TiMaTh",
+          "name": "Airtable Personal Access Token Armoire AD+"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "0730bb23-d86f-4abf-9d40-4a468670f09e",
+              "leftValue": "={{ $json['Catégorie'] }}",
+              "rightValue": "Staging",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -128,
+        -384
+      ],
+      "id": "9ead9bfe-66ab-40bb-b767-8e15532f9956",
+      "name": "Staging"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "0730bb23-d86f-4abf-9d40-4a468670f09e",
+              "leftValue": "={{ $json['Catégorie'] }}",
+              "rightValue": "Équipements",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -128,
+        -576
+      ],
+      "id": "a531214e-4d69-4e50-9adf-cab6d4b5972a",
+      "name": "Équipements"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "0730bb23-d86f-4abf-9d40-4a468670f09e",
+              "leftValue": "={{ $json['Catégorie'] }}",
+              "rightValue": "Style principal",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -128,
+        -768
+      ],
+      "id": "0d178686-bdaa-4f7b-a3f8-2d29e9bdee77",
+      "name": "Style principal"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8cb548f7-6c89-4a48-a5ff-70d8e4aa5965",
+              "name": "style",
+              "value": "={{ $json.styleId }}",
+              "type": "string"
+            },
+            {
+              "id": "4ca93850-6ee7-428a-aa29-83fbad7f0ea3",
+              "name": "equipement",
+              "value": "={{ $json.equipmentId }}",
+              "type": "string"
+            },
+            {
+              "id": "f9726a19-88a1-4af5-a34f-1fc6027484c1",
+              "name": "staging",
+              "value": "={{ $json.stagingId }}",
+              "type": "string"
+            },
+            {
+              "id": "56a5047d-a029-4417-91dd-84c3a8117fed",
+              "name": "contrainte",
+              "value": "={{ $('Workflow Data').item.json.contrainte_id }}",
+              "type": "string"
+            },
+            {
+              "id": "f307825d-a837-4f33-ac79-3e482bd0f778",
+              "name": "preset_id",
+              "value": "={{ $('Workflow Data').item.json.preset_id }}",
+              "type": "string"
+            },
+            {
+              "id": "3733d8f0-79c5-4658-962c-95a346564318",
+              "name": "important",
+              "value": "={{ $('Workflow Data').item.json.important_id }}",
+              "type": "string"
+            },
+            {
+              "id": "e2688795-3cd1-4319-b4bd-74e7fef49018",
+              "name": "image",
+              "value": "={{ $('Workflow Data').item.json.image_originale }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        992,
+        -656
+      ],
+      "id": "5bffc1e5-6ea6-4512-bdef-14777bfc45e9",
+      "name": "Prepare Data"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1168,
+        32
+      ],
+      "id": "84a423e3-0ad5-439a-9c3c-3192d5c44f9d",
+      "name": "Start"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a599c9d1-2b8a-4e66-b621-f00c109419bc",
+              "name": "preset_id",
+              "value": "receNtcpT4jprd5bF",
+              "type": "string"
+            },
+            {
+              "id": "64b97d68-8258-4ce7-9601-4939911c576f",
+              "name": "contrainte_id",
+              "value": "recgCG7V8JwHngIEi",
+              "type": "string"
+            },
+            {
+              "id": "ab8f2d00-8908-4dfa-a8ac-1945c86e12ef",
+              "name": "important_id",
+              "value": "rect5BrrLYYY69Z05",
+              "type": "string"
+            },
+            {
+              "id": "383a49c2-cbec-4408-b8d1-4d0ff71111ab",
+              "name": "image_originale",
+              "value": "reck6lDnjUD6m2Jff",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -576,
+        -576
+      ],
+      "id": "7b87d227-297d-48af-8b89-f3a3140d6b60",
+      "name": "Workflow Data"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appGh8MOgzCa511e9",
+          "mode": "list",
+          "cachedResultName": "Armoire AD+",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbll6kz4sZ5zF9I9G",
+          "mode": "list",
+          "cachedResultName": "Demande2",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9/tbll6kz4sZ5zF9I9G"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Image": "=['{{ $json.image }}']",
+            "Contrainte": "=['{{ $json.contrainte }}']",
+            "Style": "=['{{ $json.style }}']",
+            "Équipements": "=['{{ $json.equipement }}']",
+            "Staging": "=['{{ $json.staging }}']",
+            "Important": "=['{{ $json.important }}']"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Numéro",
+              "displayName": "Numéro",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Image",
+              "displayName": "Image",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Image originale",
+              "displayName": "Image originale",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Contrainte",
+              "displayName": "Contrainte",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Instructions Contrainte",
+              "displayName": "Instructions Contrainte",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Style",
+              "displayName": "Style",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Instructions Style",
+              "displayName": "Instructions Style",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Équipements",
+              "displayName": "Équipements",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Instructions Équipements",
+              "displayName": "Instructions Équipements",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Staging",
+              "displayName": "Staging",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Instructions Staging",
+              "displayName": "Instructions Staging",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Important",
+              "displayName": "Important",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Instructions Important",
+              "displayName": "Instructions Important",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Créations",
+              "displayName": "Créations",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Image Créations",
+              "displayName": "Image Créations",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Prompt",
+              "displayName": "Prompt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Request Id",
+              "displayName": "Request Id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Pending",
+                  "value": "Pending"
+                },
+                {
+                  "name": "Done",
+                  "value": "Done"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1216,
+        -656
+      ],
+      "id": "9389d2f8-3b80-4ff8-97ab-537f9d7bbeab",
+      "name": "Create a record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "MOYbosKBB6TiMaTh",
+          "name": "Airtable Personal Access Token Armoire AD+"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "style",
+        "include": "specifiedFields",
+        "fieldsToInclude": "id",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        96,
+        -768
+      ],
+      "id": "f35fc900-a025-489c-bb64-e19d8ac1f5a2",
+      "name": "Aggregate Style"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "equipments",
+        "include": "specifiedFields",
+        "fieldsToInclude": "id",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        96,
+        -576
+      ],
+      "id": "7165197d-c701-4077-8847-486d3f1057f7",
+      "name": "Aggregate Equipements"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "staging",
+        "include": "specifiedFields",
+        "fieldsToInclude": "id",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        96,
+        -384
+      ],
+      "id": "ed6570c7-6156-47bd-ac3f-d4bc0bd71495",
+      "name": "Aggregate Staging"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "numberInputs": 3,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        320,
+        -592
+      ],
+      "id": "4d8af211-f151-4e72-abcb-9b30da46bfb2",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "jsCode": "/**\n * n8n Function/Code node\n * Génère toutes les combinaisons possibles d'IDs à partir des tableaux\n * présents dans l'item d'entrée: style, equipments, staging.\n *\n * Entrée attendue (items[0].json):\n * {\n *   style: [{id: \"...\"}, ...],\n *   equipments: [{id: \"...\"}, ...],\n *   staging: [{id: \"...\"}, ...]\n * }\n *\n * Sortie: un item par combinaison:\n * { styleId: \"...\", equipmentId: \"...\", stagingId: \"...\" }\n */\n\nconst input = items[0]?.json ?? {};\n\n// ---- CONFIG ----\n// Indique ici les clés des tableaux à combiner (dans l'ordre voulu)\nconst FIELDS = ['style', 'equipments', 'staging'];\n// Noms des champs de sortie correspondants (même longueur que FIELDS)\nconst OUTPUT_KEYS = ['styleId', 'equipmentId', 'stagingId'];\n// ----------------\n\n// Transforme chaque tableau d'objets {id} en simple tableau d'IDs\nconst lists = FIELDS.map(key => {\n  const arr = Array.isArray(input[key]) ? input[key] : [];\n  return arr.map(x => x?.id).filter(Boolean);\n});\n\n// Si un des tableaux est vide, pas de combinaison possible\nif (lists.some(a => a.length === 0)) {\n  return []; // 0 item en sortie\n}\n\n// Fonction utilitaire: produit cartésien\nconst cartesian = (arrays) => {\n  return arrays.reduce((acc, curr) => {\n    const out = [];\n    for (const a of acc) {\n      for (const b of curr) {\n        out.push(a.concat([b]));\n      }\n    }\n    return out;\n  }, [[]]);\n};\n\nconst combos = cartesian(lists);\n\n// Map en items n8n\nconst out = combos.map(combo => {\n  const obj = {};\n  combo.forEach((val, i) => { obj[OUTPUT_KEYS[i]] = val; });\n  return { json: obj };\n});\n\nreturn out;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        544,
+        -576
+      ],
+      "id": "e3b51bd3-2e5c-438e-a731-50fd6d54edda",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "batchSize": 50,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        768,
+        -576
+      ],
+      "id": "5c18e055-31c6-4ddf-a874-c6b509fea2d6",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1440,
+        -576
+      ],
+      "id": "e754386b-13a3-4449-8a49-8968ed2f4a18",
+      "name": "Clean"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "images",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        336,
+        -112
+      ],
+      "id": "9c9289be-5033-468d-b26a-36ef6ade2fe2",
+      "name": "Split Out"
+    }
+  ],
+  "repo_name": "boost-prospect-v2",
+  "repo_owner": "ultimvision",
+  "repo_path": "workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-09-16T14:03:40.854Z",
+      "updatedAt": "2025-09-16T14:03:40.854Z",
+      "role": "workflow:owner",
+      "workflowId": "PigjtxZjgcS70qAh",
+      "projectId": "zxVtQj8AiJx7hlkL"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-09-16T17:03:37.626Z",
+  "versionId": "99aa69ce-fb70-4898-a46d-ac0dae5f4303"
+}
