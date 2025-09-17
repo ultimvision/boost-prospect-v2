@@ -1,0 +1,2053 @@
+{
+  "active": false,
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Get All Presets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Demande2 Details": {
+      "main": [
+        [
+          {
+            "node": "Prepare Setup",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data Workflow": {
+      "main": [
+        [
+          {
+            "node": "Get Demande2 Details",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Picture": {
+      "main": [
+        [
+          {
+            "node": "Add Image",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Get Picture",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Setup": {
+      "main": [
+        [
+          {
+            "node": "Generate Design Picture",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Design Picture": {
+      "main": [
+        [
+          {
+            "node": "Get Picture",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get All Presets": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Prepare Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Data": {
+      "main": [
+        [
+          {
+            "node": "Staging",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Equipments",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Style",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Style",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Style",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Style",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Add Style",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Equipments",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Equipments",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Equipments",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model5": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Basic LLM Chain2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model6": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser2": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain2",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model7": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain2": {
+      "main": [
+        [
+          {
+            "node": "Add Equipment",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Equipment": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model8": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Staging",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model9": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Staging",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser3": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Staging",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model10": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser3",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Equipments": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Style": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Staging": {
+      "main": [
+        [
+          {
+            "node": "Split Out2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Add Staging",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model11": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser4": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model12": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser4",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Staging": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-09-16T11:06:34.860Z",
+  "id": "f6rQu8shyMFvbF7Y",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Armoire AD+",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -864,
+        -1744
+      ],
+      "id": "4f81b8f2-d997-4013-ba55-13cbdb4b8983",
+      "name": "Start"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appGh8MOgzCa511e9",
+          "mode": "list",
+          "cachedResultName": "Armoire AD+",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbll6kz4sZ5zF9I9G",
+          "mode": "list",
+          "cachedResultName": "Demande2",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9/tbll6kz4sZ5zF9I9G"
+        },
+        "filterByFormula": "={Numéro} = {{ $json.request_number }}",
+        "returnAll": false,
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -96,
+        320
+      ],
+      "id": "fef000af-8fa9-4890-81db-2cd00cd6020f",
+      "name": "Get Demande2 Details",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "MOYbosKBB6TiMaTh",
+          "name": "Airtable Personal Access Token Armoire AD+"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7c63b6f2-cc17-458d-9183-04bb4c347378",
+              "name": "request_number",
+              "value": 4,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -320,
+        320
+      ],
+      "id": "15a2ada5-38e5-469e-aa80-7ae80c2ae3b5",
+      "name": "Data Workflow"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dc611be5-d3f4-4784-a7d7-c0bb19a907cd",
+              "name": "image_originale_url",
+              "value": "={{ $json['Image originale'][0].url }}",
+              "type": "string"
+            },
+            {
+              "id": "f9a4475e-08e7-4056-91ef-dc46d1f40ec6",
+              "name": "style",
+              "value": "={{ $json['Instructions Style'][0] }}",
+              "type": "string"
+            },
+            {
+              "id": "8ed57933-4c78-423c-b4f5-6f566de24655",
+              "name": "contrainte",
+              "value": "={{ $json['Instructions Contrainte'][0] }}",
+              "type": "string"
+            },
+            {
+              "id": "687745d8-11e5-4c3a-a8a9-c7a26d7a5a15",
+              "name": "equipements",
+              "value": "={{ $json['Instructions Équipements'][0] }}",
+              "type": "string"
+            },
+            {
+              "id": "cb559ab2-e207-4f16-9dd4-d7670d97ceb8",
+              "name": "staging",
+              "value": "={{ $json['Instructions Staging'][0] }}",
+              "type": "string"
+            },
+            {
+              "id": "198be53c-8ba7-481e-a605-490276c5801c",
+              "name": "important",
+              "value": "={{ $json['Instructions Important'][0] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        128,
+        320
+      ],
+      "id": "8553dbe9-84a2-4e98-9503-18869636b7c3",
+      "name": "Prepare Setup"
+    },
+    {
+      "parameters": {
+        "url": "=https://queue.fal.run/fal-ai/nano-banana/requests/{{ $('Generate Design Picture').item.json.request_id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Key a689688c-e14f-4a57-bc81-32d9bf7101ea:0633419ab1fd453e1d276a38166122ad"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        576,
+        320
+      ],
+      "id": "a53df246-0a70-44ae-9e8f-f3e15f4d52b0",
+      "name": "Get Picture",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "683ea7a9-5dd4-4388-b574-965c422bf2a4",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "IN_QUEUE",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        800,
+        320
+      ],
+      "id": "e2db72a8-8988-4750-be94-2a6a8705482b",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "amount": 15
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1024,
+        384
+      ],
+      "id": "68a2b959-28ca-466b-802d-17db4ada881d",
+      "name": "Wait",
+      "webhookId": "21d00ba3-e9c2-485e-9248-1e1519621400"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://queue.fal.run/fal-ai/nano-banana/edit",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Key a689688c-e14f-4a57-bc81-32d9bf7101ea:0633419ab1fd453e1d276a38166122ad"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"prompt\": {{ JSON.stringify(\"Base Constraint : \" + $json.contrainte + \"Style : \" + $json.style + \"Equipments : \" + $json.equipements + \"Staging : \" + $json.staging + \"Important : \" + $json.important) }},\n  \"image_urls\": [{{ JSON.stringify($json.image_originale_url) }}]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        352,
+        320
+      ],
+      "id": "b37a2d1c-44e3-431a-8e0e-d93b24265d03",
+      "name": "Generate Design Picture"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appGh8MOgzCa511e9",
+          "mode": "list",
+          "cachedResultName": "Armoire AD+",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblq5z1tEFlJ9SZat",
+          "mode": "list",
+          "cachedResultName": "Création2",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9/tblq5z1tEFlJ9SZat"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Image": "=[   { \"url\": \"{{ $json.images[0].url }}\" } ]",
+            "Modèle IA": "nano",
+            "Demande2": "=['{{ $('Get Demande2 Details').item.json.id }}']"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Numéro",
+              "displayName": "Numéro",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Image",
+              "displayName": "Image",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Modèle IA",
+              "displayName": "Modèle IA",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Demande2",
+              "displayName": "Demande2",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        800,
+        128
+      ],
+      "id": "af61e99e-617c-4459-a125-b9c7b14ce2a5",
+      "name": "Add Image",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "MOYbosKBB6TiMaTh",
+          "name": "Airtable Personal Access Token Armoire AD+"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Nano Banana",
+        "height": 608,
+        "width": 1744
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -464,
+        96
+      ],
+      "id": "34484331-e0ab-40dc-aaf8-0bbc42232efc",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appGh8MOgzCa511e9",
+          "mode": "list",
+          "cachedResultName": "Armoire AD+",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl0SBnSHoGleEIBM",
+          "mode": "list",
+          "cachedResultName": "Preset",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9/tbl0SBnSHoGleEIBM"
+        },
+        "filterByFormula": "{Name} = \"Farmhouse\"",
+        "returnAll": false,
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -416,
+        -1744
+      ],
+      "id": "67711487-c1c6-44cc-9a35-7ddf6b2c52f0",
+      "name": "Get All Presets",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "MOYbosKBB6TiMaTh",
+          "name": "Airtable Personal Access Token Armoire AD+"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        -192,
+        -1744
+      ],
+      "id": "2f62644b-ad0f-49a6-8bd2-94677a7a321f",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "faa2349f-ae2f-4a7b-a7bc-dc465e08aefb",
+              "name": "Name",
+              "value": "={{ $json.Name }}",
+              "type": "string"
+            },
+            {
+              "id": "1cbf6345-8dcf-47e1-bcfc-49ddc3fbb71d",
+              "name": "Description",
+              "value": "={{ $json.Description }}",
+              "type": "string"
+            },
+            {
+              "id": "0b4f3fd2-e2ea-4aa3-b948-7f9b38c10d97",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        32,
+        -1744
+      ],
+      "id": "1f5bbee7-73f7-4433-b1b2-7071550e9863",
+      "name": "Prepare Data"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-5",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        560,
+        -880
+      ],
+      "id": "d433a624-a3e8-4a77-8ab5-97303c14e883",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "google/gemini-2.5-pro",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        688,
+        -880
+      ],
+      "id": "b00723a9-b706-4dfa-811f-a810dda1b148",
+      "name": "OpenRouter Chat Model1",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\n  \"title\": \"Ideas Schema\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"ideas\": {\n      \"type\": \"array\",\n      \"minItems\": 5,\n      \"maxItems\": 5,\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"title\": {\n            \"type\": \"string\",\n            \"description\": \"The title of the idea\"\n          },\n          \"description\": {\n            \"type\": \"string\",\n            \"description\": \"A detailed description of the idea\"\n          }\n        },\n        \"required\": [\"title\", \"description\"],\n        \"additionalProperties\": false\n      }\n    }\n  },\n  \"required\": [\"ideas\"],\n  \"additionalProperties\": false\n}\n",
+        "autoFix": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        816,
+        -880
+      ],
+      "id": "36296fb9-7fde-45ac-9fd7-61dfc4718b4d",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-4",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        896,
+        -672
+      ],
+      "id": "2f7583d2-6ba8-4647-a517-a435295fc4d3",
+      "name": "OpenRouter Chat Model2",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output.ideas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1184,
+        -896
+      ],
+      "id": "4288de15-203b-46e2-8e73-3599dc7779b0",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appGh8MOgzCa511e9",
+          "mode": "list",
+          "cachedResultName": "Armoire AD+",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl9hK4BEc3Aiau0q",
+          "mode": "list",
+          "cachedResultName": "Preset2",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9/tbl9hK4BEc3Aiau0q"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Preset": "=['{{ $('Prepare Data').item.json.id }}']",
+            "Catégorie": "Style principal",
+            "Titre": "={{ $json.title }}",
+            "Instructions": "={{ $json.description }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Identifiant",
+              "displayName": "Identifiant",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Numéro",
+              "displayName": "Numéro",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Preset",
+              "displayName": "Preset",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Description Preset",
+              "displayName": "Description Preset",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Catégorie",
+              "displayName": "Catégorie",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Contrainte de base",
+                  "value": "Contrainte de base"
+                },
+                {
+                  "name": "Style principal",
+                  "value": "Style principal"
+                },
+                {
+                  "name": "Équipements",
+                  "value": "Équipements"
+                },
+                {
+                  "name": "Staging",
+                  "value": "Staging"
+                },
+                {
+                  "name": "Important",
+                  "value": "Important"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Instructions",
+              "displayName": "Instructions",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Titre",
+              "displayName": "Titre",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Demande2",
+              "displayName": "Demande2",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Demande2 (2)",
+              "displayName": "Demande2 (2)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Demande2 (3)",
+              "displayName": "Demande2 (3)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Demande2 (4)",
+              "displayName": "Demande2 (4)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Demande2 (5)",
+              "displayName": "Demande2 (5)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1392,
+        -896
+      ],
+      "id": "2d4e5f5d-62c5-4926-91ad-0f0874c2b6b9",
+      "name": "Add Style",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "MOYbosKBB6TiMaTh",
+          "name": "Airtable Personal Access Token Armoire AD+"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-5",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        592,
+        -1520
+      ],
+      "id": "1bbb6569-89fd-4880-a002-f3cd513bddfc",
+      "name": "OpenRouter Chat Model3",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "google/gemini-2.5-pro",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        720,
+        -1520
+      ],
+      "id": "b2b590a4-c498-4bb7-9cb5-8237b94743c4",
+      "name": "OpenRouter Chat Model4",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\n  \"title\": \"Ideas Schema\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"ideas\": {\n      \"type\": \"array\",\n      \"minItems\": 5,\n      \"maxItems\": 5,\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"title\": {\n            \"type\": \"string\",\n            \"description\": \"The title of the idea\"\n          },\n          \"description\": {\n            \"type\": \"string\",\n            \"description\": \"one flowing paragraph, 5–8 richly detailed sentences, covering all 5 required kitchen equipment items in alignment with the given style, written as if for a luxury interior design magazine photo of virtual staging\"\n          }\n        },\n        \"required\": [\"title\", \"description\"],\n        \"additionalProperties\": false\n      }\n    }\n  },\n  \"required\": [\"ideas\"],\n  \"additionalProperties\": false\n}\n",
+        "autoFix": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        848,
+        -1520
+      ],
+      "id": "dc7e9ce6-89fa-44a4-98e3-f032ffc06bac",
+      "name": "Structured Output Parser1"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-4",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        928,
+        -1312
+      ],
+      "id": "670c7776-c9a6-4c69-a849-b8602a77e099",
+      "name": "OpenRouter Chat Model5",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output.ideas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1104,
+        -1744
+      ],
+      "id": "99a3a3b3-ea7c-4d1d-a164-b69f36cce116",
+      "name": "Split Out1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=STYLE_TEXT: {{ $('Prepare Data').item.json.Description }}\n\nIDEA TITLE: {{ $json.title }}\n\nEQUIPMENT_PARAGRAPH : {{ $json.description }}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=**Role:** You are a strict validator and fixer for an **Equipment paragraph** derived from an interior design style description.\n\n**Inputs:**\n\n* `STYLE_TEXT`: the interior design description.\n* `EQUIPMENT_PARAGRAPH`: a single paragraph of text meant to describe all kitchen equipment in alignment with the style.\n\n---\n\n### **Specific Rules to Validate Against**\n\n1. The paragraph must clearly describe **kitchen equipment**, written as one continuous paragraph (not a list, not bullet points).\n2. It must include **all of the following 5 equipment types**:\n\n   * Stove / Range\n   * Refrigerator\n   * Dishwasher\n   * Sink\n   * Cabinetry **or** Lighting fixture\n3. Each equipment must be described with **very detailed attributes**: materials, finishes, textures, hardware, tones, stylistic nuances, and why it matches the style.\n4. All descriptions must be **strictly aligned with the given style** (`STYLE_TEXT`) in terms of **materials, finishes, colors, textures, and mood**. No elements outside this style.\n5. The text must be **5–8 sentences long**, compact but complete, and read like a **luxury interior design magazine editorial** for a **virtual staging photo of a high-end kitchen**.\n6. If the paragraph is incomplete, vague, missing one of the required elements, or stylistically inconsistent, it must be **automatically revised** while preserving the original intent.\n\n---\n\n### **Heuristic Checks (Guidance Only)**\n\n* Sentence count = 5–8.\n* Includes all 5 required equipment types.\n* Each equipment described with rich details (materials, finishes, textures, tones, hardware).\n* Style cues consistent with `STYLE_TEXT`.\n* Reads like a high-end magazine description of a staged photo.\n\n---\n\n### **Task**\n\n1. **Validate** the `EQUIPMENT_PARAGRAPH` against the rules. Output `PASS` if fully compliant; otherwise `FAIL`.\n2. If `FAIL`, **list all violations** and **produce a corrected version** of the paragraph that preserves the original intent but makes it fully compliant.\n3. **Explain your reasoning** briefly: what was checked and what was changed (if anything).\n\n---\n\n### **Output format (JSON only, no extra text)**\n\n```json\n{\n  \"status\": \"PASS or FAIL\",\n  \"violations\": [\"string list of issues found; empty if PASS\"],\n  \"correctedParagraph\": \"string (one flowing paragraph, 5–8 richly detailed sentences, covering all 5 required equipment types, aligned with the given style, ready for high-end virtual staging)\",\n  \"reasoning\": \"Short explanation of validation and any modifications\"\n}\n```\n\n"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        1696,
+        -1696
+      ],
+      "id": "1287839b-0274-4867-a183-5dbe9b63d018",
+      "name": "Basic LLM Chain2",
+      "retryOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1392,
+        -1744
+      ],
+      "id": "4e696d2e-b538-42de-bead-71f0d5ef78c4",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-5",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        1584,
+        -1472
+      ],
+      "id": "17c038cd-1314-4ac4-82bc-55b897fef167",
+      "name": "OpenRouter Chat Model6",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"status\": \"PASS or FAIL\",\n  \"violations\": [\"string list of issues found; empty if PASS\"],\n  \"ideaTitle\": \"short idea title 3-5 words\",\n  \"correctedParagraph\": \"string (one flowing paragraph, 5–8 richly detailed sentences, covering all 5 required equipment types, aligned with the given style, ready for high-end virtual staging)\",\n  \"reasoning\": \"Short explanation of validation and any modifications\"\n}",
+        "autoFix": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        1840,
+        -1488
+      ],
+      "id": "aa173ffb-d3ca-4404-ba57-85b1caaff01f",
+      "name": "Structured Output Parser2"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-4",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        1824,
+        -1296
+      ],
+      "id": "e12ecd30-60ef-4be1-afeb-6a73b748d279",
+      "name": "OpenRouter Chat Model7",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appGh8MOgzCa511e9",
+          "mode": "list",
+          "cachedResultName": "Armoire AD+",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl9hK4BEc3Aiau0q",
+          "mode": "list",
+          "cachedResultName": "Preset2",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9/tbl9hK4BEc3Aiau0q"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Preset": "=['{{ $('Prepare Data').item.json.id }}']",
+            "Catégorie": "Équipements",
+            "Titre": "={{ $json.output.ideaTitle }}",
+            "Instructions": "={{ $json.output.correctedParagraph }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Identifiant",
+              "displayName": "Identifiant",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Numéro",
+              "displayName": "Numéro",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Preset",
+              "displayName": "Preset",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Description Preset",
+              "displayName": "Description Preset",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Catégorie",
+              "displayName": "Catégorie",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Contrainte de base",
+                  "value": "Contrainte de base"
+                },
+                {
+                  "name": "Style principal",
+                  "value": "Style principal"
+                },
+                {
+                  "name": "Équipements",
+                  "value": "Équipements"
+                },
+                {
+                  "name": "Staging",
+                  "value": "Staging"
+                },
+                {
+                  "name": "Important",
+                  "value": "Important"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Instructions",
+              "displayName": "Instructions",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Titre",
+              "displayName": "Titre",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Demande2",
+              "displayName": "Demande2",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Demande2 (2)",
+              "displayName": "Demande2 (2)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Demande2 (3)",
+              "displayName": "Demande2 (3)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Demande2 (4)",
+              "displayName": "Demande2 (4)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Demande2 (5)",
+              "displayName": "Demande2 (5)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        2448,
+        -1280
+      ],
+      "id": "83213e97-3bfe-4334-8947-49212566ab7e",
+      "name": "Add Equipment",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "MOYbosKBB6TiMaTh",
+          "name": "Airtable Personal Access Token Armoire AD+"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-5",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        576,
+        -2320
+      ],
+      "id": "1ffdef02-fbb8-4bc9-8abb-fbe83af7326e",
+      "name": "OpenRouter Chat Model8",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "google/gemini-2.5-pro",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        704,
+        -2320
+      ],
+      "id": "2b202ea0-8bea-4bfa-bb3e-6e088cdab6f7",
+      "name": "OpenRouter Chat Model9",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\n  \"title\": \"Ideas Schema\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"ideas\": {\n      \"type\": \"array\",\n      \"minItems\": 5,\n      \"maxItems\": 5,\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"title\": {\n            \"type\": \"string\",\n            \"description\": \"The title of the idea\"\n          },\n          \"description\": {\n            \"type\": \"string\",\n            \"description\": \"one flowing paragraph, 5–7 richly detailed sentences, describing staging elements aligned with the given style, written as if for a luxury interior design magazine photo of virtual staging\"\n          }\n        },\n        \"required\": [\"title\", \"description\"],\n        \"additionalProperties\": false\n      }\n    }\n  },\n  \"required\": [\"ideas\"],\n  \"additionalProperties\": false\n}",
+        "autoFix": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        832,
+        -2320
+      ],
+      "id": "4d947555-d856-4227-9332-5bd22e42f201",
+      "name": "Structured Output Parser3"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-4",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        912,
+        -2112
+      ],
+      "id": "d1fc0db2-bc09-45b6-a638-2f23f3059c86",
+      "name": "OpenRouter Chat Model10",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output.ideas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1088,
+        -2544
+      ],
+      "id": "0d106a52-6b16-4f50-9245-c78aac98c030",
+      "name": "Split Out2"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Name : {{ $json.Name }}\n\nThe {roomType} is a kitchen for description below.\nInterior design concept : {{ $json.Description }}\n",
+        "hasOutputParser": true,
+        "needsFallback": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=You are given a detailed descriptive text of an interior design concept.\nYour task is to generate a **single coherent paragraph** named **Equipment**, which provides a **highly detailed description of complete kitchen equipment** styled for a **luxury interior design magazine photo of virtual staging**.\n\n### Specific Rules\n\n* The paragraph must describe **all of the following 5 kitchen equipment items** in a flowing, integrated way:\n\n  1. Stove / Range\n  2. Refrigerator\n  3. Dishwasher\n  4. Sink\n  5. Cabinetry or Lighting fixture\n* All equipment must be **strictly aligned with the given style** in terms of **materials, finishes, textures, colors, tones, and mood**.\n* The writing must be **very detailed and evocative**: highlight **craftsmanship, materials, finishes, textures, tones, hardware, and stylistic nuances** for each equipment.\n* The equipment must be described as **visible design features**, crafted to look realistic and photogenic for a **high-end magazine-style virtual staging photo of a kitchen**.\n* The text must be **compact but complete**: 5–8 sentences, written as one cohesive paragraph (not bullet points).\n* Do **not** mention room layout, walls, windows, or space planning. Focus only on the **kitchen equipment itself**.\n* Use **varied, elegant, and editorial language** to ensure it reads like a premium interior design magazine.\n* If any element is missing, vague, or stylistically inconsistent, **automatically revise** until the paragraph is fully compliant.\n\n### Output format\n\nReturn your result as a JSON object:\n\n```json\n{\n  \"equipment\": \"string (one flowing paragraph, 5–8 richly detailed sentences, covering all 5 required kitchen equipment items in alignment with the given style, written as if for a luxury interior design magazine photo of virtual staging)\"\n}\n```\n\n### Validation step\n\nBefore outputting, validate the generated paragraph:\n\n* Does it clearly describe **kitchen equipment**?\n* Does it include **all 5 required equipment items**?\n* Are the descriptions **highly detailed and aligned with the given style**?\n* Does it read like a **luxury magazine editorial** for a **virtual staging photo of a kitchen**?\n* Is it free from references to layout, walls, or space planning?\n* Is it written as **one continuous paragraph**?\n\nIf any check is **NO**, automatically **revise** until all criteria are satisfied.\n"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        656,
+        -1744
+      ],
+      "id": "5719d951-adb4-45ee-9b9a-2ea15d049091",
+      "name": "Equipments"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Name : {{ $json.Name }}\n\nThe {roomType} is a kitchen for description below.\nDescription : {{ $json.Description }}\n",
+        "hasOutputParser": true,
+        "needsFallback": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=You are given a detailed descriptive text of an interior design concept.\nYour task is to transform it into 5 different style prompts, each written in compact, direct language (3–5 sentences long).\n\nRules:\n\nEach version must have important variations in wording, focus, and structure.\n\nDo not reference any room, space, architecture, or layout. Describe only the style, materials, finishes, colors, lighting, patterns, and mood.\n\nDo not copy-paste sentences; each variation should feel like a unique but faithful interpretation of the original description.\n\nPreserve all the key elements from the source (materials, palette, hardware, patterns, textiles, lighting, atmosphere).\n\nOutput exactly 5 distinct variations, numbered 1–5."
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        624,
+        -1104
+      ],
+      "id": "1085c260-96ec-45d4-bd0b-c10f4772c6f6",
+      "name": "Style"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Name : {{ $json.Name }}\n\nThe {roomType} is a kitchen for description below.\nInterior design concept : {{ $json.Description }}\n",
+        "hasOutputParser": true,
+        "needsFallback": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=You are given a detailed descriptive text of an interior design concept.\nYour task is to generate a **single coherent paragraph** named **Staging**, which provides a **highly detailed description of staging elements** that complement the kitchen equipment in this style, written as if for a **luxury interior design magazine photo of virtual staging**.\n\n### Specific Rules\n\n* The staging must be **strictly aligned with the given style** (`STYLE_TEXT`) in terms of **materials, colors, textures, patterns, and mood**.\n* The paragraph must describe **decorative and functional elements** typically used for staging, such as:\n\n  * Textiles (towels, rugs, napkins, runners)\n  * Dishware and glassware (plates, bowls, glasses, carafes)\n  * Countertop accents (fruit bowls, cutting boards, trays, carafes, bread, herbs)\n  * Small appliances or accessories (coffee maker, kettle, teapot, vases)\n  * Decorative lighting accents (candles, lanterns, pendant lights)\n  * Greenery or fresh elements (herbs, flowers, plants)\n* The writing must be **very detailed**: highlight textures, materials, finishes, colors, patterns, and small stylistic cues.\n* The text must be **5–7 sentences long**, written as one flowing paragraph (no bullet points).\n* Do **not** mention room layout, structure, or architecture. Focus only on the **staging elements**.\n* The language must be **elegant, varied, and editorial**, reading like a premium magazine description of a styled interior photo.\n* If the paragraph is vague, incomplete, or stylistically inconsistent, **automatically revise** it until fully compliant.\n\n### Output format\n\nReturn your result as a JSON object:\n\n```json\n{\n  \"staging\": \"string (one flowing paragraph, 5–7 richly detailed sentences, describing staging elements aligned with the given style, written as if for a luxury interior design magazine photo of virtual staging)\"\n}\n```\n"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        640,
+        -2544
+      ],
+      "id": "41427341-07c4-49f7-bcbc-47486a100d04",
+      "name": "Staging"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=STYLE_TEXT: {{ $('Prepare Data').item.json.Description }}\n\nIDEA TITLE: {{ $json.title }}\n\nEQUIPMENT_PARAGRAPH : {{ $json.description }}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=**Role:** You are a strict validator and fixer for a **Staging paragraph** derived from an interior design style description.\n\n**Inputs:**\n\n* `STYLE_TEXT`: the interior design description.\n* `STAGING_PARAGRAPH`: a single paragraph of text meant to describe staging elements in alignment with the style.\n\n---\n\n### **Specific Rules to Validate Against**\n\n1. The paragraph must clearly describe **staging elements for a kitchen**, written as **one continuous paragraph** (not a list, not bullet points).\n2. It must focus only on **decorative and functional staging elements**, such as:\n\n   * Textiles (towels, rugs, napkins, runners)\n   * Dishware and glassware (plates, bowls, glasses, carafes)\n   * Countertop accents (fruit bowls, bread, cutting boards, trays, herbs)\n   * Small appliances or accessories (coffee maker, kettle, teapot, vases)\n   * Decorative lighting accents (candles, lanterns, pendant lights)\n   * Greenery or fresh elements (herbs, flowers, plants)\n3. All descriptions must be **aligned with the given style** (`STYLE_TEXT`) in terms of **materials, finishes, colors, textures, patterns, and mood**. No elements outside this style.\n4. The text must be **5–7 sentences long**, compact but richly detailed.\n5. The language must be **elegant and editorial**, reading like a **luxury interior design magazine description of a virtual staging photo**.\n6. If the paragraph is incomplete, vague, missing staging variety, or not aligned with the style, it must be **automatically revised** while preserving the original intent.\n\n---\n\n### **Heuristic Checks (Guidance Only)**\n\n* Sentence count = 5–7.\n* Staging elements cover at least **3–4 categories** (e.g., textiles, dishware, greenery, accessories).\n* Rich descriptive details (materials, textures, colors, patterns).\n* Style cues consistent with `STYLE_TEXT`.\n* Reads like an editorial caption for a luxury magazine photo.\n\n---\n\n### **Task**\n\n1. **Validate** the `STAGING_PARAGRAPH` against the rules. Output `PASS` if fully compliant; otherwise `FAIL`.\n2. If `FAIL`, **list all violations** and **produce a corrected version** of the paragraph that preserves the original intent but makes it fully compliant.\n3. **Explain your reasoning** briefly: what was checked and what was changed (if anything).\n\n---\n\n### **Output format (JSON only, no extra text)**\n"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        1760,
+        -2592
+      ],
+      "id": "2a598dea-7e08-4cb6-8f57-b831638ad547",
+      "name": "Basic LLM Chain",
+      "retryOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1456,
+        -2640
+      ],
+      "id": "a0b5e8bd-eec2-4dc1-b8fc-d078658bdbff",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-5",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        1648,
+        -2368
+      ],
+      "id": "3e09994a-aa35-486e-846b-641bf4d7035d",
+      "name": "OpenRouter Chat Model11",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"status\": \"PASS or FAIL\",\n  \"violations\": [\"string list of issues found; empty if PASS\"],\n  \"ideaTitle\": \"short idea title 3-5 words\",\n  \"correctedParagraph\": \"string (one flowing paragraph, 5–8 richly detailed sentences, covering all 5 required equipment types, aligned with the given style, ready for high-end virtual staging)\",\n  \"reasoning\": \"Short explanation of validation and any modifications\"\n}",
+        "autoFix": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        1904,
+        -2384
+      ],
+      "id": "865bded2-4d68-49fb-be1f-f33df5b7faa7",
+      "name": "Structured Output Parser4"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-4",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        1888,
+        -2192
+      ],
+      "id": "f80198ea-36a8-4ad3-9258-a939b9c7a5fd",
+      "name": "OpenRouter Chat Model12",
+      "credentials": {
+        "openRouterApi": {
+          "id": "0qavXgV1FZOxQIaU",
+          "name": "OpenRouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appGh8MOgzCa511e9",
+          "mode": "list",
+          "cachedResultName": "Armoire AD+",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl9hK4BEc3Aiau0q",
+          "mode": "list",
+          "cachedResultName": "Preset2",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9/tbl9hK4BEc3Aiau0q"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Preset": "=['{{ $('Prepare Data').item.json.id }}']",
+            "Catégorie": "Staging",
+            "Titre": "={{ $json.output.ideaTitle }}",
+            "Instructions": "={{ $json.output.correctedParagraph }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Identifiant",
+              "displayName": "Identifiant",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Numéro",
+              "displayName": "Numéro",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Preset",
+              "displayName": "Preset",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Description Preset",
+              "displayName": "Description Preset",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Catégorie",
+              "displayName": "Catégorie",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Contrainte de base",
+                  "value": "Contrainte de base"
+                },
+                {
+                  "name": "Style principal",
+                  "value": "Style principal"
+                },
+                {
+                  "name": "Équipements",
+                  "value": "Équipements"
+                },
+                {
+                  "name": "Staging",
+                  "value": "Staging"
+                },
+                {
+                  "name": "Important",
+                  "value": "Important"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Instructions",
+              "displayName": "Instructions",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Titre",
+              "displayName": "Titre",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Demande2",
+              "displayName": "Demande2",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Demande2 (2)",
+              "displayName": "Demande2 (2)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Demande2 (3)",
+              "displayName": "Demande2 (3)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Demande2 (4)",
+              "displayName": "Demande2 (4)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Demande2 (5)",
+              "displayName": "Demande2 (5)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        2496,
+        -2384
+      ],
+      "id": "3bc2f94a-7309-4281-a085-c42d6b192af8",
+      "name": "Add Staging",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "MOYbosKBB6TiMaTh",
+          "name": "Airtable Personal Access Token Armoire AD+"
+        }
+      }
+    }
+  ],
+  "repo_name": "boost-prospect-v2",
+  "repo_owner": "ultimvision",
+  "repo_path": "workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-09-16T11:06:34.860Z",
+      "updatedAt": "2025-09-16T11:06:34.860Z",
+      "role": "workflow:owner",
+      "workflowId": "f6rQu8shyMFvbF7Y",
+      "projectId": "zxVtQj8AiJx7hlkL"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-09-16T14:03:15.952Z",
+  "versionId": "7357fa54-cfa1-4c7f-9fb3-10176fdc2c4d"
+}
