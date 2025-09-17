@@ -125,7 +125,7 @@
       "main": [
         [
           {
-            "node": "Get Demande Details",
+            "node": "Data Workflow",
             "type": "main",
             "index": 0
           }
@@ -479,6 +479,28 @@
           }
         ]
       ]
+    },
+    "Data Workflow": {
+      "main": [
+        [
+          {
+            "node": "Get Demande2 Details",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Demande2 Details": {
+      "main": [
+        [
+          {
+            "node": "Prepare Setup",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-09-13T14:29:57.463Z",
@@ -506,8 +528,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        48,
-        -528
+        64,
+        -1440
       ],
       "id": "e9bd6c1b-5dcf-4e7a-bb9a-f7b3e6b9c927",
       "name": "HTTP Request"
@@ -549,8 +571,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -192,
-        -528
+        -176,
+        -1440
       ],
       "id": "29b60c90-946e-48cd-afb6-172260184666",
       "name": "HTTP Request1"
@@ -577,8 +599,8 @@
       "type": "n8n-nodes-base.formTrigger",
       "typeVersion": 2.3,
       "position": [
-        -304,
-        144
+        -288,
+        -768
       ],
       "id": "a5849fd1-6081-496d-b52b-ebe599013669",
       "name": "On form submission",
@@ -601,8 +623,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        304,
-        -528
+        320,
+        -1440
       ],
       "id": "4c5c61d6-134d-4253-bceb-fae07053015d",
       "name": "HTTP Request2"
@@ -650,8 +672,8 @@
       "name": "Edit Image (OpenAI)",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        688,
-        -16
+        704,
+        -928
       ],
       "typeVersion": 4.2,
       "credentials": {
@@ -702,8 +724,8 @@
       "name": "Create image call",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        64,
-        -16
+        80,
+        -928
       ],
       "typeVersion": 4.2,
       "credentials": {
@@ -726,8 +748,8 @@
       "name": "Convert json binary to File",
       "type": "n8n-nodes-base.convertToFile",
       "position": [
-        384,
-        -16
+        400,
+        -928
       ],
       "typeVersion": 1.1
     },
@@ -744,8 +766,8 @@
       "name": "Convert json binary to File final",
       "type": "n8n-nodes-base.convertToFile",
       "position": [
-        1008,
-        -16
+        1024,
+        -928
       ],
       "typeVersion": 1.1
     },
@@ -760,8 +782,8 @@
       "name": "Sticky Note1",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -16,
-        -304
+        0,
+        -1216
       ],
       "typeVersion": 1
     },
@@ -776,8 +798,8 @@
       "name": "Sticky Note2",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        288,
-        -176
+        304,
+        -1088
       ],
       "typeVersion": 1
     },
@@ -792,8 +814,8 @@
       "name": "Sticky Note3",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        608,
-        -304
+        624,
+        -1216
       ],
       "typeVersion": 1
     },
@@ -808,8 +830,8 @@
       "name": "Sticky Note4",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        928,
-        -224
+        944,
+        -1136
       ],
       "typeVersion": 1
     },
@@ -1007,8 +1029,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -64,
-        288
+        -48,
+        -624
       ],
       "id": "6ea267f7-b13e-4f42-90d9-a6f2e61774bd",
       "name": "Edit Fields"
@@ -1021,8 +1043,8 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        144,
-        288
+        160,
+        -624
       ],
       "id": "40a1d72a-c488-4183-929a-382bc74329ce",
       "name": "Split Out2"
@@ -1083,8 +1105,8 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        416,
-        288
+        432,
+        -624
       ],
       "id": "df773164-86b9-4981-8282-3d1753be21f0",
       "name": "Create a record",
@@ -1100,8 +1122,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -544,
-        1136
+        -512,
+        400
       ],
       "id": "ebc8cd95-81c1-4a9a-9c86-6d37e4f73284",
       "name": "Start"
@@ -1338,8 +1360,8 @@
       "name": "Edit Image Clean",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        1712,
-        -192
+        1728,
+        -1104
       ],
       "typeVersion": 4.2,
       "credentials": {
@@ -1622,8 +1644,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1408,
-        -192
+        1424,
+        -1104
       ],
       "id": "4e0f437b-1014-4e94-8a06-65c3de46390b",
       "name": "Download"
@@ -2125,6 +2147,113 @@
       "id": "1a8cede6-504d-4fad-ab79-be45056201b3",
       "name": "Generate filename - Util1",
       "notes": "PHASE: Utility | Purpose: Generate a random hex suffix to append to the Apify task name for uniqueness. | Inputs: None. | Outputs: unique_name as 10 hex characters (~5 bytes, ~40 bits). | Dependencies: n8n Crypto node. | Special Cases: Increase length for stronger uniqueness; regenerate on retries if a name collision occurs."
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appGh8MOgzCa511e9",
+          "mode": "list",
+          "cachedResultName": "Armoire AD+",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbll6kz4sZ5zF9I9G",
+          "mode": "list",
+          "cachedResultName": "Demande2",
+          "cachedResultUrl": "https://airtable.com/appGh8MOgzCa511e9/tbll6kz4sZ5zF9I9G"
+        },
+        "filterByFormula": "={Numéro} = {{ $json.request_number }}",
+        "returnAll": false,
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -80,
+        400
+      ],
+      "id": "52763f13-9911-4a24-b13c-3e2ba919d557",
+      "name": "Get Demande2 Details",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "MOYbosKBB6TiMaTh",
+          "name": "Airtable Personal Access Token Armoire AD+"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7c63b6f2-cc17-458d-9183-04bb4c347378",
+              "name": "request_number",
+              "value": 1,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -304,
+        400
+      ],
+      "id": "fe03d795-7efa-4628-800e-1a26a1718f37",
+      "name": "Data Workflow"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dc611be5-d3f4-4784-a7d7-c0bb19a907cd",
+              "name": "image_originale_url",
+              "value": "={{ $json['Image originale'][0].url }}",
+              "type": "string"
+            },
+            {
+              "id": "f9a4475e-08e7-4056-91ef-dc46d1f40ec6",
+              "name": "style",
+              "value": "={{ $json['Instructions Style'][0] }}",
+              "type": "string"
+            },
+            {
+              "id": "8ed57933-4c78-423c-b4f5-6f566de24655",
+              "name": "contrainte",
+              "value": "={{ $json['Instructions Contrainte'][0] }}",
+              "type": "string"
+            },
+            {
+              "id": "687745d8-11e5-4c3a-a8a9-c7a26d7a5a15",
+              "name": "equipements",
+              "value": "={{ $json['Instructions Équipements'][0] }}",
+              "type": "string"
+            },
+            {
+              "id": "cb559ab2-e207-4f16-9dd4-d7670d97ceb8",
+              "name": "staging",
+              "value": "={{ $json['Instructions Staging'][0] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        128,
+        400
+      ],
+      "id": "365ca51a-b8ff-49ce-ba4a-d8436524df9e",
+      "name": "Prepare Setup"
     }
   ],
   "repo_name": "boost-prospect-v2",
@@ -2145,6 +2274,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-09-15T18:28:20.993Z",
-  "versionId": "afa22ddb-a99b-4c38-b6fa-4705a5094c35"
+  "updatedAt": "2025-09-16T16:22:00.111Z",
+  "versionId": "e97b5375-b73f-48be-9b77-c9a1526f30c6"
 }
