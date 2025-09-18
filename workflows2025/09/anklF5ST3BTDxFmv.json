@@ -1,0 +1,47 @@
+{
+  "active": true,
+  "connections": {},
+  "createdAt": "2025-09-17T11:23:13.895Z",
+  "id": "anklF5ST3BTDxFmv",
+  "isArchived": false,
+  "meta": null,
+  "name": "Webhook > Lovable",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "lovable",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -272,
+        0
+      ],
+      "id": "d9f3725d-82b3-49b4-ab20-3a65dc77a5ca",
+      "name": "Webhook",
+      "webhookId": "488f8d9d-81fc-4707-8fae-e5676d65bd17"
+    }
+  ],
+  "repo_name": "boost-prospect-v2",
+  "repo_owner": "ultimvision",
+  "repo_path": "workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-09-17T11:23:13.895Z",
+      "updatedAt": "2025-09-17T11:23:13.895Z",
+      "role": "workflow:owner",
+      "workflowId": "anklF5ST3BTDxFmv",
+      "projectId": "zxVtQj8AiJx7hlkL"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-09-17T11:47:47.499Z",
+  "versionId": "9798281e-a880-417e-be4c-4c1f46094146"
+}
