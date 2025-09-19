@@ -271,6 +271,11 @@
           }
         ]
       ]
+    },
+    "seedream": {
+      "main": [
+        []
+      ]
     }
   },
   "createdAt": "2025-09-16T14:03:40.854Z",
@@ -279,7 +284,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Generate Nano Image",
+  "name": "Generate Image",
   "nodes": [
     {
       "parameters": {
@@ -325,7 +330,7 @@
             {
               "id": "7c63b6f2-cc17-458d-9183-04bb4c347378",
               "name": "request_number",
-              "value": 169,
+              "value": 170,
               "type": "number"
             }
           ]
@@ -415,7 +420,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        96,
+        160,
         32
       ],
       "id": "5bbf5392-45a1-470b-8e6e-d87bb02be792",
@@ -489,7 +494,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"prompt\": {{ JSON.stringify(\"Base Constraint : \" + $json.contrainte + \"Style : \" + $json.style + \"Equipments : \" + $json.equipements + \"Staging : \" + $json.staging + \" Important : \" + $json.important + $json.contrainte) }},\n  \"image_urls\": [{{ JSON.stringify($json.image_originale_url) }}],\n  \"num_images\": 3\n}",
+        "jsonBody": "={\n  \"prompt\": {{ JSON.stringify(\"Base Constraint : \" + $json.contrainte + \"Style : \" + $json.style + \"Equipments : \" + $json.equipements + \"Staging : \" + $json.staging + \" Important : \" + $json.important + $json.contrainte) }},\n  \"image_urls\": [{{ JSON.stringify($json.image_originale_url) }}],\n  \"num_images\": 4\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -1233,6 +1238,37 @@
       ],
       "id": "9c9289be-5033-468d-b26a-36ef6ade2fe2",
       "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://queue.fal.run/fal-ai/bytedance/seedream/v4/edit",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Key a689688c-e14f-4a57-bc81-32d9bf7101ea:0633419ab1fd453e1d276a38166122ad"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"prompt\": {{ JSON.stringify(\"Base Constraint : \" + $json.contrainte + \"Style : \" + $json.style + \"Equipments : \" + $json.equipements + \"Staging : \" + $json.staging + \" Important : \" + $json.important + $json.contrainte) }},\n  \"image_urls\": [{{ JSON.stringify($json.image_originale_url) }}],\n  \"image_size\": {\n    \"height\": 2160,\n    \"width\": 3840\n  },\n  \"num_images\": 2\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -128,
+        240
+      ],
+      "id": "28fb0c5f-b119-407d-8d84-fe6639abda77",
+      "name": "seedream"
     }
   ],
   "repo_name": "boost-prospect-v2",
@@ -1253,6 +1289,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-09-16T17:03:37.626Z",
-  "versionId": "99aa69ce-fb70-4898-a46d-ac0dae5f4303"
+  "updatedAt": "2025-09-18T20:44:22.643Z",
+  "versionId": "16a4dc52-43f3-40cf-99d8-a31767757309"
 }
