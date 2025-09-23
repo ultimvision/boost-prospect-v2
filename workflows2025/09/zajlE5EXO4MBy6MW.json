@@ -1,0 +1,1717 @@
+{
+  "active": false,
+  "connections": {
+    "Filter Not Archived": {
+      "main": [
+        [
+          {
+            "node": "Sort1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Boost Prospect Tag": {
+      "main": [
+        [
+          {
+            "node": "Check Tag Exists - IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Tag Exists - IF": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create a tag Boost Prospect",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a tag Boost Prospect": {
+      "main": [
+        [
+          {
+            "node": "Set Boost Prospect Tag",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a workflow": {
+      "main": [
+        [
+          {
+            "node": "Set New Workflow Id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Projects": {
+      "main": [
+        [
+          {
+            "node": "Split Projects",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Tags": {
+      "main": [
+        [
+          {
+            "node": "Split Tags",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Tags": {
+      "main": [
+        [
+          {
+            "node": "Filter Boost Prospect Tag",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Projects": {
+      "main": [
+        [
+          {
+            "node": "Filter Prospect Project",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Prospect Project": {
+      "main": [
+        [
+          {
+            "node": "Check Project Exists - IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many workflows Boost": {
+      "main": [
+        [
+          {
+            "node": "Filter Not Archived",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Tag Boost Prospect": {
+      "main": [
+        [
+          {
+            "node": "Get Tags",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Project First - Manual Operation": {
+      "main": [
+        [
+          {
+            "node": "Get Projects",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Create a workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Data Installer": {
+      "main": [
+        [
+          {
+            "node": "Set API URL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get workflows from Boost Prospect Master": {
+      "main": [
+        [
+          {
+            "node": "Filter Not Archived and Handling Errors",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Not Archived and Handling Errors": {
+      "main": [
+        [
+          {
+            "node": "Settings",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Workflow content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get workflows from Local": {
+      "main": [
+        [
+          {
+            "node": "Filter Not Archived and Handling Errors1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Not Archived and Handling Errors1": {
+      "main": [
+        [
+          {
+            "node": "Check Errors Handling Workflow Exists - IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Errors Handling Workflow Exists - IF": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get workflows from Boost Prospect Master",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Create a workflow1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a workflow1": {
+      "main": [
+        [
+          {
+            "node": "Set Handling Error Workflow Id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Handling Error Workflow Id": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Project ID": {
+      "main": [
+        [
+          {
+            "node": "Step 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing1": {
+      "main": [
+        [
+          {
+            "node": "Set Handling Error Workflow Id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Boost Prospect Tag": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing2": {
+      "main": [
+        [
+          {
+            "node": "Set Boost Prospect Tag",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing3": {
+      "main": [
+        [
+          {
+            "node": "Get workflows from Local",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing4": {
+      "main": [
+        [
+          {
+            "node": "Get many workflows Boost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Workflows": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Workflow Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Data": {
+      "main": [
+        [
+          {
+            "node": "Get workflows from Local1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get workflows from Local1": {
+      "main": [
+        [
+          {
+            "node": "Filter Not Archived and Not Already Created",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Not Archived and Not Already Created": {
+      "main": [
+        [
+          {
+            "node": "Check Workflow Exists = IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Workflow Exists = IF": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Workflows",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set Settings",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Workflow Content Duplicate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Settings": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Settings": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow content": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Workflow Content Duplicate": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Sort1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Workflows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set New Workflow Id": {
+      "main": [
+        [
+          {
+            "node": "Transfer a workflow to another project",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Update tags of a workflow​",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update tags of a workflow​": {
+      "main": [
+        [
+          {
+            "node": "Clean Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Step 2": {
+      "main": [
+        [
+          {
+            "node": "Create Tag Boost Prospect",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start - Step 1": {
+      "main": [
+        [
+          {
+            "node": "Prepare Data Installer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set API URL": {
+      "main": [
+        [
+          {
+            "node": "Create Project First - Manual Operation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Project Exists - IF": {
+      "main": [
+        [
+          {
+            "node": "Set Project ID",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create the Project",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create the Project": {
+      "main": [
+        [
+          {
+            "node": "Step 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clean Data": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Workflows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-09-22T11:06:02.919Z",
+  "id": "zajlE5EXO4MBy6MW",
+  "isArchived": false,
+  "meta": null,
+  "name": "Installer",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "9e9b95c9-2c7a-42ae-8d44-5d26045811bd",
+              "leftValue": "={{ $json.isArchived }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -96,
+        1872
+      ],
+      "id": "0ecd03b0-07a7-4939-8c17-4983f4cf0da8",
+      "name": "Filter Not Archived"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "db28d015-d9e0-4da8-8ed3-9cd6e3212090",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "Boost Prospect",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        368,
+        560
+      ],
+      "id": "abce824f-adcd-46bb-addd-7df9686e2555",
+      "name": "Filter Boost Prospect Tag",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c1979413-bd7a-4617-af9a-b9da038f864f",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "ed01aadf-1527-41e3-a679-788434bf714a",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        592,
+        560
+      ],
+      "id": "f92dfe3c-784e-40d8-9e89-10a45138f03f",
+      "name": "Check Tag Exists - IF"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Set API URL').first().json.api_url }}/tags",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "n8nApi",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "Boost Prospect"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        816,
+        656
+      ],
+      "id": "965f3d66-5fc0-4617-9cef-621732a492e5",
+      "name": "Create a tag Boost Prospect"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "workflowObject": "={{ $json.toJsonString() }}",
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        2128,
+        2080
+      ],
+      "id": "8f6310bf-12c9-4d45-b43f-ab719865b557",
+      "name": "Create a workflow"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Set API URL').first().json.api_url }}/projects",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "n8nApi",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "100"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        192,
+        -112
+      ],
+      "id": "fc785ef2-7186-4283-9e65-c2925aeeb350",
+      "name": "Get Projects"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Set API URL').first().json.api_url }}/tags",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "n8nApi",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "100"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -80,
+        560
+      ],
+      "id": "51222fb0-215d-4496-9ea9-4b4d8c340fa6",
+      "name": "Get Tags"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        144,
+        560
+      ],
+      "id": "da536083-e557-415f-a61d-ecf67522a0dc",
+      "name": "Split Tags"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        416,
+        -112
+      ],
+      "id": "291ebc45-2fc0-4722-83be-20fa053cdf2a",
+      "name": "Split Projects"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "db28d015-d9e0-4da8-8ed3-9cd6e3212090",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "Prospect",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        640,
+        -112
+      ],
+      "id": "c4a9e5d0-3282-40ef-9187-d71c1ac89484",
+      "name": "Filter Prospect Project",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "filters": {
+          "tags": "Boost Prospect",
+          "excludePinnedData": true
+        },
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        1872
+      ],
+      "id": "9ed00a04-eebd-4bc1-bbdf-8f4a96ad5ab6",
+      "name": "Get many workflows Boost"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -304,
+        560
+      ],
+      "id": "5faaece9-d03b-4bc0-870f-dcb26089ae86",
+      "name": "Create Tag Boost Prospect"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        -112
+      ],
+      "id": "c35ae98a-1ce5-4b88-bdd6-7d8f668174f7",
+      "name": "Create Project First - Manual Operation"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1872,
+        2080
+      ],
+      "id": "a8b41e52-9104-45d1-ba10-5826dd900294",
+      "name": "Merge"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -480,
+        -112
+      ],
+      "id": "8e4cee81-5bc5-4b77-8b1f-c236f7ece43c",
+      "name": "Prepare Data Installer"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        560,
+        1680
+      ],
+      "id": "40fc9a97-5b3b-46a5-9316-5c3cff171194",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "filters": {
+          "tags": "Boost Prospect",
+          "excludePinnedData": true
+        },
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        352,
+        1264
+      ],
+      "id": "01a8c892-45f0-40ad-b8c8-f47112385923",
+      "name": "Get workflows from Boost Prospect Master"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "9e9b95c9-2c7a-42ae-8d44-5d26045811bd",
+              "leftValue": "={{ $json.isArchived }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "ac3b8752-c83d-45a9-88e5-1432de4e3cfd",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "[9000] Handling Errors",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        576,
+        1264
+      ],
+      "id": "08d16ec9-2209-49f6-a5d9-69c2e0f7bc27",
+      "name": "Filter Not Archived and Handling Errors"
+    },
+    {
+      "parameters": {
+        "filters": {
+          "excludePinnedData": true
+        },
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        1168
+      ],
+      "id": "98f81420-3037-403e-82ea-b98ac02de23c",
+      "name": "Get workflows from Local"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "9e9b95c9-2c7a-42ae-8d44-5d26045811bd",
+              "leftValue": "={{ $json.isArchived }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "ac3b8752-c83d-45a9-88e5-1432de4e3cfd",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "[9000] Handling Errors",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -96,
+        1168
+      ],
+      "id": "3646ea08-3d5a-40c0-a68c-802ac47aa4ce",
+      "name": "Filter Not Archived and Handling Errors1",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e7f6d4d6-da0f-460e-8d2a-2bf5f3668d7c",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "62ea2116-451b-4dd8-9632-6a7c979618d5",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        128,
+        1168
+      ],
+      "id": "5f14700d-8deb-441f-b660-baa5db75106b",
+      "name": "Check Errors Handling Workflow Exists - IF"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1024,
+        1264
+      ],
+      "id": "45bd3c7d-2f66-44fd-8a1c-1c239d0636ed",
+      "name": "Merge2"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "workflowObject": "={{ $json.toJsonString() }}",
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        1248,
+        1264
+      ],
+      "id": "2c0c35bd-c621-4d85-aecb-f6ae0cef543e",
+      "name": "Create a workflow1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e99fda8c-137c-48ff-ad5b-7e29aab0d522",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1472,
+        1168
+      ],
+      "id": "e2d7822b-2b74-4a6f-a208-da963eb1382c",
+      "name": "Set Handling Error Workflow Id"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4371b21a-a974-4684-959c-d8dc8dce9686",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "45d1c2a3-700d-463f-ada7-2a9f80b3db0f",
+              "name": "name",
+              "value": "={{ $json.name }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1136,
+        -208
+      ],
+      "id": "2df25be4-c482-4571-ae06-a4b3c464e89b",
+      "name": "Set Project ID"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1248,
+        1008
+      ],
+      "id": "92948f95-dd66-4f0d-b3d8-30b23b227086",
+      "name": "No Operation, do nothing1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "98f85d44-eaf2-4929-bc52-d24f65c1fa1b",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1024,
+        544
+      ],
+      "id": "29ece6fc-548b-45c7-9e0c-7c502639dc56",
+      "name": "Set Boost Prospect Tag"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        816,
+        464
+      ],
+      "id": "2c836df7-7163-4fce-b653-34548e1a6232",
+      "name": "No Operation, do nothing2"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1024,
+        784
+      ],
+      "id": "813eabb1-4497-43d5-a5a2-1582e08e9823",
+      "name": "No Operation, do nothing3"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1456,
+        1408
+      ],
+      "id": "61884435-abec-4a71-aee9-62dd0f6a89ca",
+      "name": "No Operation, do nothing4"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        336,
+        1872
+      ],
+      "id": "726493f0-42f7-43c2-b330-e60db44d2d73",
+      "name": "Loop Over Workflows"
+    },
+    {
+      "parameters": {
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        544,
+        1968
+      ],
+      "id": "48fdbac9-f68b-4947-a77c-cdc9659ac83e",
+      "name": "Workflow Data"
+    },
+    {
+      "parameters": {
+        "filters": {
+          "excludePinnedData": true
+        },
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        768,
+        1968
+      ],
+      "id": "30e6dd05-4ba7-454e-bb41-100fc080d447",
+      "name": "Get workflows from Local1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "9e9b95c9-2c7a-42ae-8d44-5d26045811bd",
+              "leftValue": "={{ $json.isArchived }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "0835d190-cb08-4232-9b58-682e8b3f35c1",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "={{ $('Workflow Data').item.json.name }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        992,
+        1968
+      ],
+      "id": "7ae7f510-7552-455d-83dc-10c17ee0e024",
+      "name": "Filter Not Archived and Not Already Created",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e38c3460-35e1-4922-8c08-ad6bfbe2f37a",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1200,
+        1968
+      ],
+      "id": "df86266c-288d-41c6-b55d-208034665473",
+      "name": "Check Workflow Exists = IF"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "=  {\n    \"settings\": {\n      \"executionOrder\": \"v1\",\n      \"errorWorkflow\": \"{{ $('Set Handling Error Workflow Id').first().json.id }}\"\n    }\n  }\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1648,
+        1984
+      ],
+      "id": "ae0945ca-d69f-439a-a8ad-997161877379",
+      "name": "Set Settings"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "=  {\n    \"settings\": {\n      \"executionOrder\": \"v1\"\n    }\n  }\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        800,
+        1168
+      ],
+      "id": "08f96b07-e044-44ef-b8af-82e0a71c97f2",
+      "name": "Settings"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e619f28e-ec40-4fc4-b949-70d21e979443",
+              "name": "name",
+              "value": "={{ $json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "54a9b6d5-4793-4c85-86f5-fa74bc1472be",
+              "name": "nodes",
+              "value": "={{ $json.nodes }}",
+              "type": "array"
+            },
+            {
+              "id": "2b01d7a5-62b5-4a45-b0ff-0d9cfc521d37",
+              "name": "connections",
+              "value": "={{ $json.connections }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        800,
+        1360
+      ],
+      "id": "77fd5a64-e2c9-4711-92b8-73ab8092716f",
+      "name": "Workflow content"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e619f28e-ec40-4fc4-b949-70d21e979443",
+              "name": "name",
+              "value": "={{ $('Workflow Data').item.json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "54a9b6d5-4793-4c85-86f5-fa74bc1472be",
+              "name": "nodes",
+              "value": "={{ $('Workflow Data').item.json.nodes }}",
+              "type": "array"
+            },
+            {
+              "id": "2b01d7a5-62b5-4a45-b0ff-0d9cfc521d37",
+              "name": "connections",
+              "value": "={{ $('Workflow Data').item.json.connections }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1648,
+        2176
+      ],
+      "id": "aed52499-9931-4944-ade3-ccace6163da5",
+      "name": "Workflow Content Duplicate"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "name"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        96,
+        1872
+      ],
+      "id": "8f8af615-765f-4b12-a369-d8cdc041ebae",
+      "name": "Sort1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6bb39c32-92d3-41ec-8b04-b56092e29b17",
+              "name": "new_workflow_id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2400,
+        2080
+      ],
+      "id": "6799cc92-ee07-40aa-a9f4-d41591b50f2d",
+      "name": "Set New Workflow Id"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $('Set API URL').first().json.api_url }}/workflows/{{ $json.new_workflow_id }}/transfer",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "n8nApi",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "destinationProjectId",
+              "value": "={{ $('Set Project ID').first().json.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2864,
+        1984
+      ],
+      "id": "a55059f4-7391-4f58-af11-342182212a10",
+      "name": "Transfer a workflow to another project",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $('Set API URL').first().json.api_url }}/workflows/{{ $json.new_workflow_id }}/tags",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "n8nApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "=[\n  {\n    \"id\": \"{{ $('Set Boost Prospect Tag').first().json.id }}\"\n  }\n]",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2656,
+        2224
+      ],
+      "id": "d433c9c3-c1e6-4dd2-bcb2-8e69422d73b0",
+      "name": "Update tags of a workflow​",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "content": "# IMPORTANT\n## Setup the API URL",
+        "height": 336,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        -240
+      ],
+      "id": "285347ff-3386-487c-b20c-e332c9714e6a",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1536,
+        256
+      ],
+      "id": "59d42f16-27b4-4517-9e4e-5d5d15768910",
+      "name": "Step 2"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -704,
+        -112
+      ],
+      "id": "cb606bca-bb79-4a87-8ea0-da73ef05449a",
+      "name": "Start - Step 1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "001a20ac-fe33-4a2a-a14e-156849d78ed3",
+              "name": "api_url",
+              "value": "https://ejfm.app.n8n.cloud/api/v1",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -256,
+        -112
+      ],
+      "id": "df9a21ab-4e7f-43aa-b1e3-a60286832caf",
+      "name": "Set API URL"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "5d1f4260-faed-4359-8a60-ec5bfed4bc39",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "c17c316f-44de-4dd2-b3c2-1cf0ee12288b",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        864,
+        -112
+      ],
+      "id": "ac01545c-ae83-4f91-a49b-377b8b2ba3ed",
+      "name": "Check Project Exists - IF"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        144
+      ],
+      "id": "4c9f778d-53f8-44c3-9c28-104dd4283fc1",
+      "name": "Create the Project"
+    },
+    {
+      "parameters": {
+        "content": "# IMPORTANT\n## Create a project named \"Prospect\"",
+        "height": 336,
+        "width": 272,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        -16
+      ],
+      "id": "739014e4-a400-49ad-94a5-35d7da0981b2",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": []
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2864,
+        2224
+      ],
+      "id": "868d3cb9-72bb-4381-bff0-4a2378a77b7e",
+      "name": "Clean Data"
+    }
+  ],
+  "repo_name": "boost-prospect-v2",
+  "repo_owner": "ultimvision",
+  "repo_path": "workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-09-22T11:06:02.919Z",
+      "updatedAt": "2025-09-22T11:06:02.919Z",
+      "role": "workflow:owner",
+      "workflowId": "zajlE5EXO4MBy6MW",
+      "projectId": "zxVtQj8AiJx7hlkL"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-09-22T11:06:09.033Z",
+  "versionId": "f784e4f2-3b48-4657-964e-6ec9ce7fc95c"
+}
