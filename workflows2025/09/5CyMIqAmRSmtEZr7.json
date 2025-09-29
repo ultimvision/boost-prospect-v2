@@ -1,0 +1,1113 @@
+{
+  "active": false,
+  "connections": {
+    "Create a bill": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete a bill": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a bill": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many bills": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update a bill": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a customer": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a customer": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many customers": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update a customer": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an employee": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get an employee": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many employees": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update an employee": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an estimate": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete an estimate": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get an estimate": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many estimates": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send an estimate": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update an estimate": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an invoice": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete an invoice": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get an invoice": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many invoices": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send an invoice": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update an invoice": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Void an invoice": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get an item": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many items": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a payment": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete a payment": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a payment": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many payments": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a payment": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update a payment": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Void a payment": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a purchase": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many purchases": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a report": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a vendor": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a vendor": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many vendors": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update a vendor": {
+      "ai_tool": [
+        [
+          {
+            "node": "QuickBooks Online Tool MCP Server",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-09-28T15:36:29.766Z",
+  "id": "5CyMIqAmRSmtEZr7",
+  "isArchived": false,
+  "meta": null,
+  "name": "My workflow 4",
+  "nodes": [
+    {
+      "parameters": {
+        "content": ""
+      },
+      "id": "76757d2e-6952-4e01-81f7-08174c0f51a8",
+      "name": "Workflow Overview 0",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -832,
+        256
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "path": "6787c767-86eb-43fc-8db5-8ecd22eb869f"
+      },
+      "id": "e5aface9-8f24-4b81-b64f-631c6fe6ffe7",
+      "name": "QuickBooks Online Tool MCP Server",
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "position": [
+        240,
+        -32
+      ],
+      "webhookId": "6787c767-86eb-43fc-8db5-8ecd22eb869f",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "43001672-6191-4caf-9e0f-a8c3711348ca",
+      "name": "Create a bill",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        -144,
+        224
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "f33e0cd6-e29b-4e5a-a18e-84a2e8374929",
+      "name": "Delete a bill",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        80,
+        224
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "dffb8070-bcf0-4bb5-92a7-550233bca1ad",
+      "name": "Get a bill",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        288,
+        224
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "acbfa0b8-cc97-4883-beb6-90c671badda3",
+      "name": "Get many bills",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        512,
+        224
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "03844850-0387-49dd-a4ae-a443fceef4aa",
+      "name": "Update a bill",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        736,
+        224
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": ""
+      },
+      "id": "9683cea1-ab04-4614-ae1a-7cb7cfc839c1",
+      "name": "Sticky Note 1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -352,
+        208
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "339124c3-000f-40c6-9316-3ccf478ca341",
+      "name": "Create a customer",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        -144,
+        464
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "c6295327-6f94-47c2-9335-d56964603c45",
+      "name": "Get a customer",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        80,
+        464
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "ea774425-a71e-4dec-b91e-84763c9729fa",
+      "name": "Get many customers",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        288,
+        464
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "59b23f55-c01f-443b-b853-5374f97d7a34",
+      "name": "Update a customer",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        512,
+        464
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": ""
+      },
+      "id": "5b3f0b4f-6a1e-426e-894d-ef5156dd9b06",
+      "name": "Sticky Note 2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -352,
+        448
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "deb62a97-5cb3-4160-948b-6ffd315ad6e5",
+      "name": "Create an employee",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        -144,
+        704
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "dc4ec151-f56e-415c-9cf4-35a89932da95",
+      "name": "Get an employee",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        80,
+        704
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "0e228356-9726-4278-9b5e-db8af2eef58e",
+      "name": "Get many employees",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        288,
+        704
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "386fe3ea-de5e-463f-97c8-c9edfbc8d57d",
+      "name": "Update an employee",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        512,
+        704
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": ""
+      },
+      "id": "7a1e7237-cd24-42ce-b707-a861934db031",
+      "name": "Sticky Note 3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -352,
+        688
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "d1f3a158-e62f-46f4-ad84-b0447a203b87",
+      "name": "Create an estimate",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        -144,
+        944
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "8242645f-5d39-4181-afba-b9640c89ef93",
+      "name": "Delete an estimate",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        80,
+        944
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "9d6737af-2d8e-4e28-9a6c-ff849dd9b3da",
+      "name": "Get an estimate",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        288,
+        944
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "d5fd2ac2-ca78-49ea-a008-677edbe633bc",
+      "name": "Get many estimates",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        512,
+        944
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "a95a53d2-98b1-4790-b894-926f46dab722",
+      "name": "Send an estimate",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        736,
+        944
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "f51f7aa4-7378-43d8-88ed-6df86619433b",
+      "name": "Update an estimate",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        960,
+        944
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": ""
+      },
+      "id": "399775bf-62a7-4207-80fc-1ca0f84e02aa",
+      "name": "Sticky Note 4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -352,
+        928
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "cc751e43-f2d3-44a2-92ef-a879d6dfdf0a",
+      "name": "Create an invoice",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        -144,
+        1184
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "e5d85f70-3642-49c1-abfa-b371648cd4f7",
+      "name": "Delete an invoice",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        80,
+        1184
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "60037c5a-f30e-4311-bc77-6ef2896c5db1",
+      "name": "Get an invoice",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        288,
+        1184
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "5c05b494-ce4e-4309-8549-e2338d9dc6e0",
+      "name": "Get many invoices",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        512,
+        1184
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "9afcd727-d5f5-479b-9e1b-0e12b8a9915c",
+      "name": "Send an invoice",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        736,
+        1184
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "20c29d20-7d17-465d-a38d-d844079b784a",
+      "name": "Update an invoice",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        960,
+        1184
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "5eb594af-dc91-46c8-865c-b8cef6bf6986",
+      "name": "Void an invoice",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        1168,
+        1184
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": ""
+      },
+      "id": "debbfa60-f793-42ab-be1d-2a355e464647",
+      "name": "Sticky Note 5",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -352,
+        1168
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "356dfb7b-4660-4626-8130-309b988e5349",
+      "name": "Get an item",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        -144,
+        1424
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "e9da7670-6483-4334-8bf3-6ffb6fd9cd44",
+      "name": "Get many items",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        80,
+        1424
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": ""
+      },
+      "id": "4d8b9c63-729b-4f4f-ae69-8495c4f05254",
+      "name": "Sticky Note 6",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -352,
+        1408
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "daa2f11f-010a-4a67-87af-d6171006177d",
+      "name": "Create a payment",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        -144,
+        1664
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "e40833bc-925a-4620-b354-7907f575fc89",
+      "name": "Delete a payment",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        80,
+        1664
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "b39054e9-e8c7-4304-9abc-5376024d3533",
+      "name": "Get a payment",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        288,
+        1664
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "63696c7f-a6fb-4940-9107-e1441921273c",
+      "name": "Get many payments",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        512,
+        1664
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "7d091ee7-e0c8-4114-8e87-dc8b2f460e5b",
+      "name": "Send a payment",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        736,
+        1664
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "a2af4f5b-7af1-4318-9550-064ed7ad29fd",
+      "name": "Update a payment",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        960,
+        1664
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "bef869e8-172d-45d5-8cb4-e27595310314",
+      "name": "Void a payment",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        1168,
+        1664
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": ""
+      },
+      "id": "6d803e99-d67c-4828-ac9a-459b7b32a03d",
+      "name": "Sticky Note 7",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -352,
+        1648
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "609eed90-0176-43f1-98c6-6f08fc15957a",
+      "name": "Get a purchase",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        528,
+        1424
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "77bbcd64-dc51-442d-9abd-79e441f29d40",
+      "name": "Get many purchases",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        752,
+        1424
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": ""
+      },
+      "id": "56630724-8a20-4f62-b50f-d6bd3bcfead6",
+      "name": "Sticky Note 8",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        336,
+        1408
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "cf0718b5-95fb-42b4-ad1b-4e07381b72a8",
+      "name": "Get a report",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        -144,
+        1904
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": ""
+      },
+      "id": "5b63fd55-a72e-4626-a17c-9700829945d1",
+      "name": "Sticky Note 9",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -352,
+        1888
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "a4eb065d-e413-4a08-a69a-dc0c272cd9af",
+      "name": "Create a vendor",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        512,
+        1904
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "3e1175d3-0479-435b-9cca-412730773e55",
+      "name": "Get a vendor",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        736,
+        1904
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "e0510215-cdb0-4657-a473-97c007a17157",
+      "name": "Get many vendors",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        960,
+        1904
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "cc9eb0d8-d644-4601-b1a1-7d54c25cac92",
+      "name": "Update a vendor",
+      "type": "n8n-nodes-base.quickbooksTool",
+      "position": [
+        1168,
+        1904
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": ""
+      },
+      "id": "c89c6799-08f4-464e-b0b8-51f7f70d9279",
+      "name": "Sticky Note 10",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        320,
+        1888
+      ],
+      "typeVersion": 1
+    }
+  ],
+  "repo_name": "boost-prospect-v2",
+  "repo_owner": "ultimvision",
+  "repo_path": "workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-09-28T15:36:29.766Z",
+      "updatedAt": "2025-09-28T15:36:29.766Z",
+      "role": "workflow:owner",
+      "workflowId": "5CyMIqAmRSmtEZr7",
+      "projectId": "zxVtQj8AiJx7hlkL"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-09-28T15:36:29.766Z",
+  "versionId": "58344a05-6b32-414d-8b90-8cf0d825b20a"
+}
